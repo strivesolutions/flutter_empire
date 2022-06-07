@@ -1,9 +1,10 @@
 import 'package:empire/empire.dart';
 import 'package:empire/empire_state.dart';
 import 'package:empire/empire_view_model.dart';
-import 'package:empire_example/application_view_model.dart';
-import 'package:empire_example/counter_view_model.dart';
 import 'package:flutter/material.dart';
+
+import 'application_view_model.dart';
+import 'counter_view_model.dart';
 
 class CounterPage extends EmpireWidget<CounterViewModel> {
   const CounterPage({Key? key, required this.title, required CounterViewModel viewModel})

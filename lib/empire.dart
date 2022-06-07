@@ -12,7 +12,7 @@ class EmpireApp extends InheritedWidget {
     required this.viewModel,
   }) : super(key: key);
 
-  final String _uuid;
+  final String? _uuid;
   final T Function<T extends EmpireViewModel>() viewModel;
 
   @override
@@ -47,14 +47,14 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
 }
 
 class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
-  late Uuid _uuid;
+  String? _applicationStateId;
 
   @override
   void initState() {
-    _uuid = const Uuid();
+    const uuid = Uuid();
     widget.viewModel.listen((_) {
       setState(() {
-        _uuid = const Uuid();
+        _applicationStateId = uuid.v1();
       });
     });
     super.initState();
@@ -63,7 +63,7 @@ class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
   @override
   Widget build(BuildContext context) {
     return EmpireApp(
-      _uuid.v1(),
+      _applicationStateId,
       viewModel: <E extends EmpireViewModel>() => widget.viewModel as E,
       child: Builder(builder: (context) {
         return widget.child;
