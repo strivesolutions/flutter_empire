@@ -1,7 +1,19 @@
+import 'package:empire/empire.dart';
+import 'package:empire/empire_state.dart';
+import 'package:empire/empire_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:empire/empire.dart';
+class ApplicationViewModel extends EmpireViewModel {
+  late EmpireProperty<bool> changed;
+
+  @override
+  void initProperties() {
+    changed = createProperty(false, propertyName: 'changed');
+  }
+
+  void change() => changed(!changed.value);
+}
 
 class TestViewModel extends EmpireViewModel {
   late EmpireProperty<String?> name;
@@ -13,9 +25,11 @@ class TestViewModel extends EmpireViewModel {
 }
 
 class MyWidget extends EmpireWidget<TestViewModel> {
+  final ApplicationViewModel applicationViewModel;
   const MyWidget({
     Key? key,
     required TestViewModel viewModel,
+    required this.applicationViewModel,
   }) : super(key: key, viewModel: viewModel);
 
   @override
@@ -28,10 +42,24 @@ class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
   _MyWidgetState(super.viewModel);
 
   @override
-  Widget render(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(child: Text(viewModel.name.value ?? '')),
+  Widget build(BuildContext context) {
+    return Empire<ApplicationViewModel>(
+      widget.applicationViewModel,
+      child: MaterialApp(
+        home: Scaffold(
+          body: Builder(
+            builder: (innerContext) {
+              return Center(
+                child: Column(
+                  children: [
+                    Text(viewModel.name.value ?? ''),
+                    Text('${Empire.of(innerContext).viewModel<ApplicationViewModel>().changed}')
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
@@ -40,9 +68,11 @@ class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
 void main() {
   testWidgets('Test', (tester) async {
     final viewModel = TestViewModel();
+    final appViewModel = ApplicationViewModel();
     viewModel.name("Justin");
     await tester.pumpWidget(MyWidget(
       viewModel: viewModel,
+      applicationViewModel: appViewModel,
     ));
 
     final text = find.text("Justin");
@@ -52,6 +82,25 @@ void main() {
     await tester.pumpAndSettle();
 
     final textTwo = find.text("Shep");
+    expect(textTwo, findsOneWidget);
+  });
+
+  testWidgets('Test Application', (tester) async {
+    final viewModel = TestViewModel();
+    final appViewModel = ApplicationViewModel();
+    await tester.pumpWidget(MyWidget(
+      viewModel: viewModel,
+      applicationViewModel: appViewModel,
+    ));
+
+    final text = find.text("false");
+    expect(text, findsOneWidget);
+
+    appViewModel.change();
+
+    await tester.pumpAndSettle();
+
+    final textTwo = find.text("true");
     expect(textTwo, findsOneWidget);
   });
 }
