@@ -40,9 +40,8 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
   }
 
   static T viewModelOf<T extends EmpireViewModel>(BuildContext context) {
-    final EmpireApp? result = context.dependOnInheritedWidgetOfExactType<EmpireApp>();
-    assert(result != null, 'No Empire found in context');
-    return result!.viewModel<T>();
+    final EmpireApp result = of(context);
+    return result.viewModel<T>();
   }
 }
 
