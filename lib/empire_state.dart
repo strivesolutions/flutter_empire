@@ -26,7 +26,7 @@ abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel> ex
   bool get isBusy => viewModel.busy;
 
   EmpireState(this.viewModel) {
-    viewModel.listen((_) {
+    viewModel.addOnStateChangedListener((_) {
       setState(() {});
     });
   }

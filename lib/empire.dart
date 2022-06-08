@@ -51,7 +51,7 @@ class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
   @override
   void initState() {
     const uuid = Uuid();
-    widget.viewModel.listen((_) {
+    widget.viewModel.addOnStateChangedListener((_) {
       setState(() {
         _applicationStateId = uuid.v1();
       });
