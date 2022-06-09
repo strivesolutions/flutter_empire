@@ -36,7 +36,7 @@ abstract class EmpireViewModel {
   ///This method is automatically called
   ///during object construction and should not be called manually.
   ///
-  ///All [EmpireProperty] properties must be defined with the late final keywords. For example:
+  ///All [EmpireProperty] properties must be defined with the `late final` keywords. For example:
   ///```dart
   ///late final EmpireProperty<int> age;
   ///```
@@ -61,7 +61,7 @@ abstract class EmpireViewModel {
     _subscriptions.add(_stream.listen(onStateChanged));
   }
 
-  ///Adds an event handler which gets executed each time [notifyError] is called
+  ///Adds an event handler which gets executed each time [notifyError] is called.
   void addOnErrorEventListener(Function(ErrorEvent) onError) {
     _subscriptions.add(_errorStream.listen(onError));
   }
@@ -86,8 +86,7 @@ abstract class EmpireViewModel {
   ///[EmpireState.ifBusy] function on the [EmpireState] to show a loading indicator when performing a long running
   ///task. Can also determine the current busy status by accessing the [busy] property on the view model.
   ///
-  ///[busyTaskKey] can be optionally set to help identify why the view model is busy. This can then
-  ///be accessed by the UI to react differently depending on what the view model is doing.
+  //////See [doAsync] for [busyTaskKey] usage.
   ///
   ///Updating the busy status is automatic when using the [doAsync] function.
   void setBusyStatus({required bool isBusy, dynamic busyTaskKey}) {
@@ -105,7 +104,9 @@ abstract class EmpireViewModel {
   ///Executes a long running task asynchronously.
   ///
   ///Automatically sets the view model [busy] status.
-  ///See [setBusyStatus] for usage of the optional [busyTaskKey] argument
+  ///
+  ///[busyTaskKey] can be optionally set to help identify why the view model is busy. This can then
+  ///be accessed by the UI to react differently depending on what the view model is doing.
   ///
   ///Example:
   ///```dart
@@ -129,7 +130,7 @@ abstract class EmpireViewModel {
 
   ///Checks if the view model is busy working on a specific task.
   ///
-  ///See [setBusyStatus] for [busyTaskKey] usage.
+  ///See [doAsync] for [busyTaskKey] usage.
   bool isTaskInProgress(dynamic busyTaskKey) => _busyTaskKeys.contains(busyTaskKey);
 
   void _addBusyTaskKey(dynamic busyTaskKey) {
@@ -162,6 +163,7 @@ abstract class EmpireViewModel {
   }
 }
 
+///Base class for [EmpireProperty]
 abstract class EmpireValue<T> {
   T? get value;
 }
