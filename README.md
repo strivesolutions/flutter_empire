@@ -24,7 +24,7 @@ class CounterViewModel extends EmpireViewModel {
 
   @override
   void initProperties() {
-    count = createProperty(0, propertyName: 'count');
+    count = createProperty(0);
   }
 
   Future<void> incrementCounter() async {
