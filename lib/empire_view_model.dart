@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 ///A ViewModel is an abstraction of the view it is bound to and represents the current state of
 ///the data in your model (data).
 ///
-///This is where any logic that manipulates your model should be. An [EmpireState] and it's
+///This is where any logic that manipulates your model should be. An [EmpireWidget] and it's
 ///accompanying state always has access to it's view model via the viewModel property.
 ///
 ///Update events are automatically emitted whenever the value of an [EmpireProperty] is changed.
