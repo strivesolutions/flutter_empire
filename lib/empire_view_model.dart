@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-///A ViewModel an abstraction of the view it is bound to and represents the current state of
+///A ViewModel is an abstraction of the view it is bound to and represents the current state of
 ///the data in your model (data).
 ///
 ///This is where any logic that manipulates your model should be. An [EmpireState] and it's
