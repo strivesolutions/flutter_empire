@@ -27,7 +27,7 @@ class EmpireApp extends InheritedWidget {
 }
 
 ///Intended to be used near the root of the application to supply app level state and functions. This
-///widget must below your [CupertinoApp] or [MaterialApp] widget.
+///widget must be below your [CupertinoApp] or [MaterialApp] widget.
 ///
 ///The [viewModel] should contain any state or functionality that is required by one or more child
 ///widgets. See [viewModelOf] for information on accessing the view model.
@@ -35,6 +35,11 @@ class EmpireApp extends InheritedWidget {
 ///[onAppStateChanged] is required and should return a unique [String] value each time it is called.
 ///This is used to determine whether the [EmpireApp] inherited widget needs to be updated, therefore
 ///updating all it's child widgets. Consider using the [Uuid](https://pub.dev/packages/uuid) package.
+///
+///*If you are implementing your own unique string mechanism, know that if it generates the same value
+///twice in a row, your second change will not be reflected in the application until a new, unique
+///value is generated.*
+///
 ///## Example Using Uuid
 ///
 ///```dart
