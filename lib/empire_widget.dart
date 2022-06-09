@@ -1,8 +1,8 @@
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/widgets.dart';
 
-///This widget is not intended to be create manually and is used by the [Empire] widget. However,
-///that doesn't mean you can't use it manually for your own use case. See [Empire] for more details.
+///This widget is not intended to be create manually and is used by the [Empire] widget.
+///However, that doesn't mean you can't use it manually for your own use case. See [Empire] for more details.
 ///
 ///[_uuid] is used to track whether or not this widget should notify its children that they need to
 ///rebuild.
@@ -26,8 +26,9 @@ class EmpireApp extends InheritedWidget {
   }
 }
 
-///Intended to be used near the root of the application to supply app level state and functions. This
-///widget must be below your [CupertinoApp] or [MaterialApp] widget.
+///Intended to be used near the root of the application to supply app level state and functions.
+///
+///This widget must be below your [CupertinoApp] or [MaterialApp] widget.
 ///
 ///The [viewModel] should contain any state or functionality that is required by one or more child
 ///widgets. See [viewModelOf] for information on accessing the view model.
@@ -66,7 +67,9 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
   @override
   State<Empire> createState() => _EmpireState<T>();
 
-  ///Gets the instance of the [EmpireApp]. You can access the associated view model via the returned
+  ///Gets the instance of the [EmpireApp].
+  ///
+  ///You can access the associated view model via the returned
   ///[EmpireApp]. However you'll most likely want to use the shorthand [viewModelOf] function to do
   ///so.
   static EmpireApp of(BuildContext context) {
@@ -75,7 +78,9 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
     return result!;
   }
 
-  ///Gets the [EmpireViewModel] from the [EmpireApp]. This method can be called from any widget
+  ///Gets the [EmpireViewModel] from the [EmpireApp].
+  ///
+  ///This method can be called from any widget
   ///below this one in the widget tree. (Example: from a child widget):
   ///```dart
   ///Empire.viewModelOf<MyApplicationViewModel>().logOut();
