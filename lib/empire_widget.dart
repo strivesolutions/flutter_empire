@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/widgets.dart';
 
