@@ -110,7 +110,7 @@ class ApplicationViewModel extends EmpireViewModel {
 }
 ```
 
-Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Supply a function to generate a unique application state id. This tells your app it needs to refresh the widget tree below your your `Empire` widget. In this example, we are using the [Uuid](https://pub.dev/packages/uuid) package to handle creating a unique ID. This function will get called anytime the `loggedInUser` property is changed in the `ApplicationViewModel` and trigger the UI for your app to update.
+Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Supply a function to generate a unique application state id. This tells your app it needs to refresh the widget tree below your your `Empire` widget. In this example, we are using the [Uuid](https://pub.dev/packages/uuid) package to handle creating a unique ID, but we leave it up to you what dependencies you want to include in your application. This function will get called anytime the `loggedInUser` property is changed in the `ApplicationViewModel` and trigger the UI for your app to update.
 
 ### main.dart
 ```dart
