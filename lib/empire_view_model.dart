@@ -1,5 +1,3 @@
-library empire;
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -33,7 +31,9 @@ abstract class EmpireViewModel {
     initProperties();
   }
 
-  ///Initializes all [EmpireProperty] properties in the ViewModel. This method is automatically called
+  ///Initializes all [EmpireProperty] properties in the ViewModel.
+  ///
+  ///This method is automatically called
   ///during object construction and should not be called manually.
   ///
   ///All [EmpireProperty] properties must be defined with the late final keywords. For example:
@@ -74,12 +74,16 @@ abstract class EmpireViewModel {
     _stateController.add(event);
   }
 
-  ///Inform the bound [EmpireState] that an error has occurred. Any event handlers registered by the
+  ///Inform the bound [EmpireState] that an error has occurred.
+  ///
+  ///Any event handlers registered by the
   ///[addOnErrorEventListener] function will be executed
   void notifyError(ErrorEvent event) => _errorController.add(event);
 
-  ///Explicitly updates the current busy status of the view model. Can use this in conjunction with the
-  ///[ifBusy] function on the [EmpireState] to show a loading indicator when performing a long running
+  ///Explicitly updates the current busy status of the view model.
+  ///
+  ///Can use this in conjunction with the
+  ///[EmpireState.ifBusy] function on the [EmpireState] to show a loading indicator when performing a long running
   ///task. Can also determine the current busy status by accessing the [busy] property on the view model.
   ///
   ///[busyTaskKey] can be optionally set to help identify why the view model is busy. This can then
@@ -98,7 +102,9 @@ abstract class EmpireViewModel {
     }
   }
 
-  ///Executes a long running task asynchronously. Automatically sets the view model [busy] status.
+  ///Executes a long running task asynchronously.
+  ///
+  ///Automatically sets the view model [busy] status.
   ///See [setBusyStatus] for usage of the optional [busyTaskKey] argument
   ///
   ///Example:
@@ -121,8 +127,9 @@ abstract class EmpireViewModel {
     }
   }
 
-  ///Checks if the view model is busy working on a specific task. See [setBusyStatus] for [busyTaskKey]
-  ///usage.
+  ///Checks if the view model is busy working on a specific task.
+  ///
+  ///See [setBusyStatus] for [busyTaskKey] usage.
   bool isTaskInProgress(dynamic busyTaskKey) => _busyTaskKeys.contains(busyTaskKey);
 
   void _addBusyTaskKey(dynamic busyTaskKey) {
@@ -137,8 +144,9 @@ abstract class EmpireViewModel {
     }
   }
 
-  ///Short hand helper function for initializing an [EmpireProperty]. See [EmpireProperty] for
-  ///[propertyName] usages.
+  ///Short hand helper function for initializing an [EmpireProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
   EmpireProperty<T> createProperty<T>(T value, {String? propertyName}) {
     return EmpireProperty<T>(value, this, propertyName: propertyName);
   }
@@ -158,12 +166,14 @@ abstract class EmpireValue<T> {
   T? get value;
 }
 
-///Contains any object that will notify any listeners when its value is changed. Usually these are
+///Contains any object that will notify any listeners when its value is changed.
+///
+///Usually these are
 ///properties that are bound to a UI Widget so when the value changes, the UI is updated.
 ///
 ///You optionally set the [propertyName] argument to conditionally perform logic when a specific
 ///property changes. You can access the [propertyName] in any event listener registered with the
-///[addOnStateChangedListener] function via the [propertyName] property on an [EmpireStateChanged] object.
+///[EmpireViewModel.addOnStateChangedListener] function via the [propertyName] property on an [EmpireStateChanged] object.
 ///
 ///An [EmpireProperty] is callable. Calling the property updates the value. However, there are two
 ///ways to update the value of an [EmpireProperty]:
@@ -212,8 +222,10 @@ class EmpireProperty<T> implements EmpireValue<T> {
   String toString() => _value?.toString() ?? '';
 }
 
-///The event that is added to the State stream. Any event handlers registered with the
-///[addOnStateChangedListener] function will receive these types of events
+///The event that is added to the State stream.
+///
+///Any event handlers registered with the
+///[EmpireViewModel.addOnStateChangedListener] function will receive these types of events
 class EmpireStateChanged<T> {
   final T previousValue;
   final T nextValue;
@@ -222,13 +234,20 @@ class EmpireStateChanged<T> {
   EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName});
 }
 
-///The event that is added to the Error stream. Any event handlers registered with the
-///[addOnStateChangedListener] function will receive these types of events
+///The event that is added to the Error stream.
+///
+///Any event handlers registered with the
+///[EmpireViewModel.addOnStateChangedListener] function will receive these types of events.
+///The [metaData] property can be used to store any additional information you may want your
+///error event handler to have access to.
 class ErrorEvent<T extends Exception> {
   final T error;
   final StackTrace? stackTrace;
   final Map<dynamic, dynamic> metaData;
 
+  ///Tries to get a value from the [metaData] map by key.
+  ///
+  ///Returns `null` if the [key] is not found in the [metaData] map.
   E? getMetaData<E>(dynamic key) {
     if (metaData.containsKey(key)) {
       return metaData[key] as E;

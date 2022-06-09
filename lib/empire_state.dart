@@ -1,10 +1,9 @@
-library empire;
-
 import 'package:flutter/material.dart';
 
 import 'empire_view_model.dart';
 
 ///Base class for any widget that needs to be updated when the state of your widget changes.
+///
 ///Requires a class that extends [EmpireViewModel] to be passed to the [viewModel] argument. The
 ///[EmpireViewModel] is responsible for notifying this widget when the UI needs to be updated.
 ///

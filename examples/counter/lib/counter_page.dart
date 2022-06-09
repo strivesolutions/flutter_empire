@@ -1,8 +1,5 @@
 import 'package:empire/empire.dart';
-import 'package:empire/empire_state.dart';
-import 'package:empire/empire_view_model.dart';
 import 'package:flutter/material.dart';
-
 import 'application_view_model.dart';
 import 'counter_view_model.dart';
 

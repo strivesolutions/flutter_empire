@@ -1,4 +1,4 @@
-import 'package:empire/empire.dart';
+import 'package:empire/empire_widget.dart';
 import 'package:empire/empire_state.dart';
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/material.dart';
