@@ -2,7 +2,6 @@
 
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/widgets.dart';
-import 'package:uuid/uuid.dart' show Uuid;
 
 ///This widget is not intended to be create manually and is used by the [Empire] widget. However,
 ///that doesn't mean you can't use it manually for your own use case. See [Empire] for more details.
@@ -34,13 +33,31 @@ class EmpireApp extends InheritedWidget {
 ///
 ///The [viewModel] should contain any state or functionality that is required by one or more child
 ///widgets. See [viewModelOf] for information on accessing the view model.
+///
+///[onAppStateChanged] is required and should return a unique [String] value each time it is called.
+///This is used to determine whether the [EmpireApp] inherited widget needs to be updated, therefore
+///updating all it's child widgets. Consider using the [Uuid](https://pub.dev/packages/uuid) package.
+///## Example Using Uuid
+///
+///```dart
+///import 'package:uuid/uuid.dart';
+///
+///Empire(
+///  myViewModel,
+///  child: HomePage(),
+///  onAppStateChanged: () => Uuid().v1(),
+///)
+///```
 class Empire<T extends EmpireViewModel> extends StatefulWidget {
   final T viewModel;
   final Widget child;
+  final String Function() onAppStateChanged;
+
   const Empire(
     this.viewModel, {
     Key? key,
     required this.child,
+    required this.onAppStateChanged,
   }) : super(key: key);
 
   @override
@@ -71,10 +88,9 @@ class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
 
   @override
   void initState() {
-    const uuid = Uuid();
     widget.viewModel.addOnStateChangedListener((_) {
       setState(() {
-        _applicationStateId = uuid.v1();
+        _applicationStateId = widget.onAppStateChanged();
       });
     });
     super.initState();

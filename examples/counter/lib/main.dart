@@ -1,6 +1,7 @@
 import 'package:empire/empire.dart';
 
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import 'application_view_model.dart';
 import 'counter_page.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Empire(
         ApplicationViewModel(),
+        onAppStateChanged: () => const Uuid().v1(),
         child: CounterPage(
           title: 'Empire State',
           viewModel: CounterViewModel(),

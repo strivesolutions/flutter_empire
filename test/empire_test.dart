@@ -3,6 +3,7 @@ import 'package:empire/empire_state.dart';
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'dart:math' as math;
 
 class ApplicationViewModel extends EmpireViewModel {
   late EmpireProperty<bool> changed;
@@ -45,6 +46,7 @@ class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
   Widget build(BuildContext context) {
     return Empire<ApplicationViewModel>(
       widget.applicationViewModel,
+      onAppStateChanged: () => math.Random().nextInt(1000000).toString(),
       child: MaterialApp(
         home: Scaffold(
           body: Builder(
