@@ -151,6 +151,8 @@ class MyApp extends StatelessWidget {
 
 This package has **ZERO** dependencies on any other packages.
 
+You can find the full API documentation [here](https://ellementconsulting.github.io/flutter_empire/empire/empire-library.html)
+
 Developed by:
 
 © 2022 [Strive Business Solutions](https://www.strivebusiness.ca/)
