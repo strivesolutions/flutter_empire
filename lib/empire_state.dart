@@ -45,8 +45,10 @@ abstract class EmpireWidget<T extends EmpireViewModel> extends StatefulWidget {
   }
 }
 
-///Base class for your [EmpireWidget]s accompanying State class. Will automatically trigger a rebuild
-///when any of this objects accompanying [EmpireViewModel] properties change.
+///Base class for your [EmpireWidget]s accompanying State class.
+///
+///Will automatically trigger a rebuild when any of this objects accompanying [EmpireViewModel]
+///properties change.
 abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel> extends State<T> {
   final E viewModel;
 
@@ -61,7 +63,9 @@ abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel> ex
   }
 
   ///Can be used to conditionally show another widget if the [viewModel] is busy running a long
-  ///running task. If the view model is busy, it will show the [busyIndicator] widget. If it is not
+  ///running task.
+  ///
+  ///If the view model is busy, it will show the [busyIndicator] widget. If it is not
   ///busy, it will show the [otherwise] widget.
   Widget ifBusy(Widget busyIndicator, {required Widget otherwise}) {
     return isBusy ? busyIndicator : otherwise;
