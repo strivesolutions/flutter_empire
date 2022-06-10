@@ -1,7 +1,7 @@
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/widgets.dart';
 
-///This widget is not intended to be create manually and is used by the [Empire] widget.
+///This widget is not intended to be created manually and is used by the [Empire] widget.
 ///However, that doesn't mean you can't use it manually for your own use case. See [Empire] for more details.
 ///
 ///[_uuid] is used to track whether or not this widget should notify its children that they need to

@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 ///A ViewModel is an abstraction of the view it is bound to and represents the current state of
-///the data in your model (data).
+///the data in your model.
 ///
 ///This is where any logic that manipulates your model should be. An [EmpireWidget] and it's
 ///accompanying state always has access to it's view model via the viewModel property.
 ///
 ///Update events are automatically emitted whenever the value of an [EmpireProperty] is changed.
 ///The [EmpireState] the ViewModel is bound to will update itself each time an [EmpireProperty] value
-///is changed and call the states build function, updating the UI
+///is changed and call the states build function, updating the UI.
 abstract class EmpireViewModel {
   final StreamController<EmpireStateChanged> _stateController = StreamController.broadcast();
   final StreamController<ErrorEvent> _errorController = StreamController.broadcast();
@@ -82,11 +82,11 @@ abstract class EmpireViewModel {
 
   ///Explicitly updates the current busy status of the view model.
   ///
-  ///Can use this in conjunction with the
-  ///[EmpireState.ifBusy] function on the [EmpireState] to show a loading indicator when performing a long running
-  ///task. Can also determine the current busy status by accessing the [busy] property on the view model.
+  ///Can use this in conjunction with the [EmpireState.ifBusy] function on the [EmpireState] to show
+  ///a loading indicator when performing a long running task. Can also determine the current busy
+  ///status by accessing the [busy] property on the view model.
   ///
-  //////See [doAsync] for [busyTaskKey] usage.
+  ///See [doAsync] for [busyTaskKey] usage.
   ///
   ///Updating the busy status is automatic when using the [doAsync] function.
   void setBusyStatus({required bool isBusy, dynamic busyTaskKey}) {
@@ -238,10 +238,9 @@ class EmpireStateChanged<T> {
 
 ///The event that is added to the Error stream.
 ///
-///Any event handlers registered with the
-///[EmpireViewModel.addOnStateChangedListener] function will receive these types of events.
-///The [metaData] property can be used to store any additional information you may want your
-///error event handler to have access to.
+///Any event handlers registered with the [EmpireViewModel.addOnStateChangedListener] function will
+///receive these types of events. The [metaData] property can be used to store any additional
+///information you may want your error event handler to have access to.
 class ErrorEvent<T extends Exception> {
   final T error;
   final StackTrace? stackTrace;
