@@ -324,10 +324,8 @@ class EmpireProperty<T> implements EmpireValue<T> {
   bool equals(dynamic other) {
     if (other is EmpireProperty) {
       return other.value == value;
-    } else if (other is T) {
-      return other == value;
     } else {
-      return false;
+      return other == value;
     }
   }
 

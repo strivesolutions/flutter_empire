@@ -72,6 +72,27 @@ void main() {
       expect(ageOne.equals(ageTwo), isFalse);
     });
 
+    test('equals - other is EmpireProperty with same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      final EmpireProperty<int> ageTwo = viewModel.createProperty(10);
+
+      expect(ageOne.equals(ageTwo), isTrue);
+    });
+
+    test('equals - other is EmpireProperty with different value - are not equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      final EmpireProperty<int> ageTwo = viewModel.createProperty(5);
+
+      expect(ageOne.equals(ageTwo), isFalse);
+    });
+
+    test('equals - other is EmpireProperty with same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const double ageTwo = 10.0;
+
+      expect(ageOne.equals(ageTwo), isTrue);
+    });
+
     test('equality - other is EmpireProperty with same value - are equal', () {
       final EmpireProperty<int> ageOne = viewModel.createProperty(10);
       final EmpireProperty<int> ageTwo = viewModel.createProperty(10);
