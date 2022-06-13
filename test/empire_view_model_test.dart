@@ -10,13 +10,6 @@ class _TestViewModel extends EmpireViewModel {
     name = createNullProperty();
     age = createProperty(1);
   }
-
-  void useSetMultiple(String name, int age) {
-    setMultiple({
-      this.name: name,
-      this.age: age,
-    });
-  }
 }
 
 void main() {

@@ -12,9 +12,9 @@ import 'package:flutter/foundation.dart';
 ///The [EmpireState] the ViewModel is bound to will update itself each time an [EmpireProperty] value
 ///is changed and call the states build function, updating the UI.
 abstract class EmpireViewModel {
-  final StreamController<EmpireStateChanged> _stateController = StreamController.broadcast();
+  final StreamController<List<EmpireStateChanged>> _stateController = StreamController.broadcast();
   final StreamController<ErrorEvent> _errorController = StreamController.broadcast();
-  late final Stream<EmpireStateChanged> _stream;
+  late final Stream<List<EmpireStateChanged>> _stream;
   late final Stream<ErrorEvent> _errorStream;
 
   final List<StreamSubscription> _subscriptions = [];
@@ -57,7 +57,7 @@ abstract class EmpireViewModel {
   void initProperties();
 
   ///Adds an event handler which gets executed each time an [EmpireProperty] value is changed.
-  void addOnStateChangedListener(Function(EmpireStateChanged) onStateChanged) {
+  void addOnStateChangedListener(Function(List<EmpireStateChanged>) onStateChanged) {
     _subscriptions.add(_stream.listen(onStateChanged));
   }
 
@@ -70,8 +70,8 @@ abstract class EmpireViewModel {
   ///
   ///**NOTE**: Although you CAN call this method manually, it's usually not required. Updating the
   ///value of an [EmpireProperty] will automatically notify the UI to update itself.
-  void notifyChange(EmpireStateChanged event) {
-    _stateController.add(event);
+  void notifyChanges(List<EmpireStateChanged> events) {
+    _stateController.add(events);
   }
 
   ///Set multiple [EmpireProperty] values, but only trigger a single state change
@@ -88,10 +88,16 @@ abstract class EmpireViewModel {
   ///setMultiple({name: 'Doug', age: 45});
   ///```
   void setMultiple(Map<EmpireProperty, dynamic> setters) {
-    for (var set in setters.keys) {
-      set(setters[set], notifyChange: false);
+    final List<EmpireStateChanged> changes = [];
+    for (var property in setters.keys) {
+      final previousValue = property.value;
+      final nextValue = setters[property];
+
+      changes.add(EmpireStateChanged(nextValue, previousValue, propertyName: property.propertyName));
+
+      property(nextValue, notifyChange: false);
     }
-    notifyChange(EmpireStateChanged.multiple());
+    notifyChanges(changes);
   }
 
   ///Inform the bound [EmpireState] that an error has occurred.
@@ -117,7 +123,7 @@ abstract class EmpireViewModel {
         _removeBusyTaskKey(busyTaskKey);
       }
       _busy = isBusy;
-      notifyChange(EmpireStateChanged(isBusy, !isBusy));
+      notifyChanges([EmpireStateChanged(isBusy, !isBusy)]);
     }
   }
 
@@ -262,7 +268,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
     final previousValue = _value;
     _value = value;
     if (notifyChange) {
-      _viewModel.notifyChange(EmpireStateChanged(value, previousValue));
+      _viewModel.notifyChanges([EmpireStateChanged(value, previousValue, propertyName: propertyName)]);
     }
   }
 
@@ -280,7 +286,6 @@ class EmpireStateChanged<T> {
   final String? propertyName;
 
   EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName});
-  factory EmpireStateChanged.multiple() => EmpireStateChanged<T>(null, null);
 }
 
 ///The event that is added to the Error stream.
@@ -288,7 +293,7 @@ class EmpireStateChanged<T> {
 ///Any event handlers registered with the [EmpireViewModel.addOnStateChangedListener] function will
 ///receive these types of events. The [metaData] property can be used to store any additional
 ///information you may want your error event handler to have access to.
-class ErrorEvent<T extends Exception> {
+class ErrorEvent<T> {
   final T error;
   final StackTrace? stackTrace;
   final Map<dynamic, dynamic> metaData;

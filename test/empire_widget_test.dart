@@ -17,20 +17,15 @@ class _ApplicationViewModel extends EmpireViewModel {
 }
 
 class _TestViewModel extends EmpireViewModel {
-  late EmpireProperty<String?> name;
+  late EmpireProperty<String?> firstName;
+  late EmpireProperty<String?> lastName;
   late EmpireProperty<int> age;
 
   @override
   void initProperties() {
-    name = EmpireProperty(null, this);
+    firstName = createNullProperty();
+    lastName = createNullProperty();
     age = createProperty(1);
-  }
-
-  void useSetMultiple(String name, int age) {
-    setMultiple({
-      this.name: name,
-      this.age: age,
-    });
   }
 }
 
@@ -63,7 +58,8 @@ class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
               return Center(
                 child: Column(
                   children: [
-                    Text(viewModel.name.value ?? ''),
+                    Text(viewModel.firstName.value ?? ''),
+                    Text(viewModel.lastName.value ?? ''),
                     Text(
                       viewModel.age.value.toString(),
                     ),
@@ -90,17 +86,15 @@ void main() {
   });
 
   testWidgets('EmpireWidget Test - Finds Correct Text Widget After Property Change', (tester) async {
-    viewModel.name("Justin");
+    viewModel.firstName("John");
     await tester.pumpWidget(mainWidget);
 
-    final text = find.text("Justin");
-    expect(text, findsOneWidget);
+    expect(find.text("John"), findsOneWidget);
 
-    viewModel.name("Shep");
+    viewModel.firstName("Bob");
     await tester.pumpAndSettle();
 
-    final textTwo = find.text("Shep");
-    expect(textTwo, findsOneWidget);
+    expect(find.text("Bob"), findsOneWidget);
   });
 
   testWidgets('Empire App State Test - Widgets Update on App View Model Change', (tester) async {
@@ -118,25 +112,34 @@ void main() {
   });
 
   testWidgets('Update More Than One Property - All Widgets Update', (tester) async {
-    const initialName = 'Justin';
+    const initialFirstName = 'John';
+    const initialLastName = 'Smith';
     const initialAge = 88;
 
-    viewModel.name(initialName);
+    viewModel.firstName(initialFirstName);
+    viewModel.lastName(initialLastName);
     viewModel.age(initialAge);
 
     await tester.pumpWidget(mainWidget);
 
-    expect(find.text(initialName), findsOneWidget);
+    expect(find.text(initialFirstName), findsOneWidget);
+    expect(find.text(initialLastName), findsOneWidget);
     expect(find.text(initialAge.toString()), findsOneWidget);
 
-    const newName = 'Mike';
+    const newFirstName = 'Bob';
+    const newLastName = 'Brown';
     const newAge = 20;
 
-    viewModel.useSetMultiple(newName, newAge);
+    viewModel.setMultiple({
+      viewModel.firstName: newFirstName,
+      viewModel.lastName: newLastName,
+      viewModel.age: newAge,
+    });
 
     await tester.pumpAndSettle();
 
-    expect(find.text(newName), findsOneWidget);
+    expect(find.text(newFirstName), findsOneWidget);
+    expect(find.text(newLastName), findsOneWidget);
     expect(find.text(newAge.toString()), findsOneWidget);
   });
 }
