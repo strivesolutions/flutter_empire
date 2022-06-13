@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the addOnErrorEventListener method from the EmpireViewModel class, for the Dart programming language.">
-  <title>addOnErrorEventListener method - EmpireViewModel class - empire_view_model library - Dart API</title>
+  <meta name="description" content="API docs for the createNullProperty method from the EmpireViewModel class, for the Dart programming language.">
+  <title>createNullProperty method - EmpireViewModel class - empire_view_model library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">empire</a></li>
     <li><a href="../../empire_view_model/empire_view_model-library.html">empire_view_model</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a></li>
-    <li class="self-crumb">addOnErrorEventListener method</li>
+    <li class="self-crumb">createNullProperty&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
   </ol>
-  <div class="self-name">addOnErrorEventListener</div>
+  <div class="self-name">createNullProperty</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,17 +45,15 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">addOnErrorEventListener</span> method 
+<h1><span class="kind-method">createNullProperty&lt;<wbr><span class="type-parameter">T</span>&gt;</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
-<span class="name ">addOnErrorEventListener</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addOnErrorEventListener-param-onError"><span class="type-annotation">dynamic</span> <span class="parameter-name">onError</span>(<ol class="parameter-list"><li><span class="parameter" id="param-"><span class="type-annotation"><a href="../../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span></span></li>
-</ol>
-)</span></li>
+<span class="returntype"><a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">T?</span>&gt;</span></span>
+<span class="name ">createNullProperty</span>&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="createNullProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span></li>
 </ol>)
 
       
@@ -63,15 +61,22 @@
     </section>
     
 <section class="desc markdown">
-  <p>Adds an event handler which gets executed each time <a href="../../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a> is called.</p>
+  <p>Short hand helper function for initializing an <a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty</a> with a null value.</p>
+<p>See <a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty</a> for <code>propertyName</code> usages.</p>
+<h2 id="example">Example</h2>
+<pre class="language-dart"><code class="language-dart">late final EmpireProperty&lt;String?&gt; name;
+
+name = createNullProperty();
+
+</code></pre>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void addOnErrorEventListener(Function(ErrorEvent) onError) {
-  _subscriptions.add(_errorStream.listen(onError));
+  <pre class="language-dart"><code class="language-dart">EmpireProperty&lt;T?&gt; createNullProperty&lt;T&gt;({String? propertyName}) {
+  return createProperty(null, propertyName: propertyName);
 }</code></pre>
 </section>
 
@@ -89,7 +94,7 @@
   <li><a href="../../index.html">empire</a></li>
   <li><a href="../../empire_view_model/empire_view_model-library.html">empire_view_model</a></li>
   <li><a href="../../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a></li>
-  <li class="self-crumb">addOnErrorEventListener method</li>
+  <li class="self-crumb">createNullProperty&lt;<wbr><span class="type-parameter">T</span>&gt; method</li>
 </ol>
 
 
