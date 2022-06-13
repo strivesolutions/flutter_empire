@@ -49,6 +49,41 @@ abstract class EmpireWidget<T extends EmpireViewModel> extends StatefulWidget {
 ///
 ///Will automatically trigger a rebuild when any of this objects accompanying [EmpireViewModel]
 ///properties change.
+///
+///### Usage
+///
+///```dart
+///class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
+///  _CounterPageState(super.viewModel);
+///
+///  @override
+///  Widget build(BuildContext context) {
+///    return Scaffold(
+///      appBar: AppBar(
+///        title: Text(widget.title),
+///      ),
+///      body: Center(
+///        child: Column(
+///          mainAxisAlignment: MainAxisAlignment.center,
+///          children: <Widget>[
+///            const Text(
+///              'You have pushed the button this many times:',
+///            ),
+///            Text(
+///              '${viewModel.count}',
+///            ),
+///          ],
+///        ),
+///      ),
+///      floatingActionButton: FloatingActionButton(
+///        onPressed: viewModel.incrementCounter,
+///        tooltip: 'Increment',
+///        child: const Icon(Icons.add),
+///      ),
+///    );
+///  }
+///}
+///```
 abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel> extends State<T> {
   final E viewModel;
 
