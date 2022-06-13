@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'dart:math' as math;
 
-class ApplicationViewModel extends EmpireViewModel {
+class _ApplicationViewModel extends EmpireViewModel {
   late EmpireProperty<bool> changed;
 
   @override
@@ -16,35 +16,44 @@ class ApplicationViewModel extends EmpireViewModel {
   void change() => changed(!changed.value);
 }
 
-class TestViewModel extends EmpireViewModel {
+class _TestViewModel extends EmpireViewModel {
   late EmpireProperty<String?> name;
+  late EmpireProperty<int> age;
 
   @override
   void initProperties() {
     name = EmpireProperty(null, this);
+    age = createProperty(1);
+  }
+
+  void useSetMultiple(String name, int age) {
+    setMultiple({
+      this.name: name,
+      this.age: age,
+    });
   }
 }
 
-class MyWidget extends EmpireWidget<TestViewModel> {
-  final ApplicationViewModel applicationViewModel;
-  const MyWidget({
+class _MyWidget extends EmpireWidget<_TestViewModel> {
+  final _ApplicationViewModel applicationViewModel;
+  const _MyWidget({
     Key? key,
-    required TestViewModel viewModel,
+    required _TestViewModel viewModel,
     required this.applicationViewModel,
   }) : super(key: key, viewModel: viewModel);
 
   @override
-  EmpireState<EmpireWidget<EmpireViewModel>, TestViewModel> createEmpire() {
+  EmpireState<EmpireWidget<EmpireViewModel>, _TestViewModel> createEmpire() {
     return _MyWidgetState(viewModel);
   }
 }
 
-class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
+class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
   _MyWidgetState(super.viewModel);
 
   @override
   Widget build(BuildContext context) {
-    return Empire<ApplicationViewModel>(
+    return Empire<_ApplicationViewModel>(
       widget.applicationViewModel,
       onAppStateChanged: () => math.Random().nextInt(1000000).toString(),
       child: MaterialApp(
@@ -55,7 +64,10 @@ class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
                 child: Column(
                   children: [
                     Text(viewModel.name.value ?? ''),
-                    Text('${Empire.of(innerContext).viewModel<ApplicationViewModel>().changed}')
+                    Text(
+                      viewModel.age.value.toString(),
+                    ),
+                    Text('${Empire.of(innerContext).viewModel<_ApplicationViewModel>().changed}')
                   ],
                 ),
               );
@@ -68,14 +80,18 @@ class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
 }
 
 void main() {
+  late _MyWidget mainWidget;
+  late _TestViewModel viewModel;
+  late _ApplicationViewModel appViewModel;
+  setUp(() {
+    viewModel = _TestViewModel();
+    appViewModel = _ApplicationViewModel();
+    mainWidget = _MyWidget(viewModel: viewModel, applicationViewModel: appViewModel);
+  });
+
   testWidgets('EmpireWidget Test - Finds Correct Text Widget After Property Change', (tester) async {
-    final viewModel = TestViewModel();
-    final appViewModel = ApplicationViewModel();
     viewModel.name("Justin");
-    await tester.pumpWidget(MyWidget(
-      viewModel: viewModel,
-      applicationViewModel: appViewModel,
-    ));
+    await tester.pumpWidget(mainWidget);
 
     final text = find.text("Justin");
     expect(text, findsOneWidget);
@@ -88,12 +104,7 @@ void main() {
   });
 
   testWidgets('Empire App State Test - Widgets Update on App View Model Change', (tester) async {
-    final viewModel = TestViewModel();
-    final appViewModel = ApplicationViewModel();
-    await tester.pumpWidget(MyWidget(
-      viewModel: viewModel,
-      applicationViewModel: appViewModel,
-    ));
+    await tester.pumpWidget(mainWidget);
 
     final text = find.text("false");
     expect(text, findsOneWidget);
@@ -104,5 +115,28 @@ void main() {
 
     final textTwo = find.text("true");
     expect(textTwo, findsOneWidget);
+  });
+
+  testWidgets('Update More Than One Property - All Widgets Update', (tester) async {
+    const initialName = 'Justin';
+    const initialAge = 88;
+
+    viewModel.name(initialName);
+    viewModel.age(initialAge);
+
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text(initialName), findsOneWidget);
+    expect(find.text(initialAge.toString()), findsOneWidget);
+
+    const newName = 'Mike';
+    const newAge = 20;
+
+    viewModel.useSetMultiple(newName, newAge);
+
+    await tester.pumpAndSettle();
+
+    expect(find.text(newName), findsOneWidget);
+    expect(find.text(newAge.toString()), findsOneWidget);
   });
 }

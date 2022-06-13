@@ -193,7 +193,7 @@ abstract class EmpireViewModel {
   ///
   ///```
   EmpireProperty<T?> createNullProperty<T>({String? propertyName}) {
-    return EmpireProperty<T?>(null, this, propertyName: propertyName);
+    return createProperty(null, propertyName: propertyName);
   }
 
   ///Closes the state and error streams and removes any listeners associated with those streams

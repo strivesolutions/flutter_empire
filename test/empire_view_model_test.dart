@@ -1,6 +1,4 @@
-import 'package:empire/empire_state.dart';
 import 'package:empire/empire_view_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class _TestViewModel extends EmpireViewModel {
@@ -21,65 +19,26 @@ class _TestViewModel extends EmpireViewModel {
   }
 }
 
-class _MyWidget extends EmpireWidget<_TestViewModel> {
-  const _MyWidget({
-    Key? key,
-    required _TestViewModel viewModel,
-  }) : super(key: key, viewModel: viewModel);
-
-  @override
-  EmpireState<EmpireWidget<EmpireViewModel>, _TestViewModel> createEmpire() {
-    return _MyWidgetState(viewModel);
-  }
-}
-
-class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
-  _MyWidgetState(super.viewModel);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Builder(
-          builder: (innerContext) {
-            return Center(
-              child: Column(
-                children: [
-                  Text(viewModel.name.value ?? ''),
-                  Text(
-                    viewModel.age.value.toString(),
-                  )
-                ],
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
 void main() {
-  testWidgets('SetMultiple - All Widgets Update After Multiple Set', (tester) async {
-    final viewModel = _TestViewModel();
-    viewModel.name('Justin');
-    viewModel.age(88);
+  group('SetMultiple Tests', () {
+    test('createNullProperty - Value is Null', () {
+      final viewModel = _TestViewModel();
+      final EmpireProperty<int?> age = viewModel.createNullProperty();
+      expect(age.value, isNull);
+    });
 
-    await tester.pumpWidget(_MyWidget(
-      viewModel: viewModel,
-    ));
+    test('createProperty - passed value equals property value', () {
+      final viewModel = _TestViewModel();
+      const expectedValue = 10;
+      final EmpireProperty<int> age = viewModel.createProperty(expectedValue);
+      expect(age.value, equals(expectedValue));
+    });
 
-    expect(find.text("Justin"), findsOneWidget);
-    expect(find.text("88"), findsOneWidget);
-
-    const newName = 'Mike';
-    const newAge = 20;
-
-    viewModel.useSetMultiple(newName, newAge);
-
-    await tester.pumpAndSettle();
-
-    expect(find.text(newName), findsOneWidget);
-    expect(find.text(newAge.toString()), findsOneWidget);
+    test('createProperty - set optional property name', () {
+      final viewModel = _TestViewModel();
+      const expectedValue = 'age';
+      final EmpireProperty<int> age = viewModel.createProperty(10, propertyName: expectedValue);
+      expect(age.propertyName, equals(expectedValue));
+    });
   });
 }
