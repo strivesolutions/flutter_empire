@@ -306,6 +306,34 @@ class EmpireProperty<T> implements EmpireValue<T> {
 
   @override
   String toString() => _value?.toString() ?? '';
+
+  ///Checks if [other] is equal to the [value] of this EmpireProperty
+  ///
+  ///### Usage
+  ///
+  ///```dart
+  ///final EmpireProperty<int> age = createProperty(10);
+  ///
+  ///age.equals(10); //returns true
+  ///
+  ///
+  ///final EmpireProperty<int> ageTwo = createProperty(10);
+  ///
+  ///age.equals(ageTwo); //returns true
+  ///```
+  bool equals(dynamic other) {
+    if (other is EmpireProperty) {
+      return other.value == value;
+    } else {
+      return other == value;
+    }
+  }
+
+  @override
+  bool operator ==(dynamic other) => equals(other);
+
+  @override
+  int get hashCode => _value.hashCode;
 }
 
 ///The event that is added to the State stream.

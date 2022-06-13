@@ -56,6 +56,84 @@ void main() {
     viewModel = _TestViewModel();
     testWidget = _MyWidget(viewModel: viewModel);
   });
+
+  group('EmpireProperty Equality Tests', () {
+    test('equals - other is same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const int ageTwo = 10;
+
+      expect(ageOne.equals(ageTwo), isTrue);
+    });
+
+    test('equals - other is different value - are not equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const int ageTwo = 5;
+
+      expect(ageOne.equals(ageTwo), isFalse);
+    });
+
+    test('equals - other is EmpireProperty with same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      final EmpireProperty<int> ageTwo = viewModel.createProperty(10);
+
+      expect(ageOne.equals(ageTwo), isTrue);
+    });
+
+    test('equals - other is EmpireProperty with different value - are not equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      final EmpireProperty<int> ageTwo = viewModel.createProperty(5);
+
+      expect(ageOne.equals(ageTwo), isFalse);
+    });
+
+    test('equals - other is EmpireProperty with same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const double ageTwo = 10.0;
+
+      expect(ageOne.equals(ageTwo), isTrue);
+    });
+
+    test('equality - other is EmpireProperty with same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      final EmpireProperty<int> ageTwo = viewModel.createProperty(10);
+
+      expect(ageOne == ageTwo, isTrue);
+    });
+
+    test('equality - other is EmpireProperty with different value - are not equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      final EmpireProperty<int> ageTwo = viewModel.createProperty(5);
+
+      expect(ageOne == ageTwo, isFalse);
+    });
+
+    test('equality - other is same as EmpireProperty generic type argument with same value - are equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const int ageTwo = 10;
+
+      // ignore: unrelated_type_equality_checks
+      expect(ageOne == ageTwo, isTrue);
+    });
+
+    test(
+        'equality - other is same as EmpireProperty generic type argument with different value - are not equal',
+        () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const int ageTwo = 5;
+
+      // ignore: unrelated_type_equality_checks
+      expect(ageOne == ageTwo, isFalse);
+    });
+
+    test('equality - other is not EmpireProperty or generic type argument - are not equal', () {
+      final EmpireProperty<int> ageOne = viewModel.createProperty(10);
+      const String name = 'Bob';
+
+      // ignore: unrelated_type_equality_checks
+      expect(ageOne == name, isFalse);
+    });
+  });
+
   group('Property Reset Tests', () {
     testWidgets('reset - notifyChange is true - UI Updates', (tester) async {
       await tester.pumpWidget(testWidget);
