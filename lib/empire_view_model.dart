@@ -315,11 +315,13 @@ class EmpireProperty<T> implements EmpireValue<T> {
   ///final EmpireProperty<int> age = createProperty(10);
   ///
   ///age.equals(10); //returns true
+  ///
+  ///
+  ///final EmpireProperty<int> ageTwo = createProperty(10);
+  ///
+  ///age.equals(ageTwo); //returns true
   ///```
-  bool equals(T other) => _value == other;
-
-  @override
-  bool operator ==(dynamic other) {
+  bool equals(dynamic other) {
     if (other is EmpireProperty) {
       return other.value == value;
     } else if (other is T) {
@@ -328,6 +330,9 @@ class EmpireProperty<T> implements EmpireValue<T> {
       return false;
     }
   }
+
+  @override
+  bool operator ==(dynamic other) => equals(other);
 
   @override
   int get hashCode => _value.hashCode;
