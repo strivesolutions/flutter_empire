@@ -252,12 +252,15 @@ abstract class EmpireValue<T> {
 class EmpireProperty<T> implements EmpireValue<T> {
   String? propertyName;
   T _value;
+  late final T _originalValue;
   @override
   T get value => _value;
 
   final EmpireViewModel _viewModel;
 
-  EmpireProperty(this._value, this._viewModel, {this.propertyName});
+  EmpireProperty(this._value, this._viewModel, {this.propertyName}) {
+    _originalValue = _value;
+  }
 
   void call(T value, {bool notifyChange = true}) {
     set(value, notifyChange: notifyChange);
@@ -269,6 +272,35 @@ class EmpireProperty<T> implements EmpireValue<T> {
     _value = value;
     if (notifyChange) {
       _viewModel.notifyChanges([EmpireStateChanged(value, previousValue, propertyName: propertyName)]);
+    }
+  }
+
+  ///Resets the value to what it was initialized with.
+  ///
+  ///## Usage
+  ///
+  ///```dart
+  ///late final EmpireProperty<int> age = createProperty(10); //age.value is 10
+  ///
+  ///age(20); //age.value is 20
+  ///age(25); //age.value is 25
+  ///
+  ///age.reset(); //age.value is back to 10. Triggers UI rebuild or...
+  ///
+  ///age.reset(notifyChange: false); //age.value is back to 10 but UI does not rebuild
+  ///```
+  void reset({bool notifyChange = true}) {
+    final currentValue = _value;
+    _value = _originalValue;
+
+    if (notifyChange) {
+      _viewModel.notifyChanges([
+        EmpireStateChanged(
+          _originalValue,
+          currentValue,
+          propertyName: propertyName,
+        )
+      ]);
     }
   }
 
