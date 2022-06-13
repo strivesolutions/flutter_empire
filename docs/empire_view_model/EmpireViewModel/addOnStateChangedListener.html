@@ -53,7 +53,7 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">addOnStateChangedListener</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addOnStateChangedListener-param-onStateChanged"><span class="type-annotation">dynamic</span> <span class="parameter-name">onStateChanged</span>(<ol class="parameter-list"><li><span class="parameter" id="param-"><span class="type-annotation"><a href="../../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span></span></li>
+<span class="name ">addOnStateChangedListener</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addOnStateChangedListener-param-onStateChanged"><span class="type-annotation">dynamic</span> <span class="parameter-name">onStateChanged</span>(<ol class="parameter-list"><li><span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span>&gt;</span></span></span></li>
 </ol>
 )</span></li>
 </ol>)
@@ -70,7 +70,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void addOnStateChangedListener(Function(EmpireStateChanged) onStateChanged) {
+  <pre class="language-dart"><code class="language-dart">void addOnStateChangedListener(Function(List&lt;EmpireStateChanged&gt;) onStateChanged) {
   _subscriptions.add(_stream.listen(onStateChanged));
 }</code></pre>
 </section>
@@ -111,15 +111,17 @@
     <li class="section-title"><a href="../../empire_view_model/EmpireViewModel-class.html#instance-methods">Methods</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/createProperty.html">createProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/dispose.html">dispose</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/doAsync.html">doAsync</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/initProperties.html">initProperties</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/isTaskInProgress.html">isTaskInProgress</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-    <li><a href="../../empire_view_model/EmpireViewModel/notifyChange.html">notifyChange</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/notifyChanges.html">notifyChanges</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/setBusyStatus.html">setBusyStatus</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/setMultiple.html">setMultiple</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../../empire_view_model/EmpireViewModel-class.html#operators">Operators</a></li>
@@ -140,7 +142,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.1.0
+      0.2.0
   </span>
 
   

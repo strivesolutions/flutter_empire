@@ -53,7 +53,8 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">call</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="call-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span></span></li>
+<span class="name ">call</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="call-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, </span></li>
+<li><span class="parameter" id="call-param-notifyChange">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">notifyChange</span> = <span class="default-value">true</span>}</span></li>
 </ol>)
 
       
@@ -65,8 +66,8 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void call(T value) {
-  set(value);
+  <pre class="language-dart"><code class="language-dart">void call(T value, {bool notifyChange = true}) {
+  set(value, notifyChange: notifyChange);
 }</code></pre>
 </section>
 
@@ -127,7 +128,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.1.0
+      0.2.0
   </span>
 
   

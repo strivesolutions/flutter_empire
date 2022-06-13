@@ -134,7 +134,7 @@ is changed and call the states build function, updating the UI.</p>
     <h2>Methods</h2>
     <dl class="callables">
         <dt id="addOnErrorEventListener" class="callable">
-  <span class="name"><a href="../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></span><span class="signature">(<wbr><span class="parameter" id="addOnErrorEventListener-param-onError"><span class="type-annotation">dynamic</span> <span class="parameter-name">onError</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Exception-class.html">Exception</a></span>&gt;</span></span></span>)</span>)
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></span><span class="signature">(<wbr><span class="parameter" id="addOnErrorEventListener-param-onError"><span class="type-annotation">dynamic</span> <span class="parameter-name">onError</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span></span>)</span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -147,7 +147,7 @@ is changed and call the states build function, updating the UI.</p>
 </dd>
 
         <dt id="addOnStateChangedListener" class="callable">
-  <span class="name"><a href="../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></span><span class="signature">(<wbr><span class="parameter" id="addOnStateChangedListener-param-onStateChanged"><span class="type-annotation">dynamic</span> <span class="parameter-name">onStateChanged</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span></span>)</span>)
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></span><span class="signature">(<wbr><span class="parameter" id="addOnStateChangedListener-param-onStateChanged"><span class="type-annotation">dynamic</span> <span class="parameter-name">onStateChanged</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span>&gt;</span></span></span>)</span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -155,6 +155,19 @@ is changed and call the states build function, updating the UI.</p>
 </dt>
 <dd>
   Adds an event handler which gets executed each time an <a href="../empire_view_model/EmpireProperty-class.html">EmpireProperty</a> value is changed.
+  
+
+</dd>
+
+        <dt id="createNullProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createNullProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_view_model/EmpireProperty-class.html">EmpireProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">T?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_view_model/EmpireProperty-class.html">EmpireProperty</a> with a null value.
   
 
 </dd>
@@ -237,8 +250,8 @@ is changed and call the states build function, updating the UI.</p>
 
 </dd>
 
-        <dt id="notifyChange" class="callable">
-  <span class="name"><a href="../empire_view_model/EmpireViewModel/notifyChange.html">notifyChange</a></span><span class="signature">(<wbr><span class="parameter" id="notifyChange-param-event"><span class="type-annotation"><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span> <span class="parameter-name">event</span></span>)
+        <dt id="notifyChanges" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/notifyChanges.html">notifyChanges</a></span><span class="signature">(<wbr><span class="parameter" id="notifyChanges-param-events"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span>&gt;</span></span> <span class="parameter-name">events</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -251,7 +264,7 @@ is changed and call the states build function, updating the UI.</p>
 </dd>
 
         <dt id="notifyError" class="callable">
-  <span class="name"><a href="../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a></span><span class="signature">(<wbr><span class="parameter" id="notifyError-param-event"><span class="type-annotation"><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Exception-class.html">Exception</a></span>&gt;</span></span> <span class="parameter-name">event</span></span>)
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a></span><span class="signature">(<wbr><span class="parameter" id="notifyError-param-event"><span class="type-annotation"><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span> <span class="parameter-name">event</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -272,6 +285,19 @@ is changed and call the states build function, updating the UI.</p>
 </dt>
 <dd>
   Explicitly updates the current busy status of the view model.
+  
+
+</dd>
+
+        <dt id="setMultiple" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/setMultiple.html">setMultiple</a></span><span class="signature">(<wbr><span class="parameter" id="setMultiple-param-setters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../empire_view_model/EmpireProperty-class.html">EmpireProperty</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">setters</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Set multiple <a href="../empire_view_model/EmpireProperty-class.html">EmpireProperty</a> values, but only trigger a single state change
   
 
 </dd>
@@ -371,15 +397,17 @@ is changed and call the states build function, updating the UI.</p>
     <li class="section-title"><a href="../empire_view_model/EmpireViewModel-class.html#instance-methods">Methods</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/createProperty.html">createProperty</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/dispose.html">dispose</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/doAsync.html">doAsync</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/initProperties.html">initProperties</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/isTaskInProgress.html">isTaskInProgress</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-    <li><a href="../empire_view_model/EmpireViewModel/notifyChange.html">notifyChange</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/notifyChanges.html">notifyChanges</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a></li>
     <li><a href="../empire_view_model/EmpireViewModel/setBusyStatus.html">setBusyStatus</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/setMultiple.html">setMultiple</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../empire_view_model/EmpireViewModel-class.html#operators">Operators</a></li>
@@ -397,7 +425,7 @@ is changed and call the states build function, updating the UI.</p>
 <footer>
   <span class="no-break">
     empire
-      0.1.0
+      0.2.0
   </span>
 
   

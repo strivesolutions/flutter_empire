@@ -53,7 +53,8 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">set</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="set-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span></span></li>
+<span class="name ">set</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="set-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, </span></li>
+<li><span class="parameter" id="set-param-notifyChange">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">notifyChange</span> = <span class="default-value">true</span>}</span></li>
 </ol>)
 
       
@@ -68,10 +69,12 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void set(T value) {
+  <pre class="language-dart"><code class="language-dart">void set(T value, {bool notifyChange = true}) {
   final previousValue = _value;
   _value = value;
-  _viewModel.notifyChange(EmpireStateChanged(value, previousValue));
+  if (notifyChange) {
+    _viewModel.notifyChanges([EmpireStateChanged(value, previousValue, propertyName: propertyName)]);
+  }
 }</code></pre>
 </section>
 
@@ -132,7 +135,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.1.0
+      0.2.0
   </span>
 
   
