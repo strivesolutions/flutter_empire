@@ -68,7 +68,7 @@ class _MyWidgetState extends EmpireState<MyWidget, TestViewModel> {
 }
 
 void main() {
-  testWidgets('Test', (tester) async {
+  testWidgets('EmpireWidget Test - Finds Correct Text Widget After Property Change', (tester) async {
     final viewModel = TestViewModel();
     final appViewModel = ApplicationViewModel();
     viewModel.name("Justin");
@@ -87,7 +87,7 @@ void main() {
     expect(textTwo, findsOneWidget);
   });
 
-  testWidgets('Test Application', (tester) async {
+  testWidgets('Empire App State Test - Widgets Update on App View Model Change', (tester) async {
     final viewModel = TestViewModel();
     final appViewModel = ApplicationViewModel();
     await tester.pumpWidget(MyWidget(

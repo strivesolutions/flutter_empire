@@ -74,6 +74,26 @@ abstract class EmpireViewModel {
     _stateController.add(event);
   }
 
+  ///Set multiple [EmpireProperty] values, but only trigger a single state change
+  ///
+  ///The [setters] keys should be the properties you want to set. The values should be the new
+  ///values for each property.
+  ///
+  ///## Usage
+  ///
+  ///```dart
+  ///late final EmpireProperty<String> name;
+  ///late final EmpireProperty<int> age;
+  ///
+  ///setMultiple({name: 'Doug', age: 45});
+  ///```
+  void setMultiple(Map<EmpireProperty, dynamic> setters) {
+    for (var set in setters.keys) {
+      set(setters[set], notifyChange: false);
+    }
+    notifyChange(EmpireStateChanged.multiple());
+  }
+
   ///Inform the bound [EmpireState] that an error has occurred.
   ///
   ///Any event handlers registered by the
@@ -148,8 +168,32 @@ abstract class EmpireViewModel {
   ///Short hand helper function for initializing an [EmpireProperty].
   ///
   ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireProperty<String> name;
+  ///
+  ///name = createProperty('Bob');
+  ///```
   EmpireProperty<T> createProperty<T>(T value, {String? propertyName}) {
     return EmpireProperty<T>(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireProperty] with a null value.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireProperty<String?> name;
+  ///
+  ///name = createNullProperty();
+  ///
+  ///```
+  EmpireProperty<T?> createNullProperty<T>({String? propertyName}) {
+    return EmpireProperty<T?>(null, this, propertyName: propertyName);
   }
 
   ///Closes the state and error streams and removes any listeners associated with those streams
@@ -209,15 +253,17 @@ class EmpireProperty<T> implements EmpireValue<T> {
 
   EmpireProperty(this._value, this._viewModel, {this.propertyName});
 
-  void call(T value) {
-    set(value);
+  void call(T value, {bool notifyChange = true}) {
+    set(value, notifyChange: notifyChange);
   }
 
   ///Updates the property value. Notifies any listeners to the change
-  void set(T value) {
+  void set(T value, {bool notifyChange = true}) {
     final previousValue = _value;
     _value = value;
-    _viewModel.notifyChange(EmpireStateChanged(value, previousValue));
+    if (notifyChange) {
+      _viewModel.notifyChange(EmpireStateChanged(value, previousValue));
+    }
   }
 
   @override
@@ -229,11 +275,12 @@ class EmpireProperty<T> implements EmpireValue<T> {
 ///Any event handlers registered with the
 ///[EmpireViewModel.addOnStateChangedListener] function will receive these types of events
 class EmpireStateChanged<T> {
-  final T previousValue;
-  final T nextValue;
+  final T? previousValue;
+  final T? nextValue;
   final String? propertyName;
 
   EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName});
+  factory EmpireStateChanged.multiple() => EmpireStateChanged<T>(null, null);
 }
 
 ///The event that is added to the Error stream.
