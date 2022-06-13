@@ -1,6 +1,6 @@
 name: empire
 description: A simple yet powerful state management library for [Flutter](https://flutter.dev/).
-version: 0.2.0
+version: 0.3.0
 homepage:
 
 environment:
