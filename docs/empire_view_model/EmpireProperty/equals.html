@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the set method from the EmpireProperty class, for the Dart programming language.">
-  <title>set method - EmpireProperty class - empire_view_model library - Dart API</title>
+  <meta name="description" content="API docs for the equals method from the EmpireProperty class, for the Dart programming language.">
+  <title>equals method - EmpireProperty class - empire_view_model library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">empire</a></li>
     <li><a href="../../empire_view_model/empire_view_model-library.html">empire_view_model</a></li>
     <li><a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-    <li class="self-crumb">set method</li>
+    <li class="self-crumb">equals method</li>
   </ol>
-  <div class="self-name">set</div>
+  <div class="self-name">equals</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,16 +45,15 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">set</span> method 
+<h1><span class="kind-method">equals</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
-<span class="name ">set</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="set-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, </span></li>
-<li><span class="parameter" id="set-param-notifyChange">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">notifyChange</span> = <span class="default-value">true</span>}</span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+<span class="name ">equals</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="equals-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span></li>
 </ol>)
 
       
@@ -62,18 +61,28 @@
     </section>
     
 <section class="desc markdown">
-  <p>Updates the property value. Notifies any listeners to the change</p>
+  <p>Checks if <code>other</code> is equal to the <a href="../../empire_view_model/EmpireProperty/value.html">value</a> of this EmpireProperty</p>
+<h3 id="usage">Usage</h3>
+<pre class="language-dart"><code class="language-dart">final EmpireProperty&lt;int&gt; age = createProperty(10);
+
+age.equals(10); //returns true
+
+
+final EmpireProperty&lt;int&gt; ageTwo = createProperty(10);
+
+age.equals(ageTwo); //returns true
+</code></pre>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void set(T value, {bool notifyChange = true}) {
-  final previousValue = _value;
-  _value = value;
-  if (notifyChange) {
-    _viewModel.notifyChanges([EmpireStateChanged(value, previousValue, propertyName: propertyName)]);
+  <pre class="language-dart"><code class="language-dart">bool equals(dynamic other) {
+  if (other is EmpireProperty) {
+    return other.value == value;
+  } else {
+    return other == value;
   }
 }</code></pre>
 </section>
@@ -92,7 +101,7 @@
   <li><a href="../../index.html">empire</a></li>
   <li><a href="../../empire_view_model/empire_view_model-library.html">empire_view_model</a></li>
   <li><a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-  <li class="self-crumb">set method</li>
+  <li class="self-crumb">equals method</li>
 </ol>
 
 

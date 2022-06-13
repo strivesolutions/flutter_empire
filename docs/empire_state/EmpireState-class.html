@@ -54,6 +54,38 @@
   <p>Base class for your <a href="../empire_state/EmpireWidget-class.html">EmpireWidget</a>s accompanying State class.</p>
 <p>Will automatically trigger a rebuild when any of this objects accompanying <a href="../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a>
 properties change.</p>
+<h3 id="usage">Usage</h3>
+<pre class="language-dart"><code class="language-dart">class _CounterPageState extends EmpireState&lt;CounterPage, CounterViewModel&gt; {
+ _CounterPageState(super.viewModel);
+
+ @override
+ Widget build(BuildContext context) {
+   return Scaffold(
+     appBar: AppBar(
+       title: Text(widget.title),
+     ),
+     body: Center(
+       child: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+         children: &lt;Widget&gt;[
+           const Text(
+             'You have pushed the button this many times:',
+           ),
+           Text(
+             '${viewModel.count}',
+           ),
+         ],
+       ),
+     ),
+     floatingActionButton: FloatingActionButton(
+       onPressed: viewModel.incrementCounter,
+       tooltip: 'Increment',
+       child: const Icon(Icons.add),
+     ),
+   );
+ }
+}
+</code></pre>
 </section>
 
 
@@ -494,7 +526,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 <footer>
   <span class="no-break">
     empire
-      0.3.0
+      0.4.0
   </span>
 
   
