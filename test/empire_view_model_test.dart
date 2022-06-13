@@ -13,7 +13,7 @@ class _TestViewModel extends EmpireViewModel {
 }
 
 void main() {
-  group('SetMultiple Tests', () {
+  group('Property Creation Tests', () {
     test('createNullProperty - Value is Null', () {
       final viewModel = _TestViewModel();
       final EmpireProperty<int?> age = viewModel.createNullProperty();
