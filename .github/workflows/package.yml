@@ -35,5 +35,5 @@ jobs:
           channel: ${{ matrix.channel }}
 
       - run: flutter pub get
-      - run: flutter analyze
+      - run: flutter analyze lib
       - run: flutter test
