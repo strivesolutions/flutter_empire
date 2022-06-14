@@ -1,16 +1,13 @@
-
 <p align="center">
-    <img src="./images/EmpireLogoMD.png"/>
+    <img src="https://github.com/ellementconsulting/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
 </p>
 
 <h1 align="center">EMPIRE</h1>
 <h3 align="center">A simple, lightweight state management library for Flutter</h3>
 
-
 ## Features
 
-A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions. 
-
+A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
 
 ## Usage
 
@@ -38,7 +35,7 @@ class CounterViewModel extends EmpireViewModel {
 ```dart
 class CounterPage extends EmpireWidget<CounterViewModel> {
   const CounterPage({Key? key, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);  
+      : super(key: key, viewModel: viewModel);
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
@@ -113,6 +110,7 @@ class ApplicationViewModel extends EmpireViewModel {
 Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Supply a function to generate a unique application state id. This tells your app it needs to refresh the widget tree below your your `Empire` widget. In this example, we are using the [Uuid](https://pub.dev/packages/uuid) package to handle creating a unique ID, but we leave it up to you to decide what dependencies you want to include in your application. This function will get called anytime the `loggedInUser` property is changed in the `ApplicationViewModel` and trigger the UI for your app to update.
 
 ### main.dart
+
 ```dart
 void main() => runApp(const MyApp());
 
@@ -126,7 +124,7 @@ class MyApp extends StatelessWidget {
         ApplicationViewModel(),
         onAppStateChanged: () => const Uuid().v1(),
         child: Builder(
-          builder: (context) {              
+          builder: (context) {
             final appViewModel = Empire.viewModelOf<ApplicationViewModel>(context);
             final loggedInUser = appViewModel.loggedInUser;
 
