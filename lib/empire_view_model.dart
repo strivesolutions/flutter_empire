@@ -223,8 +223,57 @@ class EmpireStateChanged<T> {
   final T? previousValue;
   final T? nextValue;
   final String? propertyName;
+  final String? description;
 
-  EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName});
+  EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName, this.description});
+
+  static EmpireStateChanged addedToList<V>(V newValue, {String? propertyName}) =>
+      EmpireStateChanged(newValue, null, propertyName: propertyName, description: 'Added To List: $newValue');
+
+  static EmpireStateChanged addedAllToList<V>(Iterable<V> newValues, {String? propertyName}) =>
+      EmpireStateChanged(newValues, null,
+          propertyName: propertyName, description: 'Added All To List: $newValues');
+
+  static EmpireStateChanged removedFromList<V>(V removedValue, {String? propertyName}) =>
+      EmpireStateChanged(null, removedValue,
+          propertyName: propertyName, description: 'Removed From List: $removedValue');
+
+  static EmpireStateChanged<Iterable<V>> clearedList<V>(Iterable<V> iterable, {String? propertyName}) =>
+      EmpireStateChanged(<V>[], iterable, propertyName: propertyName, description: 'Iterable Cleared');
+
+  static EmpireStateChanged addedMapToMap<K, V>(Map<K, V> addedMap, {String? propertyName}) {
+    return EmpireStateChanged(addedMap, null,
+        propertyName: propertyName, description: 'Added Map To Map: $addedMap');
+  }
+
+  static EmpireStateChanged addedToMap<K, V>(K key, V newValue, {String? propertyName}) {
+    final newEntry = MapEntry(key, newValue);
+    return EmpireStateChanged(newEntry, null,
+        propertyName: propertyName, description: 'Added To Map: $newEntry');
+  }
+
+  static EmpireStateChanged addedEntriesToMap<K, V>(Iterable<MapEntry<K, V>> entries,
+      {String? propertyName}) {
+    return EmpireStateChanged(entries, null,
+        propertyName: propertyName, description: 'Added Entries To Map: $entries');
+  }
+
+  static EmpireStateChanged<V> updateMapEntry<K, V>(K key, V? originalValue, V? nextValue,
+      {String? propertyName}) {
+    return EmpireStateChanged<V>(nextValue, originalValue,
+        propertyName: propertyName, description: 'Update Map Value For Key: $key');
+  }
+
+  static EmpireStateChanged<V> removedFromMap<K, V>(K key, V removedValue, {String? propertyName}) {
+    final removedEntry = MapEntry(key, removedValue);
+    return EmpireStateChanged<V>(null, removedValue,
+        propertyName: propertyName, description: 'Removed From Map: $removedEntry');
+  }
+
+  @override
+  String toString() {
+    return 'Previous: $previousValue, Next: $nextValue, Property Name: $propertyName, Description: $description';
+  }
 }
 
 ///The event that is added to the Error stream.
