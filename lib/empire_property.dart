@@ -134,16 +134,20 @@ abstract class NullableEmpireProperty<T> extends EmpireProperty<T?> {
 class EmpireBoolProperty extends EmpireProperty<bool> {
   EmpireBoolProperty(super.value, super.viewModel);
 
+  ///Whether the underlying value is true
   bool get isTrue => _value;
 
+  ///Whether the underlying value is false
   bool get isFalse => !_value;
 }
 
 class EmpireNullableBoolProperty extends NullableEmpireProperty<bool?> {
   EmpireNullableBoolProperty(super.value, super.viewModel);
 
+  ///Whether the underlying value is not null and true
   bool get isTrue => isNotNull && _value == true;
 
+  ///Whether the underlying value is not null and false
   bool get isFalse => isNotNull && _value == false;
 }
 
@@ -246,6 +250,16 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     return removedValue;
   }
 
+  /// Removes all objects from this list; the length of the list becomes zero.
+  ///
+  /// The list must be growable.
+  ///
+  /// ```dart
+  /// final numbers = <int>[1, 2, 3];
+  /// numbers.clear();
+  /// print(numbers.length); // 0
+  /// print(numbers); // []
+  /// ```
   void clear({bool notifyChanges = true}) {
     final stateChangedEvent = EmpireStateChanged.clearedList(_value, propertyName: propertyName);
     _value.clear();
@@ -696,4 +710,58 @@ class EmpireStringProperty extends EmpireProperty<String> {
   /// Both [start] and [end] must be non-negative and no greater than [length];
   /// [end], if provided, must be greater than or equal to [start].
   String substring(int start, [int? end]) => _value.substring(start, end);
+}
+
+class EmpireNullableStringProperty extends NullableEmpireProperty<String?> {
+  EmpireNullableStringProperty(super.value, super.viewModel);
+
+  ///Whether the string value is empty
+  ///
+  ///Returns true if the string value is null
+  bool get isEmpty => _value?.isEmpty ?? true;
+
+  ///Whether the string value is empty or not.
+  ///
+  ///Returns false if the string value is null
+  bool get isNotEmpty => _value?.isNotEmpty ?? false;
+
+  /// The length of the string value.
+  ///
+  /// Returns 0 if the string value is null
+  int get length => _value?.length ?? 0;
+
+  /// Whether the string value contains a match of [other].
+  ///
+  /// Returns false if the String value is null
+  ///
+  /// Example:
+  /// ```dart
+  /// const string = 'Doug';
+  /// final containsD = string.contains('D'); // true
+  /// final containsUpperCase = string.contains(RegExp(r'[A-Z]')); // true
+  /// ```
+  /// If [startIndex] is provided, this method matches only at or after that
+  /// index:
+  /// ```dart
+  /// const string = 'Doug smith';
+  /// final containsD = string.contains(RegExp('D'), 0); // true
+  /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
+  /// ```
+  /// The [startIndex] must not be negative or greater than [length].
+  bool contains(String other) => _value?.contains(other) ?? false;
+
+  /// The substring of the string value from [start], inclusive, to [end], exclusive.
+  ///
+  /// Returns null if the string value is null
+  ///
+  /// Example:
+  /// ```dart
+  /// const string = 'dougsmith';
+  /// var result = string.substring(1); // 'ougsmith'
+  /// result = string.substring(1, 3); // 'oug'
+  /// ```
+  ///
+  /// Both [start] and [end] must be non-negative and no greater than [length];
+  /// [end], if provided, must be greater than or equal to [start].
+  String? substring(int start, [int? end]) => _value?.substring(start, end);
 }
