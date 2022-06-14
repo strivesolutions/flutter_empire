@@ -134,5 +134,69 @@ void main() {
 
       expect(result, isFalse);
     });
+
+    test('substring - only pass start index value - returns correct substring', () {
+      const String nameValue = 'John';
+      const String expectedValue = 'ohn';
+      viewModel.name(nameValue);
+
+      final result = viewModel.name.substring(1);
+
+      expect(result, equals(expectedValue));
+    });
+
+    test('substring - pass start and end index value - returns correct substring', () {
+      const String nameValue = 'John';
+      const String expectedValue = 'oh';
+      viewModel.name(nameValue);
+
+      final result = viewModel.name.substring(1, 3);
+
+      expect(result, equals(expectedValue));
+    });
+  });
+
+  group('NullableStringProperty Tests', () {
+    late NullableStringViewModel viewModel;
+
+    setUp(() {
+      viewModel = NullableStringViewModel();
+    });
+
+    test('isEmpty - value is null - returns true', () {
+      viewModel.name(null);
+      final result = viewModel.name.isEmpty;
+
+      expect(result, isTrue);
+    });
+
+    test('isNotEmpty - value is null - returns false', () {
+      viewModel.name(null);
+      final result = viewModel.name.isNotEmpty;
+
+      expect(result, isFalse);
+    });
+
+    test('length - value is null - returns 0', () {
+      const int expectedValue = 0;
+      viewModel.name(null);
+      final result = viewModel.name.length;
+
+      expect(result, equals(expectedValue));
+    });
+
+    test('contains - value is null - returns false', () {
+      viewModel.name(null);
+      final result = viewModel.name.contains('Bob');
+
+      expect(result, isFalse);
+    });
+
+    test('substring - value is null - returns null', () {
+      viewModel.name(null);
+      final result = viewModel.name.substring(1);
+
+      expect(result, isNull);
+    });
   });
 }

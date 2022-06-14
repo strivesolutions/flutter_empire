@@ -789,15 +789,15 @@ class EmpireIntProperty extends EmpireProperty<int> {
   /// Returns the absolute value of this integer.
   int abs() => _value.abs();
 
-  int operator +(other) => set((value + other).toInt());
+  int operator +(other) => (value + other).toInt();
 
-  int operator -(other) => set((value - other).toInt());
+  int operator -(other) => (value - other).toInt();
 
-  int operator /(other) => set(value ~/ other);
+  int operator /(other) => value ~/ other;
 
-  int operator %(other) => set((value % other).toInt());
+  int operator %(other) => (value % other).toInt();
 
-  int operator *(other) => set((value * other).toInt());
+  int operator *(other) => (value * other).toInt();
 }
 
 class EmpireNullableIntProperty extends NullableEmpireProperty<int?> {
