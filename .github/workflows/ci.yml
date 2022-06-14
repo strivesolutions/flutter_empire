@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - main
+
+jobs:
+  cancel-previous:
+    name: Cancel previous runs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+  changes:
+    name: Calculate Changes
+    runs-on: ubuntu-latest
+
+    outputs:
+      workflow: ${{ steps.changes.outputs.workflow }}
+      docs: ${{ steps.changes.outputs.docs }}
+      package: ${{ steps.changes.outputs.package }}
+      examples: ${{ steps.changes.outputs.examples }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Calculate path changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            docs:
+              - "lib/**"
+              - "README.md"
+              - "pubspec.yaml"
+            package:
+              - "lib/**"
+              - "pubspec.yaml"             
+            examples:
+              - "examples/**"
+              - "lib/**"
+            workflow:
+              - ".github/workflows/ci.yml"
+
+  package:
+    name: Validate package
+    needs: [changes]
+    if: ${{ (needs.changes.outputs.package == 'true') || (needs.changes.outputs.workflow == 'true') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter pub get
+      - run: flutter analyze lib
+      - run: flutter test
+
+  docs:
+    name: Validate docs
+    needs: [changes]
+    if: ${{ (needs.changes.outputs.docs == 'true') || (needs.changes.outputs.workflow == 'true') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter pub get
+      - run: dart doc
+
+  examples:
+    name: Validate examples
+    needs: [changes]
+    if: ${{ (needs.changes.outputs.examples == 'true') || (needs.changes.outputs.workflow == 'true') }}
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: examples/counter
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
