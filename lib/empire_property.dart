@@ -503,7 +503,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// largestPlanets.update(8, (value) => 'New', ifAbsent: () => 'Mercury');
   /// print(largestPlanets); // {1: Jupiter, 2: Saturn, 3: Neptune, 8: Mercury}
   /// ```
-  V update(K key, V Function(V) update, {V Function()? ifAbsent, bool notifyChanges = true}) {
+  V update(K key, V Function(V value) update, {V Function()? ifAbsent, bool notifyChanges = true}) {
     final originalValue = _value[key];
     final updatedValue = _value.update(key, update, ifAbsent: ifAbsent);
 
@@ -530,7 +530,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// terrestrial.updateAll((key, value) => value.toUpperCase());
   /// print(terrestrial); // {1: MERCURY, 2: VENUS, 3: EARTH}
   /// ```
-  void updateAll(V Function(K, V) update, {bool notifyChanges = true}) {
+  void updateAll(V Function(K key, V value) update, {bool notifyChanges = true}) {
     final stateChangedEvents = <EmpireStateChanged<V>>[];
 
     _value.updateAll((key, value) {
@@ -584,7 +584,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// terrestrial.removeWhere((key, value) => value.startsWith('E'));
   /// print(terrestrial); // {1: Mercury, 2: Venus}
   /// ```
-  void removeWhere(bool Function(K, V) test, {bool notifyChanges = true}) {
+  void removeWhere(bool Function(K key, V value) test, {bool notifyChanges = true}) {
     final stateChangedEvents = <EmpireStateChanged<V>>[];
 
     _value.removeWhere((key, value) {

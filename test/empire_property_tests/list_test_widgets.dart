@@ -18,12 +18,12 @@ class ListTestWidget extends EmpireWidget<ListViewModel> {
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, ListViewModel> createEmpire() {
-    return _BoolTestWidgetState(viewModel);
+    return _ListTestWidgetState(viewModel);
   }
 }
 
-class _BoolTestWidgetState extends EmpireState<ListTestWidget, ListViewModel> {
-  _BoolTestWidgetState(super.viewModel);
+class _ListTestWidgetState extends EmpireState<ListTestWidget, ListViewModel> {
+  _ListTestWidgetState(super.viewModel);
 
   @override
   Widget build(BuildContext context) {

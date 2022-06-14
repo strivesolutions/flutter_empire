@@ -263,6 +263,21 @@ abstract class EmpireViewModel {
     return EmpireMapProperty(values, this, propertyName: propertyName);
   }
 
+  ///Short hand helper function for initializing an empty [EmpireMapProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireMapProperty planet;
+  ///
+  ///planet = createEmptyMapProperty();
+  ///```
+  EmpireMapProperty<K, V> createEmptyMapProperty<K, V>({String? propertyName}) {
+    return EmpireMapProperty(<K, V>{}, this, propertyName: propertyName);
+  }
+
   ///Short hand helper function for initializing an [EmpireStringProperty].
   ///
   ///See [EmpireProperty] for [propertyName] usages.
