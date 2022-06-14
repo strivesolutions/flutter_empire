@@ -829,23 +829,23 @@ class EmpireNullableIntProperty extends NullableEmpireProperty<int?> {
   int? abs() => _value?.abs();
 
   int operator +(other) => isNotNull
-      ? set((value! + other).toInt())!
+      ? (value! + other).toInt()
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator -(other) => isNotNull
-      ? set((value! - other).toInt())!
+      ? (value! - other).toInt()
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator /(other) => isNotNull
-      ? set(value! ~/ other)!
+      ? value! ~/ other!
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator %(other) => isNotNull
-      ? set((value! % other).toInt())!
+      ? (value! % other).toInt()
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator *(other) => isNotNull
-      ? set((value! * other).toInt())!
+      ? (value! * other).toInt()
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 }
 
