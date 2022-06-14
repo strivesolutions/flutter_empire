@@ -188,6 +188,171 @@ abstract class EmpireViewModel {
     return EmpireProperty<T>(value, this, propertyName: propertyName);
   }
 
+  ///Short hand helper function for initializing an [EmpireBoolProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireBoolProperty isAwesome;
+  ///
+  ///isAwesome = createBoolProperty(true);
+  ///```
+  EmpireBoolProperty createBoolProperty(bool value, {String? propertyName}) {
+    return EmpireBoolProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireNullableBoolProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireNullableBoolProperty isAwesome;
+  ///
+  ///isAwesome = createNullableBoolProperty();
+  ///```
+  EmpireNullableBoolProperty createNullableBoolProperty({bool? value, String? propertyName}) {
+    return EmpireNullableBoolProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireListProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireListProperty planets;
+  ///
+  ///planets = createListProperty(<String>['Mecury', 'Venus', 'Earth']);
+  ///```
+  EmpireListProperty<T> createListProperty<T>(List<T> values, {String? propertyName}) {
+    return EmpireListProperty(values, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an empty [EmpireListProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireListProperty planets;
+  ///
+  ///planets = createEmptyListProperty();
+  ///```
+  EmpireListProperty<T> createEmptyListProperty<T>({String? propertyName}) {
+    return EmpireListProperty([], this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireMapProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireMapProperty planet;
+  ///
+  ///planet = createMapProperty<String, dynamic>({'name': 'Earth', 'population': 8000000000});
+  ///```
+  EmpireMapProperty createMapProperty<K, V>(Map<K, V> values, {String? propertyName}) {
+    return EmpireMapProperty(values, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireStringProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireStringProperty name;
+  ///
+  ///name = createStringProperty('Bob');
+  ///```
+  EmpireStringProperty createStringProperty(String value, {String? propertyName}) {
+    return EmpireStringProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireNullableStringProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireNullableStringProperty name;
+  ///
+  ///name = createNullableStringProperty();
+  ///```
+  EmpireNullableStringProperty createNullableStringProperty({String? value, String? propertyName}) {
+    return EmpireNullableStringProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireIntProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireIntProperty age;
+  ///
+  ///age = createIntProperty(20);
+  ///```
+  EmpireIntProperty createIntProperty(int value, {String? propertyName}) {
+    return EmpireIntProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireNullableIntProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireNullableIntProperty age;
+  ///
+  ///age = createNullableIntProperty();
+  ///```
+  EmpireNullableIntProperty createNullableIntProperty({int? value, String? propertyName}) {
+    return EmpireNullableIntProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireDoubleProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireDoubleProperty percentage;
+  ///
+  ///percentage = createDoubleProperty(0.72);
+  ///```
+  EmpireDoubleProperty createDoubleProperty(double value, {String? propertyName}) {
+    return EmpireDoubleProperty(value, this, propertyName: propertyName);
+  }
+
+  ///Short hand helper function for initializing an [EmpireNullableDoubleProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireNullableDoubleProperty percentage;
+  ///
+  ///percentage = createNullableDoubleProperty();
+  ///```
+  EmpireNullableDoubleProperty createNullableDoubleProperty({double? value, String? propertyName}) {
+    return EmpireNullableDoubleProperty(value, this, propertyName: propertyName);
+  }
+
   ///Short hand helper function for initializing an [EmpireProperty] with a null value.
   ///
   ///See [EmpireProperty] for [propertyName] usages.

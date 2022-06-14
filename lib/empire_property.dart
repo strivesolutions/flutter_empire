@@ -1,3 +1,5 @@
+import 'package:empire/empire_exceptions.dart';
+
 import 'empire_view_model.dart';
 
 ///Base class for [EmpireProperty]
@@ -54,12 +56,15 @@ class EmpireProperty<T> implements EmpireValue<T> {
   }
 
   ///Updates the property value. Notifies any listeners to the change
-  void set(T value, {bool notifyChange = true}) {
+  ///
+  ///Returns the updated value
+  T set(T value, {bool notifyChange = true}) {
     final previousValue = _value;
     _value = value;
     if (notifyChange) {
       _viewModel.notifyChanges([EmpireStateChanged(value, previousValue, propertyName: propertyName)]);
     }
+    return _value;
   }
 
   ///Resets the value to what it was initialized with.
@@ -124,15 +129,15 @@ class EmpireProperty<T> implements EmpireValue<T> {
 }
 
 abstract class NullableEmpireProperty<T> extends EmpireProperty<T?> {
-  NullableEmpireProperty(super.value, super.viewModel);
+  NullableEmpireProperty(super.value, super.viewModel, {super.propertyName});
 
   bool get isNull => _value == null;
 
-  bool get isNotNull => _value == null;
+  bool get isNotNull => _value != null;
 }
 
 class EmpireBoolProperty extends EmpireProperty<bool> {
-  EmpireBoolProperty(super.value, super.viewModel);
+  EmpireBoolProperty(super.value, super.viewModel, {super.propertyName});
 
   ///Whether the underlying value is true
   bool get isTrue => _value;
@@ -142,7 +147,7 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
 }
 
 class EmpireNullableBoolProperty extends NullableEmpireProperty<bool?> {
-  EmpireNullableBoolProperty(super.value, super.viewModel);
+  EmpireNullableBoolProperty(super.value, super.viewModel, {super.propertyName});
 
   ///Whether the underlying value is not null and true
   bool get isTrue => isNotNull && _value == true;
@@ -152,7 +157,7 @@ class EmpireNullableBoolProperty extends NullableEmpireProperty<bool?> {
 }
 
 class EmpireListProperty<T> extends EmpireProperty<List<T>> {
-  EmpireListProperty(super.value, super.viewModel);
+  EmpireListProperty(super.value, super.viewModel, {super.propertyName});
 
   /// The number of objects in this list.
   ///
@@ -192,7 +197,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// print(numbers); // [1, 2, 3, 4, 5, 6]
   /// ```
   void addAll(Iterable<T> values, {bool notifyChanges = true}) {
-    _value.addAll(value);
+    _value.addAll(values);
 
     if (notifyChanges) {
       _viewModel.notifyChanges([EmpireStateChanged.addedAllToList(values)]);
@@ -374,7 +379,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
 }
 
 class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
-  EmpireMapProperty(super.value, super.viewModel);
+  EmpireMapProperty(super.value, super.viewModel, {super.propertyName});
 
   ///The map entries in the map
   Iterable<MapEntry<K, V>> get entries => _value.entries;
@@ -669,7 +674,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
 }
 
 class EmpireStringProperty extends EmpireProperty<String> {
-  EmpireStringProperty(super.value, super.viewModel);
+  EmpireStringProperty(super.value, super.viewModel, {super.propertyName});
 
   ///Whether the string value is empty
   bool get isEmpty => _value.isEmpty;
@@ -713,7 +718,7 @@ class EmpireStringProperty extends EmpireProperty<String> {
 }
 
 class EmpireNullableStringProperty extends NullableEmpireProperty<String?> {
-  EmpireNullableStringProperty(super.value, super.viewModel);
+  EmpireNullableStringProperty(super.value, super.viewModel, {super.propertyName});
 
   ///Whether the string value is empty
   ///
@@ -767,7 +772,7 @@ class EmpireNullableStringProperty extends NullableEmpireProperty<String?> {
 }
 
 class EmpireIntProperty extends EmpireProperty<int> {
-  EmpireIntProperty(super.value, super.viewModel);
+  EmpireIntProperty(super.value, super.viewModel, {super.propertyName});
 
   /// Returns true if the int value is odd
   bool get isOdd => _value.isOdd;
@@ -783,10 +788,20 @@ class EmpireIntProperty extends EmpireProperty<int> {
 
   /// Returns the absolute value of this integer.
   int abs() => _value.abs();
+
+  int operator +(other) => set((value + other).toInt());
+
+  int operator -(other) => set((value - other).toInt());
+
+  int operator /(other) => set(value ~/ other);
+
+  int operator %(other) => set((value % other).toInt());
+
+  int operator *(other) => set((value * other).toInt());
 }
 
 class EmpireNullableIntProperty extends NullableEmpireProperty<int?> {
-  EmpireNullableIntProperty(super.value, super.viewModel);
+  EmpireNullableIntProperty(super.value, super.viewModel, {super.propertyName});
 
   /// Returns true if the int value is odd
   ///
@@ -812,10 +827,30 @@ class EmpireNullableIntProperty extends NullableEmpireProperty<int?> {
   ///
   /// Returns null if the int value is null
   int? abs() => _value?.abs();
+
+  int operator +(other) => isNotNull
+      ? set((value! + other).toInt())!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  int operator -(other) => isNotNull
+      ? set((value! - other).toInt())!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  int operator /(other) => isNotNull
+      ? set(value! ~/ other)!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  int operator %(other) => isNotNull
+      ? set((value! % other).toInt())!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  int operator *(other) => isNotNull
+      ? set((value! * other).toInt())!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 }
 
 class EmpireDoubleProperty extends EmpireProperty<double> {
-  EmpireDoubleProperty(super.value, super.viewModel);
+  EmpireDoubleProperty(super.value, super.viewModel, {super.propertyName});
 
   /// Whether this number is negative.
   bool get isNegative => _value.isNegative;
@@ -859,10 +894,20 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// print((-3.5).roundToDouble()); // -4.0
   /// ```
   double roundToDouble() => _value.roundToDouble();
+
+  double operator +(other) => set(value + other);
+
+  double operator -(other) => set(value - other);
+
+  double operator /(other) => set(value / other);
+
+  double operator %(other) => set(value % other);
+
+  double operator *(other) => set(value * other);
 }
 
 class EmpireNullableDoubleProperty extends NullableEmpireProperty<double?> {
-  EmpireNullableDoubleProperty(super.value, super.viewModel);
+  EmpireNullableDoubleProperty(super.value, super.viewModel, {super.propertyName});
 
   /// Whether this number is negative.
   ///
@@ -914,4 +959,24 @@ class EmpireNullableDoubleProperty extends NullableEmpireProperty<double?> {
   /// print((-3.5).roundToDouble()); // -4.0
   /// ```
   double? roundToDouble() => _value?.roundToDouble();
+
+  double operator +(other) => isNotNull
+      ? set(value! + other)!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  double operator -(other) => isNotNull
+      ? set(value! - other)!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  double operator /(other) => isNotNull
+      ? set(value! / other)!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  double operator %(other) => isNotNull
+      ? set(value! % other)!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+
+  double operator *(other) => isNotNull
+      ? set(value! * other)!
+      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 }

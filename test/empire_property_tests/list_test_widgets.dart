@@ -1,0 +1,44 @@
+import 'package:empire/empire.dart';
+import 'package:flutter/material.dart';
+
+class ListViewModel extends EmpireViewModel {
+  late final EmpireListProperty<String> planets;
+
+  @override
+  void initProperties() {
+    planets = createEmptyListProperty();
+  }
+}
+
+class ListTestWidget extends EmpireWidget<ListViewModel> {
+  const ListTestWidget({
+    Key? key,
+    required ListViewModel viewModel,
+  }) : super(key: key, viewModel: viewModel);
+
+  @override
+  EmpireState<EmpireWidget<EmpireViewModel>, ListViewModel> createEmpire() {
+    return _BoolTestWidgetState(viewModel);
+  }
+}
+
+class _BoolTestWidgetState extends EmpireState<ListTestWidget, ListViewModel> {
+  _BoolTestWidgetState(super.viewModel);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Builder(
+          builder: (innerContext) {
+            return Center(
+              child: Column(
+                children: viewModel.planets.value.map((e) => Text(e)).toList(),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
