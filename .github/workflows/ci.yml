@@ -107,5 +107,10 @@ jobs:
           channel: stable
 
       - run: flutter pub get
+        working-directory: examples
+
       - run: flutter analyze
+        working-directory: examples
+
       - run: flutter test
+        working-directory: examples
