@@ -895,15 +895,15 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// ```
   double roundToDouble() => _value.roundToDouble();
 
-  double operator +(other) => set(value + other);
+  double operator +(other) => value + other;
 
-  double operator -(other) => set(value - other);
+  double operator -(other) => value - other;
 
-  double operator /(other) => set(value / other);
+  double operator /(other) => value / other;
 
-  double operator %(other) => set(value % other);
+  double operator %(other) => value % other;
 
-  double operator *(other) => set(value * other);
+  double operator *(other) => value * other;
 }
 
 class EmpireNullableDoubleProperty extends NullableEmpireProperty<double?> {
@@ -961,22 +961,22 @@ class EmpireNullableDoubleProperty extends NullableEmpireProperty<double?> {
   double? roundToDouble() => _value?.roundToDouble();
 
   double operator +(other) => isNotNull
-      ? set(value! + other)!
+      ? value! + other!
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   double operator -(other) => isNotNull
-      ? set(value! - other)!
+      ? value! - other!
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   double operator /(other) => isNotNull
-      ? set(value! / other)!
+      ? value! / other!
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   double operator %(other) => isNotNull
-      ? set(value! % other)!
+      ? value! % other!
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 
   double operator *(other) => isNotNull
-      ? set(value! * other)!
+      ? value! * other!
       : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
 }
