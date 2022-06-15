@@ -54,7 +54,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => viewModel.count(viewModel.count.value + 1),
+        onPressed: viewModel.incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
