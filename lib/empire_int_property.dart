@@ -92,7 +92,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///
 ///```
 ///
-class EmpireNullableIntProperty extends NullableEmpireProperty<int?> {
+class EmpireNullableIntProperty extends EmpireProperty<int?> {
   EmpireNullableIntProperty(super.value, super.viewModel, {super.propertyName});
 
   /// Returns true if the int value is odd

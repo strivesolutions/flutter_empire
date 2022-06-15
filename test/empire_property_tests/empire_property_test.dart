@@ -132,6 +132,26 @@ void main() {
       // ignore: unrelated_type_equality_checks
       expect(ageOne == name, isFalse);
     });
+
+    test('isNull - value is null - returns true', () {
+      final EmpireProperty<String?> nullName = viewModel.createNullProperty();
+      expect(nullName.isNull, isTrue);
+    });
+
+    test('isNull - value is not null - returns false', () {
+      final EmpireProperty<String> nullName = viewModel.createProperty('Bob');
+      expect(nullName.isNull, isFalse);
+    });
+
+    test('isNotNull - value is not null - returns true', () {
+      final EmpireProperty<String> nullName = viewModel.createProperty('Bob');
+      expect(nullName.isNotNull, isTrue);
+    });
+
+    test('isNotNull - value is null - returns false', () {
+      final EmpireProperty<String?> nullName = viewModel.createNullProperty();
+      expect(nullName.isNotNull, isFalse);
+    });
   });
 
   group('Property Reset Tests', () {

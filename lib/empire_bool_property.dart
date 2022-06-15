@@ -24,7 +24,7 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
 ///
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
-class EmpireNullableBoolProperty extends NullableEmpireProperty<bool?> {
+class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
   EmpireNullableBoolProperty(super.value, super.viewModel, {super.propertyName});
 
   ///Whether the underlying value is not null and true

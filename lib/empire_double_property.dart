@@ -120,7 +120,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///
 ///```
 ///
-class EmpireNullableDoubleProperty extends NullableEmpireProperty<double?> {
+class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   EmpireNullableDoubleProperty(super.value, super.viewModel, {super.propertyName});
 
   /// Whether this number is negative.
