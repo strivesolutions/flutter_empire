@@ -175,5 +175,16 @@ void main() {
 
       expect(result, equals(earth));
     });
+
+    test('map - generate different type in map function - returns correct values', () {
+      String earth = 'Earth';
+      String venus = 'Venus';
+
+      viewModel.planets.addAll([earth, venus]);
+
+      final results = viewModel.planets.map((planet) => planet.length).toList();
+
+      expect(results, const TypeMatcher<List<int>>());
+    });
   });
 }

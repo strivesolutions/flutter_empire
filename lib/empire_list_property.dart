@@ -184,7 +184,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// var values = products.map((product) => product['price'] as double);
   /// var totalPrice = values.fold(0.0, (a, b) => a + b); // 42.5.
   /// ```
-  Iterable<T> map(T Function(T) toElement) {
+  Iterable<E> map<E>(E Function(T) toElement) {
     return _value.map(toElement);
   }
 
