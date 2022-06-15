@@ -46,7 +46,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
                 child: const Text('White'),
               ),
               TextButton(
-                onPressed: () => viewModel.count(0),
+                onPressed: viewModel.count.reset,
                 child: const Text('Reset'),
               ),
             ],
