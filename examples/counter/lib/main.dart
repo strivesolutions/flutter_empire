@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         ApplicationViewModel(),
         onAppStateChanged: () => const Uuid().v1(),
         child: CounterPage(
-          title: 'Empire State',
           viewModel: CounterViewModel(),
         ),
       ),

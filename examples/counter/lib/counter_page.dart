@@ -4,9 +4,7 @@ import 'application_view_model.dart';
 import 'counter_view_model.dart';
 
 class CounterPage extends EmpireWidget<CounterViewModel> {
-  const CounterPage({Key? key, required this.title, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);
-  final String title;
+  const CounterPage({Key? key, required CounterViewModel viewModel}) : super(key: key, viewModel: viewModel);
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
@@ -17,10 +15,12 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
 
   @override
   Widget build(BuildContext context) {
+    final appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
+
     return Scaffold(
-      backgroundColor: Empire.of(context).viewModel<ApplicationViewModel>().backgroundColor.value,
+      backgroundColor: appViewModel.backgroundColor.value,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(appViewModel.title.value),
       ),
       body: Center(
         child: ifBusy(
