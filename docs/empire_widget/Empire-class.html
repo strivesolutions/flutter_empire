@@ -51,8 +51,8 @@
 
     
 <section class="desc markdown">
-  <p>Intended to be used near the root of the application to supply app level state and functions.</p>
-<p>This widget must be below your <a href="https://api.flutter.dev/flutter/cupertino/CupertinoApp-class.html">CupertinoApp</a> or <a href="https://api.flutter.dev/flutter/material/MaterialApp-class.html">MaterialApp</a> widget.</p>
+  <p>Used to provide shared state and functions across specific scopes of your application, or the
+entire application itself.</p>
 <p>The <a href="../empire_widget/Empire/viewModel.html">viewModel</a> should contain any state or functionality that is required by one or more child
 widgets. See <a href="../empire_widget/Empire/viewModelOf.html">viewModelOf</a> for information on accessing the view model.</p>
 <p><a href="../empire_widget/Empire/onAppStateChanged.html">onAppStateChanged</a> is required and should return a unique <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a> value each time it is called.
@@ -61,7 +61,7 @@ updating all it's child widgets. Consider using the <a href="https://pub.dev/pac
 <p><em>If you are implementing your own unique string mechanism, know that if it generates the same value
 twice in a row, your second change will not be reflected in the application until a new, unique
 value is generated.</em></p>
-<h2 id="example-using-uuid">Example Using Uuid</h2>
+<h3 id="example-using-uuid">Example Using Uuid</h3>
 <pre class="language-dart"><code class="language-dart">import 'package:uuid/uuid.dart';
 
 Empire(
@@ -69,6 +69,28 @@ Empire(
  child: HomePage(),
  onAppStateChanged: () =&gt; Uuid().v1(),
 )
+</code></pre>
+<h3 id="nested--scoped-empires">Nested / Scoped Empires</h3>
+<pre class="language-dart"><code class="language-dart">Empire(
+ MyApplicationViewModel(),
+ onAppStateChanged: () =&gt; Uuid().v1(),
+ child: MaterialApp(
+  title: 'My App',
+  home: Scaffold(
+    backgroundColor: Empire.viewModelOf&lt;MyApplicationViewModel&gt;().backgroundColor.value,
+    child: Empire(
+      MyHomePageViewModel(),
+      onAppStateChanged: () =&gt; Uuid().v1(),
+      child: Builder(builder: (innerContext){
+        return Center(
+          child: Text(${Empire.viewModelOf&lt;MyHomePageViewModel&gt;().title.value})
+        );
+      }),
+    )
+  )
+ )
+)
+
 </code></pre>
 </section>
 
@@ -351,14 +373,14 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
     <h2>Static Methods</h2>
     <dl class="callables">
         <dt id="of" class="callable">
-  <span class="name"><a href="../empire_widget/Empire/of.html">of</a></span><span class="signature">(<wbr><span class="parameter" id="of-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
-    <span class="returntype parameter">&#8594; <a href="../empire_widget/EmpireApp-class.html">EmpireApp</a></span>
+  <span class="name"><a href="../empire_widget/Empire/of.html">of</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="of-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_widget/EmpireApp-class.html">EmpireApp</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Gets the instance of the <a href="../empire_widget/EmpireApp-class.html">EmpireApp</a>.
+  Gets the instance of the <a href="../empire_widget/EmpireApp-class.html">EmpireApp</a> that matches the generic type argument <code>T</code>.
   
 
 </dd>
@@ -371,7 +393,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 
 </dt>
 <dd>
-  Gets the <a href="../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a> from the <a href="../empire_widget/EmpireApp-class.html">EmpireApp</a>.
+  Gets the <a href="../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a> from the <a href="../empire_widget/EmpireApp-class.html">EmpireApp</a> that matches the generic type argument <code>T</code>.
   
 
 </dd>
@@ -461,7 +483,7 @@ tools and by <a href="https://api.flutter.dev/flutter/foundation/DiagnosticsNode
 <footer>
   <span class="no-break">
     empire
-      0.5.0
+      0.6.0
   </span>
 
   

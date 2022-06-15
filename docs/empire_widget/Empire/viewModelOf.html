@@ -61,7 +61,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Gets the <a href="../../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a> from the <a href="../../empire_widget/EmpireApp-class.html">EmpireApp</a>.</p>
+  <p>Gets the <a href="../../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a> from the <a href="../../empire_widget/EmpireApp-class.html">EmpireApp</a> that matches the generic type argument <code>T</code>.</p>
 <p>This method can be called from any widget
 below this one in the widget tree. (Example: from a child widget):</p>
 <pre class="language-dart"><code class="language-dart">Empire.viewModelOf&lt;MyApplicationViewModel&gt;().logOut();
@@ -73,8 +73,8 @@ below this one in the widget tree. (Example: from a child widget):</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static T viewModelOf&lt;T extends EmpireViewModel&gt;(BuildContext context) {
-  final EmpireApp result = of(context);
-  return result.viewModel&lt;T&gt;();
+  final EmpireApp&lt;T&gt; result = of(context);
+  return result.viewModel();
 }</code></pre>
 </section>
 
@@ -146,7 +146,7 @@ below this one in the widget tree. (Example: from a child widget):</p>
 <footer>
   <span class="no-break">
     empire
-      0.5.0
+      0.6.0
   </span>
 
   
