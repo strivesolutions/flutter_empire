@@ -1,12 +1,12 @@
+import 'dart:async';
+
 import 'package:empire/empire.dart';
 import 'package:flutter/material.dart';
 import 'application_view_model.dart';
 import 'counter_view_model.dart';
 
 class CounterPage extends EmpireWidget<CounterViewModel> {
-  const CounterPage({Key? key, required this.title, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);
-  final String title;
+  const CounterPage({Key? key, required CounterViewModel viewModel}) : super(key: key, viewModel: viewModel);
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
@@ -15,12 +15,43 @@ class CounterPage extends EmpireWidget<CounterViewModel> {
 class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
   _CounterPageState(super.viewModel);
 
+  late ApplicationViewModel appViewModel;
+
+  StreamSubscription? countChangedSubscription;
+
+  Future<void> subscribeToCountChanges() async {
+    if (countChangedSubscription == null) {
+      countChangedSubscription = viewModel.addOnStateChangedListener((events) {
+        for (var event in events) {
+          if (event.propertyName == "count" && viewModel.changeBackgroundOnCountChange.isTrue) {
+            appViewModel.randomizeBackgroundColor();
+          }
+        }
+      });
+    } else {
+      countChangedSubscription!.resume();
+    }
+
+    viewModel.changeBackgroundOnCountChange(true);
+  }
+
+  Future<void> unsubscribeToCountChanges() async {
+    countChangedSubscription?.pause();
+    viewModel.changeBackgroundOnCountChange(false);
+  }
+
+  @override
+  void didChangeDependencies() {
+    appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Empire.of(context).viewModel<ApplicationViewModel>().backgroundColor.value,
+      backgroundColor: appViewModel.backgroundColor.value,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(appViewModel.title.value),
       ),
       body: Center(
         child: ifBusy(
@@ -46,7 +77,22 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
                 child: const Text('White'),
               ),
               TextButton(
-                onPressed: () => viewModel.count(0),
+                onPressed: () async {
+                  if (viewModel.changeBackgroundOnCountChange.isFalse) {
+                    await subscribeToCountChanges();
+                  } else {
+                    await unsubscribeToCountChanges();
+                  }
+                },
+                child: Text(viewModel.changeBackgroundOnCountChange.isFalse
+                    ? 'Randomize Background Color on Count Change'
+                    : 'Turn Off Random Backgrounds'),
+              ),
+              TextButton(
+                onPressed: () {
+                  viewModel.reset();
+                  appViewModel.reset();
+                },
                 child: const Text('Reset'),
               ),
             ],
@@ -54,7 +100,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => viewModel.count(viewModel.count.value + 1),
+        onPressed: viewModel.incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
