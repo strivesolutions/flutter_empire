@@ -2,8 +2,6 @@ import 'package:empire/empire_view_model.dart';
 import 'package:flutter/widgets.dart';
 
 ///This widget is not intended to be created manually and is used by the [Empire] widget.
-///However, you can create your own class that extends [EmpireApp] to facilitate scoped state and
-///functions. See [Empire] documentation for examples.
 ///
 ///[_uuid] is used to track whether or not this widget should notify its children that they need to
 ///rebuild.
