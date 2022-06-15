@@ -26,7 +26,7 @@ class EmpireApp<T extends EmpireViewModel> extends InheritedWidget {
 }
 
 ///Used to provide shared state and functions across specific scopes of your application, or the
-///entire application itself.///
+///entire application itself.
 ///
 ///The [viewModel] should contain any state or functionality that is required by one or more child
 ///widgets. See [viewModelOf] for information on accessing the view model.
