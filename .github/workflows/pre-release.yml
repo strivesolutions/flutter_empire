@@ -33,7 +33,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      - run: git diff HEAD~1 HEAD | grep version:
+      - run: git diff HEAD~1 HEAD | grep version
 
       - name: Detect new version
         id: changes
