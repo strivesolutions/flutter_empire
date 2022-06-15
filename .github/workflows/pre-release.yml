@@ -31,7 +31,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Calculate path changes
+      - name: Detect new version
         id: changes
         run: |
           NEW_VERSION="$(./versionChangeCheck.sh)"
