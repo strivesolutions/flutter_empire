@@ -21,7 +21,7 @@ jobs:
           access_token: ${{ github.token }}
 
   check:
-    name: Detected version change
+    name: Detect version change
     runs-on: ubuntu-latest
 
     outputs:
@@ -37,7 +37,7 @@ jobs:
         id: changes
         run: |
           NEW_VERSION="$(./versionChangeCheck.sh)"
-          echo $NEW_VERSION
+          echo "New version = $NEW_VERSION"
           echo ::set-output name=newVersion::$NEW_VERSION
 
   # create-release:
