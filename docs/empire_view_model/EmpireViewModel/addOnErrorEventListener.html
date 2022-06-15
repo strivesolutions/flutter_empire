@@ -52,8 +52,8 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
-<span class="name ">addOnErrorEventListener</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addOnErrorEventListener-param-onError"><span class="type-annotation">dynamic</span> <span class="parameter-name">onError</span>(<ol class="parameter-list"><li><span class="parameter" id="param-"><span class="type-annotation"><a href="../../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/StreamSubscription-class.html">StreamSubscription</a></span>
+<span class="name ">addOnErrorEventListener</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addOnErrorEventListener-param-onError"><span class="type-annotation">dynamic</span> <span class="parameter-name">onError</span>(<ol class="parameter-list"><li><span class="parameter" id="param-event"><span class="type-annotation"><a href="../../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span> <span class="parameter-name">event</span></span></li>
 </ol>
 )</span></li>
 </ol>)
@@ -70,8 +70,10 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void addOnErrorEventListener(Function(ErrorEvent) onError) {
+  <pre class="language-dart"><code class="language-dart">StreamSubscription addOnErrorEventListener(Function(ErrorEvent event) onError) {
+  final newSubscription = _errorStream.listen(onError);
   _subscriptions.add(_errorStream.listen(onError));
+  return newSubscription;
 }</code></pre>
 </section>
 
@@ -111,8 +113,21 @@
     <li class="section-title"><a href="../../empire_view_model/EmpireViewModel-class.html#instance-methods">Methods</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/cancelSubscription.html">cancelSubscription</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createBoolProperty.html">createBoolProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createDoubleProperty.html">createDoubleProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createEmptyListProperty.html">createEmptyListProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createEmptyMapProperty.html">createEmptyMapProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createIntProperty.html">createIntProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createListProperty.html">createListProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createMapProperty.html">createMapProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableBoolProperty.html">createNullableBoolProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableDoubleProperty.html">createNullableDoubleProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableIntProperty.html">createNullableIntProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableStringProperty.html">createNullableStringProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/createProperty.html">createProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createStringProperty.html">createStringProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/dispose.html">dispose</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/doAsync.html">doAsync</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/initProperties.html">initProperties</a></li>
@@ -142,7 +157,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.4.0
+      0.5.0
   </span>
 
   
