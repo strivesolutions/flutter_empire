@@ -53,7 +53,7 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">setMultiple</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMultiple-param-setters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">setters</span></span></li>
+<span class="name ">setMultiple</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMultiple-param-setters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../empire_property/EmpireProperty-class.html">EmpireProperty</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">setters</span></span></li>
 </ol>)
 
       
@@ -61,7 +61,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Set multiple <a href="../../empire_view_model/EmpireProperty-class.html">EmpireProperty</a> values, but only trigger a single state change</p>
+  <p>Set multiple <a href="../../empire_property/EmpireProperty-class.html">EmpireProperty</a> values, but only trigger a single state change</p>
 <p>The <code>setters</code> keys should be the properties you want to set. The values should be the new
 values for each property.</p>
 <h2 id="usage">Usage</h2>
@@ -126,8 +126,21 @@ setMultiple({name: 'Doug', age: 45});
     <li class="section-title"><a href="../../empire_view_model/EmpireViewModel-class.html#instance-methods">Methods</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/cancelSubscription.html">cancelSubscription</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createBoolProperty.html">createBoolProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createDoubleProperty.html">createDoubleProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createEmptyListProperty.html">createEmptyListProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createEmptyMapProperty.html">createEmptyMapProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createIntProperty.html">createIntProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createListProperty.html">createListProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createMapProperty.html">createMapProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableBoolProperty.html">createNullableBoolProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableDoubleProperty.html">createNullableDoubleProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableIntProperty.html">createNullableIntProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createNullableStringProperty.html">createNullableStringProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/createProperty.html">createProperty</a></li>
+    <li><a href="../../empire_view_model/EmpireViewModel/createStringProperty.html">createStringProperty</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/dispose.html">dispose</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/doAsync.html">doAsync</a></li>
     <li><a href="../../empire_view_model/EmpireViewModel/initProperties.html">initProperties</a></li>
@@ -157,7 +170,7 @@ setMultiple({name: 'Doug', age: 45});
 <footer>
   <span class="no-break">
     empire
-      0.4.0
+      0.5.0
   </span>
 
   
