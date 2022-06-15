@@ -15,37 +15,39 @@ class CounterPage extends EmpireWidget<CounterViewModel> {
 class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
   _CounterPageState(super.viewModel);
 
+  late ApplicationViewModel appViewModel;
+
   StreamSubscription? countChangedSubscription;
 
-  void randomizeBackgroundColor() {
-    final appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
-    appViewModel.randomizeBackgroundColor();
-  }
-
   Future<void> subscribeToCountChanges() async {
-    await unsubscribeToCountChanges();
-
-    countChangedSubscription = viewModel.addOnStateChangedListener((events) {
-      for (var event in events) {
-        if (event.propertyName == "count" && viewModel.changeBackgroundOnCountChange.isTrue) {
-          randomizeBackgroundColor();
+    if (countChangedSubscription == null) {
+      countChangedSubscription = viewModel.addOnStateChangedListener((events) {
+        for (var event in events) {
+          if (event.propertyName == "count" && viewModel.changeBackgroundOnCountChange.isTrue) {
+            appViewModel.randomizeBackgroundColor();
+          }
         }
-      }
-    });
+      });
+    } else {
+      countChangedSubscription!.resume();
+    }
 
     viewModel.changeBackgroundOnCountChange(true);
   }
 
   Future<void> unsubscribeToCountChanges() async {
-    await viewModel.cancelSubscription(countChangedSubscription);
-    countChangedSubscription = null;
+    countChangedSubscription?.pause();
     viewModel.changeBackgroundOnCountChange(false);
   }
 
   @override
-  Widget build(BuildContext context) {
-    final appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
+  void didChangeDependencies() {
+    appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
+    super.didChangeDependencies();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appViewModel.backgroundColor.value,
       appBar: AppBar(
@@ -87,7 +89,10 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
                     : 'Turn Off Random Backgrounds'),
               ),
               TextButton(
-                onPressed: viewModel.count.reset,
+                onPressed: () {
+                  viewModel.reset();
+                  appViewModel.reset();
+                },
                 child: const Text('Reset'),
               ),
             ],

@@ -19,4 +19,8 @@ class ApplicationViewModel extends EmpireViewModel {
     final color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
     backgroundColor(color);
   }
+
+  void reset() {
+    backgroundColor.reset();
+  }
 }
