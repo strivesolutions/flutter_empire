@@ -139,6 +139,22 @@ abstract class EmpireViewModel {
     }
   }
 
+  ///Sets the busy status to `true`
+  ///
+  ///[busyTaskKey] can be optionally set to help identify why the view model is busy. This can then
+  ///be accessed by the UI to react differently depending on what the view model is doing.
+  void setBusy({dynamic busyTaskKey}) {
+    setBusyStatus(isBusy: true, busyTaskKey: busyTaskKey);
+  }
+
+  ///Sets the busy status to `false`
+  ///
+  ///[busyTaskKey] can be optionally set to help identify why the view model is busy. This can then
+  ///be accessed by the UI to react differently depending on what the view model is doing.
+  void setNotBusy({dynamic busyTaskKey}) {
+    setBusyStatus(isBusy: false, busyTaskKey: busyTaskKey);
+  }
+
   ///Executes a long running task asynchronously.
   ///
   ///Automatically sets the view model [busy] status.
