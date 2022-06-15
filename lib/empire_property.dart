@@ -52,6 +52,10 @@ class EmpireProperty<T> implements EmpireValue<T> {
   @override
   T get value => _value;
 
+  bool get isNull => _value == null;
+
+  bool get isNotNull => !isNull;
+
   final EmpireViewModel _viewModel;
 
   EmpireProperty(this._value, this._viewModel, {this.propertyName}) {
