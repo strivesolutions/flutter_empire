@@ -1,6 +1,7 @@
 import 'package:empire/empire_property.dart';
 import 'package:empire/empire_view_model.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class ApplicationViewModel extends EmpireViewModel {
   late final EmpireProperty<Color> backgroundColor;
@@ -13,4 +14,9 @@ class ApplicationViewModel extends EmpireViewModel {
   }
 
   void changeBackgroundColor(Color color) => backgroundColor(color);
+
+  void randomizeBackgroundColor() {
+    final color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    backgroundColor(color);
+  }
 }

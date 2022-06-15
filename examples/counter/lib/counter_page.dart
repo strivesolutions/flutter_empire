@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:empire/empire.dart';
 import 'package:flutter/material.dart';
 import 'application_view_model.dart';
@@ -12,6 +14,33 @@ class CounterPage extends EmpireWidget<CounterViewModel> {
 
 class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
   _CounterPageState(super.viewModel);
+
+  StreamSubscription? countChangedSubscription;
+
+  void randomizeBackgroundColor() {
+    final appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
+    appViewModel.randomizeBackgroundColor();
+  }
+
+  Future<void> subscribeToCountChanges() async {
+    await unsubscribeToCountChanges();
+
+    countChangedSubscription = viewModel.addOnStateChangedListener((events) {
+      for (var event in events) {
+        if (event.propertyName == "count" && viewModel.changeBackgroundOnCountChange.isTrue) {
+          randomizeBackgroundColor();
+        }
+      }
+    });
+
+    viewModel.changeBackgroundOnCountChange(true);
+  }
+
+  Future<void> unsubscribeToCountChanges() async {
+    await viewModel.cancelSubscription(countChangedSubscription);
+    countChangedSubscription = null;
+    viewModel.changeBackgroundOnCountChange(false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +73,18 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
                 onPressed: () =>
                     Empire.viewModelOf<ApplicationViewModel>(context).changeBackgroundColor(Colors.white),
                 child: const Text('White'),
+              ),
+              TextButton(
+                onPressed: () async {
+                  if (viewModel.changeBackgroundOnCountChange.isFalse) {
+                    await subscribeToCountChanges();
+                  } else {
+                    await unsubscribeToCountChanges();
+                  }
+                },
+                child: Text(viewModel.changeBackgroundOnCountChange.isFalse
+                    ? 'Randomize Background Color on Count Change'
+                    : 'Turn Off Random Backgrounds'),
               ),
               TextButton(
                 onPressed: viewModel.count.reset,
