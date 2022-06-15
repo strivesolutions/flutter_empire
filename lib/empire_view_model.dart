@@ -72,8 +72,10 @@ abstract class EmpireViewModel {
   }
 
   ///Adds an event handler which gets executed each time [notifyError] is called.
-  void addOnErrorEventListener(Function(ErrorEvent event) onError) {
+  StreamSubscription addOnErrorEventListener(Function(ErrorEvent event) onError) {
+    final newSubscription = _errorStream.listen(onError);
     _subscriptions.add(_errorStream.listen(onError));
+    return newSubscription;
   }
 
   ///Inform the bound [EmpireState] that the state of the UI needs to be updated.
