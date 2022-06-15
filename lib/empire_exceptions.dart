@@ -1,4 +1,4 @@
-//Base class for any Empire specific exception
+///Base class for any Empire specific exception
 abstract class EmpireException implements Exception {
   final StackTrace? stack;
   final String? propertyName;
