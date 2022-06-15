@@ -186,5 +186,29 @@ void main() {
 
       expect(results, const TypeMatcher<List<int>>());
     });
+
+    test('isEmpty - list is empty - returns true', () {
+      final emptyList = viewModel.createEmptyListProperty<String>();
+
+      expect(emptyList.isEmpty, isTrue);
+    });
+
+    test('isEmpty - list is not empty - returns false', () {
+      final emptyList = viewModel.createListProperty(['Bob']);
+
+      expect(emptyList.isEmpty, isFalse);
+    });
+
+    test('isNotEmpty - list is empty - returns false', () {
+      final list = viewModel.createEmptyListProperty<String>();
+
+      expect(list.isNotEmpty, isFalse);
+    });
+
+    test('isNotEmpty - list is not empty - returns true', () {
+      final list = viewModel.createListProperty(['Bob']);
+
+      expect(list.isNotEmpty, isTrue);
+    });
   });
 }

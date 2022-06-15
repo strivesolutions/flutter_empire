@@ -16,6 +16,24 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// ```
   int get length => _value.length;
 
+  /// Whether this value has no elements.
+  ///
+  /// Example:
+  /// ```dart
+  /// final emptyList = createEmptyListProperty<String>()
+  /// print(emptyList.isEmpty); // true;
+  /// ```
+  bool get isEmpty => _value.isEmpty;
+
+  /// Whether this value has no elements.
+  ///
+  /// Example:
+  /// ```dart
+  /// final emptyList = createListProperty<String>(['Bob'])
+  /// print(emptyList.isNotEmpty); // true;
+  /// ```
+  bool get isNotEmpty => _value.isNotEmpty;
+
   /// Adds [value] to the end of this list,
   /// extending the length by one.
   ///
