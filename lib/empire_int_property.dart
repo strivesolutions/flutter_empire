@@ -56,7 +56,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///
 ///You can perform most arithmetic operator on this (+, -, /, *).
 ///If the underlying value of this is null and an arithmetic operator is called on this,
-///it will throw a [EmpireNullValueException].
+///it will throw a [EmpirePropertyNullValueException].
 ///
 ///Unary operators are not supported (++, --, +=, -=, etc)
 ///
@@ -122,21 +122,21 @@ class EmpireNullableIntProperty extends NullableEmpireProperty<int?> {
 
   int operator +(other) => isNotNull
       ? (value! + other).toInt()
-      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator -(other) => isNotNull
       ? (value! - other).toInt()
-      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator /(other) => isNotNull
       ? value! ~/ other!
-      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator %(other) => isNotNull
       ? (value! % other).toInt()
-      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
 
   int operator *(other) => isNotNull
       ? (value! * other).toInt()
-      : throw EmpireNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
 }

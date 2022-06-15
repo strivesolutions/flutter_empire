@@ -407,43 +407,61 @@ class EmpireStateChanged<T> {
 
   EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName, this.description});
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what value was added to the list
   static EmpireStateChanged addedToList<V>(V newValue, {String? propertyName}) =>
       EmpireStateChanged(newValue, null, propertyName: propertyName, description: 'Added To List: $newValue');
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing all the values that were added to the list
   static EmpireStateChanged addedAllToList<V>(Iterable<V> newValues, {String? propertyName}) =>
       EmpireStateChanged(newValues, null,
           propertyName: propertyName, description: 'Added All To List: $newValues');
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what value was removed from the list
   static EmpireStateChanged removedFromList<V>(V removedValue, {String? propertyName}) =>
       EmpireStateChanged(null, removedValue,
           propertyName: propertyName, description: 'Removed From List: $removedValue');
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///stating that the entire list was cleared
   static EmpireStateChanged<Iterable<V>> clearedList<V>(Iterable<V> iterable, {String? propertyName}) =>
       EmpireStateChanged(<V>[], iterable, propertyName: propertyName, description: 'Iterable Cleared');
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what new map values were added to another map
   static EmpireStateChanged addedMapToMap<K, V>(Map<K, V> addedMap, {String? propertyName}) {
     return EmpireStateChanged(addedMap, null,
         propertyName: propertyName, description: 'Added Map To Map: $addedMap');
   }
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what key/value was added to the map
   static EmpireStateChanged addedToMap<K, V>(K key, V newValue, {String? propertyName}) {
     final newEntry = MapEntry(key, newValue);
     return EmpireStateChanged(newEntry, null,
         propertyName: propertyName, description: 'Added To Map: $newEntry');
   }
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what [MapEntry] objects were added to the map
   static EmpireStateChanged addedEntriesToMap<K, V>(Iterable<MapEntry<K, V>> entries,
       {String? propertyName}) {
     return EmpireStateChanged(entries, null,
         propertyName: propertyName, description: 'Added Entries To Map: $entries');
   }
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what changes were made to a map entry, including for which key
   static EmpireStateChanged<V> updateMapEntry<K, V>(K key, V? originalValue, V? nextValue,
       {String? propertyName}) {
     return EmpireStateChanged<V>(nextValue, originalValue,
         propertyName: propertyName, description: 'Update Map Value For Key: $key');
   }
 
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing what key/value was removed from the map
   static EmpireStateChanged<V> removedFromMap<K, V>(K key, V removedValue, {String? propertyName}) {
     final removedEntry = MapEntry(key, removedValue);
     return EmpireStateChanged<V>(null, removedValue,
