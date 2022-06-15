@@ -17,6 +17,14 @@ class _ApplicationViewModel extends EmpireViewModel {
   void change() => changed(!changed.value);
 }
 
+class _ApplicationSubViewModel extends EmpireViewModel {
+  late final EmpireStringProperty viewModelName;
+  @override
+  void initProperties() {
+    viewModelName = createStringProperty('SubViewModel');
+  }
+}
+
 class _TestViewModel extends EmpireViewModel {
   late EmpireProperty<String?> firstName;
   late EmpireProperty<String?> lastName;
@@ -32,10 +40,12 @@ class _TestViewModel extends EmpireViewModel {
 
 class _MyWidget extends EmpireWidget<_TestViewModel> {
   final _ApplicationViewModel applicationViewModel;
+  final _ApplicationSubViewModel appSubViewModel;
   const _MyWidget({
     Key? key,
     required _TestViewModel viewModel,
     required this.applicationViewModel,
+    required this.appSubViewModel,
   }) : super(key: key, viewModel: viewModel);
 
   @override
@@ -55,18 +65,25 @@ class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
       child: MaterialApp(
         home: Scaffold(
           body: Builder(
-            builder: (innerContext) {
-              return Center(
-                child: Column(
-                  children: [
-                    Text(viewModel.firstName.value ?? ''),
-                    Text(viewModel.lastName.value ?? ''),
-                    Text(
-                      viewModel.age.value.toString(),
+            builder: (outerContext) {
+              return Empire(
+                widget.appSubViewModel,
+                onAppStateChanged: () => math.Random().nextInt(1000000).toString(),
+                child: Builder(builder: (innerContext) {
+                  return Center(
+                    child: Column(
+                      children: [
+                        Text(viewModel.firstName.value ?? ''),
+                        Text(viewModel.lastName.value ?? ''),
+                        Text(
+                          viewModel.age.value.toString(),
+                        ),
+                        Text('${Empire.of<_ApplicationViewModel>(outerContext).viewModel().changed}'),
+                        Text('${Empire.of<_ApplicationSubViewModel>(innerContext).viewModel().viewModelName}')
+                      ],
                     ),
-                    Text('${Empire.of(innerContext).viewModel<_ApplicationViewModel>().changed}')
-                  ],
-                ),
+                  );
+                }),
               );
             },
           ),
@@ -80,10 +97,16 @@ void main() {
   late _MyWidget mainWidget;
   late _TestViewModel viewModel;
   late _ApplicationViewModel appViewModel;
+  late _ApplicationSubViewModel subViewModel;
   setUp(() {
     viewModel = _TestViewModel();
     appViewModel = _ApplicationViewModel();
-    mainWidget = _MyWidget(viewModel: viewModel, applicationViewModel: appViewModel);
+    subViewModel = _ApplicationSubViewModel();
+    mainWidget = _MyWidget(
+      viewModel: viewModel,
+      applicationViewModel: appViewModel,
+      appSubViewModel: subViewModel,
+    );
   });
 
   testWidgets('EmpireWidget Test - Finds Correct Text Widget After Property Change', (tester) async {
@@ -142,5 +165,17 @@ void main() {
     expect(find.text(newFirstName), findsOneWidget);
     expect(find.text(newLastName), findsOneWidget);
     expect(find.text(newAge.toString()), findsOneWidget);
+  });
+
+  testWidgets('EmpireWidget Test - Finds Sub Application View Model', (tester) async {
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
+  });
+
+  testWidgets('EmpireWidget Test - Finds Sub Application View Model', (tester) async {
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
   });
 }

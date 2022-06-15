@@ -42,7 +42,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
 
   @override
   void didChangeDependencies() {
-    appViewModel = Empire.of(context).viewModel<ApplicationViewModel>();
+    appViewModel = Empire.of<ApplicationViewModel>(context).viewModel();
     super.didChangeDependencies();
   }
 

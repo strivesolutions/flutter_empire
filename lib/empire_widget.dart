@@ -2,14 +2,13 @@ import 'package:empire/empire_view_model.dart';
 import 'package:flutter/widgets.dart';
 
 ///This widget is not intended to be created manually and is used by the [Empire] widget.
-///However, that doesn't mean you can't use it manually for your own use case. See [Empire] for more details.
 ///
 ///[_uuid] is used to track whether or not this widget should notify its children that they need to
 ///rebuild.
 ///
 ///[viewModel] should contain any properties or functions that any child below this widget need
 ///access to.
-class EmpireApp extends InheritedWidget {
+class EmpireApp<T extends EmpireViewModel> extends InheritedWidget {
   const EmpireApp(
     this._uuid, {
     Key? key,
@@ -18,7 +17,7 @@ class EmpireApp extends InheritedWidget {
   }) : super(key: key);
 
   final String? _uuid;
-  final T Function<T extends EmpireViewModel>() viewModel;
+  final T Function() viewModel;
 
   @override
   bool updateShouldNotify(covariant EmpireApp oldWidget) {
@@ -26,9 +25,8 @@ class EmpireApp extends InheritedWidget {
   }
 }
 
-///Intended to be used near the root of the application to supply app level state and functions.
-///
-///This widget must be below your [CupertinoApp] or [MaterialApp] widget.
+///Used to provide shared state and functions across specific scopes of your application, or the
+///entire application itself.
 ///
 ///The [viewModel] should contain any state or functionality that is required by one or more child
 ///widgets. See [viewModelOf] for information on accessing the view model.
@@ -41,7 +39,7 @@ class EmpireApp extends InheritedWidget {
 ///twice in a row, your second change will not be reflected in the application until a new, unique
 ///value is generated.*
 ///
-///## Example Using Uuid
+///### Example Using Uuid
 ///
 ///```dart
 ///import 'package:uuid/uuid.dart';
@@ -51,6 +49,31 @@ class EmpireApp extends InheritedWidget {
 ///  child: HomePage(),
 ///  onAppStateChanged: () => Uuid().v1(),
 ///)
+///```
+///
+///### Nested / Scoped Empires
+///
+///```dart
+///Empire(
+///  MyApplicationViewModel(),
+///  onAppStateChanged: () => Uuid().v1(),
+///  child: MaterialApp(
+///   title: 'My App',
+///   home: Scaffold(
+///     backgroundColor: Empire.viewModelOf<MyApplicationViewModel>().backgroundColor.value,
+///     child: Empire(
+///       MyHomePageViewModel(),
+///       onAppStateChanged: () => Uuid().v1(),
+///       child: Builder(builder: (innerContext){
+///         return Center(
+///           child: Text(${Empire.viewModelOf<MyHomePageViewModel>().title.value})
+///         );
+///       }),
+///     )
+///   )
+///  )
+///)
+///
 ///```
 class Empire<T extends EmpireViewModel> extends StatefulWidget {
   final T viewModel;
@@ -67,18 +90,18 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
   @override
   State<Empire> createState() => _EmpireState<T>();
 
-  ///Gets the instance of the [EmpireApp].
+  ///Gets the instance of the [EmpireApp] that matches the generic type argument [T].
   ///
   ///You can access the associated view model via the returned
   ///[EmpireApp]. However you'll most likely want to use the shorthand [viewModelOf] function to do
   ///so.
-  static EmpireApp of(BuildContext context) {
-    final EmpireApp? result = context.dependOnInheritedWidgetOfExactType<EmpireApp>();
+  static EmpireApp<T> of<T extends EmpireViewModel>(BuildContext context) {
+    final EmpireApp<T>? result = context.dependOnInheritedWidgetOfExactType<EmpireApp<T>>();
     assert(result != null, 'No Empire found in context');
     return result!;
   }
 
-  ///Gets the [EmpireViewModel] from the [EmpireApp].
+  ///Gets the [EmpireViewModel] from the [EmpireApp] that matches the generic type argument [T].
   ///
   ///This method can be called from any widget
   ///below this one in the widget tree. (Example: from a child widget):
@@ -86,8 +109,8 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
   ///Empire.viewModelOf<MyApplicationViewModel>().logOut();
   ///```
   static T viewModelOf<T extends EmpireViewModel>(BuildContext context) {
-    final EmpireApp result = of(context);
-    return result.viewModel<T>();
+    final EmpireApp<T> result = of(context);
+    return result.viewModel();
   }
 }
 
@@ -106,7 +129,7 @@ class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
 
   @override
   Widget build(BuildContext context) {
-    return EmpireApp(
+    return EmpireApp<T>(
       _applicationStateId,
       viewModel: <E extends EmpireViewModel>() => widget.viewModel as E,
       child: Builder(builder: (context) {
