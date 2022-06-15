@@ -7,7 +7,7 @@
 
 ## Features
 
-Fixing a typo.
+Fixing a typo. Woops that was wrong.
 
 A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
 
