@@ -37,7 +37,7 @@ jobs:
         id: changes
         run: |
           NEW_VERSION="$(./versionChangeCheck.sh)"
-          echo "New version = $NEW_VERSION"
+          echo "New version if changed = '$NEW_VERSION'"
           echo ::set-output name=newVersion::$NEW_VERSION
 
   # create-release:
