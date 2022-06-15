@@ -29,8 +29,8 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// Example:
   /// ```dart
-  /// final emptyList = createListProperty<String>(['Bob'])
-  /// print(emptyList.isNotEmpty); // true;
+  /// final list = createListProperty<String>(['Bob'])
+  /// print(list.isNotEmpty); // true;
   /// ```
   bool get isNotEmpty => _value.isNotEmpty;
 
