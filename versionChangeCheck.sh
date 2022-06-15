@@ -1,6 +1,6 @@
 #!/bin/bash
 
-changes="$(git diff HEAD~1 HEAD | grep version:)"
+changes="$(git diff HEAD~1 HEAD pubspec.yaml | grep version:)"
 
 # echo "[ $changes ]"
 if [ "$changes" != "" ]; then
