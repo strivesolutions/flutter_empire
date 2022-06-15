@@ -1,8 +1,6 @@
 name: Prepare release
 
 on:
-  pull_request: # TODO: remove
-
   push:
     branches:
       - main
