@@ -138,11 +138,3 @@ class EmpireProperty<T> implements EmpireValue<T> {
   @override
   int get hashCode => _value.hashCode;
 }
-
-abstract class NullableEmpireProperty<T> extends EmpireProperty<T?> {
-  NullableEmpireProperty(super.value, super.viewModel, {super.propertyName});
-
-  bool get isNull => _value == null;
-
-  bool get isNotNull => _value != null;
-}
