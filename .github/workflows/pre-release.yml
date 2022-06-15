@@ -48,6 +48,9 @@ jobs:
     if: ${{ (needs.check.outputs.newVersion != '') }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
