@@ -16,6 +16,24 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// ```
   int get length => _value.length;
 
+  /// Whether this value has no elements.
+  ///
+  /// Example:
+  /// ```dart
+  /// final emptyList = createEmptyListProperty<String>()
+  /// print(emptyList.isEmpty); // true;
+  /// ```
+  bool get isEmpty => _value.isEmpty;
+
+  /// Whether this value has no elements.
+  ///
+  /// Example:
+  /// ```dart
+  /// final list = createListProperty<String>(['Bob'])
+  /// print(list.isNotEmpty); // true;
+  /// ```
+  bool get isNotEmpty => _value.isNotEmpty;
+
   /// Adds [value] to the end of this list,
   /// extending the length by one.
   ///
@@ -184,7 +202,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// var values = products.map((product) => product['price'] as double);
   /// var totalPrice = values.fold(0.0, (a, b) => a + b); // 42.5.
   /// ```
-  Iterable<T> map(T Function(T) toElement) {
+  Iterable<E> map<E>(E Function(T) toElement) {
     return _value.map(toElement);
   }
 
