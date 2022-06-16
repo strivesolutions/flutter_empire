@@ -64,6 +64,8 @@
     
 <section class="desc markdown">
   <p>Adds an event handler which gets executed each time an <a href="../../empire_property/EmpireProperty-class.html">EmpireProperty</a> value is changed.</p>
+<p>If your listener references a <a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a> inside of a <a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a>,
+you should override the <a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a> dispose method and cancel the subscription.</p>
 </section>
 
 
@@ -72,7 +74,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">StreamSubscription addOnStateChangedListener(Function(List&lt;EmpireStateChanged&gt; events) onStateChanged) {
   final newSubscription = _stream.listen(onStateChanged);
-  _subscriptions.add(_stream.listen(onStateChanged));
+  _subscriptions.add(newSubscription);
   return newSubscription;
 }</code></pre>
 </section>
@@ -159,7 +161,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.6.2
+      0.6.3
   </span>
 
   

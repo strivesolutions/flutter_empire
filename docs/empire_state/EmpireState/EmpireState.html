@@ -62,7 +62,9 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">EmpireState(this.viewModel) {
   viewModel.addOnStateChangedListener((_) {
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   });
 }</code></pre>
 </section>
@@ -138,7 +140,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.6.2
+      0.6.3
   </span>
 
   
