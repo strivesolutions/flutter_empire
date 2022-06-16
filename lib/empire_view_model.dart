@@ -500,6 +500,35 @@ class EmpireStateChanged<T> {
   }
 }
 
+extension EmpireStateChangedExtensions<T> on List<EmpireStateChanged<T>> {
+  ///Whether the propertyName on any event matches the [propertyName] argument
+  bool containsPropertyName(String propertyName) {
+    return map((x) => x.propertyName).contains(propertyName);
+  }
+
+  ///Gets the first event where the [EmpireStateChanged.propertyName] matches the
+  ///[propertyName] argument
+  ///
+  ///Returns null if no event is found
+  EmpireStateChanged<T>? firstForPropertyName(String propertyName) {
+    final events = where((e) => e.propertyName == propertyName);
+
+    return events.isNotEmpty ? events.first : null;
+  }
+
+  ///Gets the [EmpireStateChanged.nextValue] for the first event where the [EmpireStateChanged.propertyName]
+  ///matches the [propertyName] argument
+  T? nextValueFor(String propertyName) {
+    return firstForPropertyName(propertyName)?.nextValue;
+  }
+
+  ///Gets the [EmpireStateChanged.previousValue] for the first event where the [EmpireStateChanged.propertyName]
+  ///matches the [propertyName] argument
+  T? previousValueFor(String propertyName) {
+    return firstForPropertyName(propertyName)?.previousValue;
+  }
+}
+
 ///The event that is added to the Error stream.
 ///
 ///Any event handlers registered with the [EmpireViewModel.addOnStateChangedListener] function will
