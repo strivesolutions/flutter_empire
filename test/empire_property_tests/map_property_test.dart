@@ -380,21 +380,26 @@ void main() {
       expect(data.isEmpty, isTrue);
     });
 
-    test('reset - starting map has data - remove item - only original data after reset', () {
-      const String key = 'name';
+    test('reset - starting map has data - add item - only original data after reset', () {
+      const String key = 'firstName';
       const String value = 'Bob';
+      const String tmpKey = 'lastName';
+      const String tmpValue = 'Smith';
+
       final data = viewModel.createMapProperty<String, String>({key: value});
 
       expect(data.containsKey(key), isTrue);
       expect(data.containsValue(value), isTrue);
 
-      data.clear();
+      data.add(tmpKey, tmpValue);
 
-      expect(data.containsKey(key), isFalse);
-      expect(data.containsValue(value), isFalse);
+      expect(data.containsKey(tmpKey), isTrue);
+      expect(data.containsValue(tmpValue), isTrue);
 
       data.reset();
 
+      expect(data.containsKey(tmpKey), isFalse);
+      expect(data.containsValue(tmpValue), isFalse);
       expect(data.containsKey(key), isTrue);
       expect(data.containsValue(value), isTrue);
     });

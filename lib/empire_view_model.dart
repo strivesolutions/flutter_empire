@@ -285,7 +285,7 @@ abstract class EmpireViewModel {
   ///
   ///planet = createMapProperty<String, dynamic>({'name': 'Earth', 'population': 8000000000});
   ///```
-  EmpireMapProperty createMapProperty<K, V>(Map<K, V> values, {String? propertyName}) {
+  EmpireMapProperty<K, V> createMapProperty<K, V>(Map<K, V> values, {String? propertyName}) {
     return EmpireMapProperty(values, this, propertyName: propertyName);
   }
 
