@@ -59,9 +59,12 @@ abstract class EmpireViewModel {
   void initProperties();
 
   ///Adds an event handler which gets executed each time an [EmpireProperty] value is changed.
+  ///
+  ///If your listener references a [BuildContext] inside of a [Widget],
+  ///you should override the [Widget] dispose method and cancel the subscription.
   StreamSubscription addOnStateChangedListener(Function(List<EmpireStateChanged> events) onStateChanged) {
     final newSubscription = _stream.listen(onStateChanged);
-    _subscriptions.add(_stream.listen(onStateChanged));
+    _subscriptions.add(newSubscription);
     return newSubscription;
   }
 
@@ -74,7 +77,7 @@ abstract class EmpireViewModel {
   ///Adds an event handler which gets executed each time [notifyError] is called.
   StreamSubscription addOnErrorEventListener(Function(ErrorEvent event) onError) {
     final newSubscription = _errorStream.listen(onError);
-    _subscriptions.add(_errorStream.listen(onError));
+    _subscriptions.add(newSubscription);
     return newSubscription;
   }
 
