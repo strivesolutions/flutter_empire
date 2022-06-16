@@ -5,7 +5,9 @@ part of 'empire_property.dart';
 ///Any change to the internal map will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
-  EmpireMapProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireMapProperty(super.value, super.viewModel, {super.propertyName}) {
+    _originalValue = Map<K, V>.from(value);
+  }
 
   ///The map entries in the map
   Iterable<MapEntry<K, V>> get entries => _value.entries;

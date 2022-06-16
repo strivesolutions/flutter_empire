@@ -5,7 +5,9 @@ part of 'empire_property.dart';
 ///Any change to the internal list will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireListProperty<T> extends EmpireProperty<List<T>> {
-  EmpireListProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireListProperty(super.value, super.viewModel, {super.propertyName}) {
+    _originalValue = List<T>.from(value);
+  }
 
   /// The number of objects in this list.
   ///

@@ -16,12 +16,14 @@ abstract class EmpireValue<T> {
 
 ///Contains any object that will notify any listeners when its value is changed.
 ///
-///Usually these are
-///properties that are bound to a UI Widget so when the value changes, the UI is updated.
+///Usually these are properties that are bound to a UI Widget so when the value changes, the UI is updated.
 ///
 ///You optionally set the [propertyName] argument to conditionally perform logic when a specific
 ///property changes. You can access the [propertyName] in any event listener registered with the
 ///[EmpireViewModel.addOnStateChangedListener] function via the [propertyName] property on an [EmpireStateChanged] object.
+///
+///If [T] is of type [List] or [Map], use either [EmpireListProperty] or [EmpireMapProperty]. Not doing so
+///will prevet the [reset] function from performing as expected.
 ///
 ///An [EmpireProperty] is callable. Calling the property updates the value. However, there are two
 ///ways to update the value of an [EmpireProperty]:
@@ -47,8 +49,12 @@ abstract class EmpireValue<T> {
 ///```
 class EmpireProperty<T> implements EmpireValue<T> {
   String? propertyName;
+
+  late T _originalValue;
+  T get originalValue => _originalValue;
+
   T _value;
-  late final T _originalValue;
+
   @override
   T get value => _value;
 
@@ -79,6 +85,11 @@ class EmpireProperty<T> implements EmpireValue<T> {
   }
 
   ///Resets the value to what it was initialized with.
+  ///
+  ///If [T] is a  class with properties, changing the properties directly on the object
+  ///instead of updating this EmpireProperty with a new instance of [T] with the updated values will
+  ///prevent [reset] from performing as expected. Tracking the original value is done by reference
+  ///internally.
   ///
   ///## Usage
   ///
