@@ -96,6 +96,18 @@ void main() {
       viewModel.isAwesome(true);
       expect(viewModel.isAwesome.isFalse, isFalse);
     });
+
+    test('setTrue - value is true', () {
+      viewModel.isAwesome.set(false);
+      viewModel.isAwesome.setTrue();
+      expect(viewModel.isAwesome.isTrue, isTrue);
+    });
+
+    test('setFalse - value is false', () {
+      viewModel.isAwesome.set(true);
+      viewModel.isAwesome.setFalse();
+      expect(viewModel.isAwesome.isFalse, isTrue);
+    });
   });
 
   group('EmpireNullableBoolProperty Tests', () {
@@ -133,6 +145,24 @@ void main() {
     test('isFalse - value is null - returns false', () {
       viewModel.isAwesome(null);
       expect(viewModel.isAwesome.isFalse, isFalse);
+    });
+
+    test('setTrue - value is true', () {
+      viewModel.isAwesome.set(false);
+      viewModel.isAwesome.setTrue();
+      expect(viewModel.isAwesome.isTrue, isTrue);
+    });
+
+    test('setFalse - value is false', () {
+      viewModel.isAwesome.set(true);
+      viewModel.isAwesome.setFalse();
+      expect(viewModel.isAwesome.isFalse, isTrue);
+    });
+
+    test('setNull - value is null', () {
+      viewModel.isAwesome.set(false);
+      viewModel.isAwesome.setNull();
+      expect(viewModel.isAwesome.isNull, isTrue);
     });
   });
 }
