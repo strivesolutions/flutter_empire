@@ -19,7 +19,7 @@ part of 'empire_property.dart';
 ///
 ///age = createIntProperty(10);
 ///
-///print('${percentage + 5}'); //prints 15
+///print('${age + 5}'); //prints 15
 ///```
 class EmpireIntProperty extends EmpireProperty<int> {
   EmpireIntProperty(super.value, super.viewModel, {super.propertyName});
