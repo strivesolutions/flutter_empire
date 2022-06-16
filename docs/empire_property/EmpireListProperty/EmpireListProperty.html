@@ -62,7 +62,9 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">EmpireListProperty(super.value, super.viewModel, {super.propertyName});</code></pre>
+  <pre class="language-dart"><code class="language-dart">EmpireListProperty(super.value, super.viewModel, {super.propertyName}) {
+  _originalValue = List&lt;T&gt;.from(value);
+}</code></pre>
 </section>
 
 
@@ -99,6 +101,7 @@
     <li class="inherited"><a href="../../empire_property/EmpireProperty/isNotNull.html">isNotNull</a></li>
     <li class="inherited"><a href="../../empire_property/EmpireProperty/isNull.html">isNull</a></li>
     <li><a href="../../empire_property/EmpireListProperty/length.html">length</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/originalValue.html">originalValue</a></li>
     <li class="inherited"><a href="../../empire_property/EmpireProperty/propertyName.html">propertyName</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
     <li class="inherited"><a href="../../empire_property/EmpireProperty/value.html">value</a></li>
@@ -139,7 +142,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.6.1
+      0.6.2
   </span>
 
   
