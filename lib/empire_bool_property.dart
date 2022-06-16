@@ -17,10 +17,12 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
   bool get isFalse => !_value;
 
   ///Sets the value to true
-  void setTrue() => super.set(true);
+  void setTrue({bool notifyChange = true}) =>
+      super.set(true, notifyChange: notifyChange);
 
   ///Sets the value to false
-  void setFalse() => super.set(false);
+  void setFalse({bool notifyChange = true}) =>
+      super.set(false, notifyChange: notifyChange);
 }
 
 ///An [EmpireProperty] with similar characteristics as a an
@@ -41,11 +43,14 @@ class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
   bool get isFalse => isNotNull && _value == false;
 
   ///Sets the value to true
-  void setTrue() => super.set(true);
+  void setTrue({bool notifyChange = true}) =>
+      super.set(true, notifyChange: notifyChange);
 
   ///Sets the value to false
-  void setFalse() => super.set(false);
+  void setFalse({bool notifyChange = true}) =>
+      super.set(false, notifyChange: notifyChange);
 
   ///Sets the value to null
-  void setNull() => super.set(null);
+  void setNull({bool notifyChange = true}) =>
+      super.set(null, notifyChange: notifyChange);
 }
