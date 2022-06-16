@@ -369,5 +369,34 @@ void main() {
 
       expect(result, isNull);
     });
+    test('reset - starting map is empty - add item - should be empty after reset', () {
+      final data = viewModel.createEmptyMapProperty<String, String>();
+      data.add('name', 'Bob');
+
+      expect(data.isNotEmpty, isTrue);
+
+      data.reset();
+
+      expect(data.isEmpty, isTrue);
+    });
+
+    test('reset - starting map has data - remove item - only original data after reset', () {
+      const String key = 'name';
+      const String value = 'Bob';
+      final data = viewModel.createMapProperty<String, String>({key: value});
+
+      expect(data.containsKey(key), isTrue);
+      expect(data.containsValue(value), isTrue);
+
+      data.clear();
+
+      expect(data.containsKey(key), isFalse);
+      expect(data.containsValue(value), isFalse);
+
+      data.reset();
+
+      expect(data.containsKey(key), isTrue);
+      expect(data.containsValue(value), isTrue);
+    });
   });
 }
