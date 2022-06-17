@@ -1,4 +1,5 @@
 import 'package:empire/empire_view_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 ///This widget is not intended to be created manually and is used by the [Empire] widget.
@@ -79,12 +80,14 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
   final T viewModel;
   final Widget child;
   final String Function() onAppStateChanged;
+  final bool debugPrintStateChanges;
 
   const Empire(
     this.viewModel, {
     Key? key,
     required this.child,
     required this.onAppStateChanged,
+    this.debugPrintStateChanges = false,
   }) : super(key: key);
 
   @override
@@ -119,7 +122,11 @@ class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
 
   @override
   void initState() {
-    widget.viewModel.addOnStateChangedListener((_) {
+    widget.viewModel.addOnStateChangedListener((events) {
+      if (widget.debugPrintStateChanges && kDebugMode) {
+        // ignore: avoid_print
+        events.forEach(print);
+      }
       setState(() {
         _applicationStateId = widget.onAppStateChanged();
       });
