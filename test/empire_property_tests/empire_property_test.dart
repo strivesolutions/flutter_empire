@@ -154,6 +154,26 @@ void main() {
     });
   });
 
+  group('Property Original Value Tests', () {
+    test('setOriginalToCurrent - update original value - reset sets value to updated original ', () {
+      const String expectedValue = 'Bob';
+      final EmpireProperty<String?> name = viewModel.createNullProperty();
+
+      name(expectedValue);
+
+      expect(name.value, equals(expectedValue));
+
+      name.reset();
+
+      expect(name.isNull, isTrue);
+
+      name(expectedValue);
+      name.setOriginalValueToCurrent();
+      name.reset();
+
+      expect(name.value, equals(expectedValue));
+    });
+  });
   group('Property Reset Tests', () {
     testWidgets('reset - notifyChange is true - UI Updates', (tester) async {
       await tester.pumpWidget(testWidget);
