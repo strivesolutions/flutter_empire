@@ -72,6 +72,32 @@ class EmpireProperty<T> implements EmpireValue<T> {
     set(value, notifyChange: notifyChange);
   }
 
+  ///Updates the original value to what the current value of this property is.
+  ///
+  ///If this function is called, the [reset] function will then use the updated
+  ///original value to set the current value
+  ///
+  ///## Example
+  ///```dart
+  ///final user = createNullProperty<User>();
+  ///
+  ///user(await userService.loadUser());
+  ///
+  ///user.reset(); //user value would be reset to null
+  ///
+  ///user(await userService.loadUser());
+  ///
+  ///user.setOriginalValueToCurrent();
+  ///
+  ///user(null);
+  ///
+  ///user.reset(); //user value would be reset to the user returned from the userService
+  ///
+  ///```
+  void setOriginalValueToCurrent() {
+    _originalValue = _value;
+  }
+
   ///Updates the property value. Notifies any listeners to the change
   ///
   ///Returns the updated value
