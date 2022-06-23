@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the equals method from the EmpireProperty class, for the Dart programming language.">
-  <title>equals method - EmpireProperty class - empire_property library - Dart API</title>
+  <meta name="description" content="API docs for the setOriginalValueToCurrent method from the EmpireProperty class, for the Dart programming language.">
+  <title>setOriginalValueToCurrent method - EmpireProperty class - empire_property library - Dart API</title>
 
 
   
@@ -32,9 +32,9 @@
     <li><a href="../../index.html">empire</a></li>
     <li><a href="../../empire_property/empire_property-library.html">empire_property</a></li>
     <li><a href="../../empire_property/EmpireProperty-class.html">EmpireProperty<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-    <li class="self-crumb">equals method</li>
+    <li class="self-crumb">setOriginalValueToCurrent method</li>
   </ol>
-  <div class="self-name">equals</div>
+  <div class="self-name">setOriginalValueToCurrent</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,32 +45,39 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">equals</span> method 
+<h1><span class="kind-method">setOriginalValueToCurrent</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-<span class="name ">equals</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="equals-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span></li>
-</ol>)
+<span class="returntype">void</span>
+<span class="name ">setOriginalValueToCurrent</span>(<wbr>)
 
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Checks if <code>other</code> is equal to the <a href="../../empire_property/EmpireProperty/value.html">value</a> of this EmpireProperty</p>
-<h3 id="usage">Usage</h3>
-<pre class="language-dart"><code class="language-dart">final EmpireProperty&lt;int&gt; age = createProperty(10);
+  <p>Updates the original value to what the current value of this property is.</p>
+<p>If this function is called, the <a href="../../empire_property/EmpireProperty/reset.html">reset</a> function will then use the updated
+original value to set the current value</p>
+<h2 id="example">Example</h2>
+<pre class="language-dart"><code class="language-dart">final user = createNullProperty&lt;User&gt;();
 
-age.equals(10); //returns true
+user(await userService.loadUser());
 
+user.reset(); //user value would be reset to null
 
-final EmpireProperty&lt;int&gt; ageTwo = createProperty(10);
+user(await userService.loadUser());
 
-age.equals(ageTwo); //returns true
+user.setOriginalValueToCurrent();
+
+user(null);
+
+user.reset(); //user value would be reset to the user returned from the userService
+
 </code></pre>
 </section>
 
@@ -78,12 +85,8 @@ age.equals(ageTwo); //returns true
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool equals(dynamic other) {
-  if (other is EmpireProperty) {
-    return other.value == value;
-  } else {
-    return other == value;
-  }
+  <pre class="language-dart"><code class="language-dart">void setOriginalValueToCurrent() {
+  _originalValue = _value;
 }</code></pre>
 </section>
 
@@ -101,7 +104,7 @@ age.equals(ageTwo); //returns true
   <li><a href="../../index.html">empire</a></li>
   <li><a href="../../empire_property/empire_property-library.html">empire_property</a></li>
   <li><a href="../../empire_property/EmpireProperty-class.html">EmpireProperty<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-  <li class="self-crumb">equals method</li>
+  <li class="self-crumb">setOriginalValueToCurrent method</li>
 </ol>
 
 
