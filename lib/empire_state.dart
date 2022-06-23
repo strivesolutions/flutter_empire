@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'empire_view_model.dart';
@@ -21,10 +22,11 @@ import 'empire_view_model.dart';
 ///```
 abstract class EmpireWidget<T extends EmpireViewModel> extends StatefulWidget {
   final T viewModel;
-
+  final bool debugPrintStateChanges;
   const EmpireWidget({
     Key? key,
     required this.viewModel,
+    this.debugPrintStateChanges = false,
   }) : super(key: key);
 
   ///Create an instance of [EmpireState] for this widget.
@@ -84,8 +86,7 @@ abstract class EmpireWidget<T extends EmpireViewModel> extends StatefulWidget {
 ///  }
 ///}
 ///```
-abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel>
-    extends State<T> {
+abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel> extends State<T> {
   final E viewModel;
 
   ///Exposes the [viewModel] busy status. Used to determine if the [viewModel] is busy running
@@ -93,7 +94,11 @@ abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel>
   bool get isBusy => viewModel.busy;
 
   EmpireState(this.viewModel) {
-    viewModel.addOnStateChangedListener((_) {
+    viewModel.addOnStateChangedListener((events) {
+      if (widget.debugPrintStateChanges && kDebugMode) {
+        // ignore: avoid_print
+        events.forEach(print);
+      }
       if (mounted) {
         setState(() {});
       }
