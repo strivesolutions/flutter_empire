@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the updateShouldNotify method from the EmpireApp class, for the Dart programming language.">
-  <title>updateShouldNotify method - EmpireApp class - empire_widget library - Dart API</title>
+  <meta name="description" content="API docs for the debugPrintStateChanges property from the Empire class, for the Dart programming language.">
+  <title>debugPrintStateChanges property - Empire class - empire_widget library - Dart API</title>
 
 
   
@@ -31,10 +31,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">empire</a></li>
     <li><a href="../../empire_widget/empire_widget-library.html">empire_widget</a></li>
-    <li><a href="../../empire_widget/EmpireApp-class.html">EmpireApp<span class="signature">&lt;<wbr><span class="type-parameter">T extends EmpireViewModel</span>&gt;</span></a></li>
-    <li class="self-crumb">updateShouldNotify method</li>
+    <li><a href="../../empire_widget/Empire-class.html">Empire<span class="signature">&lt;<wbr><span class="type-parameter">T extends EmpireViewModel</span>&gt;</span></a></li>
+    <li class="self-crumb">debugPrintStateChanges property</li>
   </ol>
-  <div class="self-name">updateShouldNotify</div>
+  <div class="self-name">debugPrintStateChanges</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,47 +45,24 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">updateShouldNotify</span> method 
+<h1><span class="kind-property">debugPrintStateChanges</span> property 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">
-      
-<div>
-  <ol class="annotation-list">
-    <li>@<a href="https://api.flutter.dev/flutter/dart-core/override-constant.html">override</a></li>
-  </ol>
-</div>
+        <section class="multi-line-signature">
+          <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>
+          <span class="name ">debugPrintStateChanges</span>
+          <div class="features">final</div>
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
-<span class="name ">updateShouldNotify</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="updateShouldNotify-param-oldWidget"><span>covariant</span> <span class="type-annotation"><a href="../../empire_widget/EmpireApp-class.html">EmpireApp</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a></span>&gt;</span></span> <span class="parameter-name">oldWidget</span></span></li>
-</ol>)
+        </section>
+        
 
-      <div class="features">override</div>
-
-    </section>
-    
-<section class="desc markdown">
-  <p>Whether the framework should notify widgets that inherit from this widget.</p>
-<p>When this widget is rebuilt, sometimes we need to rebuild the widgets that
-inherit from this widget but sometimes we do not. For example, if the data
-held by this widget is the same as the data held by <code>oldWidget</code>, then we
-do not need to rebuild the widgets that inherited the data held by
-<code>oldWidget</code>.</p>
-<p>The framework distinguishes these cases by calling this function with the
-widget that previously occupied this location in the tree as an argument.
-The given widget is guaranteed to have the same <a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a> as this
-object.</p>
-</section>
-
-
-    
+        
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@override
-bool updateShouldNotify(covariant EmpireApp oldWidget) {
-  return oldWidget._uuid != _uuid;
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">final bool debugPrintStateChanges;
+
+</code></pre>
 </section>
 
 
@@ -101,29 +78,32 @@ bool updateShouldNotify(covariant EmpireApp oldWidget) {
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">empire</a></li>
   <li><a href="../../empire_widget/empire_widget-library.html">empire_widget</a></li>
-  <li><a href="../../empire_widget/EmpireApp-class.html">EmpireApp<span class="signature">&lt;<wbr><span class="type-parameter">T extends EmpireViewModel</span>&gt;</span></a></li>
-  <li class="self-crumb">updateShouldNotify method</li>
+  <li><a href="../../empire_widget/Empire-class.html">Empire<span class="signature">&lt;<wbr><span class="type-parameter">T extends EmpireViewModel</span>&gt;</span></a></li>
+  <li class="self-crumb">debugPrintStateChanges property</li>
 </ol>
 
 
-    <h5>EmpireApp class</h5>
+    <h5>Empire class</h5>
     <ol>
 
-        <li class="section-title"><a href="../../empire_widget/EmpireApp-class.html#constructors">Constructors</a></li>
-          <li><a href="../../empire_widget/EmpireApp/EmpireApp.html">EmpireApp</a></li>
+        <li class="section-title"><a href="../../empire_widget/Empire-class.html#constructors">Constructors</a></li>
+          <li><a href="../../empire_widget/Empire/Empire.html">Empire</a></li>
 
 
     <li class="section-title">
-      <a href="../../empire_widget/EmpireApp-class.html#instance-properties">Properties</a>
+      <a href="../../empire_widget/Empire-class.html#instance-properties">Properties</a>
     </li>
-    <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/ProxyWidget/child.html">child</a></li>
+    <li><a href="../../empire_widget/Empire/child.html">child</a></li>
+    <li><a href="../../empire_widget/Empire/debugPrintStateChanges.html">debugPrintStateChanges</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/key.html">key</a></li>
+    <li><a href="../../empire_widget/Empire/onAppStateChanged.html">onAppStateChanged</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../empire_widget/EmpireApp/viewModel.html">viewModel</a></li>
+    <li><a href="../../empire_widget/Empire/viewModel.html">viewModel</a></li>
 
-    <li class="section-title"><a href="../../empire_widget/EmpireApp-class.html#instance-methods">Methods</a></li>
-    <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/InheritedWidget/createElement.html">createElement</a></li>
+    <li class="section-title"><a href="../../empire_widget/Empire-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget/createElement.html">createElement</a></li>
+    <li><a href="../../empire_widget/Empire/createState.html">createState</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/debugDescribeChildren.html">debugDescribeChildren</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/debugFillProperties.html">debugFillProperties</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
@@ -132,13 +112,15 @@ bool updateShouldNotify(covariant EmpireApp oldWidget) {
     <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringDeep.html">toStringDeep</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree/toStringShallow.html">toStringShallow</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/toStringShort.html">toStringShort</a></li>
-    <li><a href="../../empire_widget/EmpireApp/updateShouldNotify.html">updateShouldNotify</a></li>
 
-    <li class="section-title inherited"><a href="../../empire_widget/EmpireApp-class.html#operators">Operators</a></li>
+    <li class="section-title inherited"><a href="../../empire_widget/Empire-class.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/widgets/Widget/operator_equals.html">operator ==</a></li>
 
 
 
+        <li class="section-title"><a href="../../empire_widget/Empire-class.html#static-methods">Static methods</a></li>
+          <li><a href="../../empire_widget/Empire/of.html">of</a></li>
+          <li><a href="../../empire_widget/Empire/viewModelOf.html">viewModelOf</a></li>
 
 </ol>
 
