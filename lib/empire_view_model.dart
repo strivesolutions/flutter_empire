@@ -191,7 +191,7 @@ abstract class EmpireViewModel {
   bool isTaskInProgress(dynamic busyTaskKey) => _busyTaskKeys.contains(busyTaskKey);
 
   void _addBusyTaskKey(dynamic busyTaskKey) {
-    if (busyTaskKey != null) {
+    if (busyTaskKey != null && !_busyTaskKeys.contains(busyTaskKey)) {
       _busyTaskKeys.add(busyTaskKey);
     }
   }
