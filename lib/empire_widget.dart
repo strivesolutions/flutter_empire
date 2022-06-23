@@ -127,9 +127,11 @@ class _EmpireState<T extends EmpireViewModel> extends State<Empire> {
         // ignore: avoid_print
         events.forEach(print);
       }
-      setState(() {
-        _applicationStateId = widget.onAppStateChanged();
-      });
+      if (mounted) {
+        setState(() {
+          _applicationStateId = widget.onAppStateChanged();
+        });
+      }
     });
     super.initState();
   }
