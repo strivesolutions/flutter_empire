@@ -71,7 +71,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">StreamSubscription addOnErrorEventListener(Function(ErrorEvent event) onError) {
-  final newSubscription = _errorStream.listen(onError);
+  final newSubscription = _errorController.stream.listen(onError);
   _subscriptions.add(newSubscription);
   return newSubscription;
 }</code></pre>
@@ -159,7 +159,7 @@
 <footer>
   <span class="no-break">
     empire
-      0.6.4
+      0.6.5
   </span>
 
   

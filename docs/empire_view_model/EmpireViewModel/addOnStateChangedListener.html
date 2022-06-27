@@ -73,7 +73,7 @@ you should override the <a href="https://api.flutter.dev/flutter/widgets/Widget-
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">StreamSubscription addOnStateChangedListener(Function(List&lt;EmpireStateChanged&gt; events) onStateChanged) {
-  final newSubscription = _stream.listen(onStateChanged);
+  final newSubscription = _stateController.stream.listen(onStateChanged);
   _subscriptions.add(newSubscription);
   return newSubscription;
 }</code></pre>
@@ -161,7 +161,7 @@ you should override the <a href="https://api.flutter.dev/flutter/widgets/Widget-
 <footer>
   <span class="no-break">
     empire
-      0.6.4
+      0.6.5
   </span>
 
   
