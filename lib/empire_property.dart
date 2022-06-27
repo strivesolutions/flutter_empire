@@ -104,7 +104,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
   T set(T value, {bool notifyChange = true}) {
     final previousValue = _value;
     _value = value;
-    if (notifyChange) {
+    if (notifyChange && previousValue != value) {
       _viewModel.notifyChanges([EmpireStateChanged(value, previousValue, propertyName: propertyName)]);
     }
     return _value;

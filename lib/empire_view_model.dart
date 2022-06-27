@@ -16,8 +16,6 @@ import 'empire_property.dart';
 abstract class EmpireViewModel {
   final StreamController<List<EmpireStateChanged>> _stateController = StreamController.broadcast();
   final StreamController<ErrorEvent> _errorController = StreamController.broadcast();
-  late final Stream<List<EmpireStateChanged>> _stream;
-  late final Stream<ErrorEvent> _errorStream;
 
   final List<StreamSubscription> _subscriptions = [];
 
@@ -28,8 +26,6 @@ abstract class EmpireViewModel {
   List<dynamic> get activeTasks => _busyTaskKeys;
 
   EmpireViewModel() {
-    _stream = _stateController.stream;
-    _errorStream = _errorController.stream;
     initProperties();
   }
 
@@ -63,7 +59,7 @@ abstract class EmpireViewModel {
   ///If your listener references a [BuildContext] inside of a [Widget],
   ///you should override the [Widget] dispose method and cancel the subscription.
   StreamSubscription addOnStateChangedListener(Function(List<EmpireStateChanged> events) onStateChanged) {
-    final newSubscription = _stream.listen(onStateChanged);
+    final newSubscription = _stateController.stream.listen(onStateChanged);
     _subscriptions.add(newSubscription);
     return newSubscription;
   }
@@ -76,7 +72,7 @@ abstract class EmpireViewModel {
 
   ///Adds an event handler which gets executed each time [notifyError] is called.
   StreamSubscription addOnErrorEventListener(Function(ErrorEvent event) onError) {
-    final newSubscription = _errorStream.listen(onError);
+    final newSubscription = _errorController.stream.listen(onError);
     _subscriptions.add(newSubscription);
     return newSubscription;
   }
@@ -86,6 +82,10 @@ abstract class EmpireViewModel {
   ///**NOTE**: Although you CAN call this method manually, it's usually not required. Updating the
   ///value of an [EmpireProperty] will automatically notify the UI to update itself.
   void notifyChanges(List<EmpireStateChanged> events) {
+    if (_stateController.isClosed) {
+      return;
+    }
+
     _stateController.add(events);
   }
 
@@ -119,7 +119,13 @@ abstract class EmpireViewModel {
   ///
   ///Any event handlers registered by the
   ///[addOnErrorEventListener] function will be executed
-  void notifyError(ErrorEvent event) => _errorController.add(event);
+  void notifyError(ErrorEvent event) {
+    if (_errorController.isClosed) {
+      return;
+    }
+
+    _errorController.add(event);
+  }
 
   ///Explicitly updates the current busy status of the view model.
   ///
@@ -419,6 +425,7 @@ abstract class EmpireViewModel {
     for (var sub in _subscriptions) {
       sub.cancel();
     }
+    _subscriptions.clear();
     _errorController.close();
     _stateController.close();
   }
