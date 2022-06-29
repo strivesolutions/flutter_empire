@@ -53,7 +53,7 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">setMultiple</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMultiple-param-setters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../empire_property/EmpireProperty-class.html">EmpireProperty</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">setters</span></span></li>
+<span class="name ">setMultiple</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setMultiple-param-setters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../empire_property/EmpireProperty-class.html">EmpireProperty</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">setters</span></span></li>
 </ol>)
 
       
@@ -62,13 +62,16 @@
     
 <section class="desc markdown">
   <p>Set multiple <a href="../../empire_property/EmpireProperty-class.html">EmpireProperty</a> values, but only trigger a single state change</p>
-<p>The <code>setters</code> keys should be the properties you want to set. The values should be the new
-values for each property.</p>
+<p>The <code>setters</code> is a list of maps, where the keys are the properties you want to set, and the values are the new
+values for each property. Each map in the list must contain exactly one key/value pair.</p>
 <h2 id="usage">Usage</h2>
 <pre class="language-dart"><code class="language-dart">late final EmpireProperty&lt;String&gt; name;
 late final EmpireProperty&lt;int&gt; age;
 
-setMultiple({name: 'Doug', age: 45});
+setMultiple([
+  {name: 'Doug'},
+  {age: 45},
+]);
 </code></pre>
 </section>
 
@@ -76,11 +79,14 @@ setMultiple({name: 'Doug', age: 45});
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void setMultiple(Map&lt;EmpireProperty, dynamic&gt; setters) {
+  <pre class="language-dart"><code class="language-dart">void setMultiple(List&lt;Map&lt;EmpireProperty, dynamic&gt;&gt; setters) {
   final List&lt;EmpireStateChanged&gt; changes = [];
-  for (var property in setters.keys) {
+  for (var setter in setters) {
+    assert(setter.keys.length == 1, &#39;Each setter item must contain exactly one key&#47;value pair.&#39;);
+    final property = setter.keys.first;
+
     final previousValue = property.value;
-    final nextValue = setters[property];
+    final nextValue = setter.values.first;
 
     changes.add(EmpireStateChanged(nextValue, previousValue, propertyName: property.propertyName));
 
@@ -174,7 +180,7 @@ setMultiple({name: 'Doug', age: 45});
 <footer>
   <span class="no-break">
     empire
-      0.6.6
+      0.7.0
   </span>
 
   
