@@ -100,13 +100,19 @@ abstract class EmpireViewModel {
   ///late final EmpireProperty<String> name;
   ///late final EmpireProperty<int> age;
   ///
-  ///setMultiple({name: 'Doug', age: 45});
+  ///setMultiple([
+  ///   {name: 'Doug'},
+  ///   {age: 45},
+  ///]);
   ///```
-  void setMultiple(Map<EmpireProperty, dynamic> setters) {
+  void setMultiple(List<Map<EmpireProperty, dynamic>> setters) {
     final List<EmpireStateChanged> changes = [];
-    for (var property in setters.keys) {
+    for (var setter in setters) {
+      assert(setter.keys.length == 1, 'Each setter item must contain exactly one key/value pair.');
+      final property = setter.keys.first;
+
       final previousValue = property.value;
-      final nextValue = setters[property];
+      final nextValue = setter.values.first;
 
       changes.add(EmpireStateChanged(nextValue, previousValue, propertyName: property.propertyName));
 
