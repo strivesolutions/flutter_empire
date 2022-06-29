@@ -91,8 +91,8 @@ abstract class EmpireViewModel {
 
   ///Set multiple [EmpireProperty] values, but only trigger a single state change
   ///
-  ///The [setters] keys should be the properties you want to set. The values should be the new
-  ///values for each property.
+  ///The [setters] is a list of maps, where the keys are the properties you want to set, and the values are the new
+  ///values for each property. Each map in the list must contain exactly one key/value pair.
   ///
   ///## Usage
   ///
