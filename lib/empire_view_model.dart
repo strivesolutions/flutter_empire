@@ -403,6 +403,36 @@ abstract class EmpireViewModel {
     return EmpireNullableDoubleProperty(value, this, propertyName: propertyName);
   }
 
+  ///Short hand helper function for initializing an [EmpireDateTimeProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireDateTimeProperty birthDate;
+  ///
+  ///birthDate = createDateTimeProperty(DateTime(1985, 1, 1));
+  ///```
+  EmpireDateTimeProperty createDateTimeProperty(DateTime value, {String? propertyname}) {
+    return EmpireDateTimeProperty(value, this, propertyName: propertyname);
+  }
+
+  ///Short hand helper function for initializing an [EmpireNullableDateTimeProperty].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///late final EmpireNullableDateTimeProperty birthDate;
+  ///
+  ///birthDate = createNullableDateTimeProperty();
+  ///```
+  EmpireNullableDateTimeProperty createNullableDateTimeProperty({DateTime? value, String? propertyName}) {
+    return EmpireNullableDateTimeProperty(value, this, propertyName: propertyName);
+  }
+
   ///Short hand helper function for initializing an [EmpireProperty] with a null value.
   ///
   ///See [EmpireProperty] for [propertyName] usages.

@@ -8,6 +8,7 @@ part 'empire_double_property.dart';
 part 'empire_string_property.dart';
 part 'empire_map_property.dart';
 part 'empire_list_property.dart';
+part 'empire_date_time_property.dart';
 
 ///Base class for [EmpireProperty]
 abstract class EmpireValue<T> {
