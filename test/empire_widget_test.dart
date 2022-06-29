@@ -68,7 +68,8 @@ class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
             builder: (outerContext) {
               return Empire(
                 widget.appSubViewModel,
-                onAppStateChanged: () => math.Random().nextInt(1000000).toString(),
+                onAppStateChanged: () =>
+                    math.Random().nextInt(1000000).toString(),
                 child: Builder(builder: (innerContext) {
                   return Center(
                     child: Column(
@@ -78,8 +79,10 @@ class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
                         Text(
                           viewModel.age.value.toString(),
                         ),
-                        Text('${Empire.of<_ApplicationViewModel>(outerContext).viewModel().changed}'),
-                        Text('${Empire.of<_ApplicationSubViewModel>(innerContext).viewModel().viewModelName}')
+                        Text(
+                            '${Empire.of<_ApplicationViewModel>(outerContext).viewModel().changed}'),
+                        Text(
+                            '${Empire.of<_ApplicationSubViewModel>(innerContext).viewModel().viewModelName}')
                       ],
                     ),
                   );
@@ -109,7 +112,9 @@ void main() {
     );
   });
 
-  testWidgets('EmpireWidget Test - Finds Correct Text Widget After Property Change', (tester) async {
+  testWidgets(
+      'EmpireWidget Test - Finds Correct Text Widget After Property Change',
+      (tester) async {
     viewModel.firstName("John");
     await tester.pumpWidget(mainWidget);
 
@@ -121,7 +126,8 @@ void main() {
     expect(find.text("Bob"), findsOneWidget);
   });
 
-  testWidgets('Empire App State Test - Widgets Update on App View Model Change', (tester) async {
+  testWidgets('Empire App State Test - Widgets Update on App View Model Change',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     final text = find.text("false");
@@ -135,7 +141,8 @@ void main() {
     expect(textTwo, findsOneWidget);
   });
 
-  testWidgets('Update More Than One Property - All Widgets Update', (tester) async {
+  testWidgets('Update More Than One Property - All Widgets Update',
+      (tester) async {
     const initialFirstName = 'John';
     const initialLastName = 'Smith';
     const initialAge = 88;
@@ -167,13 +174,37 @@ void main() {
     expect(find.text(newAge.toString()), findsOneWidget);
   });
 
-  testWidgets('EmpireWidget Test - Finds Sub Application View Model', (tester) async {
+  testWidgets(
+      'Update More Than One Property Starting from Null Keys - All Widgets Update',
+      (tester) async {
+    await tester.pumpWidget(mainWidget);
+
+    const newFirstName = 'Bob';
+    const newLastName = 'Brown';
+    const newAge = 20;
+
+    viewModel.setMultiple({
+      viewModel.firstName: newFirstName,
+      viewModel.lastName: newLastName,
+      viewModel.age: newAge,
+    });
+
+    await tester.pumpAndSettle();
+
+    expect(find.text(newFirstName), findsOneWidget);
+    expect(find.text(newLastName), findsOneWidget);
+    expect(find.text(newAge.toString()), findsOneWidget);
+  });
+
+  testWidgets('EmpireWidget Test - Finds Sub Application View Model',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
   });
 
-  testWidgets('EmpireWidget Test - Finds Sub Application View Model', (tester) async {
+  testWidgets('EmpireWidget Test - Finds Sub Application View Model',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
