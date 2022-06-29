@@ -154,11 +154,31 @@ void main() {
     const newLastName = 'Brown';
     const newAge = 20;
 
-    viewModel.setMultiple({
-      viewModel.firstName: newFirstName,
-      viewModel.lastName: newLastName,
-      viewModel.age: newAge,
-    });
+    viewModel.setMultiple([
+      {viewModel.firstName: newFirstName},
+      {viewModel.lastName: newLastName},
+      {viewModel.age: newAge},
+    ]);
+
+    await tester.pumpAndSettle();
+
+    expect(find.text(newFirstName), findsOneWidget);
+    expect(find.text(newLastName), findsOneWidget);
+    expect(find.text(newAge.toString()), findsOneWidget);
+  });
+
+  testWidgets('Update More Than One Property Starting from Null Keys - All Widgets Update', (tester) async {
+    await tester.pumpWidget(mainWidget);
+
+    const newFirstName = 'Bob';
+    const newLastName = 'Brown';
+    const newAge = 20;
+
+    viewModel.setMultiple([
+      {viewModel.firstName: newFirstName},
+      {viewModel.lastName: newLastName},
+      {viewModel.age: newAge},
+    ]);
 
     await tester.pumpAndSettle();
 
