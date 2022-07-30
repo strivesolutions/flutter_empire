@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/ellementconsulting/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
+    <img src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
 </p>
 
 <h1 align="center">EMPIRE</h1>
@@ -149,7 +149,7 @@ class MyApp extends StatelessWidget {
 
 This package has **ZERO** dependencies on any other packages.
 
-You can find the full API documentation [here](https://ellementconsulting.github.io/flutter_empire/empire/empire-library.html)
+You can find the full API documentation [here](https://strivesolutions.github.io/flutter_empire/empire/empire-library.html)
 
 Developed by:
 
