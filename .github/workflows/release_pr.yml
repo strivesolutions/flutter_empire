@@ -53,7 +53,7 @@ jobs:
         with:
           filters: |
             docs:
-              - "docs/**"
+              - "doc/**"
 
       - name: Fail if no docs changes
         if: ${{ steps.changes.outputs.docs == 'false' }}

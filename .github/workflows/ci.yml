@@ -45,7 +45,7 @@ jobs:
               - "lib/**"
               - "pubspec.yaml"             
             examples:
-              - "examples/**"
+              - "example/**"
               - "lib/**"
             workflow:
               - ".github/workflows/ci.yml"
@@ -95,7 +95,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: examples/counter
+        working-directory: example/counter
 
     steps:
       - name: Checkout
