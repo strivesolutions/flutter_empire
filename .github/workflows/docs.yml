@@ -21,12 +21,15 @@ jobs:
           access_token: ${{ github.token }}
 
   docs:
-    name: Validate docs
+    name: Generate docs
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_PUSH_TOKEN }}
 
       - name: Setup flutter
         uses: subosito/flutter-action@v2
@@ -34,7 +37,10 @@ jobs:
           channel: stable
 
       - run: flutter pub get
-      - run: ./createDocs.sh
+
+      - name: Create docs
+        run: ./createDocs.sh
+
       - run: |
           git checkout docs
           git add .
