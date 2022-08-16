@@ -35,28 +35,3 @@ jobs:
           NEW_VERSION="$(./versionChangeCheck.sh)"
           echo "New version if changed = '$NEW_VERSION'"
           echo ::set-output name=newVersion::$NEW_VERSION
-
-  check-docs:
-    name: Check docs
-    runs-on: ubuntu-latest
-    needs: ["check"]
-
-    if: ${{ (needs.check.outputs.newVersion != '') }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Calculate changes
-        uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            docs:
-              - "docs/**"
-
-      - name: Fail if no docs changes
-        if: ${{ steps.changes.outputs.docs == 'false' }}
-        run: |
-          echo "::error::Documentation should be updated when version is changed."
-          exit 1
