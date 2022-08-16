@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the EmpireViewModel class from the empire_view_model library, for the Dart programming language.">
+  <title>EmpireViewModel class - empire_view_model library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">empire</a></li>
+    <li><a href="../empire_view_model/empire_view_model-library.html">empire_view_model</a></li>
+    <li class="self-crumb">EmpireViewModel abstract class</li>
+  </ol>
+  <div class="self-name">EmpireViewModel</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-class">EmpireViewModel</span> class 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>A ViewModel is an abstraction of the view it is bound to and represents the current state of
+the data in your model.</p>
+<p>This is where any logic that manipulates your model should be. An <a href="../empire_state/EmpireWidget-class.html">EmpireWidget</a> and it's
+accompanying state always has access to it's view model via the viewModel property.</p>
+<p>Update events are automatically emitted whenever the value of an <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a> is changed.
+The <a href="../empire_state/EmpireState-class.html">EmpireState</a> the ViewModel is bound to will update itself each time an <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a> value
+is changed and call the states build function, updating the UI.</p>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+
+    <dl class="constructor-summary-list">
+        <dt id="EmpireViewModel" class="callable">
+          <span class="name"><a href="../empire_view_model/EmpireViewModel/EmpireViewModel.html">EmpireViewModel</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          
+        </dd>
+    </dl>
+  </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="activeTasks" class="property">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/activeTasks.html">activeTasks</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span> 
+
+</dt>
+<dd>
+  
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="busy" class="property">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/busy.html">busy</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> 
+
+</dt>
+<dd>
+  
+  <div class="features">read-only</div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features">read-only, inherited</div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features">read-only, inherited</div>
+
+</dd>
+
+      </dl>
+    </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="addOnErrorEventListener" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></span><span class="signature">(<wbr><span class="parameter" id="addOnErrorEventListener-param-onError"><span class="type-annotation">dynamic</span> <span class="parameter-name">onError</span>(<span class="parameter" id="param-event"><span class="type-annotation"><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span> <span class="parameter-name">event</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/StreamSubscription-class.html">StreamSubscription</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Adds an event handler which gets executed each time <a href="../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a> is called.
+  
+
+</dd>
+
+        <dt id="addOnStateChangedListener" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></span><span class="signature">(<wbr><span class="parameter" id="addOnStateChangedListener-param-onStateChanged"><span class="type-annotation">dynamic</span> <span class="parameter-name">onStateChanged</span>(<span class="parameter" id="param-events"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span>&gt;</span></span> <span class="parameter-name">events</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/StreamSubscription-class.html">StreamSubscription</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Adds an event handler which gets executed each time an <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a> value is changed.
+  
+
+</dd>
+
+        <dt id="cancelSubscription" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/cancelSubscription.html">cancelSubscription</a></span><span class="signature">(<wbr><span class="parameter" id="cancelSubscription-param-subscription"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/StreamSubscription-class.html">StreamSubscription</a>?</span> <span class="parameter-name">subscription</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Cancels the subscription. The subscriber will stop receiving events
+  
+
+</dd>
+
+        <dt id="createBoolProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createBoolProperty.html">createBoolProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createBoolProperty-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createBoolProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireBoolProperty-class.html">EmpireBoolProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireBoolProperty-class.html">EmpireBoolProperty</a>.
+  
+
+</dd>
+
+        <dt id="createDateTimeProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createDateTimeProperty.html">createDateTimeProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createDateTimeProperty-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createDateTimeProperty-param-propertyname">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyname</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireDateTimeProperty-class.html">EmpireDateTimeProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireDateTimeProperty-class.html">EmpireDateTimeProperty</a>.
+  
+
+</dd>
+
+        <dt id="createDoubleProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createDoubleProperty.html">createDoubleProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createDoubleProperty-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createDoubleProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireDoubleProperty-class.html">EmpireDoubleProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireDoubleProperty-class.html">EmpireDoubleProperty</a>.
+  
+
+</dd>
+
+        <dt id="createEmptyListProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createEmptyListProperty.html">createEmptyListProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createEmptyListProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireListProperty-class.html">EmpireListProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an empty <a href="../empire_property/EmpireListProperty-class.html">EmpireListProperty</a>.
+  
+
+</dd>
+
+        <dt id="createEmptyMapProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createEmptyMapProperty.html">createEmptyMapProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createEmptyMapProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireMapProperty-class.html">EmpireMapProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an empty <a href="../empire_property/EmpireMapProperty-class.html">EmpireMapProperty</a>.
+  
+
+</dd>
+
+        <dt id="createIntProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createIntProperty.html">createIntProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createIntProperty-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createIntProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireIntProperty-class.html">EmpireIntProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireIntProperty-class.html">EmpireIntProperty</a>.
+  
+
+</dd>
+
+        <dt id="createListProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createListProperty.html">createListProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createListProperty-param-values"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">values</span>, </span><span class="parameter" id="createListProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireListProperty-class.html">EmpireListProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireListProperty-class.html">EmpireListProperty</a>.
+  
+
+</dd>
+
+        <dt id="createMapProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createMapProperty.html">createMapProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createMapProperty-param-values"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> <span class="parameter-name">values</span>, </span><span class="parameter" id="createMapProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireMapProperty-class.html">EmpireMapProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireMapProperty-class.html">EmpireMapProperty</a>.
+  
+
+</dd>
+
+        <dt id="createNullableBoolProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullableBoolProperty.html">createNullableBoolProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createNullableBoolProperty-param-value">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createNullableBoolProperty-param-propertyName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireNullableBoolProperty-class.html">EmpireNullableBoolProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireNullableBoolProperty-class.html">EmpireNullableBoolProperty</a>.
+  
+
+</dd>
+
+        <dt id="createNullableDateTimeProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullableDateTimeProperty.html">createNullableDateTimeProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createNullableDateTimeProperty-param-value">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createNullableDateTimeProperty-param-propertyName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireNullableDateTimeProperty-class.html">EmpireNullableDateTimeProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireNullableDateTimeProperty-class.html">EmpireNullableDateTimeProperty</a>.
+  
+
+</dd>
+
+        <dt id="createNullableDoubleProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullableDoubleProperty.html">createNullableDoubleProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createNullableDoubleProperty-param-value">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createNullableDoubleProperty-param-propertyName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireNullableDoubleProperty-class.html">EmpireNullableDoubleProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireNullableDoubleProperty-class.html">EmpireNullableDoubleProperty</a>.
+  
+
+</dd>
+
+        <dt id="createNullableIntProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullableIntProperty.html">createNullableIntProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createNullableIntProperty-param-value">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createNullableIntProperty-param-propertyName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireNullableIntProperty-class.html">EmpireNullableIntProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireNullableIntProperty-class.html">EmpireNullableIntProperty</a>.
+  
+
+</dd>
+
+        <dt id="createNullableStringProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullableStringProperty.html">createNullableStringProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createNullableStringProperty-param-value">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createNullableStringProperty-param-propertyName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireNullableStringProperty-class.html">EmpireNullableStringProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireNullableStringProperty-class.html">EmpireNullableStringProperty</a>.
+  
+
+</dd>
+
+        <dt id="createNullProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createNullProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">T?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a> with a null value.
+  
+
+</dd>
+
+        <dt id="createProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createProperty.html">createProperty</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="createProperty-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a>.
+  
+
+</dd>
+
+        <dt id="createStringProperty" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/createStringProperty.html">createStringProperty</a></span><span class="signature">(<wbr><span class="parameter" id="createStringProperty-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="createStringProperty-param-propertyName">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">propertyName</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../empire_property/EmpireStringProperty-class.html">EmpireStringProperty</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Short hand helper function for initializing an <a href="../empire_property/EmpireStringProperty-class.html">EmpireStringProperty</a>.
+  
+
+</dd>
+
+        <dt id="dispose" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/dispose.html">dispose</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Closes the state and error streams and removes any listeners associated with those streams
+  <div class="features">@<a href="https://pub.dev/documentation/meta/1.7.0/meta/mustCallSuper-constant.html">mustCallSuper</a></div>
+
+</dd>
+
+        <dt id="doAsync" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/doAsync.html">doAsync</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="doAsync-param-work"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">work</span>(), </span><span class="parameter" id="doAsync-param-busyTaskKey">{<span class="type-annotation">dynamic</span> <span class="parameter-name">busyTaskKey</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Executes a long running task asynchronously.
+  
+
+</dd>
+
+        <dt id="initProperties" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/initProperties.html">initProperties</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Initializes all <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a> properties in the ViewModel.
+  
+
+</dd>
+
+        <dt id="isTaskInProgress" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/isTaskInProgress.html">isTaskInProgress</a></span><span class="signature">(<wbr><span class="parameter" id="isTaskInProgress-param-busyTaskKey"><span class="type-annotation">dynamic</span> <span class="parameter-name">busyTaskKey</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Checks if the view model is busy working on a specific task.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a non-existent method or property is accessed.
+  <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="notifyChanges" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/notifyChanges.html">notifyChanges</a></span><span class="signature">(<wbr><span class="parameter" id="notifyChanges-param-events"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></span>&gt;</span></span> <span class="parameter-name">events</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Inform the bound <a href="../empire_state/EmpireState-class.html">EmpireState</a> that the state of the UI needs to be updated.
+  
+
+</dd>
+
+        <dt id="notifyError" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a></span><span class="signature">(<wbr><span class="parameter" id="notifyError-param-event"><span class="type-annotation"><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></span> <span class="parameter-name">event</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Inform the bound <a href="../empire_state/EmpireState-class.html">EmpireState</a> that an error has occurred.
+  
+
+</dd>
+
+        <dt id="setBusy" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/setBusy.html">setBusy</a></span><span class="signature">(<wbr><span class="parameter" id="setBusy-param-busyTaskKey">{<span class="type-annotation">dynamic</span> <span class="parameter-name">busyTaskKey</span>}</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Sets the busy status to <code>true</code>
+  
+
+</dd>
+
+        <dt id="setBusyStatus" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/setBusyStatus.html">setBusyStatus</a></span><span class="signature">(<wbr><span class="parameter" id="setBusyStatus-param-isBusy">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isBusy</span>, </span><span class="parameter" id="setBusyStatus-param-busyTaskKey"><span class="type-annotation">dynamic</span> <span class="parameter-name">busyTaskKey</span>}</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Explicitly updates the current busy status of the view model.
+  
+
+</dd>
+
+        <dt id="setMultiple" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/setMultiple.html">setMultiple</a></span><span class="signature">(<wbr><span class="parameter" id="setMultiple-param-setters"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">setters</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Set multiple <a href="../empire_property/EmpireProperty-class.html">EmpireProperty</a> values, but only trigger a single state change
+  
+
+</dd>
+
+        <dt id="setNotBusy" class="callable">
+  <span class="name"><a href="../empire_view_model/EmpireViewModel/setNotBusy.html">setNotBusy</a></span><span class="signature">(<wbr><span class="parameter" id="setNotBusy-param-busyTaskKey">{<span class="type-annotation">dynamic</span> <span class="parameter-name">busyTaskKey</span>}</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Sets the busy status to <code>false</code>
+  
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features">inherited</div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features">inherited</div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">empire</a></li>
+  <li><a href="../empire_view_model/empire_view_model-library.html">empire_view_model</a></li>
+  <li class="self-crumb">EmpireViewModel abstract class</li>
+</ol>
+
+
+    <h5>empire_view_model library</h5>
+    <ol>
+  <li class="section-title"><a href="../empire_view_model/empire_view_model-library.html#classes">Classes</a></li>
+  <li><a href="../empire_view_model/EmpireStateChanged-class.html">EmpireStateChanged</a></li>
+  <li><a href="../empire_view_model/EmpireViewModel-class.html">EmpireViewModel</a></li>
+  <li><a href="../empire_view_model/ErrorEvent-class.html">ErrorEvent</a></li>
+
+  <li class="section-title"><a href="../empire_view_model/empire_view_model-library.html#extensions">Extensions</a></li>
+  <li><a href="../empire_view_model/EmpireStateChangedExtensions.html">EmpireStateChangedExtensions</a></li>
+
+
+
+
+
+
+
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <ol>
+
+        <li class="section-title"><a href="../empire_view_model/EmpireViewModel-class.html#constructors">Constructors</a></li>
+          <li><a href="../empire_view_model/EmpireViewModel/EmpireViewModel.html">EmpireViewModel</a></li>
+
+
+    <li class="section-title">
+      <a href="../empire_view_model/EmpireViewModel-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../empire_view_model/EmpireViewModel/activeTasks.html">activeTasks</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/busy.html">busy</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+    <li class="section-title"><a href="../empire_view_model/EmpireViewModel-class.html#instance-methods">Methods</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/addOnErrorEventListener.html">addOnErrorEventListener</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/addOnStateChangedListener.html">addOnStateChangedListener</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/cancelSubscription.html">cancelSubscription</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createBoolProperty.html">createBoolProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createDateTimeProperty.html">createDateTimeProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createDoubleProperty.html">createDoubleProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createEmptyListProperty.html">createEmptyListProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createEmptyMapProperty.html">createEmptyMapProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createIntProperty.html">createIntProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createListProperty.html">createListProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createMapProperty.html">createMapProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullableBoolProperty.html">createNullableBoolProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullableDateTimeProperty.html">createNullableDateTimeProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullableDoubleProperty.html">createNullableDoubleProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullableIntProperty.html">createNullableIntProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullableStringProperty.html">createNullableStringProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createNullProperty.html">createNullProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createProperty.html">createProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/createStringProperty.html">createStringProperty</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/dispose.html">dispose</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/doAsync.html">doAsync</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/initProperties.html">initProperties</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/isTaskInProgress.html">isTaskInProgress</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/notifyChanges.html">notifyChanges</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/notifyError.html">notifyError</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/setBusy.html">setBusy</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/setBusyStatus.html">setBusyStatus</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/setMultiple.html">setMultiple</a></li>
+    <li><a href="../empire_view_model/EmpireViewModel/setNotBusy.html">setNotBusy</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../empire_view_model/EmpireViewModel-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    empire
+      0.8.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+
