@@ -50,5 +50,4 @@ jobs:
       - name: Update branch
         run: |
           git add .
-          git commit -m "Update generated documentation"
-          git push
+          git commit -m "Update generated documentation" && git push || true
