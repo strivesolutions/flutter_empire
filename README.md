@@ -17,11 +17,11 @@ A simple example using the classic Flutter Counter App.
 
 ```dart
 class CounterViewModel extends EmpireViewModel {
-  late final EmpireProperty<int> count;
+  late final EmpireIntProperty count;
 
   @override
   void initProperties() {
-    count = createProperty(0);
+    count = createIntProperty(0, propertyName: 'count');
   }
 
   Future<void> incrementCounter() async {
@@ -34,8 +34,7 @@ class CounterViewModel extends EmpireViewModel {
 
 ```dart
 class CounterPage extends EmpireWidget<CounterViewModel> {
-  const CounterPage({Key? key, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);
+  const CounterPage({super.key, required super.viewModel});
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
@@ -68,7 +67,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +99,7 @@ class ApplicationViewModel extends EmpireViewModel {
 
   @override
   void initProperties() {
-    loggedInUser = createProperty(null);
+    loggedInUser = createNullProperty();
   }
 
   void updateUser(User user) => loggedInUser(user);
@@ -115,7 +114,7 @@ Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Suppl
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +143,17 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+## Contributing
+
+This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls).
+
+If submitting a pull request, please ensure the following standards are met:
+
+1) Code files must be well formatted. 
+
+2) Tests must pass (run flutter test).  New test cases to validate your changes are highly recommended.
+
+3) Implementations must not add any project dependencies. 
 
 ## Additional information
 
