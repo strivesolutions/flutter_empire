@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          token: ${{ secrets.ACTIONS_PUSH_TOKEN }}
+          token: ${{ secrets.STRIVEBOT_TOKEN }}
 
       - name: Setup flutter
         uses: subosito/flutter-action@v2
@@ -38,6 +38,7 @@ jobs:
 
       - name: Prepare branch
         run: |
+          git config user.name Luke
           git checkout api-docs
           git merge main
 
@@ -49,6 +50,5 @@ jobs:
       - name: Update branch
         run: |
           git add .
-          git config user.name Luke
           git commit -m "Update generated documentation"
           git push
