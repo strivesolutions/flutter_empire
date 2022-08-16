@@ -45,20 +45,29 @@
       
 <section class="desc markdown">
   <p align="center">
-    <img src="https://github.com/ellementconsulting/flutter_empire/raw/main/images/EmpireLogoMD.png">
+    <img src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png">
 </p><h1 align="center">EMPIRE</h1>
 <h3 align="center">A simple, lightweight state management library for Flutter</h3>
 <h2 id="features">Features</h2>
 <p>A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>In your flutter project, add the dependency to your <code>pubspec.yaml</code></p>
+<pre class="language-yaml"><code class="language-yaml">  dependencies:
+    empire: ^0.8.0
+</code></pre>
 <h2 id="usage">Usage</h2>
 <p>A simple example using the classic Flutter Counter App.</p>
 <h3 id="counter_view_modeldart">counter_view_model.dart</h3>
-<pre class="language-dart"><code class="language-dart">class CounterViewModel extends EmpireViewModel {
-  late final EmpireProperty&lt;int&gt; count;
+<pre class="language-dart"><code class="language-dart">
+import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire_property.dart';
+
+class CounterViewModel extends EmpireViewModel {
+  late final EmpireIntProperty count;
 
   @override
   void initProperties() {
-    count = createProperty(0);
+    count = createIntProperty(0, propertyName: 'count');
   }
 
   Future&lt;void&gt; incrementCounter() async {
@@ -67,9 +76,10 @@
 }
 </code></pre>
 <h3 id="counter_pagedart">counter_page.dart</h3>
-<pre class="language-dart"><code class="language-dart">class CounterPage extends EmpireWidget&lt;CounterViewModel&gt; {
-  const CounterPage({Key? key, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);
+<pre class="language-dart"><code class="language-dart">import 'package:empire/empire.dart';
+
+class CounterPage extends EmpireWidget&lt;CounterViewModel&gt; {
+  const CounterPage({super.key, required super.viewModel});
 
   @override
   EmpireState&lt;EmpireWidget&lt;EmpireViewModel&gt;, CounterViewModel&gt; createEmpire() =&gt; _CounterPageState(viewModel);
@@ -99,7 +109,7 @@ class _CounterPageState extends EmpireState&lt;CounterPage, CounterViewModel&gt;
 <pre class="language-dart"><code class="language-dart">void main() =&gt; runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +128,14 @@ class MyApp extends StatelessWidget {
 <p>What if you have application wide data that you want all your widgets to have access to at any time. Enter the <code>Empire</code> widget.</p>
 <p>Create a ViewModel for your application:</p>
 <h3 id="application_view_modeldart">application_view_model.dart</h3>
-<pre class="language-dart"><code class="language-dart">class ApplicationViewModel extends EmpireViewModel {
+<pre class="language-dart"><code class="language-dart">import 'package:empire/empire_property.dart';
+
+class ApplicationViewModel extends EmpireViewModel {
   late final EmpireProperty&lt;User?&gt; loggedInUser;
 
   @override
   void initProperties() {
-    loggedInUser = createProperty(null);
+    loggedInUser = createNullProperty();
   }
 
   void updateUser(User user) =&gt; loggedInUser(user);
@@ -131,10 +143,12 @@ class MyApp extends StatelessWidget {
 </code></pre>
 <p>Make the child of your <code>CupertinoApp</code> or <code>MaterialApp</code> an <code>Empire</code> widget. Supply a function to generate a unique application state id. This tells your app it needs to refresh the widget tree below your your <code>Empire</code> widget. In this example, we are using the <a href="https://pub.dev/packages/uuid">Uuid</a> package to handle creating a unique ID, but we leave it up to you to decide what dependencies you want to include in your application. This function will get called anytime the <code>loggedInUser</code> property is changed in the <code>ApplicationViewModel</code> and trigger the UI for your app to update.</p>
 <h3 id="maindart-2">main.dart</h3>
-<pre class="language-dart"><code class="language-dart">void main() =&gt; runApp(const MyApp());
+<pre class="language-dart"><code class="language-dart">import 'package:empire/empire.dart';
+
+void main() =&gt; runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -163,9 +177,29 @@ class MyApp extends StatelessWidget {
   }
 }
 </code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>This is an open source project, and thus contributions to this project are welcome - please feel free to <a href="https://github.com/strivesolutions/flutter_empire/issues/new/choose">create a new issue</a> if you encounter any problems, or <a href="https://github.com/strivesolutions/flutter_empire/pulls">submit a pull request</a>. For community contribution guidelines, please reveiw the <a href="CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+<p>If submitting a pull request, please ensure the following standards are met:</p>
+<ol>
+<li>
+<p>Code files must be well formatted (run <code>flutter format -l 110 .</code>).</p>
+</li>
+<li>
+<p>Tests must pass (run <code>flutter test</code>).  New test cases to validate your changes are highly recommended.</p>
+</li>
+<li>
+<p>Implementations must not add any project dependencies.</p>
+</li>
+<li>
+<p>Project must contain zero warnings. Running <code>flutter analyze</code> must return zero issues.</p>
+</li>
+<li>
+<p>Ensure docstrings are kept up-to-date. New feature additions must include docstrings.</p>
+</li>
+</ol>
 <h2 id="additional-information">Additional information</h2>
 <p>This package has <strong>ZERO</strong> dependencies on any other packages.</p>
-<p>You can find the full API documentation <a href="https://ellementconsulting.github.io/flutter_empire/empire/empire-library.html">here</a></p>
+<p>You can find the full API documentation <a href="https://strivesolutions.github.io/flutter_empire/empire/empire-library.html">here</a></p>
 <p>Developed by:</p>
 <p>© 2022 <a href="https://www.strivebusiness.ca/">Strive Business Solutions</a></p>
 </section>
@@ -254,7 +288,7 @@ class MyApp extends StatelessWidget {
 <footer>
   <span class="no-break">
     empire
-      0.7.0
+      0.8.0
   </span>
 
   
