@@ -36,13 +36,18 @@ jobs:
         with:
           channel: stable
 
+      - name: Prepare branch
+        run: |
+          git checkout api-docs
+          git merge main
+
       - run: flutter pub get
 
       - name: Create docs
         run: ./createDocs.sh
 
-      - run: |
-          git checkout docs
+      - name: Update branch
+        run: |
           git add .
           git config user.name Luke
           git commit -m "Update generated documentation"
