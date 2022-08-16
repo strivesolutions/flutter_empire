@@ -165,7 +165,7 @@ class MyApp extends StatelessWidget {
 
 ## Contributing
 
-This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls).
+This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls). For community contribution guidelines, please reveiw the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 If submitting a pull request, please ensure the following standards are met:
 
