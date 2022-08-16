@@ -149,11 +149,15 @@ This is an open source project, and thus contributions to this project are welco
 
 If submitting a pull request, please ensure the following standards are met:
 
-1) Code files must be well formatted. 
+1) Code files must be well formatted (run `flutter format -l 110 .`). 
 
-2) Tests must pass (run flutter test).  New test cases to validate your changes are highly recommended.
+2) Tests must pass (run `flutter test`).  New test cases to validate your changes are highly recommended.
 
 3) Implementations must not add any project dependencies. 
+
+4) Project must contain zero warnings. Running `flutter analyze` must return zero issues.
+
+5) Ensure docstrings are kept up-to-date. New feature additions must include docstrings.
 
 ## Additional information
 
