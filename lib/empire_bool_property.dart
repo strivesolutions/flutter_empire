@@ -17,12 +17,10 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
   bool get isFalse => !_value;
 
   ///Sets the value to true
-  void setTrue({bool notifyChange = true}) =>
-      super.set(true, notifyChange: notifyChange);
+  void setTrue({bool notifyChange = true}) => super.set(true, notifyChange: notifyChange);
 
   ///Sets the value to false
-  void setFalse({bool notifyChange = true}) =>
-      super.set(false, notifyChange: notifyChange);
+  void setFalse({bool notifyChange = true}) => super.set(false, notifyChange: notifyChange);
 }
 
 ///An [EmpireProperty] with similar characteristics as a an
@@ -33,8 +31,7 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
-  EmpireNullableBoolProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableBoolProperty(super.value, super.viewModel, {super.propertyName});
 
   ///Whether the underlying value is not null and true
   bool get isTrue => isNotNull && _value == true;
@@ -43,14 +40,11 @@ class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
   bool get isFalse => isNotNull && _value == false;
 
   ///Sets the value to true
-  void setTrue({bool notifyChange = true}) =>
-      super.set(true, notifyChange: notifyChange);
+  void setTrue({bool notifyChange = true}) => super.set(true, notifyChange: notifyChange);
 
   ///Sets the value to false
-  void setFalse({bool notifyChange = true}) =>
-      super.set(false, notifyChange: notifyChange);
+  void setFalse({bool notifyChange = true}) => super.set(false, notifyChange: notifyChange);
 
   ///Sets the value to null
-  void setNull({bool notifyChange = true}) =>
-      super.set(null, notifyChange: notifyChange);
+  void setNull({bool notifyChange = true}) => super.set(null, notifyChange: notifyChange);
 }

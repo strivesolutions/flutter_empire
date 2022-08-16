@@ -9,6 +9,15 @@
 
 A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
 
+## Getting Started
+
+In your flutter project, add the dependency to your `pubspec.yaml`
+
+```yaml
+  dependencies:
+    empire: ^0.8.0
+```
+
 ## Usage
 
 A simple example using the classic Flutter Counter App.
@@ -16,12 +25,16 @@ A simple example using the classic Flutter Counter App.
 ### counter_view_model.dart
 
 ```dart
+
+import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire_property.dart';
+
 class CounterViewModel extends EmpireViewModel {
-  late final EmpireProperty<int> count;
+  late final EmpireIntProperty count;
 
   @override
   void initProperties() {
-    count = createProperty(0);
+    count = createIntProperty(0, propertyName: 'count');
   }
 
   Future<void> incrementCounter() async {
@@ -33,9 +46,10 @@ class CounterViewModel extends EmpireViewModel {
 ### counter_page.dart
 
 ```dart
+import 'package:empire/empire.dart';
+
 class CounterPage extends EmpireWidget<CounterViewModel> {
-  const CounterPage({Key? key, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);
+  const CounterPage({super.key, required super.viewModel});
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
@@ -68,7 +82,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +109,14 @@ Create a ViewModel for your application:
 ### application_view_model.dart
 
 ```dart
+import 'package:empire/empire_property.dart';
+
 class ApplicationViewModel extends EmpireViewModel {
   late final EmpireProperty<User?> loggedInUser;
 
   @override
   void initProperties() {
-    loggedInUser = createProperty(null);
+    loggedInUser = createNullProperty();
   }
 
   void updateUser(User user) => loggedInUser(user);
@@ -112,10 +128,12 @@ Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Suppl
 ### main.dart
 
 ```dart
+import 'package:empire/empire.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +162,22 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+## Contributing
+
+This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls).
+
+If submitting a pull request, please ensure the following standards are met:
+
+1) Code files must be well formatted (run `flutter format -l 110 .`). 
+
+2) Tests must pass (run `flutter test`).  New test cases to validate your changes are highly recommended.
+
+3) Implementations must not add any project dependencies. 
+
+4) Project must contain zero warnings. Running `flutter analyze` must return zero issues.
+
+5) Ensure docstrings are kept up-to-date. New feature additions must include docstrings.
 
 ## Additional information
 

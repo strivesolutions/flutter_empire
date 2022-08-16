@@ -6,7 +6,7 @@ import 'application_view_model.dart';
 import 'counter_view_model.dart';
 
 class CounterPage extends EmpireWidget<CounterViewModel> {
-  const CounterPage({Key? key, required CounterViewModel viewModel}) : super(key: key, viewModel: viewModel);
+  const CounterPage({super.key, required super.viewModel});
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
