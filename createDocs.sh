@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dart doc -o docs
+dart doc -o doc
