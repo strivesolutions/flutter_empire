@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the map method from the EmpireListProperty class, for the Dart programming language.">
+  <title>map method - EmpireListProperty class - empire_property library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">empire</a></li>
+    <li><a href="../../empire_property/empire_property-library.html">empire_property</a></li>
+    <li><a href="../../empire_property/EmpireListProperty-class.html">EmpireListProperty<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">map&lt;<wbr><span class="type-parameter">E</span>&gt; method</li>
+  </ol>
+  <div class="self-name">map</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">map&lt;<wbr><span class="type-parameter">E</span>&gt;</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">E</span>&gt;</span></span>
+<span class="name ">map</span>&lt;<wbr><span class="type-parameter">E</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="map-param-toElement"><span class="type-annotation">E</span> <span class="parameter-name">toElement</span>(<ol class="parameter-list"><li><span class="parameter" id="param-"><span class="type-annotation">T</span></span></li>
+</ol>
+)</span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>The current elements of this iterable modified by <code>toElement</code>.</p>
+<p>Returns a new lazy <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a> with elements that are created by
+calling <code>toElement</code> on each element of this <code>Iterable</code> in
+iteration order.</p>
+<p>The returned iterable is lazy, so it won't iterate the elements of
+this iterable until it is itself iterated, and then it will apply
+<code>toElement</code> to create one element at a time.
+The converted elements are not cached.
+Iterating multiple times over the returned <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a>
+will invoke the supplied <code>toElement</code> function once per element
+for on each iteration.</p>
+<p>Methods on the returned iterable are allowed to omit calling <code>toElement</code>
+on any element where the result isn't needed.
+For example, <code>elementAt</code> may call <code>toElement</code> only once.</p>
+<p>Equivalent to:</p>
+<pre class="language-dart"><code>Iterable&lt;T&gt; map&lt;T&gt;(T toElement(E e)) sync* {
+  for (var value in this) {
+    yield toElement(value);
+  }
+}
+</code></pre>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">var products = jsonDecode('''
+[
+  {"name": "Screwdriver", "price": 42.00},
+  {"name": "Wingnut", "price": 0.50}
+]
+''');
+var values = products.map((product) =&gt; product['price'] as double);
+var totalPrice = values.fold(0.0, (a, b) =&gt; a + b); // 42.5.
+</code></pre>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Iterable&lt;E&gt; map&lt;E&gt;(E Function(T) toElement) {
+  return _value.map(toElement);
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">empire</a></li>
+  <li><a href="../../empire_property/empire_property-library.html">empire_property</a></li>
+  <li><a href="../../empire_property/EmpireListProperty-class.html">EmpireListProperty<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+  <li class="self-crumb">map&lt;<wbr><span class="type-parameter">E</span>&gt; method</li>
+</ol>
+
+
+    <h5>EmpireListProperty class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../empire_property/EmpireListProperty-class.html#constructors">Constructors</a></li>
+          <li><a href="../../empire_property/EmpireListProperty/EmpireListProperty.html">EmpireListProperty</a></li>
+
+
+    <li class="section-title">
+      <a href="../../empire_property/EmpireListProperty-class.html#instance-properties">Properties</a>
+    </li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/hashCode.html">hashCode</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/isEmpty.html">isEmpty</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/isNotEmpty.html">isNotEmpty</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/isNotNull.html">isNotNull</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/isNull.html">isNull</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/length.html">length</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/originalValue.html">originalValue</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/propertyName.html">propertyName</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/value.html">value</a></li>
+
+    <li class="section-title"><a href="../../empire_property/EmpireListProperty-class.html#instance-methods">Methods</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/add.html">add</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/addAll.html">addAll</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/call.html">call</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/clear.html">clear</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/contains.html">contains</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/equals.html">equals</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/forEach.html">forEach</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/indexOf.html">indexOf</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/map.html">map</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/remove.html">remove</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/removeAt.html">removeAt</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/reset.html">reset</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/set.html">set</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/setOriginalValueToCurrent.html">setOriginalValueToCurrent</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/toString.html">toString</a></li>
+
+    <li class="section-title"><a href="../../empire_property/EmpireListProperty-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="../../empire_property/EmpireProperty/operator_equals.html">operator ==</a></li>
+    <li><a href="../../empire_property/EmpireListProperty/operator_get.html">operator []</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    empire
+      0.8.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+
