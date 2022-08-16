@@ -9,6 +9,15 @@
 
 A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
 
+## Getting Started
+
+In your flutter project, add the dependency to your `pubspec.yaml`
+
+```yaml
+  dependencies:
+    empire: ^1.0.0
+```
+
 ## Usage
 
 A simple example using the classic Flutter Counter App.
@@ -16,6 +25,10 @@ A simple example using the classic Flutter Counter App.
 ### counter_view_model.dart
 
 ```dart
+
+import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire_property.dart';
+
 class CounterViewModel extends EmpireViewModel {
   late final EmpireIntProperty count;
 
@@ -33,6 +46,8 @@ class CounterViewModel extends EmpireViewModel {
 ### counter_page.dart
 
 ```dart
+import 'package:empire/empire.dart';
+
 class CounterPage extends EmpireWidget<CounterViewModel> {
   const CounterPage({super.key, required super.viewModel});
 
@@ -94,6 +109,8 @@ Create a ViewModel for your application:
 ### application_view_model.dart
 
 ```dart
+import 'package:empire/empire_property.dart';
+
 class ApplicationViewModel extends EmpireViewModel {
   late final EmpireProperty<User?> loggedInUser;
 
@@ -111,6 +128,8 @@ Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Suppl
 ### main.dart
 
 ```dart
+import 'package:empire/empire.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -143,6 +162,7 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
 ## Contributing
 
 This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls).
