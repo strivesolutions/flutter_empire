@@ -1,6 +1,8 @@
 name: Generate Docs
 
 on:
+  workflow_dispatch:
+
   push:
     branches:
       - main
@@ -41,13 +43,6 @@ jobs:
           git config user.email ${{ secrets.STRIVEBOT_EMAIL }}
           git checkout api-docs
           git merge origin/main
-
-      - name: Update readme version
-        run: |
-          version="$(cat pubspec.yaml | grep "version:" | cut -d" " -f 2)"
-          echo $version
-          sed -i s/\<latest\>/$version/g README.md
-          cat README.md
 
       - run: flutter pub get
 

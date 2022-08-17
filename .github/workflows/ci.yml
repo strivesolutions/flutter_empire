@@ -87,6 +87,18 @@ jobs:
       - run: flutter pub get
       - run: dart doc
 
+  validate-versions:
+    name: Validate versions
+    needs: [changes]
+    if: ${{ (needs.changes.outputs.docs == 'true') || (needs.changes.outputs.workflow == 'true') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - run: ./validateVersions.sh
+
   examples:
     name: Validate examples
     needs: [changes]
