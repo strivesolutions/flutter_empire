@@ -70,10 +70,12 @@ describing what <a href="https://api.flutter.dev/flutter/dart-core/MapEntry-clas
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedEntriesToMap&lt;K, V&gt;(Iterable&lt;MapEntry&lt;K, V&gt;&gt; entries,
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedEntriesToMap&lt;K, V&gt;(
+    Iterable&lt;MapEntry&lt;K, V&gt;&gt; entries,
     {String? propertyName}) {
   return EmpireStateChanged(entries, null,
-      propertyName: propertyName, description: &#39;Added Entries To Map: $entries&#39;);
+      propertyName: propertyName,
+      description: &#39;Added Entries To Map: $entries&#39;);
 }</code></pre>
 </section>
 

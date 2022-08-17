@@ -75,8 +75,10 @@ the corresponding value is overwritten.</p>
   _value.addEntries([entry]);
 
   if (notifyChanges) {
-    _viewModel
-        .notifyChanges([EmpireStateChanged.addedToMap(entry.key, entry.value, propertyName: propertyName)]);
+    _viewModel.notifyChanges([
+      EmpireStateChanged.addedToMap(entry.key, entry.value,
+          propertyName: propertyName)
+    ]);
   }
 }</code></pre>
 </section>

@@ -82,13 +82,15 @@ setMultiple([
   <pre class="language-dart"><code class="language-dart">void setMultiple(List&lt;Map&lt;EmpireProperty, dynamic&gt;&gt; setters) {
   final List&lt;EmpireStateChanged&gt; changes = [];
   for (var setter in setters) {
-    assert(setter.keys.length == 1, &#39;Each setter item must contain exactly one key&#47;value pair.&#39;);
+    assert(setter.keys.length == 1,
+        &#39;Each setter item must contain exactly one key&#47;value pair.&#39;);
     final property = setter.keys.first;
 
     final previousValue = property.value;
     final nextValue = setter.values.first;
 
-    changes.add(EmpireStateChanged(nextValue, previousValue, propertyName: property.propertyName));
+    changes.add(EmpireStateChanged(nextValue, previousValue,
+        propertyName: property.propertyName));
 
     property(nextValue, notifyChange: false);
   }

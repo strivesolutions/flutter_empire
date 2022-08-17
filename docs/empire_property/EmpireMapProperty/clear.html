@@ -73,7 +73,8 @@ planets.clear(); // {}
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void clear({bool notifyChanges = true}) {
-  final stateChangedEvent = EmpireStateChanged(&lt;K, V&gt;{}, _value, propertyName: propertyName);
+  final stateChangedEvent =
+      EmpireStateChanged(&lt;K, V&gt;{}, _value, propertyName: propertyName);
 
   _value.clear();
 

@@ -70,7 +70,8 @@ describing what new map values were added to another map</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedMapToMap&lt;K, V&gt;(Map&lt;K, V&gt; addedMap, {String? propertyName}) {
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedMapToMap&lt;K, V&gt;(Map&lt;K, V&gt; addedMap,
+    {String? propertyName}) {
   return EmpireStateChanged(addedMap, null,
       propertyName: propertyName, description: &#39;Added Map To Map: $addedMap&#39;);
 }</code></pre>

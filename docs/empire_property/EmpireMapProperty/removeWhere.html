@@ -76,7 +76,8 @@ print(terrestrial); // {1: Mercury, 2: Venus}
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void removeWhere(bool Function(K key, V value) test, {bool notifyChanges = true}) {
+  <pre class="language-dart"><code class="language-dart">void removeWhere(bool Function(K key, V value) test,
+    {bool notifyChanges = true}) {
   final stateChangedEvents = &lt;EmpireStateChanged&lt;V&gt;&gt;[];
 
   _value.removeWhere((key, value) {

@@ -70,9 +70,11 @@ describing all the values that were added to the list</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedAllToList&lt;V&gt;(Iterable&lt;V&gt; newValues, {String? propertyName}) =&gt;
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedAllToList&lt;V&gt;(Iterable&lt;V&gt; newValues,
+        {String? propertyName}) =&gt;
     EmpireStateChanged(newValues, null,
-        propertyName: propertyName, description: &#39;Added All To List: $newValues&#39;);</code></pre>
+        propertyName: propertyName,
+        description: &#39;Added All To List: $newValues&#39;);</code></pre>
 </section>
 
 

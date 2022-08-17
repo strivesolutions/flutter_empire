@@ -72,7 +72,8 @@ you should override the <a href="https://api.flutter.dev/flutter/widgets/Widget-
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">StreamSubscription addOnStateChangedListener(Function(List&lt;EmpireStateChanged&gt; events) onStateChanged) {
+  <pre class="language-dart"><code class="language-dart">StreamSubscription addOnStateChangedListener(
+    Function(List&lt;EmpireStateChanged&gt; events) onStateChanged) {
   final newSubscription = _stateController.stream.listen(onStateChanged);
   _subscriptions.add(newSubscription);
   return newSubscription;

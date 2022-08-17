@@ -71,7 +71,8 @@ describing what key/value was added to the map</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedToMap&lt;K, V&gt;(K key, V newValue, {String? propertyName}) {
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedToMap&lt;K, V&gt;(K key, V newValue,
+    {String? propertyName}) {
   final newEntry = MapEntry(key, newValue);
   return EmpireStateChanged(newEntry, null,
       propertyName: propertyName, description: &#39;Added To Map: $newEntry&#39;);

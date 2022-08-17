@@ -70,8 +70,10 @@ describing what value was added to the list</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedToList&lt;V&gt;(V newValue, {String? propertyName}) =&gt;
-    EmpireStateChanged(newValue, null, propertyName: propertyName, description: &#39;Added To List: $newValue&#39;);</code></pre>
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged addedToList&lt;V&gt;(V newValue,
+        {String? propertyName}) =&gt;
+    EmpireStateChanged(newValue, null,
+        propertyName: propertyName, description: &#39;Added To List: $newValue&#39;);</code></pre>
 </section>
 
 

@@ -72,7 +72,8 @@ so.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static EmpireApp&lt;T&gt; of&lt;T extends EmpireViewModel&gt;(BuildContext context) {
-  final EmpireApp&lt;T&gt;? result = context.dependOnInheritedWidgetOfExactType&lt;EmpireApp&lt;T&gt;&gt;();
+  final EmpireApp&lt;T&gt;? result =
+      context.dependOnInheritedWidgetOfExactType&lt;EmpireApp&lt;T&gt;&gt;();
   assert(result != null, &#39;No Empire found in context&#39;);
   return result!;
 }</code></pre>

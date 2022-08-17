@@ -72,10 +72,12 @@ describing what changes were made to a map entry, including for which key</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged&lt;V&gt; updateMapEntry&lt;K, V&gt;(K key, V? originalValue, V? nextValue,
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged&lt;V&gt; updateMapEntry&lt;K, V&gt;(
+    K key, V? originalValue, V? nextValue,
     {String? propertyName}) {
   return EmpireStateChanged&lt;V&gt;(nextValue, originalValue,
-      propertyName: propertyName, description: &#39;Update Map Value For Key: $key&#39;);
+      propertyName: propertyName,
+      description: &#39;Update Map Value For Key: $key&#39;);
 }</code></pre>
 </section>
 

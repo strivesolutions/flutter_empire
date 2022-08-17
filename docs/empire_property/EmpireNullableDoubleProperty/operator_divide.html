@@ -67,7 +67,8 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">double operator &#47;(other) =&gt; isNotNull
     ? value! &#47; other!
-    : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);</code></pre>
+    : throw EmpirePropertyNullValueException(
+        StackTrace.current, propertyName, runtimeType);</code></pre>
 </section>
 
 

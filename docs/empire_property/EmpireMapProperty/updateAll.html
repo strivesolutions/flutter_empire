@@ -78,7 +78,8 @@ print(terrestrial); // {1: MERCURY, 2: VENUS, 3: EARTH}
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void updateAll(V Function(K key, V value) update, {bool notifyChanges = true}) {
+  <pre class="language-dart"><code class="language-dart">void updateAll(V Function(K key, V value) update,
+    {bool notifyChanges = true}) {
   final stateChangedEvents = &lt;EmpireStateChanged&lt;V&gt;&gt;[];
 
   _value.updateAll((key, value) {

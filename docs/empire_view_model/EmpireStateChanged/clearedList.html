@@ -70,8 +70,10 @@ stating that the entire list was cleared</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged&lt;Iterable&lt;V&gt;&gt; clearedList&lt;V&gt;(Iterable&lt;V&gt; iterable, {String? propertyName}) =&gt;
-    EmpireStateChanged(&lt;V&gt;[], iterable, propertyName: propertyName, description: &#39;Iterable Cleared&#39;);</code></pre>
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged&lt;Iterable&lt;V&gt;&gt; clearedList&lt;V&gt;(Iterable&lt;V&gt; iterable,
+        {String? propertyName}) =&gt;
+    EmpireStateChanged(&lt;V&gt;[], iterable,
+        propertyName: propertyName, description: &#39;Iterable Cleared&#39;);</code></pre>
 </section>
 
 

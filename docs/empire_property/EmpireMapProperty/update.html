@@ -92,7 +92,8 @@ print(largestPlanets); // {1: Jupiter, 2: Saturn, 3: Neptune, 8: Mercury}
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">V update(K key, V Function(V value) update, {V Function()? ifAbsent, bool notifyChanges = true}) {
+  <pre class="language-dart"><code class="language-dart">V update(K key, V Function(V value) update,
+    {V Function()? ifAbsent, bool notifyChanges = true}) {
   final originalValue = _value[key];
   final updatedValue = _value.update(key, update, ifAbsent: ifAbsent);
 

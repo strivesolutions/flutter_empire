@@ -71,10 +71,12 @@ describing what key/value was removed from the map</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged&lt;V&gt; removedFromMap&lt;K, V&gt;(K key, V removedValue, {String? propertyName}) {
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged&lt;V&gt; removedFromMap&lt;K, V&gt;(K key, V removedValue,
+    {String? propertyName}) {
   final removedEntry = MapEntry(key, removedValue);
   return EmpireStateChanged&lt;V&gt;(null, removedValue,
-      propertyName: propertyName, description: &#39;Removed From Map: $removedEntry&#39;);
+      propertyName: propertyName,
+      description: &#39;Removed From Map: $removedEntry&#39;);
 }</code></pre>
 </section>
 

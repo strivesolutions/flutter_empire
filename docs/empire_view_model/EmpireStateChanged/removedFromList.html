@@ -70,9 +70,11 @@ describing what value was removed from the list</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged removedFromList&lt;V&gt;(V removedValue, {String? propertyName}) =&gt;
+  <pre class="language-dart"><code class="language-dart">static EmpireStateChanged removedFromList&lt;V&gt;(V removedValue,
+        {String? propertyName}) =&gt;
     EmpireStateChanged(null, removedValue,
-        propertyName: propertyName, description: &#39;Removed From List: $removedValue&#39;);</code></pre>
+        propertyName: propertyName,
+        description: &#39;Removed From List: $removedValue&#39;);</code></pre>
 </section>
 
 

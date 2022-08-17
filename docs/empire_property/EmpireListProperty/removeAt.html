@@ -82,7 +82,8 @@ print(parts); // [head, shoulder, toes]
   final removedValue = _value.removeAt(index);
 
   if (notifyChanges) {
-    _viewModel.notifyChanges([EmpireStateChanged.removedFromList(removedValue)]);
+    _viewModel
+        .notifyChanges([EmpireStateChanged.removedFromList(removedValue)]);
   }
 
   return removedValue;

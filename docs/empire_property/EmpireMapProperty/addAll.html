@@ -74,7 +74,9 @@
   _value.addAll(other);
 
   if (notifyChanges) {
-    _viewModel.notifyChanges([EmpireStateChanged.addedMapToMap(other, propertyName: propertyName)]);
+    _viewModel.notifyChanges([
+      EmpireStateChanged.addedMapToMap(other, propertyName: propertyName)
+    ]);
   }
 }</code></pre>
 </section>

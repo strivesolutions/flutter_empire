@@ -83,11 +83,15 @@ print(planets);
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void addEntries(Iterable&lt;MapEntry&lt;K, V&gt;&gt; entries, {bool notifyChanges = true}) {
+  <pre class="language-dart"><code class="language-dart">void addEntries(Iterable&lt;MapEntry&lt;K, V&gt;&gt; entries,
+    {bool notifyChanges = true}) {
   _value.addEntries(entries);
 
   if (notifyChanges) {
-    _viewModel.notifyChanges([EmpireStateChanged.addedEntriesToMap(entries, propertyName: propertyName)]);
+    _viewModel.notifyChanges([
+      EmpireStateChanged.addedEntriesToMap(entries,
+          propertyName: propertyName)
+    ]);
   }
 }</code></pre>
 </section>
