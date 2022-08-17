@@ -52,7 +52,9 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addAll(other);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([EmpireStateChanged.addedMapToMap(other, propertyName: propertyName)]);
+      _viewModel.notifyChanges([
+        EmpireStateChanged.addedMapToMap(other, propertyName: propertyName)
+      ]);
     }
   }
 
@@ -64,8 +66,10 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addEntries([entry]);
 
     if (notifyChanges) {
-      _viewModel
-          .notifyChanges([EmpireStateChanged.addedToMap(entry.key, entry.value, propertyName: propertyName)]);
+      _viewModel.notifyChanges([
+        EmpireStateChanged.addedToMap(entry.key, entry.value,
+            propertyName: propertyName)
+      ]);
     }
   }
 
@@ -87,11 +91,15 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// // {1: Mercury, 2: Venus, 3: Earth, 4: Mars, 5: Jupiter, 6: Saturn,
   /// //  7: Uranus, 8: Neptune}
   /// ```
-  void addEntries(Iterable<MapEntry<K, V>> entries, {bool notifyChanges = true}) {
+  void addEntries(Iterable<MapEntry<K, V>> entries,
+      {bool notifyChanges = true}) {
     _value.addEntries(entries);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([EmpireStateChanged.addedEntriesToMap(entries, propertyName: propertyName)]);
+      _viewModel.notifyChanges([
+        EmpireStateChanged.addedEntriesToMap(entries,
+            propertyName: propertyName)
+      ]);
     }
   }
 
@@ -103,7 +111,9 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addEntries([MapEntry<K, V>(key, value)]);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([EmpireStateChanged.addedToMap(key, value, propertyName: propertyName)]);
+      _viewModel.notifyChanges([
+        EmpireStateChanged.addedToMap(key, value, propertyName: propertyName)
+      ]);
     }
   }
 
@@ -131,7 +141,8 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// largestPlanets.update(8, (value) => 'New', ifAbsent: () => 'Mercury');
   /// print(largestPlanets); // {1: Jupiter, 2: Saturn, 3: Neptune, 8: Mercury}
   /// ```
-  V update(K key, V Function(V value) update, {V Function()? ifAbsent, bool notifyChanges = true}) {
+  V update(K key, V Function(V value) update,
+      {V Function()? ifAbsent, bool notifyChanges = true}) {
     final originalValue = _value[key];
     final updatedValue = _value.update(key, update, ifAbsent: ifAbsent);
 
@@ -158,7 +169,8 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// terrestrial.updateAll((key, value) => value.toUpperCase());
   /// print(terrestrial); // {1: MERCURY, 2: VENUS, 3: EARTH}
   /// ```
-  void updateAll(V Function(K key, V value) update, {bool notifyChanges = true}) {
+  void updateAll(V Function(K key, V value) update,
+      {bool notifyChanges = true}) {
     final stateChangedEvents = <EmpireStateChanged<V>>[];
 
     _value.updateAll((key, value) {
@@ -212,7 +224,8 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// terrestrial.removeWhere((key, value) => value.startsWith('E'));
   /// print(terrestrial); // {1: Mercury, 2: Venus}
   /// ```
-  void removeWhere(bool Function(K key, V value) test, {bool notifyChanges = true}) {
+  void removeWhere(bool Function(K key, V value) test,
+      {bool notifyChanges = true}) {
     final stateChangedEvents = <EmpireStateChanged<V>>[];
 
     _value.removeWhere((key, value) {
@@ -242,7 +255,8 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// planets.clear(); // {}
   /// ```
   void clear({bool notifyChanges = true}) {
-    final stateChangedEvent = EmpireStateChanged(<K, V>{}, _value, propertyName: propertyName);
+    final stateChangedEvent =
+        EmpireStateChanged(<K, V>{}, _value, propertyName: propertyName);
 
     _value.clear();
 
@@ -277,7 +291,9 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
 
   /// Returns a new map where all entries of this map are transformed by
   /// the given [convert] function.
-  Map<K2, V2> map<K2, V2>(MapEntry<K2, V2> Function(dynamic, dynamic) convert) => _value.map(convert);
+  Map<K2, V2> map<K2, V2>(
+          MapEntry<K2, V2> Function(dynamic, dynamic) convert) =>
+      _value.map(convert);
 
   /// Applies [action] to each key/value pair of the map.
   ///
@@ -294,7 +310,8 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   ///   // 17.15: Neptune
   /// });
   /// ```
-  void forEach(void Function(dynamic, dynamic) action) => _value.forEach(action);
+  void forEach(void Function(dynamic, dynamic) action) =>
+      _value.forEach(action);
 
   V? operator [](K key) {
     return _value[key];

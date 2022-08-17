@@ -117,7 +117,8 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     final removedValue = _value.removeAt(index);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([EmpireStateChanged.removedFromList(removedValue)]);
+      _viewModel
+          .notifyChanges([EmpireStateChanged.removedFromList(removedValue)]);
     }
 
     return removedValue;
@@ -134,7 +135,8 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// print(numbers); // []
   /// ```
   void clear({bool notifyChanges = true}) {
-    final stateChangedEvent = EmpireStateChanged.clearedList(_value, propertyName: propertyName);
+    final stateChangedEvent =
+        EmpireStateChanged.clearedList(_value, propertyName: propertyName);
     _value.clear();
 
     if (notifyChanges) {

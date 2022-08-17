@@ -169,7 +169,7 @@ This is an open source project, and thus contributions to this project are welco
 
 If submitting a pull request, please ensure the following standards are met:
 
-1) Code files must be well formatted (run `flutter format -l 110 .`). 
+1) Code files must be well formatted (run `flutter format .`). 
 
 2) Tests must pass (run `flutter test`).  New test cases to validate your changes are highly recommended.
 

@@ -9,14 +9,16 @@ class ApplicationViewModel extends EmpireViewModel {
 
   @override
   void initProperties() {
-    backgroundColor = createProperty(Colors.white, propertyName: 'backgroundColor');
+    backgroundColor =
+        createProperty(Colors.white, propertyName: 'backgroundColor');
     title = createStringProperty('Empire - Counter App Example');
   }
 
   void changeBackgroundColor(Color color) => backgroundColor(color);
 
   void randomizeBackgroundColor() {
-    final color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    final color =
+        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
     backgroundColor(color);
   }
 

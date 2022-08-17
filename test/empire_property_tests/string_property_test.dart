@@ -23,7 +23,8 @@ class StringTestWidget extends EmpireWidget<StringViewModel> {
   }
 }
 
-class _StringTestWidgetState extends EmpireState<StringTestWidget, StringViewModel> {
+class _StringTestWidgetState
+    extends EmpireState<StringTestWidget, StringViewModel> {
   _StringTestWidgetState(super.viewModel);
 
   @override
@@ -135,7 +136,8 @@ void main() {
       expect(result, isFalse);
     });
 
-    test('substring - only pass start index value - returns correct substring', () {
+    test('substring - only pass start index value - returns correct substring',
+        () {
       const String nameValue = 'John';
       const String expectedValue = 'ohn';
       viewModel.name(nameValue);
@@ -145,7 +147,9 @@ void main() {
       expect(result, equals(expectedValue));
     });
 
-    test('substring - pass start and end index value - returns correct substring', () {
+    test(
+        'substring - pass start and end index value - returns correct substring',
+        () {
       const String nameValue = 'John';
       const String expectedValue = 'oh';
       viewModel.name(nameValue);

@@ -176,7 +176,9 @@ void main() {
       expect(result, equals(earth));
     });
 
-    test('map - generate different type in map function - returns correct values', () {
+    test(
+        'map - generate different type in map function - returns correct values',
+        () {
       String earth = 'Earth';
       String venus = 'Venus';
 
@@ -211,14 +213,18 @@ void main() {
       expect(list.isNotEmpty, isTrue);
     });
 
-    test('reset - starting list is empty - add item - should be empty after reset', () {
+    test(
+        'reset - starting list is empty - add item - should be empty after reset',
+        () {
       final list = viewModel.createEmptyListProperty<String>();
       list.add('Bob');
       list.reset();
       expect(list.isEmpty, isTrue);
     });
 
-    test('reset - starting list has data - remove item - only original data after reset', () {
+    test(
+        'reset - starting list has data - remove item - only original data after reset',
+        () {
       const String listItem = 'Earth';
       final data = viewModel.createListProperty<String>([listItem]);
 

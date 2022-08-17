@@ -31,7 +31,8 @@ void main() {
     test('createProperty - set optional property name', () {
       final viewModel = _TestViewModel();
       const expectedValue = 'age';
-      final EmpireProperty<int> age = viewModel.createProperty(10, propertyName: expectedValue);
+      final EmpireProperty<int> age =
+          viewModel.createProperty(10, propertyName: expectedValue);
       expect(age.propertyName, equals(expectedValue));
     });
   });

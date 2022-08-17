@@ -86,7 +86,8 @@ abstract class EmpireWidget<T extends EmpireViewModel> extends StatefulWidget {
 ///  }
 ///}
 ///```
-abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel> extends State<T> {
+abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel>
+    extends State<T> {
   final E viewModel;
 
   ///Exposes the [viewModel] busy status. Used to determine if the [viewModel] is busy running
