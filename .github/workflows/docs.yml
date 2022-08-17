@@ -41,7 +41,7 @@ jobs:
           git config user.name strivebot
           git config user.email ${{ secrets.STRIVEBOT_EMAIL }}
           git checkout api-docs
-          git merge origin/main
+          # git merge origin/main
 
       - name: Update readme version
         run: |
