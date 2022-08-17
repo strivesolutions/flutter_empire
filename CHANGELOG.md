@@ -1,4 +1,4 @@
-## 0.8.2 # broken
+## 0.8.1
 
 * CI Workflow Updates
 * Documentation Generation Changes
