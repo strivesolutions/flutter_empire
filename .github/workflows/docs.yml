@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - AutoVersionReadme
     paths:
       - pubspec.yaml
       - .github/workflows/docs.yml
@@ -50,12 +49,12 @@ jobs:
           sed -i s/\<latest\>/$version/g README.md
           cat README.md
 
-      # - run: flutter pub get
+      - run: flutter pub get
 
-      # - name: Create docs
-      #   run: ./createDocs.sh
+      - name: Create docs
+        run: ./createDocs.sh
 
-      # - name: Update branch
-      #   run: |
-      #     git add .
-      #     git commit -m "Update generated documentation" && git push || true
+      - name: Update branch
+        run: |
+          git add .
+          git commit -m "Update generated documentation" && git push || true
