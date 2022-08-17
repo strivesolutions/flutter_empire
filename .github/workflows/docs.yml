@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - DocsWorkflow
+      - AutoVersionReadme
     paths:
       - pubspec.yaml
       - .github/workflows/docs.yml
@@ -43,12 +43,18 @@ jobs:
           git checkout api-docs
           git merge origin/main
 
-      - run: flutter pub get
-
-      - name: Create docs
-        run: ./createDocs.sh
-
-      - name: Update branch
+      - name: Update readme version
         run: |
-          git add .
-          git commit -m "Update generated documentation" && git push || true
+          version="$(cat pubspec.yaml | grep "version:" | cut -d" " -f 2)"
+          sed -i s/<latest>/$version/g README.md
+          cat README.md
+
+      # - run: flutter pub get
+
+      # - name: Create docs
+      #   run: ./createDocs.sh
+
+      # - name: Update branch
+      #   run: |
+      #     git add .
+      #     git commit -m "Update generated documentation" && git push || true
