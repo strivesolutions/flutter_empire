@@ -1,6 +1,6 @@
 name: empire
 description: A simple yet powerful state management library for Flutter.
-version: 0.8.1
+version: 0.8.2
 homepage: https://github.com/strivesolutions/flutter_empire
 issue_tracker: https://github.com/strivesolutions/flutter_empire/issues
 
