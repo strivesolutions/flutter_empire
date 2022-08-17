@@ -97,7 +97,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - run: ./versionChangeCheck.sh
+      - run: ./validateVersion.sh
 
   examples:
     name: Validate examples
