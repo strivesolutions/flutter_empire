@@ -108,7 +108,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: example/counter
+        working-directory: example
 
     steps:
       - name: Checkout

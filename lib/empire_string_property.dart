@@ -57,7 +57,8 @@ class EmpireStringProperty extends EmpireProperty<String> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableStringProperty extends EmpireProperty<String?> {
-  EmpireNullableStringProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireNullableStringProperty(super.value, super.viewModel,
+      {super.propertyName});
 
   ///Whether the string value is empty
   ///

@@ -279,10 +279,12 @@ class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
-  EmpireNullableDateTimeProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireNullableDateTimeProperty(super.value, super.viewModel,
+      {super.propertyName});
 
   ///Sets the value to null
-  void setNull({bool notifyChange = true}) => super.set(null, notifyChange: notifyChange);
+  void setNull({bool notifyChange = true}) =>
+      super.set(null, notifyChange: notifyChange);
 
   /// The year.
   ///
@@ -492,7 +494,8 @@ class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   /// print(now.toUtc().isAtSameMomentAs(now)); // true
   /// print(now.isAtSameMomentAs(now.toUtc())); // true
   /// ```
-  bool isAtSameMomentAs(DateTime other) => _value?.isAtSameMomentAs(other) ?? false;
+  bool isAtSameMomentAs(DateTime other) =>
+      _value?.isAtSameMomentAs(other) ?? false;
 
   /// Compares this DateTime object to [other],
   /// returning zero if the values are equal.

@@ -48,7 +48,8 @@ void main() {
       var millisecondsSinceEpoch = dt1.millisecondsSinceEpoch;
       var dt2 = DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch);
 
-      expect(property.millisecondsSinceEpoch, equals(dt2.millisecondsSinceEpoch));
+      expect(
+          property.millisecondsSinceEpoch, equals(dt2.millisecondsSinceEpoch));
     });
 
     test('microsecondsSinceEpoch', () {
@@ -57,7 +58,8 @@ void main() {
       var microsecondsSinceEpoch = dt1.microsecondsSinceEpoch;
       var dt2 = DateTime.fromMicrosecondsSinceEpoch(microsecondsSinceEpoch);
 
-      expect(property.microsecondsSinceEpoch, equals(dt2.microsecondsSinceEpoch));
+      expect(
+          property.microsecondsSinceEpoch, equals(dt2.microsecondsSinceEpoch));
     });
 
     test('microseconds', () {

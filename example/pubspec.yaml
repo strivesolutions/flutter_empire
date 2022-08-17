@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   empire:
-    path: ../../
+    path: ../
   uuid: 3.0.6
 
   cupertino_icons: ^1.0.2

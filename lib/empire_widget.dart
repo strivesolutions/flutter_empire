@@ -99,7 +99,8 @@ class Empire<T extends EmpireViewModel> extends StatefulWidget {
   ///[EmpireApp]. However you'll most likely want to use the shorthand [viewModelOf] function to do
   ///so.
   static EmpireApp<T> of<T extends EmpireViewModel>(BuildContext context) {
-    final EmpireApp<T>? result = context.dependOnInheritedWidgetOfExactType<EmpireApp<T>>();
+    final EmpireApp<T>? result =
+        context.dependOnInheritedWidgetOfExactType<EmpireApp<T>>();
     assert(result != null, 'No Empire found in context');
     return result!;
   }

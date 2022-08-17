@@ -79,7 +79,9 @@ void main() {
       expect(ageOne.equals(ageTwo), isTrue);
     });
 
-    test('equals - other is EmpireProperty with different value - are not equal', () {
+    test(
+        'equals - other is EmpireProperty with different value - are not equal',
+        () {
       final EmpireProperty<int> ageOne = viewModel.createProperty(10);
       final EmpireProperty<int> ageTwo = viewModel.createProperty(5);
 
@@ -100,14 +102,18 @@ void main() {
       expect(ageOne == ageTwo, isTrue);
     });
 
-    test('equality - other is EmpireProperty with different value - are not equal', () {
+    test(
+        'equality - other is EmpireProperty with different value - are not equal',
+        () {
       final EmpireProperty<int> ageOne = viewModel.createProperty(10);
       final EmpireProperty<int> ageTwo = viewModel.createProperty(5);
 
       expect(ageOne == ageTwo, isFalse);
     });
 
-    test('equality - other is same as EmpireProperty generic type argument with same value - are equal', () {
+    test(
+        'equality - other is same as EmpireProperty generic type argument with same value - are equal',
+        () {
       final EmpireProperty<int> ageOne = viewModel.createProperty(10);
       const int ageTwo = 10;
 
@@ -125,7 +131,9 @@ void main() {
       expect(ageOne == ageTwo, isFalse);
     });
 
-    test('equality - other is not EmpireProperty or generic type argument - are not equal', () {
+    test(
+        'equality - other is not EmpireProperty or generic type argument - are not equal',
+        () {
       final EmpireProperty<int> ageOne = viewModel.createProperty(10);
       const String name = 'Bob';
 
@@ -155,7 +163,9 @@ void main() {
   });
 
   group('Property Original Value Tests', () {
-    test('setOriginalToCurrent - update original value - reset sets value to updated original ', () {
+    test(
+        'setOriginalToCurrent - update original value - reset sets value to updated original ',
+        () {
       const String expectedValue = 'Bob';
       final EmpireProperty<String?> name = viewModel.createNullProperty();
 
@@ -193,7 +203,8 @@ void main() {
       expect(find.text("1"), findsOneWidget);
     });
 
-    testWidgets('reset - notifyChange is false - UI Does Not Update', (tester) async {
+    testWidgets('reset - notifyChange is false - UI Does Not Update',
+        (tester) async {
       await tester.pumpWidget(testWidget);
 
       expect(find.text("1"), findsOneWidget);

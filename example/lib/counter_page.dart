@@ -9,7 +9,8 @@ class CounterPage extends EmpireWidget<CounterViewModel> {
   const CounterPage({super.key, required super.viewModel});
 
   @override
-  EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
+  EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() =>
+      _CounterPageState(viewModel);
 }
 
 class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
@@ -23,7 +24,8 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
     if (countChangedSubscription == null) {
       countChangedSubscription = viewModel.addOnStateChangedListener((events) {
         for (var event in events) {
-          if (event.propertyName == "count" && viewModel.changeBackgroundOnCountChange.isTrue) {
+          if (event.propertyName == "count" &&
+              viewModel.changeBackgroundOnCountChange.isTrue) {
             appViewModel.randomizeBackgroundColor();
           }
         }
@@ -68,12 +70,14 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
               ),
               TextButton(
                 onPressed: () =>
-                    Empire.viewModelOf<ApplicationViewModel>(context).changeBackgroundColor(Colors.red),
+                    Empire.viewModelOf<ApplicationViewModel>(context)
+                        .changeBackgroundColor(Colors.red),
                 child: const Text('Red'),
               ),
               TextButton(
                 onPressed: () =>
-                    Empire.viewModelOf<ApplicationViewModel>(context).changeBackgroundColor(Colors.white),
+                    Empire.viewModelOf<ApplicationViewModel>(context)
+                        .changeBackgroundColor(Colors.white),
                 child: const Text('White'),
               ),
               TextButton(

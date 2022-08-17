@@ -23,7 +23,8 @@ class DoubleTestWidget extends EmpireWidget<DoubleViewModel> {
   }
 }
 
-class _DoubleTestWidgetState extends EmpireState<DoubleTestWidget, DoubleViewModel> {
+class _DoubleTestWidgetState
+    extends EmpireState<DoubleTestWidget, DoubleViewModel> {
   _DoubleTestWidgetState(super.viewModel);
 
   @override
