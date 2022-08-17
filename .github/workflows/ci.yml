@@ -41,6 +41,7 @@ jobs:
               - "lib/**"
               - "README.md"
               - "pubspec.yaml"
+              - "validateVersions.sh"
             package:
               - "lib/**"
               - "pubspec.yaml"             
