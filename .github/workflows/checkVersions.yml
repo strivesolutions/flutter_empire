@@ -1,0 +1,21 @@
+name: Check versions
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths:
+      - pubspec.yaml
+      - .github/workflows/checkVersions.yml
+
+jobs:
+  validate:
+    name: Validate versions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - run: ./versionChangeCheck.sh
