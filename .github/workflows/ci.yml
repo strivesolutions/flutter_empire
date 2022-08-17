@@ -41,6 +41,7 @@ jobs:
               - "lib/**"
               - "README.md"
               - "pubspec.yaml"
+              - "validateVersions.sh"
             package:
               - "lib/**"
               - "pubspec.yaml"             
@@ -107,7 +108,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: example/counter
+        working-directory: example
 
     steps:
       - name: Checkout
@@ -121,3 +122,18 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
+
+  publish-dry-run:
+    name: Publish dry run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: dart pub publish --dry-run

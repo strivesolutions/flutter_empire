@@ -14,8 +14,10 @@ import 'empire_property.dart';
 ///The [EmpireState] the ViewModel is bound to will update itself each time an [EmpireProperty] value
 ///is changed and call the states build function, updating the UI.
 abstract class EmpireViewModel {
-  final StreamController<List<EmpireStateChanged>> _stateController = StreamController.broadcast();
-  final StreamController<ErrorEvent> _errorController = StreamController.broadcast();
+  final StreamController<List<EmpireStateChanged>> _stateController =
+      StreamController.broadcast();
+  final StreamController<ErrorEvent> _errorController =
+      StreamController.broadcast();
 
   final List<StreamSubscription> _subscriptions = [];
 
@@ -58,7 +60,8 @@ abstract class EmpireViewModel {
   ///
   ///If your listener references a [BuildContext] inside of a [Widget],
   ///you should override the [Widget] dispose method and cancel the subscription.
-  StreamSubscription addOnStateChangedListener(Function(List<EmpireStateChanged> events) onStateChanged) {
+  StreamSubscription addOnStateChangedListener(
+      Function(List<EmpireStateChanged> events) onStateChanged) {
     final newSubscription = _stateController.stream.listen(onStateChanged);
     _subscriptions.add(newSubscription);
     return newSubscription;
@@ -71,7 +74,8 @@ abstract class EmpireViewModel {
   }
 
   ///Adds an event handler which gets executed each time [notifyError] is called.
-  StreamSubscription addOnErrorEventListener(Function(ErrorEvent event) onError) {
+  StreamSubscription addOnErrorEventListener(
+      Function(ErrorEvent event) onError) {
     final newSubscription = _errorController.stream.listen(onError);
     _subscriptions.add(newSubscription);
     return newSubscription;
@@ -108,13 +112,15 @@ abstract class EmpireViewModel {
   void setMultiple(List<Map<EmpireProperty, dynamic>> setters) {
     final List<EmpireStateChanged> changes = [];
     for (var setter in setters) {
-      assert(setter.keys.length == 1, 'Each setter item must contain exactly one key/value pair.');
+      assert(setter.keys.length == 1,
+          'Each setter item must contain exactly one key/value pair.');
       final property = setter.keys.first;
 
       final previousValue = property.value;
       final nextValue = setter.values.first;
 
-      changes.add(EmpireStateChanged(nextValue, previousValue, propertyName: property.propertyName));
+      changes.add(EmpireStateChanged(nextValue, previousValue,
+          propertyName: property.propertyName));
 
       property(nextValue, notifyChange: false);
     }
@@ -200,7 +206,8 @@ abstract class EmpireViewModel {
   ///Checks if the view model is busy working on a specific task.
   ///
   ///See [doAsync] for [busyTaskKey] usage.
-  bool isTaskInProgress(dynamic busyTaskKey) => _busyTaskKeys.contains(busyTaskKey);
+  bool isTaskInProgress(dynamic busyTaskKey) =>
+      _busyTaskKeys.contains(busyTaskKey);
 
   void _addBusyTaskKey(dynamic busyTaskKey) {
     if (busyTaskKey != null && !_busyTaskKeys.contains(busyTaskKey)) {
@@ -255,7 +262,8 @@ abstract class EmpireViewModel {
   ///
   ///isAwesome = createNullableBoolProperty();
   ///```
-  EmpireNullableBoolProperty createNullableBoolProperty({bool? value, String? propertyName}) {
+  EmpireNullableBoolProperty createNullableBoolProperty(
+      {bool? value, String? propertyName}) {
     return EmpireNullableBoolProperty(value, this, propertyName: propertyName);
   }
 
@@ -270,7 +278,8 @@ abstract class EmpireViewModel {
   ///
   ///planets = createListProperty(<String>['Mecury', 'Venus', 'Earth']);
   ///```
-  EmpireListProperty<T> createListProperty<T>(List<T> values, {String? propertyName}) {
+  EmpireListProperty<T> createListProperty<T>(List<T> values,
+      {String? propertyName}) {
     return EmpireListProperty(values, this, propertyName: propertyName);
   }
 
@@ -300,7 +309,8 @@ abstract class EmpireViewModel {
   ///
   ///planet = createMapProperty<String, dynamic>({'name': 'Earth', 'population': 8000000000});
   ///```
-  EmpireMapProperty<K, V> createMapProperty<K, V>(Map<K, V> values, {String? propertyName}) {
+  EmpireMapProperty<K, V> createMapProperty<K, V>(Map<K, V> values,
+      {String? propertyName}) {
     return EmpireMapProperty(values, this, propertyName: propertyName);
   }
 
@@ -330,7 +340,8 @@ abstract class EmpireViewModel {
   ///
   ///name = createStringProperty('Bob');
   ///```
-  EmpireStringProperty createStringProperty(String value, {String? propertyName}) {
+  EmpireStringProperty createStringProperty(String value,
+      {String? propertyName}) {
     return EmpireStringProperty(value, this, propertyName: propertyName);
   }
 
@@ -345,8 +356,10 @@ abstract class EmpireViewModel {
   ///
   ///name = createNullableStringProperty();
   ///```
-  EmpireNullableStringProperty createNullableStringProperty({String? value, String? propertyName}) {
-    return EmpireNullableStringProperty(value, this, propertyName: propertyName);
+  EmpireNullableStringProperty createNullableStringProperty(
+      {String? value, String? propertyName}) {
+    return EmpireNullableStringProperty(value, this,
+        propertyName: propertyName);
   }
 
   ///Short hand helper function for initializing an [EmpireIntProperty].
@@ -375,7 +388,8 @@ abstract class EmpireViewModel {
   ///
   ///age = createNullableIntProperty();
   ///```
-  EmpireNullableIntProperty createNullableIntProperty({int? value, String? propertyName}) {
+  EmpireNullableIntProperty createNullableIntProperty(
+      {int? value, String? propertyName}) {
     return EmpireNullableIntProperty(value, this, propertyName: propertyName);
   }
 
@@ -390,7 +404,8 @@ abstract class EmpireViewModel {
   ///
   ///percentage = createDoubleProperty(0.72);
   ///```
-  EmpireDoubleProperty createDoubleProperty(double value, {String? propertyName}) {
+  EmpireDoubleProperty createDoubleProperty(double value,
+      {String? propertyName}) {
     return EmpireDoubleProperty(value, this, propertyName: propertyName);
   }
 
@@ -405,8 +420,10 @@ abstract class EmpireViewModel {
   ///
   ///percentage = createNullableDoubleProperty();
   ///```
-  EmpireNullableDoubleProperty createNullableDoubleProperty({double? value, String? propertyName}) {
-    return EmpireNullableDoubleProperty(value, this, propertyName: propertyName);
+  EmpireNullableDoubleProperty createNullableDoubleProperty(
+      {double? value, String? propertyName}) {
+    return EmpireNullableDoubleProperty(value, this,
+        propertyName: propertyName);
   }
 
   ///Short hand helper function for initializing an [EmpireDateTimeProperty].
@@ -420,7 +437,8 @@ abstract class EmpireViewModel {
   ///
   ///birthDate = createDateTimeProperty(DateTime(1985, 1, 1));
   ///```
-  EmpireDateTimeProperty createDateTimeProperty(DateTime value, {String? propertyname}) {
+  EmpireDateTimeProperty createDateTimeProperty(DateTime value,
+      {String? propertyname}) {
     return EmpireDateTimeProperty(value, this, propertyName: propertyname);
   }
 
@@ -435,8 +453,10 @@ abstract class EmpireViewModel {
   ///
   ///birthDate = createNullableDateTimeProperty();
   ///```
-  EmpireNullableDateTimeProperty createNullableDateTimeProperty({DateTime? value, String? propertyName}) {
-    return EmpireNullableDateTimeProperty(value, this, propertyName: propertyName);
+  EmpireNullableDateTimeProperty createNullableDateTimeProperty(
+      {DateTime? value, String? propertyName}) {
+    return EmpireNullableDateTimeProperty(value, this,
+        propertyName: propertyName);
   }
 
   ///Short hand helper function for initializing an [EmpireProperty] with a null value.
@@ -477,40 +497,51 @@ class EmpireStateChanged<T> {
   final String? propertyName;
   final String? description;
 
-  EmpireStateChanged(this.nextValue, this.previousValue, {this.propertyName, this.description});
+  EmpireStateChanged(this.nextValue, this.previousValue,
+      {this.propertyName, this.description});
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what value was added to the list
-  static EmpireStateChanged addedToList<V>(V newValue, {String? propertyName}) =>
-      EmpireStateChanged(newValue, null, propertyName: propertyName, description: 'Added To List: $newValue');
+  static EmpireStateChanged addedToList<V>(V newValue,
+          {String? propertyName}) =>
+      EmpireStateChanged(newValue, null,
+          propertyName: propertyName, description: 'Added To List: $newValue');
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing all the values that were added to the list
-  static EmpireStateChanged addedAllToList<V>(Iterable<V> newValues, {String? propertyName}) =>
+  static EmpireStateChanged addedAllToList<V>(Iterable<V> newValues,
+          {String? propertyName}) =>
       EmpireStateChanged(newValues, null,
-          propertyName: propertyName, description: 'Added All To List: $newValues');
+          propertyName: propertyName,
+          description: 'Added All To List: $newValues');
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what value was removed from the list
-  static EmpireStateChanged removedFromList<V>(V removedValue, {String? propertyName}) =>
+  static EmpireStateChanged removedFromList<V>(V removedValue,
+          {String? propertyName}) =>
       EmpireStateChanged(null, removedValue,
-          propertyName: propertyName, description: 'Removed From List: $removedValue');
+          propertyName: propertyName,
+          description: 'Removed From List: $removedValue');
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///stating that the entire list was cleared
-  static EmpireStateChanged<Iterable<V>> clearedList<V>(Iterable<V> iterable, {String? propertyName}) =>
-      EmpireStateChanged(<V>[], iterable, propertyName: propertyName, description: 'Iterable Cleared');
+  static EmpireStateChanged<Iterable<V>> clearedList<V>(Iterable<V> iterable,
+          {String? propertyName}) =>
+      EmpireStateChanged(<V>[], iterable,
+          propertyName: propertyName, description: 'Iterable Cleared');
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what new map values were added to another map
-  static EmpireStateChanged addedMapToMap<K, V>(Map<K, V> addedMap, {String? propertyName}) {
+  static EmpireStateChanged addedMapToMap<K, V>(Map<K, V> addedMap,
+      {String? propertyName}) {
     return EmpireStateChanged(addedMap, null,
         propertyName: propertyName, description: 'Added Map To Map: $addedMap');
   }
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what key/value was added to the map
-  static EmpireStateChanged addedToMap<K, V>(K key, V newValue, {String? propertyName}) {
+  static EmpireStateChanged addedToMap<K, V>(K key, V newValue,
+      {String? propertyName}) {
     final newEntry = MapEntry(key, newValue);
     return EmpireStateChanged(newEntry, null,
         propertyName: propertyName, description: 'Added To Map: $newEntry');
@@ -518,26 +549,32 @@ class EmpireStateChanged<T> {
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what [MapEntry] objects were added to the map
-  static EmpireStateChanged addedEntriesToMap<K, V>(Iterable<MapEntry<K, V>> entries,
+  static EmpireStateChanged addedEntriesToMap<K, V>(
+      Iterable<MapEntry<K, V>> entries,
       {String? propertyName}) {
     return EmpireStateChanged(entries, null,
-        propertyName: propertyName, description: 'Added Entries To Map: $entries');
+        propertyName: propertyName,
+        description: 'Added Entries To Map: $entries');
   }
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what changes were made to a map entry, including for which key
-  static EmpireStateChanged<V> updateMapEntry<K, V>(K key, V? originalValue, V? nextValue,
+  static EmpireStateChanged<V> updateMapEntry<K, V>(
+      K key, V? originalValue, V? nextValue,
       {String? propertyName}) {
     return EmpireStateChanged<V>(nextValue, originalValue,
-        propertyName: propertyName, description: 'Update Map Value For Key: $key');
+        propertyName: propertyName,
+        description: 'Update Map Value For Key: $key');
   }
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what key/value was removed from the map
-  static EmpireStateChanged<V> removedFromMap<K, V>(K key, V removedValue, {String? propertyName}) {
+  static EmpireStateChanged<V> removedFromMap<K, V>(K key, V removedValue,
+      {String? propertyName}) {
     final removedEntry = MapEntry(key, removedValue);
     return EmpireStateChanged<V>(null, removedValue,
-        propertyName: propertyName, description: 'Removed From Map: $removedEntry');
+        propertyName: propertyName,
+        description: 'Removed From Map: $removedEntry');
   }
 
   @override
@@ -598,5 +635,6 @@ class ErrorEvent<T> {
   ErrorEvent(this.error, {this.stackTrace, this.metaData = const {}});
 
   @override
-  String toString() => 'Exception: ${error.toString()}\nStackTrace: $stackTrace';
+  String toString() =>
+      'Exception: ${error.toString()}\nStackTrace: $stackTrace';
 }

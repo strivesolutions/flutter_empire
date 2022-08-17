@@ -122,21 +122,26 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
 
   int operator +(other) => isNotNull
       ? (value! + other).toInt()
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   int operator -(other) => isNotNull
       ? (value! - other).toInt()
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   int operator /(other) => isNotNull
       ? value! ~/ other!
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   int operator %(other) => isNotNull
       ? (value! % other).toInt()
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   int operator *(other) => isNotNull
       ? (value! * other).toInt()
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 }

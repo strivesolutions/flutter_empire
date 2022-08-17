@@ -121,7 +121,8 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///```
 ///
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
-  EmpireNullableDoubleProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireNullableDoubleProperty(super.value, super.viewModel,
+      {super.propertyName});
 
   /// Whether this number is negative.
   ///
@@ -176,21 +177,26 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
 
   double operator +(other) => isNotNull
       ? value! + other!
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   double operator -(other) => isNotNull
       ? value! - other!
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   double operator /(other) => isNotNull
       ? value! / other!
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   double operator %(other) => isNotNull
       ? value! % other!
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 
   double operator *(other) => isNotNull
       ? value! * other!
-      : throw EmpirePropertyNullValueException(StackTrace.current, propertyName, runtimeType);
+      : throw EmpirePropertyNullValueException(
+          StackTrace.current, propertyName, runtimeType);
 }

@@ -165,7 +165,8 @@ void main() {
       expect(find.text(expectedUpdatedValue), findsOneWidget);
     });
 
-    testWidgets('update - key is not preset - calls ifAbsent - widget updates', (tester) async {
+    testWidgets('update - key is not preset - calls ifAbsent - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
 
       const String expectedUpdatedValue = 'Doe';
@@ -183,7 +184,8 @@ void main() {
       expect(find.text(expectedUpdatedValue), findsOneWidget);
     });
 
-    testWidgets('updateAll - updates all values - widget updates', (tester) async {
+    testWidgets('updateAll - updates all values - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
       const String valueOne = 'bob';
       const String keyTwo = 'lastName';
@@ -211,7 +213,8 @@ void main() {
       expect(find.text(expectedValueTwo), findsOneWidget);
     });
 
-    testWidgets('remove - key is present - item removed - widget updates', (tester) async {
+    testWidgets('remove - key is present - item removed - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
       const String valueOne = 'Bob';
       const String keyTwo = 'lastName';
@@ -241,7 +244,9 @@ void main() {
       expect(find.text(valueTwo), findsNothing);
     });
 
-    testWidgets('removeWhere - predicate finds match - item removed - widget updates', (tester) async {
+    testWidgets(
+        'removeWhere - predicate finds match - item removed - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
       const String valueOne = 'Bob';
       const String keyTwo = 'lastName';
@@ -369,7 +374,9 @@ void main() {
 
       expect(result, isNull);
     });
-    test('reset - starting map is empty - add item - should be empty after reset', () {
+    test(
+        'reset - starting map is empty - add item - should be empty after reset',
+        () {
       final data = viewModel.createEmptyMapProperty<String, String>();
       data.add('name', 'Bob');
 
@@ -380,7 +387,9 @@ void main() {
       expect(data.isEmpty, isTrue);
     });
 
-    test('reset - starting map has data - add item - only original data after reset', () {
+    test(
+        'reset - starting map has data - add item - only original data after reset',
+        () {
       const String key = 'firstName';
       const String value = 'Bob';
       const String tmpKey = 'lastName';
