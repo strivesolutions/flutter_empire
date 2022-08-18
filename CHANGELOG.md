@@ -1,3 +1,7 @@
+## 0.8.3
+
+* Update package description to make Pub analysis happy
+
 ## 0.8.2
 
 * Various code formatting and file structure clean up
