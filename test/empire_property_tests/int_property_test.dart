@@ -197,5 +197,21 @@ void main() {
       final result = viewModel.age.isNegative;
       expect(result, isFalse);
     });
+
+    test('increment - returns increment value', () {
+      const int expected = 4;
+      viewModel.age(3);
+      final result = viewModel.age.increment();
+      expect(result, equals(expected));
+      expect(viewModel.age.value, equals(expected));
+    });
+
+    test('decrement - returns decremented value', () {
+      const int expected = 2;
+      viewModel.age(3);
+      final result = viewModel.age.decrement();
+      expect(result, equals(expected));
+      expect(viewModel.age.value, equals(expected));
+    });
   });
 }

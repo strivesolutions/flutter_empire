@@ -36,6 +36,12 @@ class EmpireIntProperty extends EmpireProperty<int> {
   /// The int value as a double
   double toDouble() => _value.toDouble();
 
+  /// Increment the int value by 1
+  int increment() => ++_value;
+
+  /// Decrement the int value by 1
+  int decrement() => --_value;
+
   /// Returns the absolute value of this integer.
   int abs() => _value.abs();
 
