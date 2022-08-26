@@ -21,4 +21,4 @@ jobs:
       - name: Publish to pub.dev
         run: |
           echo ${{ secrets.PUB_CREDENTIALS }} > ~/.pub-cache/credentials.json
-          dart pub publish
+          dart pub publish -f
