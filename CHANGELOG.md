@@ -1,5 +1,7 @@
 ## 0.9.0-dev.1
 
+- Added `increment` and `decrement` functions to the `EmpireIntProperty`
+
 **BREAKING CHANGES**
 
 - We've redesigned and refactored how you go about initializing an EmpireProperty, and made it more dart-ly(it's a word now).
