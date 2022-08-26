@@ -1,3 +1,8 @@
+## 0.9.0-dev.2
+
+- Fixed issue where EmpireIntProperty `increment` and `decrement` functions were not updating the UI
+- Updated README to reflect the property initialization refactor changes
+
 ## 0.9.0-dev.1
 
 - Added `increment` and `decrement` functions to the `EmpireIntProperty`
