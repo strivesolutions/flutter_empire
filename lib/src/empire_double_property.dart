@@ -24,6 +24,19 @@ part of 'empire_property.dart';
 class EmpireDoubleProperty extends EmpireProperty<double> {
   EmpireDoubleProperty(super.value, {super.propertyName});
 
+  ///Factory constructor for initializing an [EmpireDoubleProperty] to zero.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final bankAccountBalance = EmpireDoubleProperty.zero();
+  ///```
+  factory EmpireDoubleProperty.zero({String? propertyName}) {
+    return EmpireDoubleProperty(0, propertyName: propertyName);
+  }
+
   /// Whether this number is negative.
   bool get isNegative => _value.isNegative;
 
@@ -123,6 +136,10 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   EmpireNullableDoubleProperty(super.value, {super.propertyName});
 
+  factory EmpireNullableDoubleProperty.zero({String? propertyName}) {
+    return EmpireNullableDoubleProperty(0, propertyName: propertyName);
+  }
+
   /// Whether this number is negative.
   ///
   /// Returns false if the double value is null
@@ -198,36 +215,4 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
       ? value! * other!
       : throw EmpirePropertyNullValueException(
           StackTrace.current, propertyName, runtimeType);
-}
-
-///Short hand helper function for initializing an [EmpireDoubleProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireDoubleProperty percentage;
-///
-///percentage = createDoubleProperty(0.72);
-///```
-EmpireDoubleProperty createDoubleProperty(double value,
-    {String? propertyName}) {
-  return EmpireDoubleProperty(value, propertyName: propertyName);
-}
-
-///Short hand helper function for initializing an [EmpireNullableDoubleProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireNullableDoubleProperty percentage;
-///
-///percentage = createNullableDoubleProperty();
-///```
-EmpireNullableDoubleProperty createNullableDoubleProperty(
-    {double? value, String? propertyName}) {
-  return EmpireNullableDoubleProperty(value, propertyName: propertyName);
 }

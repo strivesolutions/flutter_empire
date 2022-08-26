@@ -7,6 +7,19 @@ part of 'empire_property.dart';
 class EmpireStringProperty extends EmpireProperty<String> {
   EmpireStringProperty(super.value, {super.propertyName});
 
+  ///Factory constructor for initializing an [EmpireStringProperty] to an empty [String].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final title = EmpireStringProperty.empty();
+  ///```
+  factory EmpireStringProperty.empty({String? propertyName}) {
+    return EmpireStringProperty('', propertyName: propertyName);
+  }
+
   ///Whether the string value is empty
   bool get isEmpty => _value.isEmpty;
 
@@ -108,36 +121,4 @@ class EmpireNullableStringProperty extends EmpireProperty<String?> {
   /// Both [start] and [end] must be non-negative and no greater than [length];
   /// [end], if provided, must be greater than or equal to [start].
   String? substring(int start, [int? end]) => _value?.substring(start, end);
-}
-
-///Short hand helper function for initializing an [EmpireStringProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireStringProperty name;
-///
-///name = createStringProperty('Bob');
-///```
-EmpireStringProperty createStringProperty(String value,
-    {String? propertyName}) {
-  return EmpireStringProperty(value, propertyName: propertyName);
-}
-
-///Short hand helper function for initializing an [EmpireNullableStringProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireNullableStringProperty name;
-///
-///name = createNullableStringProperty();
-///```
-EmpireNullableStringProperty createNullableStringProperty(
-    {String? value, String? propertyName}) {
-  return EmpireNullableStringProperty(value, propertyName: propertyName);
 }

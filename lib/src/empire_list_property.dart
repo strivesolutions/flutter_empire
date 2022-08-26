@@ -9,6 +9,19 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     _originalValue = List<T>.from(value);
   }
 
+  ///Factory constructor for initializing an [EmpireListProperty] to an empty [List].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final marsOneVolunteers = EmpireListProperty<People>.empty();
+  ///```
+  factory EmpireListProperty.empty({String? propertyName}) {
+    return EmpireListProperty(<T>[], propertyName: propertyName);
+  }
+
   /// The number of objects in this list.
   ///
   /// The valid indices for a list are `0` through `length - 1`.
@@ -246,35 +259,4 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   T operator [](int index) {
     return _value[index];
   }
-}
-
-///Short hand helper function for initializing an [EmpireListProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireListProperty planets;
-///
-///planets = createListProperty(<String>['Mecury', 'Venus', 'Earth']);
-///```
-EmpireListProperty<T> createListProperty<T>(List<T> values,
-    {String? propertyName}) {
-  return EmpireListProperty(values, propertyName: propertyName);
-}
-
-///Short hand helper function for initializing an empty [EmpireListProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireListProperty planets;
-///
-///planets = createEmptyListProperty();
-///```
-EmpireListProperty<T> createEmptyListProperty<T>({String? propertyName}) {
-  return EmpireListProperty([], propertyName: propertyName);
 }

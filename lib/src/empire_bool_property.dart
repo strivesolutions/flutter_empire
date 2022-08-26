@@ -53,34 +53,3 @@ class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
   void setNull({bool notifyChange = true}) =>
       super.set(null, notifyChange: notifyChange);
 }
-
-///Short hand helper function for initializing an [EmpireBoolProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireBoolProperty isAwesome;
-///
-///isAwesome = createBoolProperty(true);
-///```
-EmpireBoolProperty createBoolProperty(bool value, {String? propertyName}) {
-  return EmpireBoolProperty(value, propertyName: propertyName);
-}
-
-///Short hand helper function for initializing an [EmpireNullableBoolProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireNullableBoolProperty isAwesome;
-///
-///isAwesome = createNullableBoolProperty();
-///```
-EmpireNullableBoolProperty createNullableBoolProperty(
-    {bool? value, String? propertyName}) {
-  return EmpireNullableBoolProperty(value, propertyName: propertyName);
-}

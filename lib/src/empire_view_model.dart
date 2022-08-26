@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html';
 
 import 'package:flutter/foundation.dart';
 
@@ -33,35 +32,6 @@ abstract class EmpireViewModel {
       element.setViewModel(this);
     }
   }
-
-  ///Initializes all [EmpireProperty] properties in the ViewModel.
-  ///
-  ///This method is automatically called
-  ///during object construction and should not be called manually.
-  ///
-  ///All [EmpireProperty] properties must be defined with the `late final` keywords. For example:
-  ///```dart
-  ///late final EmpireProperty<int> age;
-  ///```
-  ///When overriding the initProperties functions you would initialize your [EmpireProperty] like so:
-  ///```dart
-  ///@override
-  ///void initProperties() {
-  ///    age = EmpireProperty<int>(0, this);
-  ///}
-  ///```
-  ///You can also initialize properties using the [createProperty] function:
-  ///```dart
-  ///@override
-  ///void initProperties() {
-  ///    age = createProperty(0);
-  ///}
-  ///```
-  // @Deprecated(
-  //     'This method has been deprecated. You must implement [props] instead. This will be removed in a future version.')
-  // void initProperties() {
-  //   throw UnimplementedError();
-  // }
 
   ///Provides a list of [EmpireProperty] fields in the [EmpireViewModel].
   ///

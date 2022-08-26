@@ -2,7 +2,7 @@ import 'package:empire/empire_properties.dart';
 import 'package:empire/empire_view_model.dart';
 
 class CounterViewModel extends EmpireViewModel {
-  final count = EmpireIntProperty(0, propertyName: 'count');
+  final count = EmpireIntProperty.zero(propertyName: 'count');
   final changeBackgroundOnCountChange = EmpireBoolProperty(false);
 
   @override

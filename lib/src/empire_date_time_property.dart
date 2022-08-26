@@ -10,6 +10,19 @@ part of 'empire_property.dart';
 class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
   EmpireDateTimeProperty(super.value, {super.propertyName});
 
+  ///Factory constructor for initializing an [EmpireDateTimeProperty] to the current Date/Time.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final today = EmpireDateTimeProperty.now();
+  ///```
+  factory EmpireDateTimeProperty.now({String? propertyName}) {
+    return EmpireDateTimeProperty(DateTime.now(), propertyName: propertyName);
+  }
+
   /// The year.
   ///
   /// ```dart
@@ -280,6 +293,13 @@ class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
 ///automatically triggering a UI rebuild.
 class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   EmpireNullableDateTimeProperty(super.value, {super.propertyName});
+
+  factory EmpireNullableDateTimeProperty.now({String? propertyName}) {
+    return EmpireNullableDateTimeProperty(
+      DateTime.now(),
+      propertyName: propertyName,
+    );
+  }
 
   ///Sets the value to null
   void setNull({bool notifyChange = true}) =>
@@ -593,36 +613,4 @@ class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   /// print(difference.inDays); // 16592
   /// ```
   Duration? difference(DateTime other) => _value?.difference(other);
-}
-
-///Short hand helper function for initializing an [EmpireDateTimeProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireDateTimeProperty birthDate;
-///
-///birthDate = createDateTimeProperty(DateTime(1985, 1, 1));
-///```
-EmpireDateTimeProperty createDateTimeProperty(DateTime value,
-    {String? propertyname}) {
-  return EmpireDateTimeProperty(value, propertyName: propertyname);
-}
-
-///Short hand helper function for initializing an [EmpireNullableDateTimeProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireNullableDateTimeProperty birthDate;
-///
-///birthDate = createNullableDateTimeProperty();
-///```
-EmpireNullableDateTimeProperty createNullableDateTimeProperty(
-    {DateTime? value, String? propertyName}) {
-  return EmpireNullableDateTimeProperty(value, propertyName: propertyName);
 }

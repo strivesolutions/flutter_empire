@@ -9,6 +9,19 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _originalValue = Map<K, V>.from(value);
   }
 
+  ///Factory constructor for initializing an [EmpireMapProperty] to an empty [Map].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final jsonData = EmpireMapProperty<String, dynamic>.empty();
+  ///```
+  factory EmpireMapProperty.empty({String? propertyName}) {
+    return EmpireMapProperty(<K, V>{}, propertyName: propertyName);
+  }
+
   ///The map entries in the map
   Iterable<MapEntry<K, V>> get entries => _value.entries;
 
@@ -316,35 +329,4 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   V? operator [](K key) {
     return _value[key];
   }
-}
-
-///Short hand helper function for initializing an [EmpireMapProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireMapProperty planet;
-///
-///planet = createMapProperty<String, dynamic>({'name': 'Earth', 'population': 8000000000});
-///```
-EmpireMapProperty<K, V> createMapProperty<K, V>(Map<K, V> values,
-    {String? propertyName}) {
-  return EmpireMapProperty(values, propertyName: propertyName);
-}
-
-///Short hand helper function for initializing an empty [EmpireMapProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireMapProperty planet;
-///
-///planet = createEmptyMapProperty();
-///```
-EmpireMapProperty<K, V> createEmptyMapProperty<K, V>({String? propertyName}) {
-  return EmpireMapProperty(<K, V>{}, propertyName: propertyName);
 }

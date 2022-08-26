@@ -24,6 +24,19 @@ part of 'empire_property.dart';
 class EmpireIntProperty extends EmpireProperty<int> {
   EmpireIntProperty(super.value, {super.propertyName});
 
+  ///Factory constructor for initializing an [EmpireIntProperty] to zero.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final numberOfFriends = EmpireIntProperty.zero();
+  ///```
+  factory EmpireIntProperty.zero({String? propertyName}) {
+    return EmpireIntProperty(0, propertyName: propertyName);
+  }
+
   /// Returns true if the int value is odd
   bool get isOdd => _value.isOdd;
 
@@ -95,6 +108,19 @@ class EmpireIntProperty extends EmpireProperty<int> {
 class EmpireNullableIntProperty extends EmpireProperty<int?> {
   EmpireNullableIntProperty(super.value, {super.propertyName});
 
+  ///Factory constructor for initializing an [EmpireNullableIntProperty] to zero.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final numberOfFriends = EmpireNullableIntProperty.zero();
+  ///```
+  factory EmpireNullableIntProperty.zero({String? propertyName}) {
+    return EmpireNullableIntProperty(0, propertyName: propertyName);
+  }
+
   /// Returns true if the int value is odd
   ///
   /// Returns false if the int value is null
@@ -144,35 +170,4 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
       ? (value! * other).toInt()
       : throw EmpirePropertyNullValueException(
           StackTrace.current, propertyName, runtimeType);
-}
-
-///Short hand helper function for initializing an [EmpireIntProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireIntProperty age;
-///
-///age = createIntProperty(20);
-///```
-EmpireIntProperty createIntProperty(int value, {String? propertyName}) {
-  return EmpireIntProperty(value, propertyName: propertyName);
-}
-
-///Short hand helper function for initializing an [EmpireNullableIntProperty].
-///
-///See [EmpireProperty] for [propertyName] usages.
-///
-///## Example
-///
-///```dart
-///late final EmpireNullableIntProperty age;
-///
-///age = createNullableIntProperty();
-///```
-EmpireNullableIntProperty createNullableIntProperty(
-    {int? value, String? propertyName}) {
-  return EmpireNullableIntProperty(value, propertyName: propertyName);
 }

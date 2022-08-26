@@ -1,4 +1,6 @@
-import 'package:empire/empire.dart';
+import 'package:empire/empire_properties.dart';
+import 'package:empire/empire_view_model.dart';
+import 'package:empire/src/empire_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
