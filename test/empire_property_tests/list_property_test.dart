@@ -1,14 +1,13 @@
-import 'package:empire/empire.dart';
+import 'package:empire/empire_properties.dart';
+import 'package:empire/empire_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class ListViewModel extends EmpireViewModel {
-  late final EmpireListProperty<String> planets;
+  final planets = EmpireListProperty<String>.empty();
 
   @override
-  void initProperties() {
-    planets = createEmptyListProperty();
-  }
+  Iterable<EmpireProperty> get props => [planets];
 }
 
 class ListTestWidget extends EmpireWidget<ListViewModel> {
@@ -190,25 +189,25 @@ void main() {
     });
 
     test('isEmpty - list is empty - returns true', () {
-      final emptyList = viewModel.createEmptyListProperty<String>();
+      final emptyList = EmpireListProperty<String>.empty();
 
       expect(emptyList.isEmpty, isTrue);
     });
 
     test('isEmpty - list is not empty - returns false', () {
-      final emptyList = viewModel.createListProperty(['Bob']);
+      final names = EmpireListProperty<String>(['Bob']);
 
-      expect(emptyList.isEmpty, isFalse);
+      expect(names.isEmpty, isFalse);
     });
 
     test('isNotEmpty - list is empty - returns false', () {
-      final list = viewModel.createEmptyListProperty<String>();
+      final list = EmpireListProperty<String>.empty();
 
       expect(list.isNotEmpty, isFalse);
     });
 
     test('isNotEmpty - list is not empty - returns true', () {
-      final list = viewModel.createListProperty(['Bob']);
+      final list = EmpireListProperty<String>(['Bob']);
 
       expect(list.isNotEmpty, isTrue);
     });
@@ -216,7 +215,8 @@ void main() {
     test(
         'reset - starting list is empty - add item - should be empty after reset',
         () {
-      final list = viewModel.createEmptyListProperty<String>();
+      final list = EmpireListProperty<String>.empty();
+      list.setViewModel(viewModel);
       list.add('Bob');
       list.reset();
       expect(list.isEmpty, isTrue);
@@ -226,7 +226,8 @@ void main() {
         'reset - starting list has data - remove item - only original data after reset',
         () {
       const String listItem = 'Earth';
-      final data = viewModel.createListProperty<String>([listItem]);
+      final data = EmpireListProperty<String>([listItem]);
+      data.setViewModel(viewModel);
 
       expect(data.contains(listItem), isTrue);
 

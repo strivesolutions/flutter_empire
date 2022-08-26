@@ -1,4 +1,3 @@
-import 'package:empire/src/empire.dart';
 import 'package:empire/src/empire_exceptions.dart';
 
 import 'empire_view_model.dart';

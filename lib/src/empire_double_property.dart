@@ -134,10 +134,11 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///```
 ///
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
-  EmpireNullableDoubleProperty(super.value, {super.propertyName});
+  EmpireNullableDoubleProperty({double? value, super.propertyName})
+      : super(value);
 
   factory EmpireNullableDoubleProperty.zero({String? propertyName}) {
-    return EmpireNullableDoubleProperty(0, propertyName: propertyName);
+    return EmpireNullableDoubleProperty(value: 0, propertyName: propertyName);
   }
 
   /// Whether this number is negative.
