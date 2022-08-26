@@ -1,4 +1,4 @@
-import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 

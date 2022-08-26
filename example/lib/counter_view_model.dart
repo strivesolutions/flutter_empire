@@ -1,5 +1,4 @@
-import 'package:empire/empire_properties.dart';
-import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire.dart';
 
 class CounterViewModel extends EmpireViewModel {
   final count = EmpireIntProperty.zero(propertyName: 'count');

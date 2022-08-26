@@ -1,5 +1,4 @@
 import 'package:empire/empire.dart';
-import 'package:empire/empire_properties.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 

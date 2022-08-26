@@ -86,9 +86,9 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     }
   }
 
-  /// Adds all key/value pairs of [newEntries] to this map.
+  /// Adds all key/value pairs of [entries] to this map.
   ///
-  /// If a key of [newEntries] is already in this map,
+  /// If a key of [entries] is already in this map,
   /// the corresponding value is overwritten.
   ///
   /// The operation is equivalent to doing `this[entry.key] = entry.value`

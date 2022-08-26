@@ -1,5 +1,4 @@
-import 'package:empire/empire_properties.dart';
-import 'package:empire/empire_widget.dart';
+import 'package:empire/empire.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -238,6 +237,16 @@ void main() {
       data.reset();
 
       expect(data.contains(listItem), isTrue);
+    });
+
+    test('ellementAt - list is not empty - returns correct object', () {
+      const String expected = 'Frank';
+      const int index = 1;
+      final list = EmpireListProperty<String>(['Bob', expected]);
+
+      final result = list.elementAt(index);
+
+      expect(result, equals(expected));
     });
   });
 }

@@ -45,7 +45,8 @@ class EmpireStringProperty extends EmpireProperty<String> {
   /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
   /// ```
   /// The [startIndex] must not be negative or greater than [length].
-  bool contains(String other) => _value.contains(other);
+  bool contains(String other, [int startIndex = 0]) =>
+      _value.contains(other, startIndex);
 
   /// The substring of the string value from [start], inclusive, to [end], exclusive.
   ///
@@ -106,7 +107,8 @@ class EmpireNullableStringProperty extends EmpireProperty<String?> {
   /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
   /// ```
   /// The [startIndex] must not be negative or greater than [length].
-  bool contains(String other) => _value?.contains(other) ?? false;
+  bool contains(String other, [int startIndex = 0]) =>
+      _value?.contains(other, startIndex) ?? false;
 
   /// The substring of the string value from [start], inclusive, to [end], exclusive.
   ///

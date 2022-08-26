@@ -223,6 +223,25 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     return _value.map(toElement);
   }
 
+  /// Returns the [index]th element.
+  ///
+  /// The [index] must be non-negative and less than [length].
+  /// Index zero represents the first element (so `iterable.elementAt(0)` is
+  /// equivalent to `iterable.first`).
+  ///
+  /// May iterate through the elements in iteration order, ignoring the
+  /// first [index] elements and then returning the next.
+  /// Some iterables may have a more efficient way to find the element.
+  ///
+  /// Example:
+  /// ```dart
+  /// final numbers = <int>[1, 2, 3, 5, 6, 7];
+  /// final elementAt = numbers.elementAt(4); // 6
+  /// ```
+  T elementAt(int index) {
+    return _value.elementAt(index);
+  }
+
   /// Invokes [action] on each element of this iterable in iteration order.
   ///
   /// Example:
