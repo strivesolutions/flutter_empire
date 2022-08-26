@@ -22,7 +22,7 @@ class _ApplicationSubViewModel extends EmpireViewModel {
 class _TestViewModel extends EmpireViewModel {
   final firstName = EmpireProperty<String?>(null);
   final lastName = EmpireProperty<String?>(null);
-  final age = EmpireProperty<int>(1);
+  final age = EmpireIntProperty(1);
 
   @override
   Iterable<EmpireProperty> get props => [firstName, lastName, age];
@@ -198,5 +198,35 @@ void main() {
     await tester.pumpWidget(mainWidget);
 
     expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
+  });
+
+  testWidgets(
+      'EmpireWidget Test - Increment EmpireIntProperty - Finds Correct Text Widget After Property Change',
+      (tester) async {
+    const int initialAge = 10;
+    viewModel.age(initialAge);
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text("$initialAge"), findsOneWidget);
+
+    final int newAge = viewModel.age.increment();
+    await tester.pumpAndSettle();
+
+    expect(find.text("$newAge"), findsOneWidget);
+  });
+
+  testWidgets(
+      'EmpireWidget Test - Decrement EmpireIntProperty - Finds Correct Text Widget After Property Change',
+      (tester) async {
+    const int initialAge = 10;
+    viewModel.age(initialAge);
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text("$initialAge"), findsOneWidget);
+
+    final int newAge = viewModel.age.decrement();
+    await tester.pumpAndSettle();
+
+    expect(find.text("$newAge"), findsOneWidget);
   });
 }

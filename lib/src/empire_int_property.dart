@@ -50,10 +50,12 @@ class EmpireIntProperty extends EmpireProperty<int> {
   double toDouble() => _value.toDouble();
 
   /// Increment the int value by 1
-  int increment() => ++_value;
+  int increment({bool notifyChange = true}) =>
+      set(_value + 1, notifyChange: notifyChange);
 
   /// Decrement the int value by 1
-  int decrement() => --_value;
+  int decrement({bool notifyChange = true}) =>
+      set(_value - 1, notifyChange: notifyChange);
 
   /// Returns the absolute value of this integer.
   int abs() => _value.abs();
