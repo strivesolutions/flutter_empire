@@ -183,7 +183,7 @@ If submitting a pull request, please ensure the following standards are met:
 
 This package has **ZERO** dependencies on any other packages.
 
-You can find the full API documentation [here](https://strivesolutions.github.io/flutter_empire/empire/empire-library.html)
+You can find the full API documentation [here](https://pub.dev/documentation/empire/latest/)
 
 Developed by:
 
