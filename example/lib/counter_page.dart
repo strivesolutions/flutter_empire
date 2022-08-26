@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:empire/empire.dart';
+import 'package:empire/empire_widget.dart';
 import 'package:flutter/material.dart';
 import 'application_view_model.dart';
 import 'counter_view_model.dart';

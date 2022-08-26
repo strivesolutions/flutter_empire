@@ -22,7 +22,7 @@ part of 'empire_property.dart';
 ///print('${age + 5}'); //prints 15
 ///```
 class EmpireIntProperty extends EmpireProperty<int> {
-  EmpireIntProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireIntProperty({int value = 0, super.propertyName}) : super(value);
 
   /// Returns true if the int value is odd
   bool get isOdd => _value.isOdd;
@@ -93,7 +93,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///```
 ///
 class EmpireNullableIntProperty extends EmpireProperty<int?> {
-  EmpireNullableIntProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireNullableIntProperty(super.value, {super.propertyName});
 
   /// Returns true if the int value is odd
   ///
@@ -144,4 +144,35 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
       ? (value! * other).toInt()
       : throw EmpirePropertyNullValueException(
           StackTrace.current, propertyName, runtimeType);
+}
+
+///Short hand helper function for initializing an [EmpireIntProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireIntProperty age;
+///
+///age = createIntProperty(20);
+///```
+EmpireIntProperty createIntProperty(int value, {String? propertyName}) {
+  return EmpireIntProperty(value, propertyName: propertyName);
+}
+
+///Short hand helper function for initializing an [EmpireNullableIntProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireNullableIntProperty age;
+///
+///age = createNullableIntProperty();
+///```
+EmpireNullableIntProperty createNullableIntProperty(
+    {int? value, String? propertyName}) {
+  return EmpireNullableIntProperty(value, propertyName: propertyName);
 }

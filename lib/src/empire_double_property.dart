@@ -22,7 +22,7 @@ part of 'empire_property.dart';
 ///print('${percentage + 5.2}'); //prints 15.2
 ///```
 class EmpireDoubleProperty extends EmpireProperty<double> {
-  EmpireDoubleProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireDoubleProperty(super.value, {super.propertyName});
 
   /// Whether this number is negative.
   bool get isNegative => _value.isNegative;
@@ -121,8 +121,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///```
 ///
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
-  EmpireNullableDoubleProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableDoubleProperty(super.value, {super.propertyName});
 
   /// Whether this number is negative.
   ///
@@ -199,4 +198,36 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
       ? value! * other!
       : throw EmpirePropertyNullValueException(
           StackTrace.current, propertyName, runtimeType);
+}
+
+///Short hand helper function for initializing an [EmpireDoubleProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireDoubleProperty percentage;
+///
+///percentage = createDoubleProperty(0.72);
+///```
+EmpireDoubleProperty createDoubleProperty(double value,
+    {String? propertyName}) {
+  return EmpireDoubleProperty(value, propertyName: propertyName);
+}
+
+///Short hand helper function for initializing an [EmpireNullableDoubleProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireNullableDoubleProperty percentage;
+///
+///percentage = createNullableDoubleProperty();
+///```
+EmpireNullableDoubleProperty createNullableDoubleProperty(
+    {double? value, String? propertyName}) {
+  return EmpireNullableDoubleProperty(value, propertyName: propertyName);
 }

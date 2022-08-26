@@ -8,7 +8,7 @@ part of 'empire_property.dart';
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireBoolProperty extends EmpireProperty<bool> {
-  EmpireBoolProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireBoolProperty(super.value, {super.propertyName});
 
   ///Whether the underlying value is true
   bool get isTrue => _value;
@@ -33,8 +33,7 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
-  EmpireNullableBoolProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableBoolProperty(super.value, {super.propertyName});
 
   ///Whether the underlying value is not null and true
   bool get isTrue => isNotNull && _value == true;
@@ -53,4 +52,35 @@ class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
   ///Sets the value to null
   void setNull({bool notifyChange = true}) =>
       super.set(null, notifyChange: notifyChange);
+}
+
+///Short hand helper function for initializing an [EmpireBoolProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireBoolProperty isAwesome;
+///
+///isAwesome = createBoolProperty(true);
+///```
+EmpireBoolProperty createBoolProperty(bool value, {String? propertyName}) {
+  return EmpireBoolProperty(value, propertyName: propertyName);
+}
+
+///Short hand helper function for initializing an [EmpireNullableBoolProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireNullableBoolProperty isAwesome;
+///
+///isAwesome = createNullableBoolProperty();
+///```
+EmpireNullableBoolProperty createNullableBoolProperty(
+    {bool? value, String? propertyName}) {
+  return EmpireNullableBoolProperty(value, propertyName: propertyName);
 }

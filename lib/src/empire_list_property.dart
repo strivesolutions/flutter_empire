@@ -5,7 +5,7 @@ part of 'empire_property.dart';
 ///Any change to the internal list will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireListProperty<T> extends EmpireProperty<List<T>> {
-  EmpireListProperty(super.value, super.viewModel, {super.propertyName}) {
+  EmpireListProperty(super.value, {super.propertyName}) {
     _originalValue = List<T>.from(value);
   }
 
@@ -246,4 +246,35 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   T operator [](int index) {
     return _value[index];
   }
+}
+
+///Short hand helper function for initializing an [EmpireListProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireListProperty planets;
+///
+///planets = createListProperty(<String>['Mecury', 'Venus', 'Earth']);
+///```
+EmpireListProperty<T> createListProperty<T>(List<T> values,
+    {String? propertyName}) {
+  return EmpireListProperty(values, propertyName: propertyName);
+}
+
+///Short hand helper function for initializing an empty [EmpireListProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireListProperty planets;
+///
+///planets = createEmptyListProperty();
+///```
+EmpireListProperty<T> createEmptyListProperty<T>({String? propertyName}) {
+  return EmpireListProperty([], propertyName: propertyName);
 }

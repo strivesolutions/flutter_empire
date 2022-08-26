@@ -8,7 +8,7 @@ part of 'empire_property.dart';
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
-  EmpireDateTimeProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireDateTimeProperty(super.value, {super.propertyName});
 
   /// The year.
   ///
@@ -279,8 +279,7 @@ class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
-  EmpireNullableDateTimeProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableDateTimeProperty(super.value, {super.propertyName});
 
   ///Sets the value to null
   void setNull({bool notifyChange = true}) =>
@@ -594,4 +593,36 @@ class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   /// print(difference.inDays); // 16592
   /// ```
   Duration? difference(DateTime other) => _value?.difference(other);
+}
+
+///Short hand helper function for initializing an [EmpireDateTimeProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireDateTimeProperty birthDate;
+///
+///birthDate = createDateTimeProperty(DateTime(1985, 1, 1));
+///```
+EmpireDateTimeProperty createDateTimeProperty(DateTime value,
+    {String? propertyname}) {
+  return EmpireDateTimeProperty(value, propertyName: propertyname);
+}
+
+///Short hand helper function for initializing an [EmpireNullableDateTimeProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireNullableDateTimeProperty birthDate;
+///
+///birthDate = createNullableDateTimeProperty();
+///```
+EmpireNullableDateTimeProperty createNullableDateTimeProperty(
+    {DateTime? value, String? propertyName}) {
+  return EmpireNullableDateTimeProperty(value, propertyName: propertyName);
 }

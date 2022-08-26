@@ -1,4 +1,5 @@
-import 'package:empire/empire_exceptions.dart';
+import 'package:empire/src/empire.dart';
+import 'package:empire/src/empire_exceptions.dart';
 
 import 'empire_view_model.dart';
 
@@ -63,10 +64,14 @@ class EmpireProperty<T> implements EmpireValue<T> {
 
   bool get isNotNull => !isNull;
 
-  final EmpireViewModel _viewModel;
+  late final EmpireViewModel _viewModel;
 
-  EmpireProperty(this._value, this._viewModel, {this.propertyName}) {
+  EmpireProperty(this._value, {this.propertyName}) {
     _originalValue = _value;
+  }
+
+  void setViewModel(EmpireViewModel viewModel) {
+    _viewModel = viewModel;
   }
 
   void call(T value, {bool notifyChange = true}) {
@@ -177,4 +182,35 @@ class EmpireProperty<T> implements EmpireValue<T> {
 
   @override
   int get hashCode => _value.hashCode;
+}
+
+///Short hand helper function for initializing an [EmpireProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireProperty<String> name;
+///
+///name = createProperty('Bob');
+///```
+EmpireProperty<T> createProperty<T>(T value, {String? propertyName}) {
+  return EmpireProperty<T>(value, propertyName: propertyName);
+}
+
+///Short hand helper function for initializing an [EmpireProperty] with a null value.
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireProperty<String?> name;
+///
+///name = createNullProperty();
+///
+///```
+EmpireProperty<T?> createNullProperty<T>({String? propertyName}) {
+  return createProperty(null, propertyName: propertyName);
 }

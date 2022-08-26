@@ -5,7 +5,7 @@ part of 'empire_property.dart';
 ///Any change to the internal map will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
-  EmpireMapProperty(super.value, super.viewModel, {super.propertyName}) {
+  EmpireMapProperty(super.value, {super.propertyName}) {
     _originalValue = Map<K, V>.from(value);
   }
 
@@ -316,4 +316,35 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   V? operator [](K key) {
     return _value[key];
   }
+}
+
+///Short hand helper function for initializing an [EmpireMapProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireMapProperty planet;
+///
+///planet = createMapProperty<String, dynamic>({'name': 'Earth', 'population': 8000000000});
+///```
+EmpireMapProperty<K, V> createMapProperty<K, V>(Map<K, V> values,
+    {String? propertyName}) {
+  return EmpireMapProperty(values, propertyName: propertyName);
+}
+
+///Short hand helper function for initializing an empty [EmpireMapProperty].
+///
+///See [EmpireProperty] for [propertyName] usages.
+///
+///## Example
+///
+///```dart
+///late final EmpireMapProperty planet;
+///
+///planet = createEmptyMapProperty();
+///```
+EmpireMapProperty<K, V> createEmptyMapProperty<K, V>({String? propertyName}) {
+  return EmpireMapProperty(<K, V>{}, propertyName: propertyName);
 }
