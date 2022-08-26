@@ -22,7 +22,7 @@ part of 'empire_property.dart';
 ///print('${age + 5}'); //prints 15
 ///```
 class EmpireIntProperty extends EmpireProperty<int> {
-  EmpireIntProperty({int value = 0, super.propertyName}) : super(value);
+  EmpireIntProperty(super.value, {super.propertyName});
 
   /// Returns true if the int value is odd
   bool get isOdd => _value.isOdd;
