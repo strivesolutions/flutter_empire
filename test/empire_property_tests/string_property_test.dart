@@ -6,7 +6,7 @@ class StringViewModel extends EmpireViewModel {
   final name = EmpireStringProperty('Bob');
 
   @override
-  Iterable<EmpireProperty> get props => [name];
+  Iterable<EmpireProperty> get empireProps => [name];
 }
 
 class StringTestWidget extends EmpireWidget<StringViewModel> {
@@ -49,7 +49,7 @@ class NullableStringViewModel extends EmpireViewModel {
   final name = EmpireNullableStringProperty();
 
   @override
-  Iterable<EmpireProperty> get props => [name];
+  Iterable<EmpireProperty> get empireProps => [name];
 }
 
 void main() {

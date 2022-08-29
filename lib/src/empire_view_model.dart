@@ -28,7 +28,7 @@ abstract class EmpireViewModel {
   List<dynamic> get activeTasks => _busyTaskKeys;
 
   EmpireViewModel() {
-    for (var element in props) {
+    for (var element in empireProps) {
       element.setViewModel(this);
     }
   }
@@ -36,7 +36,7 @@ abstract class EmpireViewModel {
   ///Provides a list of [EmpireProperty] fields in the [EmpireViewModel].
   ///
   ///Properties on the implementation must be added to this list in order to be reactive and update the UI on change.
-  Iterable<EmpireProperty> get props;
+  Iterable<EmpireProperty> get empireProps;
 
   ///Adds an event handler which gets executed each time an [EmpireProperty] value is changed.
   ///

@@ -6,7 +6,7 @@ class ListViewModel extends EmpireViewModel {
   final planets = EmpireListProperty<String>.empty();
 
   @override
-  Iterable<EmpireProperty> get props => [planets];
+  Iterable<EmpireProperty> get empireProps => [planets];
 }
 
 class ListTestWidget extends EmpireWidget<ListViewModel> {

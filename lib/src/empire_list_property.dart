@@ -63,7 +63,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     _value.add(value);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([EmpireStateChanged.addedToList(value)]);
+      viewModel.notifyChanges([EmpireStateChanged.addedToList(value)]);
     }
   }
 
@@ -81,7 +81,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     _value.addAll(values);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([EmpireStateChanged.addedAllToList(values)]);
+      viewModel.notifyChanges([EmpireStateChanged.addedAllToList(values)]);
     }
   }
 
@@ -106,7 +106,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     final wasRemoved = _value.remove(value);
 
     if (notifyChanges && wasRemoved) {
-      _viewModel.notifyChanges([EmpireStateChanged.removedFromList(value)]);
+      viewModel.notifyChanges([EmpireStateChanged.removedFromList(value)]);
     }
 
     return wasRemoved;
@@ -130,7 +130,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     final removedValue = _value.removeAt(index);
 
     if (notifyChanges) {
-      _viewModel
+      viewModel
           .notifyChanges([EmpireStateChanged.removedFromList(removedValue)]);
     }
 
@@ -153,7 +153,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     _value.clear();
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([stateChangedEvent]);
+      viewModel.notifyChanges([stateChangedEvent]);
     }
   }
 

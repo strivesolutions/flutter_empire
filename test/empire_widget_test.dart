@@ -9,14 +9,14 @@ class _ApplicationViewModel extends EmpireViewModel {
   void change() => changed(!changed.value);
 
   @override
-  Iterable<EmpireProperty> get props => [changed];
+  Iterable<EmpireProperty> get empireProps => [changed];
 }
 
 class _ApplicationSubViewModel extends EmpireViewModel {
   final viewModelName = EmpireStringProperty('SubViewModel');
 
   @override
-  Iterable<EmpireProperty> get props => [viewModelName];
+  Iterable<EmpireProperty> get empireProps => [viewModelName];
 }
 
 class _TestViewModel extends EmpireViewModel {
@@ -25,7 +25,7 @@ class _TestViewModel extends EmpireViewModel {
   final age = EmpireIntProperty(1);
 
   @override
-  Iterable<EmpireProperty> get props => [firstName, lastName, age];
+  Iterable<EmpireProperty> get empireProps => [firstName, lastName, age];
 }
 
 class _MyWidget extends EmpireWidget<_TestViewModel> {

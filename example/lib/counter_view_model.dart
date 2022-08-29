@@ -5,7 +5,7 @@ class CounterViewModel extends EmpireViewModel {
   final changeBackgroundOnCountChange = EmpireBoolProperty(false);
 
   @override
-  List<EmpireProperty> get props {
+  List<EmpireProperty> get empireProps {
     return [count, changeBackgroundOnCountChange];
   }
 

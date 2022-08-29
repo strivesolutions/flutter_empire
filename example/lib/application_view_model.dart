@@ -10,7 +10,7 @@ class ApplicationViewModel extends EmpireViewModel {
   ApplicationViewModel(this.title);
 
   @override
-  Iterable<EmpireProperty> get props => [backgroundColor, title];
+  Iterable<EmpireProperty> get empireProps => [backgroundColor, title];
 
   void changeBackgroundColor(Color color) => backgroundColor(color);
 

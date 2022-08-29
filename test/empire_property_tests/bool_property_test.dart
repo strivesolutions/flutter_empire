@@ -6,7 +6,7 @@ class BoolViewModel extends EmpireViewModel {
   final isAwesome = EmpireBoolProperty(true);
 
   @override
-  Iterable<EmpireProperty> get props => [isAwesome];
+  Iterable<EmpireProperty> get empireProps => [isAwesome];
 }
 
 class BoolTestWidget extends EmpireWidget<BoolViewModel> {
@@ -48,7 +48,7 @@ class NullableBoolViewModel extends EmpireViewModel {
   final isAwesome = EmpireNullableBoolProperty();
 
   @override
-  Iterable<EmpireProperty> get props => [isAwesome];
+  Iterable<EmpireProperty> get empireProps => [isAwesome];
 }
 
 void main() {

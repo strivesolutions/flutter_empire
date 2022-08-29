@@ -6,7 +6,7 @@ class DoubleViewModel extends EmpireViewModel {
   final percentage = EmpireDoubleProperty(10.0);
 
   @override
-  Iterable<EmpireProperty> get props => [percentage];
+  Iterable<EmpireProperty> get empireProps => [percentage];
 }
 
 class DoubleTestWidget extends EmpireWidget<DoubleViewModel> {
@@ -49,7 +49,7 @@ class NullableDoubleViewModel extends EmpireViewModel {
   final percentage = EmpireNullableDoubleProperty();
 
   @override
-  Iterable<EmpireProperty> get props => [percentage];
+  Iterable<EmpireProperty> get empireProps => [percentage];
 }
 
 void main() {

@@ -6,7 +6,7 @@ class MapViewModel extends EmpireViewModel {
   final data = EmpireMapProperty<String, String>.empty();
 
   @override
-  Iterable<EmpireProperty> get props => [data];
+  Iterable<EmpireProperty> get empireProps => [data];
 }
 
 class MapTestWidget extends EmpireWidget<MapViewModel> {

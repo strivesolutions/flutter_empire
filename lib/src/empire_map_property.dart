@@ -65,7 +65,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addAll(other);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged.addedMapToMap(other, propertyName: propertyName)
       ]);
     }
@@ -79,7 +79,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addEntries([entry]);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged.addedToMap(entry.key, entry.value,
             propertyName: propertyName)
       ]);
@@ -109,7 +109,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addEntries(entries);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged.addedEntriesToMap(entries,
             propertyName: propertyName)
       ]);
@@ -124,7 +124,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.addEntries([MapEntry<K, V>(key, value)]);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged.addedToMap(key, value, propertyName: propertyName)
       ]);
     }
@@ -160,7 +160,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     final updatedValue = _value.update(key, update, ifAbsent: ifAbsent);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged.updateMapEntry(
           key,
           originalValue,
@@ -199,7 +199,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     });
 
     if (notifyChanges) {
-      _viewModel.notifyChanges(stateChangedEvents);
+      viewModel.notifyChanges(stateChangedEvents);
     }
   }
 
@@ -219,7 +219,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     final removedValue = _value.remove(key);
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged.removedFromMap(
           key,
           removedValue,
@@ -256,7 +256,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     });
 
     if (notifyChanges) {
-      _viewModel.notifyChanges(stateChangedEvents);
+      viewModel.notifyChanges(stateChangedEvents);
     }
   }
 
@@ -274,7 +274,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
     _value.clear();
 
     if (notifyChanges) {
-      _viewModel.notifyChanges([stateChangedEvent]);
+      viewModel.notifyChanges([stateChangedEvent]);
     }
   }
 

@@ -63,7 +63,15 @@ class EmpireProperty<T> implements EmpireValue<T> {
 
   bool get isNotNull => !isNull;
 
-  late final EmpireViewModel _viewModel;
+  EmpireViewModel? _viewModel;
+  EmpireViewModel get viewModel {
+    if (_viewModel == null) {
+      throw PropertyNotAssignedToEmpireViewModelException(
+          StackTrace.current, propertyName, runtimeType);
+    } else {
+      return _viewModel!;
+    }
+  }
 
   EmpireProperty(this._value, {this.propertyName}) {
     _originalValue = _value;
@@ -110,7 +118,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
     final previousValue = _value;
     _value = value;
     if (notifyChange && previousValue != value) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged(value, previousValue, propertyName: propertyName)
       ]);
     }
@@ -141,7 +149,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
     _value = _originalValue;
 
     if (notifyChange) {
-      _viewModel.notifyChanges([
+      viewModel.notifyChanges([
         EmpireStateChanged(
           _originalValue,
           currentValue,

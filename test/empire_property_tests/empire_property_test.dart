@@ -1,4 +1,5 @@
 import 'package:empire/empire.dart';
+import 'package:empire/src/empire_exceptions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -7,7 +8,7 @@ class _TestViewModel extends EmpireViewModel {
   final EmpireProperty<int> age = EmpireProperty(1);
 
   @override
-  Iterable<EmpireProperty> get props => [name, age];
+  Iterable<EmpireProperty> get empireProps => [name, age];
 }
 
 class _MyWidget extends EmpireWidget<_TestViewModel> {
@@ -156,6 +157,15 @@ void main() {
     test('isNotNull - value is null - returns false', () {
       final nullName = EmpireProperty<String?>(null);
       expect(nullName.isNotNull, isFalse);
+    });
+
+    test(
+        'set - property not assigned to viewModel - throws MissingFromEmpirePropsException',
+        () {
+      final property = EmpireProperty<String?>(null);
+
+      expect(() => property('Bob'),
+          throwsA(isA<PropertyNotAssignedToEmpireViewModelException>()));
     });
   });
 

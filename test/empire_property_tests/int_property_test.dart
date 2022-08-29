@@ -6,7 +6,7 @@ class IntViewModel extends EmpireViewModel {
   final age = EmpireIntProperty(10);
 
   @override
-  Iterable<EmpireProperty> get props => [age];
+  Iterable<EmpireProperty> get empireProps => [age];
 }
 
 class IntTestWidget extends EmpireWidget<IntViewModel> {
@@ -48,7 +48,7 @@ class NullableIntViewModel extends EmpireViewModel {
   final age = EmpireNullableIntProperty(10);
 
   @override
-  Iterable<EmpireProperty> get props => [age];
+  Iterable<EmpireProperty> get empireProps => [age];
 }
 
 void main() {
