@@ -1,3 +1,8 @@
+## 0.9.0-dev.3
+
+- Changed `props` to `empireProps` on `EmpireViewModel` to prevent naming clashes with other popular packages (eg) Equatable
+- Added better exception handling/messaging if you forget to add a property to the `empireProps` list and try to update the property value.
+
 ## 0.9.0-dev.2
 
 - Fixed issue where EmpireIntProperty `increment` and `decrement` functions were not updating the UI

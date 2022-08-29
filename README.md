@@ -15,7 +15,7 @@ In your flutter project, add the dependency to your `pubspec.yaml`
 
 ```yaml
   dependencies:
-    empire: ^0.9.0-dev.2
+    empire: ^0.9.0-dev.3
 ```
 
 ## Usage
