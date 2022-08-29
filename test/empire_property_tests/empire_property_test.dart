@@ -160,7 +160,7 @@ void main() {
     });
 
     test(
-        'set - property not assigned to viewModel - throws MissingFromEmpirePropsException',
+        'set - property not assigned to viewModel - throws PropertyNotAssignedToEmpireViewModelException',
         () {
       final property = EmpireProperty<String?>(null);
 
