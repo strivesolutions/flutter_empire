@@ -1,14 +1,12 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:empire/empire.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
 class MapViewModel extends EmpireViewModel {
-  late final EmpireMapProperty<String, String> data;
+  final data = EmpireMapProperty<String, String>.empty();
 
   @override
-  void initProperties() {
-    data = createEmptyMapProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [data];
 }
 
 class MapTestWidget extends EmpireWidget<MapViewModel> {
@@ -377,7 +375,8 @@ void main() {
     test(
         'reset - starting map is empty - add item - should be empty after reset',
         () {
-      final data = viewModel.createEmptyMapProperty<String, String>();
+      final data = EmpireMapProperty<String, String>.empty();
+      data.setViewModel(viewModel);
       data.add('name', 'Bob');
 
       expect(data.isNotEmpty, isTrue);
@@ -395,7 +394,8 @@ void main() {
       const String tmpKey = 'lastName';
       const String tmpValue = 'Smith';
 
-      final data = viewModel.createMapProperty<String, String>({key: value});
+      final data = EmpireMapProperty<String, String>({key: value});
+      data.setViewModel(viewModel);
 
       expect(data.containsKey(key), isTrue);
       expect(data.containsValue(value), isTrue);

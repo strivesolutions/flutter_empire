@@ -22,7 +22,20 @@ part of 'empire_property.dart';
 ///print('${percentage + 5.2}'); //prints 15.2
 ///```
 class EmpireDoubleProperty extends EmpireProperty<double> {
-  EmpireDoubleProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireDoubleProperty(super.value, {super.propertyName});
+
+  ///Factory constructor for initializing an [EmpireDoubleProperty] to zero.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final bankAccountBalance = EmpireDoubleProperty.zero();
+  ///```
+  factory EmpireDoubleProperty.zero({String? propertyName}) {
+    return EmpireDoubleProperty(0, propertyName: propertyName);
+  }
 
   /// Whether this number is negative.
   bool get isNegative => _value.isNegative;
@@ -121,8 +134,12 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///```
 ///
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
-  EmpireNullableDoubleProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableDoubleProperty({double? value, super.propertyName})
+      : super(value);
+
+  factory EmpireNullableDoubleProperty.zero({String? propertyName}) {
+    return EmpireNullableDoubleProperty(value: 0, propertyName: propertyName);
+  }
 
   /// Whether this number is negative.
   ///

@@ -15,7 +15,7 @@ In your flutter project, add the dependency to your `pubspec.yaml`
 
 ```yaml
   dependencies:
-    empire: ^0.8.3
+    empire: ^0.9.0-dev.3
 ```
 
 ## Usage
@@ -26,20 +26,17 @@ A simple example using the classic Flutter Counter App.
 
 ```dart
 
-import 'package:empire/empire_view_model.dart';
-import 'package:empire/empire_property.dart';
+import 'package:empire/empire.dart';
 
 class CounterViewModel extends EmpireViewModel {
-  late final EmpireIntProperty count;
+  final count = EmpireIntProperty.zero(propertyName: 'count');
+
+  void incrementCounter()  {
+    count.increment();
+  }
 
   @override
-  void initProperties() {
-    count = createIntProperty(0, propertyName: 'count');
-  }
-
-  Future<void> incrementCounter() async {
-    count(count.value + 1);
-  }
+  List<EmpireProperty> get props => [count];
 }
 ```
 
@@ -109,17 +106,15 @@ Create a ViewModel for your application:
 ### application_view_model.dart
 
 ```dart
-import 'package:empire/empire_property.dart';
+import 'package:empire/empire.dart';
 
 class ApplicationViewModel extends EmpireViewModel {
-  late final EmpireProperty<User?> loggedInUser;
-
-  @override
-  void initProperties() {
-    loggedInUser = createNullProperty();
-  }
+  final loggedInUser = EmpireProperty<User?>(null);
 
   void updateUser(User user) => loggedInUser(user);
+
+  @override
+  List<EmpireProperty> get props => [loggedInUser];
 }
 ```
 
@@ -183,7 +178,7 @@ If submitting a pull request, please ensure the following standards are met:
 
 This package has **ZERO** dependencies on any other packages.
 
-You can find the full API documentation [here](https://strivesolutions.github.io/flutter_empire/empire/empire-library.html)
+You can find the full API documentation [here](https://pub.dev/documentation/empire/latest/)
 
 Developed by:
 

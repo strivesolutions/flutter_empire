@@ -1,14 +1,12 @@
-import 'package:empire/empire_property.dart';
-import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire.dart';
 
 class CounterViewModel extends EmpireViewModel {
-  late final EmpireIntProperty count;
-  late final EmpireBoolProperty changeBackgroundOnCountChange;
+  final count = EmpireIntProperty.zero(propertyName: 'count');
+  final changeBackgroundOnCountChange = EmpireBoolProperty(false);
 
   @override
-  void initProperties() {
-    count = createIntProperty(0, propertyName: 'count');
-    changeBackgroundOnCountChange = createBoolProperty(false);
+  List<EmpireProperty> get empireProps {
+    return [count, changeBackgroundOnCountChange];
   }
 
   Future<void> incrementCounter() async {

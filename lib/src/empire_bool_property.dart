@@ -8,7 +8,7 @@ part of 'empire_property.dart';
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireBoolProperty extends EmpireProperty<bool> {
-  EmpireBoolProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireBoolProperty(super.value, {super.propertyName});
 
   ///Whether the underlying value is true
   bool get isTrue => _value;
@@ -33,8 +33,7 @@ class EmpireBoolProperty extends EmpireProperty<bool> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableBoolProperty extends EmpireProperty<bool?> {
-  EmpireNullableBoolProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableBoolProperty({bool? value, super.propertyName}) : super(value);
 
   ///Whether the underlying value is not null and true
   bool get isTrue => isNotNull && _value == true;

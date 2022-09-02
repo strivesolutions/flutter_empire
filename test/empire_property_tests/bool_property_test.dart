@@ -1,15 +1,12 @@
 import 'package:empire/empire.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 class BoolViewModel extends EmpireViewModel {
-  late EmpireBoolProperty isAwesome;
+  final isAwesome = EmpireBoolProperty(true);
 
   @override
-  void initProperties() {
-    isAwesome = createBoolProperty(true);
-  }
+  Iterable<EmpireProperty> get empireProps => [isAwesome];
 }
 
 class BoolTestWidget extends EmpireWidget<BoolViewModel> {
@@ -48,12 +45,10 @@ class _BoolTestWidgetState extends EmpireState<BoolTestWidget, BoolViewModel> {
 }
 
 class NullableBoolViewModel extends EmpireViewModel {
-  late final EmpireNullableBoolProperty isAwesome;
+  final isAwesome = EmpireNullableBoolProperty();
 
   @override
-  void initProperties() {
-    isAwesome = createNullableBoolProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [isAwesome];
 }
 
 void main() {

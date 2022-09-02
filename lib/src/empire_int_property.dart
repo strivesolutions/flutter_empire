@@ -22,7 +22,20 @@ part of 'empire_property.dart';
 ///print('${age + 5}'); //prints 15
 ///```
 class EmpireIntProperty extends EmpireProperty<int> {
-  EmpireIntProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireIntProperty(super.value, {super.propertyName});
+
+  ///Factory constructor for initializing an [EmpireIntProperty] to zero.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final numberOfFriends = EmpireIntProperty.zero();
+  ///```
+  factory EmpireIntProperty.zero({String? propertyName}) {
+    return EmpireIntProperty(0, propertyName: propertyName);
+  }
 
   /// Returns true if the int value is odd
   bool get isOdd => _value.isOdd;
@@ -37,10 +50,12 @@ class EmpireIntProperty extends EmpireProperty<int> {
   double toDouble() => _value.toDouble();
 
   /// Increment the int value by 1
-  int increment() => ++_value;
+  int increment({bool notifyChange = true}) =>
+      set(_value + 1, notifyChange: notifyChange);
 
   /// Decrement the int value by 1
-  int decrement() => --_value;
+  int decrement({bool notifyChange = true}) =>
+      set(_value - 1, notifyChange: notifyChange);
 
   /// Returns the absolute value of this integer.
   int abs() => _value.abs();
@@ -99,7 +114,20 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///```
 ///
 class EmpireNullableIntProperty extends EmpireProperty<int?> {
-  EmpireNullableIntProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireNullableIntProperty(super.value, {super.propertyName});
+
+  ///Factory constructor for initializing an [EmpireNullableIntProperty] to zero.
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final numberOfFriends = EmpireNullableIntProperty.zero();
+  ///```
+  factory EmpireNullableIntProperty.zero({String? propertyName}) {
+    return EmpireNullableIntProperty(0, propertyName: propertyName);
+  }
 
   /// Returns true if the int value is odd
   ///

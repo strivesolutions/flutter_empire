@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class StringViewModel extends EmpireViewModel {
-  late EmpireStringProperty name;
+  final name = EmpireStringProperty('Bob');
 
   @override
-  void initProperties() {
-    name = createStringProperty('Bob');
-  }
+  Iterable<EmpireProperty> get empireProps => [name];
 }
 
 class StringTestWidget extends EmpireWidget<StringViewModel> {
@@ -48,12 +46,10 @@ class _StringTestWidgetState
 }
 
 class NullableStringViewModel extends EmpireViewModel {
-  late EmpireNullableStringProperty name;
+  final name = EmpireNullableStringProperty();
 
   @override
-  void initProperties() {
-    name = createNullableStringProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [name];
 }
 
 void main() {

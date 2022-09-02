@@ -5,7 +5,20 @@ part of 'empire_property.dart';
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireStringProperty extends EmpireProperty<String> {
-  EmpireStringProperty(super.value, super.viewModel, {super.propertyName});
+  EmpireStringProperty(super.value, {super.propertyName});
+
+  ///Factory constructor for initializing an [EmpireStringProperty] to an empty [String].
+  ///
+  ///See [EmpireProperty] for [propertyName] usages.
+  ///
+  ///## Example
+  ///
+  ///```dart
+  ///final title = EmpireStringProperty.empty();
+  ///```
+  factory EmpireStringProperty.empty({String? propertyName}) {
+    return EmpireStringProperty('', propertyName: propertyName);
+  }
 
   ///Whether the string value is empty
   bool get isEmpty => _value.isEmpty;
@@ -32,7 +45,8 @@ class EmpireStringProperty extends EmpireProperty<String> {
   /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
   /// ```
   /// The [startIndex] must not be negative or greater than [length].
-  bool contains(String other) => _value.contains(other);
+  bool contains(String other, [int startIndex = 0]) =>
+      _value.contains(other, startIndex);
 
   /// The substring of the string value from [start], inclusive, to [end], exclusive.
   ///
@@ -57,8 +71,8 @@ class EmpireStringProperty extends EmpireProperty<String> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableStringProperty extends EmpireProperty<String?> {
-  EmpireNullableStringProperty(super.value, super.viewModel,
-      {super.propertyName});
+  EmpireNullableStringProperty({String? value, super.propertyName})
+      : super(value);
 
   ///Whether the string value is empty
   ///
@@ -93,7 +107,8 @@ class EmpireNullableStringProperty extends EmpireProperty<String?> {
   /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
   /// ```
   /// The [startIndex] must not be negative or greater than [length].
-  bool contains(String other) => _value?.contains(other) ?? false;
+  bool contains(String other, [int startIndex = 0]) =>
+      _value?.contains(other, startIndex) ?? false;
 
   /// The substring of the string value from [start], inclusive, to [end], exclusive.
   ///
