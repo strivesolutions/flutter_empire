@@ -1,3 +1,21 @@
+## 0.9.0
+
+- Added `increment` and `decrement` functions to the `EmpireIntProperty`
+- Updated the example project
+- Updated README to reflect the property initialization refactor changes
+- Added many factory constructors to various Empire Properties. (eg) EmpireDateTimeProperty.now() to create a DateTime property defaulted to the current Date/Time
+
+**BREAKING CHANGES**
+
+- We've redesigned and refactored how you go about initializing an EmpireProperty, and made it more dart-ly (it's a word now).
+- Empire Properties in an EmpireViewModel are no longer initialized via a initProperties function that previously needed to be overridden, and was called by the ViewModel constructor behind the scenes. You can now instantiate a property as you would any other Dart object; via it's own constructor.
+- There is a new getter List property called `empireProps` that must be overridden in a ViewModel. This should return the Empire Properties that you want to be reactive. (eg) Update the UI on change.
+- This change also allowed us to remove the requirement that all Empire Properties be defined with the late keyword.
+- This change also allows consumers to inject Empire Properties into the ViewModel.
+- Reorganized the library exports
+
+In general, we will avoid major breaking changes if at all possible. In this case, as we approach a stable 1.0.0 release, we felt it was an overall improvement to the library based on valuable user feedback. 
+
 ## 0.9.0-dev.3
 
 - Changed `props` to `empireProps` on `EmpireViewModel` to prevent naming clashes with other popular packages (eg) Equatable
