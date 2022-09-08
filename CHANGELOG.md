@@ -1,3 +1,7 @@
+## 0.9.1
+
+- Updated README to reflect the new `empireProps` change in the 0.9.0 release.
+
 ## 0.9.0
 
 - Added `increment` and `decrement` functions to the `EmpireIntProperty`

@@ -15,7 +15,7 @@ In your flutter project, add the dependency to your `pubspec.yaml`
 
 ```yaml
   dependencies:
-    empire: ^0.9.0
+    empire: ^0.9.1
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ class CounterViewModel extends EmpireViewModel {
   }
 
   @override
-  List<EmpireProperty> get props => [count];
+  List<EmpireProperty> get empireProps => [count];
 }
 ```
 
@@ -114,7 +114,7 @@ class ApplicationViewModel extends EmpireViewModel {
   void updateUser(User user) => loggedInUser(user);
 
   @override
-  List<EmpireProperty> get props => [loggedInUser];
+  List<EmpireProperty> get empireProps => [loggedInUser];
 }
 ```
 
