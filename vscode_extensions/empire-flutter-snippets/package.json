@@ -1,0 +1,20 @@
+{
+  "name": "empire-flutter-snippets",
+  "displayName": "Empire Flutter Snippets",
+  "description": "Helpful code snippets for the Flutter Empire State Management package to quickly create Empire Widgets and EmpireViewModels.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "dart",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "Empire Widget": {
+        "scope": "dart",
+        "prefix": "empirewidget",
+        "body": [
+            "import 'package:empire/empire.dart';",
+            "",
+            "class $1 extends EmpireWidget<$2> {",
+            "\tconst $1({super.key, required super.viewModel});",
+            "",
+            "\t@override",
+            "\tEmpireState<EmpireWidget<EmpireViewModel>, $2> createEmpire() => _$1State(viewModel);",
+            "",
+            "}",
+            "",
+            "class _$1State extends EmpireState<$1, $2> {",
+            "\t_$1State(super.viewModel);",
+            "",
+            "\t@override",
+            "\tWidget build(BuildContext context) {",
+            "\t\tthrow UnimplementedError();",
+            "\t}",
+            "}"
+        ],
+        "description": "Create a new Empire Widget"
+    },
+    "Empire View Model": {
+        "scope": "dart",
+        "prefix": "empirevm",
+        "body": [
+            "import 'package:empire/empire.dart';",
+            "",
+            "class $1 extends EmpireViewModel {",
+            "\t//TODO: add Empire Properties",
+            "",
+            "\t@override",
+            "\tIterable<EmpireProperty> get empireProps => throw UnimplementedError('TODO: implement empireProps for $1');",
+            "}"
+        ],
+        "description": "Create a new Empire ViewModel"
+    },
+}
