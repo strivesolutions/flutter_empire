@@ -3,11 +3,13 @@
         "scope": "dart",
         "prefix": "empirewidget",
         "body": [
+            "import 'package:empire/empire.dart';",
+            "",
             "class $1 extends EmpireWidget<$2> {",
-            "\t const $1({super.key, required super.viewModel});",
+            "\tconst $1({super.key, required super.viewModel});",
             "",
             "\t@override",
-            "EmpireState<EmpireWidget<EmpireViewModel>, $2> createEmpire() => _$1State(viewModel);",
+            "\tEmpireState<EmpireWidget<EmpireViewModel>, $2> createEmpire() => _$1State(viewModel);",
             "",
             "}",
             "",
@@ -26,30 +28,15 @@
         "scope": "dart",
         "prefix": "empirevm",
         "body": [
+            "import 'package:empire/empire.dart';",
+            "",
             "class $1 extends EmpireViewModel {",
+            "\t//TODO: add Empire Properties",
             "",
             "\t@override",
-            "\tvoid initProperties() {",
-            "\t}",
-            "",
+            "\tIterable<EmpireProperty> get empireProps => throw UnimplementedError('TODO: implement empireProps for $1');",
             "}"
         ],
         "description": "Create a new Empire ViewModel"
-    },
-    "Empire Property": {
-        "scope": "dart",
-        "prefix": "empireprop",
-        "body": [
-            "late final EmpireProperty<$1> $2;"
-        ],
-        "description": "Create a new EmpireProperty"
-    },
-    "Empire Property Create": {
-        "scope": "dart",
-        "prefix": "empirepropinit",
-        "body": [
-            "$1 = createProperty($2);"
-        ],
-        "description": "Initialize an Empire Property"
     },
 }

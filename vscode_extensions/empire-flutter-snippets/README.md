@@ -1,65 +1,32 @@
-# empire-flutter-snippets README
+# Empire Flutter Snippets
 
-This is the README for your extension "empire-flutter-snippets". After writing up a brief description, we recommend including the following sections.
+<p align="center">
+    <img height="120" src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
+</p>
 
-## Features
+This extension contains Flutter code snippets for the [Empire State Management package](https://pub.dev/packages/empire).
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Snippets
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+| Trigger  | Content |
+| :------- | ------- |
+| `empirevm` | Create a new ```EmpireViewModel``` <br /><br />  ![empirevm example](./assets/empire_view_model.gif) |
+| `empirewidget` | Create a new ```EmpireWidget```<br /><br />  ![empirewidget example](./assets/empire_widget.gif) |
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Dart version 2.17 or greater.
 
-## Extension Settings
+Flutter version 3.0.0 or greater.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+A reference to Empire version 0.9.0 or greater in your pubspec.yaml.
 
-For example:
+## Reporting issues
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+If you discover any issues with this extension please file an issue on the [Empire](https://github.com/strivesolutions/flutter_empire/issues) repository.
 
 ## Release Notes
+### 0.1.0
 
-Users appreciate release notes as you update your extension.
+Initial release of Empire Flutter Snippets.
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
