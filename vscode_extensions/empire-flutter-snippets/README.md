@@ -1,9 +1,5 @@
 # Empire Flutter Snippets
 
-<p align="center">
-    <img height="120" src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
-</p>
-
 This extension contains Flutter code snippets for the [Empire State Management package](https://pub.dev/packages/empire).
 
 ## Snippets
