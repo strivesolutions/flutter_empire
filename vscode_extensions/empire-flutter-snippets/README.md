@@ -10,8 +10,8 @@ This extension contains Flutter code snippets for the [Empire State Management p
 
 | Trigger  | Content |
 | :------- | ------- |
-| `empirevm` | Create a new ```EmpireViewModel``` <br /><br />  ![empirevm example](./assets/empire_view_model.gif) |
-| `empirewidget` | Create a new ```EmpireWidget```<br /><br />  ![empirewidget example](./assets/empire_widget.gif) |
+| `empirevm` | Create a new ```EmpireViewModel``` <br /><br />  ![empirevm example](https://github.com/strivesolutions/flutter_empire/raw/main/vscode_extensions/empire-flutter-snippets/assets/empire_view_model.gif) |
+| `empirewidget` | Create a new ```EmpireWidget```<br /><br />  ![empirewidget example](https://github.com/strivesolutions/flutter_empire/raw/main/vscode_extensions/empire-flutter-snippets/assets/empire_widget.gif) |
 
 ## Requirements
 
