@@ -22,7 +22,7 @@ A reference to Empire version 0.9.0 or greater in your pubspec.yaml.
 If you discover any issues with this extension please file an issue on the [Empire](https://github.com/strivesolutions/flutter_empire/issues) repository.
 
 ## Release Notes
-### 0.1.0
+### 0.1.2
 
 Initial release of Empire Flutter Snippets.
 
