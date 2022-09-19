@@ -18,6 +18,8 @@ In your flutter project, add the dependency to your `pubspec.yaml`
     empire: ^0.9.1
 ```
 
+**Tip:** Consider installing the [Empire Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=StriveBusinessSolutions.empire-flutter-snippets) extension in Visual Studio Code to make creating Empire classes easier.
+
 ## Usage
 
 A simple example using the classic Flutter Counter App.
