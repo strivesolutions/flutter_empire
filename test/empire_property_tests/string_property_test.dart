@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class StringViewModel extends EmpireViewModel {
-  late EmpireStringProperty name;
+  final name = EmpireStringProperty('Bob');
 
   @override
-  void initProperties() {
-    name = createStringProperty('Bob');
-  }
+  Iterable<EmpireProperty> get empireProps => [name];
 }
 
 class StringTestWidget extends EmpireWidget<StringViewModel> {
@@ -23,7 +21,8 @@ class StringTestWidget extends EmpireWidget<StringViewModel> {
   }
 }
 
-class _StringTestWidgetState extends EmpireState<StringTestWidget, StringViewModel> {
+class _StringTestWidgetState
+    extends EmpireState<StringTestWidget, StringViewModel> {
   _StringTestWidgetState(super.viewModel);
 
   @override
@@ -47,12 +46,10 @@ class _StringTestWidgetState extends EmpireState<StringTestWidget, StringViewMod
 }
 
 class NullableStringViewModel extends EmpireViewModel {
-  late EmpireNullableStringProperty name;
+  final name = EmpireNullableStringProperty();
 
   @override
-  void initProperties() {
-    name = createNullableStringProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [name];
 }
 
 void main() {
@@ -135,7 +132,8 @@ void main() {
       expect(result, isFalse);
     });
 
-    test('substring - only pass start index value - returns correct substring', () {
+    test('substring - only pass start index value - returns correct substring',
+        () {
       const String nameValue = 'John';
       const String expectedValue = 'ohn';
       viewModel.name(nameValue);
@@ -145,7 +143,9 @@ void main() {
       expect(result, equals(expectedValue));
     });
 
-    test('substring - pass start and end index value - returns correct substring', () {
+    test(
+        'substring - pass start and end index value - returns correct substring',
+        () {
       const String nameValue = 'John';
       const String expectedValue = 'oh';
       viewModel.name(nameValue);

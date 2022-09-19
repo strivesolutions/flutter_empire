@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/ellementconsulting/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
+    <img src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
 </p>
 
 <h1 align="center">EMPIRE</h1>
@@ -9,6 +9,15 @@
 
 A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
 
+## Getting Started
+
+In your flutter project, add the dependency to your `pubspec.yaml`
+
+```yaml
+  dependencies:
+    empire: ^0.9.1
+```
+
 ## Usage
 
 A simple example using the classic Flutter Counter App.
@@ -16,26 +25,28 @@ A simple example using the classic Flutter Counter App.
 ### counter_view_model.dart
 
 ```dart
+
+import 'package:empire/empire.dart';
+
 class CounterViewModel extends EmpireViewModel {
-  late final EmpireProperty<int> count;
+  final count = EmpireIntProperty.zero(propertyName: 'count');
+
+  void incrementCounter()  {
+    count.increment();
+  }
 
   @override
-  void initProperties() {
-    count = createProperty(0);
-  }
-
-  Future<void> incrementCounter() async {
-    count(count.value + 1);
-  }
+  List<EmpireProperty> get empireProps => [count];
 }
 ```
 
 ### counter_page.dart
 
 ```dart
+import 'package:empire/empire.dart';
+
 class CounterPage extends EmpireWidget<CounterViewModel> {
-  const CounterPage({Key? key, required CounterViewModel viewModel})
-      : super(key: key, viewModel: viewModel);
+  const CounterPage({super.key, required super.viewModel});
 
   @override
   EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
@@ -68,7 +79,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,15 +106,15 @@ Create a ViewModel for your application:
 ### application_view_model.dart
 
 ```dart
-class ApplicationViewModel extends EmpireViewModel {
-  late final EmpireProperty<User?> loggedInUser;
+import 'package:empire/empire.dart';
 
-  @override
-  void initProperties() {
-    loggedInUser = createProperty(null);
-  }
+class ApplicationViewModel extends EmpireViewModel {
+  final loggedInUser = EmpireProperty<User?>(null);
 
   void updateUser(User user) => loggedInUser(user);
+
+  @override
+  List<EmpireProperty> get empireProps => [loggedInUser];
 }
 ```
 
@@ -112,10 +123,12 @@ Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Suppl
 ### main.dart
 
 ```dart
+import 'package:empire/empire.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -145,11 +158,27 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+## Contributing
+
+This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls). For community contribution guidelines, please reveiw the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+If submitting a pull request, please ensure the following standards are met:
+
+1) Code files must be well formatted (run `flutter format .`). 
+
+2) Tests must pass (run `flutter test`).  New test cases to validate your changes are highly recommended.
+
+3) Implementations must not add any project dependencies. 
+
+4) Project must contain zero warnings. Running `flutter analyze` must return zero issues.
+
+5) Ensure docstrings are kept up-to-date. New feature additions must include docstrings.
+
 ## Additional information
 
 This package has **ZERO** dependencies on any other packages.
 
-You can find the full API documentation [here](https://ellementconsulting.github.io/flutter_empire/empire/empire-library.html)
+You can find the full API documentation [here](https://pub.dev/documentation/empire/latest/)
 
 Developed by:
 

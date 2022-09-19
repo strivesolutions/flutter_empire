@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class DoubleViewModel extends EmpireViewModel {
-  late EmpireDoubleProperty percentage;
+  final percentage = EmpireDoubleProperty(10.0);
 
   @override
-  void initProperties() {
-    percentage = createDoubleProperty(10.0);
-  }
+  Iterable<EmpireProperty> get empireProps => [percentage];
 }
 
 class DoubleTestWidget extends EmpireWidget<DoubleViewModel> {
@@ -23,7 +21,8 @@ class DoubleTestWidget extends EmpireWidget<DoubleViewModel> {
   }
 }
 
-class _DoubleTestWidgetState extends EmpireState<DoubleTestWidget, DoubleViewModel> {
+class _DoubleTestWidgetState
+    extends EmpireState<DoubleTestWidget, DoubleViewModel> {
   _DoubleTestWidgetState(super.viewModel);
 
   @override
@@ -47,12 +46,10 @@ class _DoubleTestWidgetState extends EmpireState<DoubleTestWidget, DoubleViewMod
 }
 
 class NullableDoubleViewModel extends EmpireViewModel {
-  late EmpireNullableDoubleProperty percentage;
+  final percentage = EmpireNullableDoubleProperty();
 
   @override
-  void initProperties() {
-    percentage = createNullableDoubleProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [percentage];
 }
 
 void main() {

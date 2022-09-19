@@ -1,41 +1,31 @@
-import 'package:empire/empire_property.dart';
-import 'package:empire/empire_widget.dart';
-import 'package:empire/empire_state.dart';
-import 'package:empire/empire_view_model.dart';
+import 'package:empire/empire.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'dart:math' as math;
 
 class _ApplicationViewModel extends EmpireViewModel {
-  late EmpireProperty<bool> changed;
-
-  @override
-  void initProperties() {
-    changed = createProperty(false, propertyName: 'changed');
-  }
+  final changed = EmpireProperty<bool>(false, propertyName: 'changed');
 
   void change() => changed(!changed.value);
+
+  @override
+  Iterable<EmpireProperty> get empireProps => [changed];
 }
 
 class _ApplicationSubViewModel extends EmpireViewModel {
-  late final EmpireStringProperty viewModelName;
+  final viewModelName = EmpireStringProperty('SubViewModel');
+
   @override
-  void initProperties() {
-    viewModelName = createStringProperty('SubViewModel');
-  }
+  Iterable<EmpireProperty> get empireProps => [viewModelName];
 }
 
 class _TestViewModel extends EmpireViewModel {
-  late EmpireProperty<String?> firstName;
-  late EmpireProperty<String?> lastName;
-  late EmpireProperty<int> age;
+  final firstName = EmpireProperty<String?>(null);
+  final lastName = EmpireProperty<String?>(null);
+  final age = EmpireIntProperty(1);
 
   @override
-  void initProperties() {
-    firstName = createNullProperty();
-    lastName = createNullProperty();
-    age = createProperty(1);
-  }
+  Iterable<EmpireProperty> get empireProps => [firstName, lastName, age];
 }
 
 class _MyWidget extends EmpireWidget<_TestViewModel> {
@@ -68,7 +58,8 @@ class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
             builder: (outerContext) {
               return Empire(
                 widget.appSubViewModel,
-                onAppStateChanged: () => math.Random().nextInt(1000000).toString(),
+                onAppStateChanged: () =>
+                    math.Random().nextInt(1000000).toString(),
                 child: Builder(builder: (innerContext) {
                   return Center(
                     child: Column(
@@ -78,8 +69,10 @@ class _MyWidgetState extends EmpireState<_MyWidget, _TestViewModel> {
                         Text(
                           viewModel.age.value.toString(),
                         ),
-                        Text('${Empire.of<_ApplicationViewModel>(outerContext).viewModel().changed}'),
-                        Text('${Empire.of<_ApplicationSubViewModel>(innerContext).viewModel().viewModelName}')
+                        Text(
+                            '${Empire.of<_ApplicationViewModel>(outerContext).viewModel().changed}'),
+                        Text(
+                            '${Empire.of<_ApplicationSubViewModel>(innerContext).viewModel().viewModelName}')
                       ],
                     ),
                   );
@@ -109,7 +102,9 @@ void main() {
     );
   });
 
-  testWidgets('EmpireWidget Test - Finds Correct Text Widget After Property Change', (tester) async {
+  testWidgets(
+      'EmpireWidget Test - Finds Correct Text Widget After Property Change',
+      (tester) async {
     viewModel.firstName("John");
     await tester.pumpWidget(mainWidget);
 
@@ -121,7 +116,8 @@ void main() {
     expect(find.text("Bob"), findsOneWidget);
   });
 
-  testWidgets('Empire App State Test - Widgets Update on App View Model Change', (tester) async {
+  testWidgets('Empire App State Test - Widgets Update on App View Model Change',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     final text = find.text("false");
@@ -135,7 +131,8 @@ void main() {
     expect(textTwo, findsOneWidget);
   });
 
-  testWidgets('Update More Than One Property - All Widgets Update', (tester) async {
+  testWidgets('Update More Than One Property - All Widgets Update',
+      (tester) async {
     const initialFirstName = 'John';
     const initialLastName = 'Smith';
     const initialAge = 88;
@@ -167,7 +164,9 @@ void main() {
     expect(find.text(newAge.toString()), findsOneWidget);
   });
 
-  testWidgets('Update More Than One Property Starting from Null Keys - All Widgets Update', (tester) async {
+  testWidgets(
+      'Update More Than One Property Starting from Null Keys - All Widgets Update',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     const newFirstName = 'Bob';
@@ -187,15 +186,47 @@ void main() {
     expect(find.text(newAge.toString()), findsOneWidget);
   });
 
-  testWidgets('EmpireWidget Test - Finds Sub Application View Model', (tester) async {
+  testWidgets('EmpireWidget Test - Finds Sub Application View Model',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
   });
 
-  testWidgets('EmpireWidget Test - Finds Sub Application View Model', (tester) async {
+  testWidgets('EmpireWidget Test - Finds Sub Application View Model',
+      (tester) async {
     await tester.pumpWidget(mainWidget);
 
     expect(find.text(subViewModel.viewModelName.value), findsOneWidget);
+  });
+
+  testWidgets(
+      'EmpireWidget Test - Increment EmpireIntProperty - Finds Correct Text Widget After Property Change',
+      (tester) async {
+    const int initialAge = 10;
+    viewModel.age(initialAge);
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text("$initialAge"), findsOneWidget);
+
+    final int newAge = viewModel.age.increment();
+    await tester.pumpAndSettle();
+
+    expect(find.text("$newAge"), findsOneWidget);
+  });
+
+  testWidgets(
+      'EmpireWidget Test - Decrement EmpireIntProperty - Finds Correct Text Widget After Property Change',
+      (tester) async {
+    const int initialAge = 10;
+    viewModel.age(initialAge);
+    await tester.pumpWidget(mainWidget);
+
+    expect(find.text("$initialAge"), findsOneWidget);
+
+    final int newAge = viewModel.age.decrement();
+    await tester.pumpAndSettle();
+
+    expect(find.text("$newAge"), findsOneWidget);
   });
 }

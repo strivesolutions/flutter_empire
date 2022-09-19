@@ -1,14 +1,12 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:empire/empire.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
 class MapViewModel extends EmpireViewModel {
-  late final EmpireMapProperty<String, String> data;
+  final data = EmpireMapProperty<String, String>.empty();
 
   @override
-  void initProperties() {
-    data = createEmptyMapProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [data];
 }
 
 class MapTestWidget extends EmpireWidget<MapViewModel> {
@@ -165,7 +163,8 @@ void main() {
       expect(find.text(expectedUpdatedValue), findsOneWidget);
     });
 
-    testWidgets('update - key is not preset - calls ifAbsent - widget updates', (tester) async {
+    testWidgets('update - key is not preset - calls ifAbsent - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
 
       const String expectedUpdatedValue = 'Doe';
@@ -183,7 +182,8 @@ void main() {
       expect(find.text(expectedUpdatedValue), findsOneWidget);
     });
 
-    testWidgets('updateAll - updates all values - widget updates', (tester) async {
+    testWidgets('updateAll - updates all values - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
       const String valueOne = 'bob';
       const String keyTwo = 'lastName';
@@ -211,7 +211,8 @@ void main() {
       expect(find.text(expectedValueTwo), findsOneWidget);
     });
 
-    testWidgets('remove - key is present - item removed - widget updates', (tester) async {
+    testWidgets('remove - key is present - item removed - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
       const String valueOne = 'Bob';
       const String keyTwo = 'lastName';
@@ -241,7 +242,9 @@ void main() {
       expect(find.text(valueTwo), findsNothing);
     });
 
-    testWidgets('removeWhere - predicate finds match - item removed - widget updates', (tester) async {
+    testWidgets(
+        'removeWhere - predicate finds match - item removed - widget updates',
+        (tester) async {
       const String keyOne = 'firstName';
       const String valueOne = 'Bob';
       const String keyTwo = 'lastName';
@@ -369,8 +372,11 @@ void main() {
 
       expect(result, isNull);
     });
-    test('reset - starting map is empty - add item - should be empty after reset', () {
-      final data = viewModel.createEmptyMapProperty<String, String>();
+    test(
+        'reset - starting map is empty - add item - should be empty after reset',
+        () {
+      final data = EmpireMapProperty<String, String>.empty();
+      data.setViewModel(viewModel);
       data.add('name', 'Bob');
 
       expect(data.isNotEmpty, isTrue);
@@ -380,13 +386,16 @@ void main() {
       expect(data.isEmpty, isTrue);
     });
 
-    test('reset - starting map has data - add item - only original data after reset', () {
+    test(
+        'reset - starting map has data - add item - only original data after reset',
+        () {
       const String key = 'firstName';
       const String value = 'Bob';
       const String tmpKey = 'lastName';
       const String tmpValue = 'Smith';
 
-      final data = viewModel.createMapProperty<String, String>({key: value});
+      final data = EmpireMapProperty<String, String>({key: value});
+      data.setViewModel(viewModel);
 
       expect(data.containsKey(key), isTrue);
       expect(data.containsValue(value), isTrue);

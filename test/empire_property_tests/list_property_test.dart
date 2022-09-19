@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class ListViewModel extends EmpireViewModel {
-  late final EmpireListProperty<String> planets;
+  final planets = EmpireListProperty<String>.empty();
 
   @override
-  void initProperties() {
-    planets = createEmptyListProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [planets];
 }
 
 class ListTestWidget extends EmpireWidget<ListViewModel> {
@@ -176,7 +174,9 @@ void main() {
       expect(result, equals(earth));
     });
 
-    test('map - generate different type in map function - returns correct values', () {
+    test(
+        'map - generate different type in map function - returns correct values',
+        () {
       String earth = 'Earth';
       String venus = 'Venus';
 
@@ -188,39 +188,45 @@ void main() {
     });
 
     test('isEmpty - list is empty - returns true', () {
-      final emptyList = viewModel.createEmptyListProperty<String>();
+      final emptyList = EmpireListProperty<String>.empty();
 
       expect(emptyList.isEmpty, isTrue);
     });
 
     test('isEmpty - list is not empty - returns false', () {
-      final emptyList = viewModel.createListProperty(['Bob']);
+      final names = EmpireListProperty<String>(['Bob']);
 
-      expect(emptyList.isEmpty, isFalse);
+      expect(names.isEmpty, isFalse);
     });
 
     test('isNotEmpty - list is empty - returns false', () {
-      final list = viewModel.createEmptyListProperty<String>();
+      final list = EmpireListProperty<String>.empty();
 
       expect(list.isNotEmpty, isFalse);
     });
 
     test('isNotEmpty - list is not empty - returns true', () {
-      final list = viewModel.createListProperty(['Bob']);
+      final list = EmpireListProperty<String>(['Bob']);
 
       expect(list.isNotEmpty, isTrue);
     });
 
-    test('reset - starting list is empty - add item - should be empty after reset', () {
-      final list = viewModel.createEmptyListProperty<String>();
+    test(
+        'reset - starting list is empty - add item - should be empty after reset',
+        () {
+      final list = EmpireListProperty<String>.empty();
+      list.setViewModel(viewModel);
       list.add('Bob');
       list.reset();
       expect(list.isEmpty, isTrue);
     });
 
-    test('reset - starting list has data - remove item - only original data after reset', () {
+    test(
+        'reset - starting list has data - remove item - only original data after reset',
+        () {
       const String listItem = 'Earth';
-      final data = viewModel.createListProperty<String>([listItem]);
+      final data = EmpireListProperty<String>([listItem]);
+      data.setViewModel(viewModel);
 
       expect(data.contains(listItem), isTrue);
 
@@ -231,6 +237,16 @@ void main() {
       data.reset();
 
       expect(data.contains(listItem), isTrue);
+    });
+
+    test('ellementAt - list is not empty - returns correct object', () {
+      const String expected = 'Frank';
+      const int index = 1;
+      final list = EmpireListProperty<String>(['Bob', expected]);
+
+      final result = list.elementAt(index);
+
+      expect(result, equals(expected));
     });
   });
 }

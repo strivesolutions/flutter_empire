@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class IntViewModel extends EmpireViewModel {
-  late EmpireIntProperty age;
+  final age = EmpireIntProperty(10);
 
   @override
-  void initProperties() {
-    age = createIntProperty(10);
-  }
+  Iterable<EmpireProperty> get empireProps => [age];
 }
 
 class IntTestWidget extends EmpireWidget<IntViewModel> {
@@ -47,12 +45,10 @@ class _IntTestWidgetState extends EmpireState<IntTestWidget, IntViewModel> {
 }
 
 class NullableIntViewModel extends EmpireViewModel {
-  late EmpireNullableIntProperty age;
+  final age = EmpireNullableIntProperty(10);
 
   @override
-  void initProperties() {
-    age = createNullableIntProperty();
-  }
+  Iterable<EmpireProperty> get empireProps => [age];
 }
 
 void main() {
@@ -196,6 +192,22 @@ void main() {
       viewModel.age(3);
       final result = viewModel.age.isNegative;
       expect(result, isFalse);
+    });
+
+    test('increment - returns increment value', () {
+      const int expected = 4;
+      viewModel.age(3);
+      final result = viewModel.age.increment();
+      expect(result, equals(expected));
+      expect(viewModel.age.value, equals(expected));
+    });
+
+    test('decrement - returns decremented value', () {
+      const int expected = 2;
+      viewModel.age(3);
+      final result = viewModel.age.decrement();
+      expect(result, equals(expected));
+      expect(viewModel.age.value, equals(expected));
     });
   });
 }
