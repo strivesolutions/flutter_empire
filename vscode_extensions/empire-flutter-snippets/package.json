@@ -2,7 +2,9 @@
   "name": "empire-flutter-snippets",
   "displayName": "Empire Flutter Snippets",
   "description": "Helpful code snippets for the Flutter Empire State Management package to quickly create Empire Widgets and EmpireViewModels.",
+  "publisher": "StriveBusinessSolutions",
   "version": "0.1.0",
+  "repository": "https://github.com/strivesolutions/flutter_empire/tree/main/vscode_extensions/empire-flutter-snippets",
   "engines": {
     "vscode": "^1.70.0"
   },
