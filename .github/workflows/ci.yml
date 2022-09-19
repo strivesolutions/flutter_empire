@@ -3,13 +3,13 @@ name: CI
 on:
   pull_request:
     paths-ignore:
-      - "vscode_extensions/**/*"
+      - "vscode_extensions/**"
 
   push:
     branches:
       - main
     paths-ignore:
-      - "vscode_extensions/**/*"
+      - "vscode_extensions/**"
 
 jobs:
   cancel-previous:
