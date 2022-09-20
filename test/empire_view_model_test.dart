@@ -1,23 +1,38 @@
 import 'package:empire/empire.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+class _TestViewModel extends EmpireViewModel {
+  final name = EmpireStringProperty('Bob');
+  final age = EmpireIntProperty(20);
+
+  @override
+  Iterable<EmpireProperty> get empireProps => [name, age];
+}
+
 void main() {
-  group('Property Creation Tests', () {
-    test('createNullProperty - Value is Null', () {
-      final age = EmpireProperty<int?>(null);
-      expect(age.value, isNull);
-    });
+  late _TestViewModel viewModel;
 
-    test('createProperty - passed value equals property value', () {
-      const expectedValue = 10;
-      final age = EmpireProperty<int>(expectedValue);
-      expect(age.value, equals(expectedValue));
-    });
+  setUp(() {
+    viewModel = _TestViewModel();
+  });
 
-    test('createProperty - set optional property name', () {
-      const expectedValue = 'age';
-      final age = EmpireProperty<int>(10, propertyName: expectedValue);
-      expect(age.propertyName, equals(expectedValue));
-    });
+  test(
+      'resetAll - change property values - All values equal their original value',
+      () {
+    const changedName = 'Steve';
+    const changedAge = 100;
+    final originalName = viewModel.name.value;
+    final originalAge = viewModel.age.value;
+
+    viewModel.name(changedName);
+    viewModel.age(changedAge);
+
+    expect(viewModel.name.value, equals(changedName));
+    expect(viewModel.age.value, equals(changedAge));
+
+    viewModel.resetAll();
+
+    expect(viewModel.name.value, equals(originalName));
+    expect(viewModel.age.value, equals(originalAge));
   });
 }

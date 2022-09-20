@@ -203,6 +203,18 @@ abstract class EmpireViewModel {
     }
   }
 
+  ///Resets the value of all properties defined in the [empireProps] list
+  ///to their original value.
+  ///
+  void resetAll() {
+    final resetActions = <Map<EmpireProperty, dynamic>>[];
+    for (final prop in empireProps) {
+      resetActions.add({prop: prop.originalValue});
+    }
+
+    setMultiple(resetActions);
+  }
+
   ///Closes the state and error streams and removes any listeners associated with those streams
   @mustCallSuper
   void dispose() {
