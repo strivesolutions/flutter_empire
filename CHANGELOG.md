@@ -1,3 +1,7 @@
+## 0.10.0
+
+- Added `resetAll` function to `EmpireViewModel`. This will reset all tracked properties to their original value and trigger a UI update.
+
 ## 0.9.1
 
 - Updated README to reflect the new `empireProps` change in the 0.9.0 release.
