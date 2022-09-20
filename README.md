@@ -7,7 +7,7 @@
 
 ## Features
 
-A Model-View-ViewModel (MVVM) like approach to state management. Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
+Less boiler plate and significantly reduced clutter in your Widget build functions than other state management solutions.
 
 ## Getting Started
 
