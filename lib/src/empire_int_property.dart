@@ -209,7 +209,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
 
   /// Adds [other] to this number.
   ///
-  ///This does not set the value for this [EmpireIntProperty].
+  ///This does not set the value for this [EmpireNullableIntProperty].
   ///
   /// The result is an [int], as described by [int.+],
   /// if both this number and [other] is an integer,
@@ -223,7 +223,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
 
   /// Subtracts [other] from this number.
   ///
-  ///This does not set the value for this [EmpireIntProperty].
+  ///This does not set the value for this [EmpireNullableIntProperty].
   ///
   /// The result is an [int], as described by [int.-],
   /// if both this number and [other] is an integer,
@@ -237,7 +237,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
 
   /// Divides this number by [other].
   ///
-  ///This does not set the value for this [EmpireIntProperty].
+  ///This does not set the value for this [EmpireNullableIntProperty].
   double divide<E extends num>(E other) {
     return isNotNull
         ? _value! / other
@@ -247,7 +247,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
 
   /// Euclidean modulo of this number by [other].
   ///
-  ///This does not set the value for this [EmpireIntProperty].
+  ///This does not set the value for this [EmpireNullableIntProperty].
   ///
   /// Returns the remainder of the Euclidean division.
   /// The Euclidean division of two integers `a` and `b`
@@ -267,7 +267,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   ///
   /// Example:
   /// ```dart
-  /// final number = EmpireIntProperty(5);
+  /// final number = EmpireNullableIntProperty(5);
   /// print(number % 3); // 2
   /// ```
   E mod<E extends num>(E other) {
@@ -279,7 +279,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
 
   /// Multiplies this number by [other].
   ///
-  ///This does not set the value for this [EmpireIntProperty].
+  ///This does not set the value for this [EmpireNullableIntProperty].
   ///
   /// The result is an [int], as described by [int.*],
   /// if both this number and [other] are integers,

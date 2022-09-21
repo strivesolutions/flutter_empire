@@ -84,15 +84,74 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// ```
   double roundToDouble() => _value.roundToDouble();
 
-  double operator +(other) => value + other;
+  /// Adds [other] to this number.
+  ///
+  ///This does not set the value for this [EmpireDoubleProperty].
+  ///
+  /// The result is an [int], as described by [int.+],
+  /// if both this number and [other] is an integer,
+  /// otherwise the result is a [double].
+  double add<E extends num>(E other) {
+    return _value + other;
+  }
 
-  double operator -(other) => value - other;
+  /// Subtracts [other] from this number.
+  ///
+  ///This does not set the value for this [EmpireDoubleProperty].
+  ///
+  /// The result is an [int], as described by [int.-],
+  /// if both this number and [other] is an integer,
+  /// otherwise the result is a [double].
+  double subtract<E extends num>(E other) {
+    return _value - other;
+  }
 
-  double operator /(other) => value / other;
+  /// Divides this number by [other].
+  ///
+  ///This does not set the value for this [EmpireDoubleProperty].
+  double divide<E extends num>(E other) {
+    return _value / other;
+  }
 
-  double operator %(other) => value % other;
+  /// Euclidean modulo of this number by [other].
+  ///
+  ///This does not set the value for this [EmpireDoubleProperty].
+  ///
+  /// Returns the remainder of the Euclidean division.
+  /// The Euclidean division of two integers `a` and `b`
+  /// yields two integers `q` and `r` such that
+  /// `a == b * q + r` and `0 <= r < b.abs()`.
+  ///
+  /// The Euclidean division is only defined for integers, but can be easily
+  /// extended to work with doubles. In that case, `q` is still an integer,
+  /// but `r` may have a non-integer value that still satisfies `0 <= r < |b|`.
+  ///
+  /// The sign of the returned value `r` is always positive.
+  ///
+  ///
+  /// The result is an [int], as described by [int.%],
+  /// if both this number and [other] are integers,
+  /// otherwise the result is a [double].
+  ///
+  /// Example:
+  /// ```dart
+  /// final number = EmpireDoubleProperty(5.0);
+  /// print(number % 3); // 2.0
+  /// ```
+  double mod<E extends num>(E other) {
+    return _value % other;
+  }
 
-  double operator *(other) => value * other;
+  /// Multiplies this number by [other].
+  ///
+  ///This does not set the value for this [EmpireDoubleProperty].
+  ///
+  /// The result is an [int], as described by [int.*],
+  /// if both this number and [other] are integers,
+  /// otherwise the result is a [double].
+  double multiply<E extends num>(E other) {
+    return _value * other;
+  }
 }
 
 ///An [EmpireProperty] with similar characteristics of dart [double] objects
@@ -161,7 +220,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// Throws an [UnsupportedError] if this number is not finite
   /// (NaN or an infinity).
   /// ```dart
-  /// final number = EmpireDoubleProperty(3.25);
+  /// final number = EmpireNullableDoubleProperty(3.25);
   /// print(number.round()); // 3
   ///
   /// number(3.5);
@@ -187,7 +246,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// This means that for a value `d` in the range `-0.5 < d < 0.0`,
   /// the result is `-0.0`.
   /// ```dart
-  /// final number = EmpireDoubleProperty(3.25);
+  /// final number = EmpireNullableDoubleProperty(3.25);
   /// print(number.roundToDouble()); // 3.0
   ///
   /// number(3.5);
@@ -198,28 +257,87 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// ```
   double? roundToDouble() => _value?.roundToDouble();
 
-  double operator +(other) => isNotNull
-      ? value! + other!
-      : throw EmpirePropertyNullValueException(
-          StackTrace.current, propertyName, runtimeType);
+  /// Adds [other] to this number.
+  ///
+  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  ///
+  /// The result is an [int], as described by [int.+],
+  /// if both this number and [other] is an integer,
+  /// otherwise the result is a [double].
+  double add<E extends num>(E other) {
+    return isNotNull
+        ? _value! + other
+        : throw EmpirePropertyNullValueException(
+            StackTrace.current, propertyName, runtimeType);
+  }
 
-  double operator -(other) => isNotNull
-      ? value! - other!
-      : throw EmpirePropertyNullValueException(
-          StackTrace.current, propertyName, runtimeType);
+  /// Subtracts [other] from this number.
+  ///
+  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  ///
+  /// The result is an [int], as described by [int.-],
+  /// if both this number and [other] is an integer,
+  /// otherwise the result is a [double].
+  double subtract<E extends num>(E other) {
+    return isNotNull
+        ? _value! - other
+        : throw EmpirePropertyNullValueException(
+            StackTrace.current, propertyName, runtimeType);
+  }
 
-  double operator /(other) => isNotNull
-      ? value! / other!
-      : throw EmpirePropertyNullValueException(
-          StackTrace.current, propertyName, runtimeType);
+  /// Divides this number by [other].
+  ///
+  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  double divide<E extends num>(E other) {
+    return isNotNull
+        ? _value! / other
+        : throw EmpirePropertyNullValueException(
+            StackTrace.current, propertyName, runtimeType);
+  }
 
-  double operator %(other) => isNotNull
-      ? value! % other!
-      : throw EmpirePropertyNullValueException(
-          StackTrace.current, propertyName, runtimeType);
+  /// Euclidean modulo of this number by [other].
+  ///
+  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  ///
+  /// Returns the remainder of the Euclidean division.
+  /// The Euclidean division of two integers `a` and `b`
+  /// yields two integers `q` and `r` such that
+  /// `a == b * q + r` and `0 <= r < b.abs()`.
+  ///
+  /// The Euclidean division is only defined for integers, but can be easily
+  /// extended to work with doubles. In that case, `q` is still an integer,
+  /// but `r` may have a non-integer value that still satisfies `0 <= r < |b|`.
+  ///
+  /// The sign of the returned value `r` is always positive.
+  ///
+  ///
+  /// The result is an [int], as described by [int.%],
+  /// if both this number and [other] are integers,
+  /// otherwise the result is a [double].
+  ///
+  /// Example:
+  /// ```dart
+  /// final number = EmpireNullableDoubleProperty(5);
+  /// print(number % 3); // 2.0
+  /// ```
+  double mod<E extends num>(E other) {
+    return isNotNull
+        ? _value! % other
+        : throw EmpirePropertyNullValueException(
+            StackTrace.current, propertyName, runtimeType);
+  }
 
-  double operator *(other) => isNotNull
-      ? value! * other!
-      : throw EmpirePropertyNullValueException(
-          StackTrace.current, propertyName, runtimeType);
+  /// Multiplies this number by [other].
+  ///
+  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  ///
+  /// The result is an [int], as described by [int.*],
+  /// if both this number and [other] are integers,
+  /// otherwise the result is a [double].
+  double multiply<E extends num>(E other) {
+    return isNotNull
+        ? _value! * other
+        : throw EmpirePropertyNullValueException(
+            StackTrace.current, propertyName, runtimeType);
+  }
 }
