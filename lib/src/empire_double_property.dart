@@ -15,9 +15,7 @@ part of 'empire_property.dart';
 ///Example
 ///```dart
 ///
-///late final EmpireDoubleProperty percentage;
-///
-///percentage = createDoubleProperty(10.0);
+///final percentage = EmpireDoubleProperty(10.0);
 ///
 ///print('${percentage + 5.2}'); //prints 15.2
 ///```
@@ -51,11 +49,14 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// Throws an [UnsupportedError] if this number is not finite
   /// (NaN or an infinity).
   /// ```dart
-  /// print(3.0.round()); // 3
-  /// print(3.25.round()); // 3
-  /// print(3.5.round()); // 4
-  /// print(3.75.round()); // 4
-  /// print((-3.5).round()); // -4
+  /// final number = EmpireDoubleProperty(3.25);
+  /// print(number.roundToDouble()); // 3
+  ///
+  /// number(3.5);
+  /// print(number.roundToDouble()); // 4
+  ///
+  /// number(3.75);
+  /// print(number.roundToDouble()); // 4
   /// ```
   int round() => _value.round();
 
@@ -72,11 +73,14 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// This means that for a value `d` in the range `-0.5 < d < 0.0`,
   /// the result is `-0.0`.
   /// ```dart
-  /// print(3.0.roundToDouble()); // 3.0
-  /// print(3.25.roundToDouble()); // 3.0
-  /// print(3.5.roundToDouble()); // 4.0
-  /// print(3.75.roundToDouble()); // 4.0
-  /// print((-3.5).roundToDouble()); // -4.0
+  /// final number = EmpireDoubleProperty(3.25);
+  /// print(number.roundToDouble()); // 3.0
+  ///
+  /// number(3.5);
+  /// print(number.roundToDouble()); // 4.0
+  ///
+  /// number(3.75);
+  /// print(number.roundToDouble()); // 4.0
   /// ```
   double roundToDouble() => _value.roundToDouble();
 
@@ -108,9 +112,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///
 ///Example
 ///```dart
-///late final EmpireNullableDoubleProperty percentage;
-///
-///percentage = createNullableDoubleProperty();
+///final percentage = EmpireNullableDoubleProperty(10.0);
 ///
 ///if (percentage.isNull)
 ///{
@@ -121,9 +123,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///Other Usages Examples
 ///```dart
 ///
-///late final EmpireNullableDoubleProperty percentage;
-///
-///percentage = createNullableDoubleProperty();
+///final percentage = EmpireNullableDoubleProperty();
 ///
 ///print('${percentage + 5.2}'); //throws EmpireNullValueException because no value has been set yet.
 ///
@@ -161,11 +161,14 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// Throws an [UnsupportedError] if this number is not finite
   /// (NaN or an infinity).
   /// ```dart
-  /// print(3.0.round()); // 3
-  /// print(3.25.round()); // 3
-  /// print(3.5.round()); // 4
-  /// print(3.75.round()); // 4
-  /// print((-3.5).round()); // -4
+  /// final number = EmpireDoubleProperty(3.25);
+  /// print(number.roundToDouble()); // 3
+  ///
+  /// number(3.5);
+  /// print(number.roundToDouble()); // 4
+  ///
+  /// number(3.75);
+  /// print(number.roundToDouble()); // 4
   /// ```
   int? round() => _value?.round();
 
@@ -184,11 +187,14 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// This means that for a value `d` in the range `-0.5 < d < 0.0`,
   /// the result is `-0.0`.
   /// ```dart
-  /// print(3.0.roundToDouble()); // 3.0
-  /// print(3.25.roundToDouble()); // 3.0
-  /// print(3.5.roundToDouble()); // 4.0
-  /// print(3.75.roundToDouble()); // 4.0
-  /// print((-3.5).roundToDouble()); // -4.0
+  /// final number = EmpireDoubleProperty(3.25);
+  /// print(number.roundToDouble()); // 3.0
+  ///
+  /// number(3.5);
+  /// print(number.roundToDouble()); // 4.0
+  ///
+  /// number(3.75);
+  /// print(number.roundToDouble()); // 4.0
   /// ```
   double? roundToDouble() => _value?.roundToDouble();
 
