@@ -1,6 +1,6 @@
 ## 0.11.0
 
-- Fixed the a bug where the `busy` property on an EmpireViewModel return an incorrect value if there are multiple different busyTaskKeys assigned.
+- Fixed the a bug where the `busy` property on an EmpireViewModel returned an incorrect value if there are multiple different busyTaskKeys assigned.
 - Added additional functionality to `EmpireListProperty` to bring them closer in line with a plain Dart List object. The following has been added:
   - `first` (read-only property)
   - `last` (read-only property)
