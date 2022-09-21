@@ -279,7 +279,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// For example, [elementAt] may call `toElement` only once.
   ///
   /// Example:
-  /// ```dart import:convert
+  /// ```dart
   /// var products = EmpireListProperty(
   /// [
   ///   {"name": "Screwdriver", "price": 42.00},
