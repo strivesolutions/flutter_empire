@@ -60,15 +60,74 @@ class EmpireIntProperty extends EmpireProperty<int> {
   /// Returns the absolute value of this integer.
   int abs() => _value.abs();
 
-  int operator +(other) => (value + other).toInt();
+  /// Adds [other] to this number.
+  ///
+  ///This does not set the value for this [EmpireIntProperty].
+  ///
+  /// The result is an [int], as described by [int.+],
+  /// if both this number and [other] is an integer,
+  /// otherwise the result is a [double].
+  E add<E extends num>(E other) {
+    return (_value + other) as E;
+  }
 
-  int operator -(other) => (value - other).toInt();
+  /// Subtracts [other] from this number.
+  ///
+  ///This does not set the value for this [EmpireIntProperty].
+  ///
+  /// The result is an [int], as described by [int.-],
+  /// if both this number and [other] is an integer,
+  /// otherwise the result is a [double].
+  E subtract<E extends num>(E other) {
+    return (_value - other) as E;
+  }
 
-  int operator /(other) => value ~/ other;
+  /// Divides this number by [other].
+  ///
+  ///This does not set the value for this [EmpireIntProperty].
+  double divide<E extends num>(E other) {
+    return _value / other;
+  }
 
-  int operator %(other) => (value % other).toInt();
+  /// Euclidean modulo of this number by [other].
+  ///
+  ///This does not set the value for this [EmpireIntProperty].
+  ///
+  /// Returns the remainder of the Euclidean division.
+  /// The Euclidean division of two integers `a` and `b`
+  /// yields two integers `q` and `r` such that
+  /// `a == b * q + r` and `0 <= r < b.abs()`.
+  ///
+  /// The Euclidean division is only defined for integers, but can be easily
+  /// extended to work with doubles. In that case, `q` is still an integer,
+  /// but `r` may have a non-integer value that still satisfies `0 <= r < |b|`.
+  ///
+  /// The sign of the returned value `r` is always positive.
+  ///
+  ///
+  /// The result is an [int], as described by [int.%],
+  /// if both this number and [other] are integers,
+  /// otherwise the result is a [double].
+  ///
+  /// Example:
+  /// ```dart
+  /// final number = EmpireIntProperty(5);
+  /// print(number % 3); // 2
+  /// ```
+  E mod<E extends num>(E other) {
+    return (_value % other) as E;
+  }
 
-  int operator *(other) => (value * other).toInt();
+  /// Multiplies this number by [other].
+  ///
+  ///This does not set the value for this [EmpireIntProperty].
+  ///
+  /// The result is an [int], as described by [int.*],
+  /// if both this number and [other] are integers,
+  /// otherwise the result is a [double].
+  E multiply<E extends num>(E other) {
+    return (_value * other) as E;
+  }
 }
 
 ///An [EmpireProperty] with similar characteristics of dart [int] objects

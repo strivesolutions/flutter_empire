@@ -86,7 +86,7 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age + addend;
+      final result = viewModel.age.add(addend);
 
       viewModel.age(result);
       await tester.pumpAndSettle();
@@ -106,7 +106,7 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age - subtrahend;
+      final result = viewModel.age.subtract(subtrahend);
 
       viewModel.age(result);
 
@@ -127,7 +127,7 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age * multiplier;
+      final result = viewModel.age.multiply(multiplier);
 
       viewModel.age(result);
 
@@ -140,7 +140,7 @@ void main() {
     testWidgets('division - widget updates', (tester) async {
       const int expectedValue = 2;
       const int startingValue = 10;
-      const int multiplier = 5;
+      const int divisor = 5;
 
       viewModel.age(startingValue);
 
@@ -148,9 +148,9 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age / multiplier;
+      final result = viewModel.age.divide(divisor);
 
-      viewModel.age(result);
+      viewModel.age(result.toInt());
 
       await tester.pumpAndSettle();
 
