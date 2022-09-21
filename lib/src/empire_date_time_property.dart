@@ -362,7 +362,8 @@ class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
-  EmpireNullableDateTimeProperty(super.value, {super.propertyName});
+  EmpireNullableDateTimeProperty({DateTime? value, super.propertyName})
+      : super(value);
 
   ///Factory constructor for initializing an [EmpireNullableDateTimeProperty] to the current Date/Time.
   ///
@@ -375,7 +376,7 @@ class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   ///```
   factory EmpireNullableDateTimeProperty.now({String? propertyName}) {
     return EmpireNullableDateTimeProperty(
-      DateTime.now(),
+      value: DateTime.now(),
       propertyName: propertyName,
     );
   }
@@ -447,7 +448,10 @@ class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
       {String? propertyName}) {
     final dateTime = DateTime.parse(formattedString);
 
-    return EmpireNullableDateTimeProperty(dateTime, propertyName: propertyName);
+    return EmpireNullableDateTimeProperty(
+      value: dateTime,
+      propertyName: propertyName,
+    );
   }
 
   // Constructs a new [EmpireNullableDateTimeProperty] instance based on [formattedString].
@@ -457,7 +461,10 @@ class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   static EmpireNullableDateTimeProperty tryParse(String formattedString,
       {String? propertyName}) {
     final dateTime = DateTime.tryParse(formattedString);
-    return EmpireNullableDateTimeProperty(dateTime, propertyName: propertyName);
+    return EmpireNullableDateTimeProperty(
+      value: dateTime,
+      propertyName: propertyName,
+    );
   }
 
   ///Sets the value to null
