@@ -15,9 +15,7 @@ part of 'empire_property.dart';
 ///Example
 ///```dart
 ///
-///late final EmpireIntProperty age;
-///
-///age = createIntProperty(10);
+//final age = EmpireIntProperty(10);
 ///
 ///print('${age + 5}'); //prints 15
 ///```
@@ -88,9 +86,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///
 ///Example
 ///```dart
-///late final EmpireNullableIntProperty age;
-///
-///age = createNullableIntProperty();
+///final age = EmpireNullableIntProperty();
 ///
 ///if (age.isNull)
 ///{
@@ -101,9 +97,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///Other Usages Examples
 ///```dart
 ///
-///late final EmpireNullableIntProperty age;
-///
-///age = createNullableIntProperty();
+///final age = EmpireNullableIntProperty();
 ///
 ///print('${age + 5}'); //throws EmpireNullValueException because no value has been set yet.
 ///
