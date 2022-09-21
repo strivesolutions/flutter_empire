@@ -131,13 +131,13 @@ abstract class EmpireViewModel {
   ///
   ///Updating the busy status is automatic when using the [doAsync] function.
   void setBusyStatus({required bool isBusy, dynamic busyTaskKey}) {
-    if (_busy != isBusy) {
+    if (_busy != isBusy || busyTaskKey != null) {
       if (isBusy) {
         _addBusyTaskKey(busyTaskKey);
       } else {
         _removeBusyTaskKey(busyTaskKey);
       }
-      _busy = isBusy;
+      _busy = _busyTaskKeys.isNotEmpty || isBusy;
       notifyChanges([EmpireStateChanged(isBusy, !isBusy)]);
     }
   }
