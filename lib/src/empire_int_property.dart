@@ -242,6 +242,8 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   /// Divides this number by [other].
   ///
   /// This does not set the value for this [EmpireNullableIntProperty].
+  ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   double divide<E extends num>(E other) {
     return isNotNull
         ? _value! / other
