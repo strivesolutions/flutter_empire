@@ -10,7 +10,7 @@ class CounterViewModel extends EmpireViewModel {
   }
 
   Future<void> incrementCounter() async {
-    count(count + 1);
+    count.increment();
   }
 
   void reset() {

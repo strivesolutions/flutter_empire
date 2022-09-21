@@ -86,7 +86,7 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age + addend;
+      final result = viewModel.age.add(addend);
 
       viewModel.age(result);
       await tester.pumpAndSettle();
@@ -106,7 +106,7 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age - subtrahend;
+      final result = viewModel.age.subtract(subtrahend);
 
       viewModel.age(result);
 
@@ -127,7 +127,7 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age * multiplier;
+      final result = viewModel.age.multiply(multiplier);
 
       viewModel.age(result);
 
@@ -140,7 +140,7 @@ void main() {
     testWidgets('division - widget updates', (tester) async {
       const int expectedValue = 2;
       const int startingValue = 10;
-      const int multiplier = 5;
+      const int divisor = 5;
 
       viewModel.age(startingValue);
 
@@ -148,9 +148,9 @@ void main() {
 
       expect(find.text(viewModel.age.toString()), findsOneWidget);
 
-      final result = viewModel.age / multiplier;
+      final result = viewModel.age.divide(divisor);
 
-      viewModel.age(result);
+      viewModel.age(result.toInt());
 
       await tester.pumpAndSettle();
 
@@ -208,6 +208,78 @@ void main() {
       final result = viewModel.age.decrement();
       expect(result, equals(expected));
       expect(viewModel.age.value, equals(expected));
+    });
+
+    test('add - other is int - returns correct int value', () {
+      const expected = 2;
+      final number = EmpireIntProperty(1);
+      final result = number.add(1);
+
+      expect(result, equals(expected));
+    });
+
+    test('add - other is double - returns correct double value', () {
+      const expected = 2.5;
+      final number = EmpireIntProperty(1);
+      final result = number.add(1.5);
+
+      expect(result, equals(expected));
+    });
+
+    test('subtract - other is int - returns correct int value', () {
+      const expected = 2;
+      final number = EmpireIntProperty(3);
+      final result = number.subtract(1);
+
+      expect(result, equals(expected));
+    });
+
+    test('subtract - other is double - returns correct double value', () {
+      const expected = 2.5;
+      final number = EmpireIntProperty(4);
+      final result = number.subtract(1.5);
+
+      expect(result, equals(expected));
+    });
+
+    test('multiply - other is int - returns correct int value', () {
+      const expected = 4;
+      final number = EmpireIntProperty(2);
+      final result = number.multiply(2);
+
+      expect(result, equals(expected));
+    });
+
+    test('multiply - other is double - returns correct double value', () {
+      const expected = 5.4;
+      final number = EmpireIntProperty(2);
+      final result = number.multiply(2.7);
+
+      expect(result, equals(expected));
+    });
+
+    test('divide - returns correct double value', () {
+      const expected = 4.0;
+      final number = EmpireIntProperty(8);
+      final result = number.divide(2);
+
+      expect(result, equals(expected));
+    });
+
+    test('mod - other is int - returns correct int value', () {
+      const expected = 2;
+      final number = EmpireIntProperty(5);
+      final result = number.mod(3);
+
+      expect(result, equals(expected));
+    });
+
+    test('mod - other is double - returns correct double value', () {
+      const expected = 1.5;
+      final number = EmpireIntProperty(5);
+      final result = number.mod(3.5);
+
+      expect(result, equals(expected));
     });
   });
 }

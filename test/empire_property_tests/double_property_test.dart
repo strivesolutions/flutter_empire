@@ -87,7 +87,7 @@ void main() {
 
       expect(find.text(viewModel.percentage.toString()), findsOneWidget);
 
-      final result = viewModel.percentage + addend;
+      final result = viewModel.percentage.add(addend);
 
       viewModel.percentage(result);
       await tester.pumpAndSettle();
@@ -107,7 +107,7 @@ void main() {
 
       expect(find.text(viewModel.percentage.toString()), findsOneWidget);
 
-      final result = viewModel.percentage - subtrahend;
+      final result = viewModel.percentage.subtract(subtrahend);
 
       viewModel.percentage(result);
 
@@ -128,7 +128,7 @@ void main() {
 
       expect(find.text(viewModel.percentage.toString()), findsOneWidget);
 
-      final result = viewModel.percentage * multiplier;
+      final result = viewModel.percentage.multiply(multiplier);
 
       viewModel.percentage(result);
 
@@ -149,7 +149,7 @@ void main() {
 
       expect(find.text(viewModel.percentage.toString()), findsOneWidget);
 
-      final result = viewModel.percentage / divisor;
+      final result = viewModel.percentage.divide(divisor);
 
       viewModel.percentage(result);
 
@@ -191,6 +191,78 @@ void main() {
       viewModel.percentage(3);
       final result = viewModel.percentage.isNegative;
       expect(result, isFalse);
+    });
+
+    test('add - other is int - returns correct double value', () {
+      const expected = 2;
+      final number = EmpireDoubleProperty(1);
+      final result = number.add(1);
+
+      expect(result, equals(expected));
+    });
+
+    test('add - other is double - returns correct double value', () {
+      const expected = 2.5;
+      final number = EmpireDoubleProperty(1);
+      final result = number.add(1.5);
+
+      expect(result, equals(expected));
+    });
+
+    test('subtract - other is int - returns correct double value', () {
+      const expected = 2;
+      final number = EmpireDoubleProperty(3);
+      final result = number.subtract(1);
+
+      expect(result, equals(expected));
+    });
+
+    test('subtract - other is double - returns correct double value', () {
+      const expected = 2.5;
+      final number = EmpireDoubleProperty(4);
+      final result = number.subtract(1.5);
+
+      expect(result, equals(expected));
+    });
+
+    test('multiply - other is int - returns correct double value', () {
+      const expected = 4;
+      final number = EmpireDoubleProperty(2);
+      final result = number.multiply(2);
+
+      expect(result, equals(expected));
+    });
+
+    test('multiply - other is double - returns correct double value', () {
+      const expected = 5.4;
+      final number = EmpireDoubleProperty(2);
+      final result = number.multiply(2.7);
+
+      expect(result, equals(expected));
+    });
+
+    test('divide - returns correct double value', () {
+      const expected = 4.0;
+      final number = EmpireDoubleProperty(8);
+      final result = number.divide(2);
+
+      expect(result, equals(expected));
+    });
+
+    test('mod - other is int - returns correct double value', () {
+      const expected = 2;
+      final number = EmpireDoubleProperty(5);
+      final result = number.mod(3);
+
+      expect(result, equals(expected));
+    });
+
+    test('mod - other is double - returns correct double value', () {
+      const expected = 1.5;
+      final number = EmpireDoubleProperty(5);
+      final result = number.mod(3.5);
+
+      expect(result, equals(expected));
     });
   });
 }
