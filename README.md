@@ -15,7 +15,7 @@ In your flutter project, add the dependency to your `pubspec.yaml`
 
 ```yaml
   dependencies:
-    empire: ^0.10.0
+    empire: ^0.11.0
 ```
 
 **Tip:** Consider installing the [Empire Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=StriveBusinessSolutions.empire-flutter-snippets) extension in Visual Studio Code to make creating Empire classes easier.
