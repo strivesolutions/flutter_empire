@@ -248,5 +248,117 @@ void main() {
 
       expect(result, equals(expected));
     });
+
+    test(
+      'where - list is not empty - returns items in list matching prediate',
+      () {
+        const expectedLength = 3;
+        final expectedItems = [3, 4, 5];
+        final numbers = EmpireListProperty([1, 2, ...expectedItems]);
+        final result = numbers.where((x) => x > 2);
+
+        expect(result.length, equals(expectedLength));
+        expect(result, equals(expectedItems));
+      },
+    );
+
+    test(
+      'firstWhere - returns first matching item',
+      () {
+        const expected = 3;
+        final numbers = EmpireListProperty([1, 2, 3]);
+        final result = numbers.firstWhere((element) => element == expected);
+
+        expect(result, equals(expected));
+      },
+    );
+
+    test(
+      'firstWhere - no match found - returns result from orElse',
+      () {
+        const expected = -1;
+        final numbers = EmpireListProperty([1, 2, 3]);
+        final result = numbers.firstWhere(
+          (element) => element == expected,
+          orElse: () => expected,
+        );
+
+        expect(result, equals(expected));
+      },
+    );
+
+    test(
+      'firstWhereOrNull - match found - returns first matching item',
+      () {
+        const expected = 3;
+        final numbers = EmpireListProperty([1, 2, 3]);
+        final result =
+            numbers.firstWhereOrNull((element) => element == expected);
+
+        expect(result, equals(expected));
+      },
+    );
+
+    test(
+      'firstWhereOrNull - no match found - returns null',
+      () {
+        const expected = -1;
+        final numbers = EmpireListProperty([1, 2, 3]);
+        final result =
+            numbers.firstWhereOrNull((element) => element == expected);
+
+        expect(result, isNull);
+      },
+    );
+
+    test(
+      'indexWhere - match found - returns correct index',
+      () {
+        const expected = 2;
+        final numbers = EmpireListProperty([1, 2, 3]);
+        final result = numbers.indexWhere((element) => element == 3);
+
+        expect(result, equals(expected));
+      },
+    );
+
+    test(
+      'indexWhere - no match found - returns -1',
+      () {
+        const expected = -1;
+        final numbers = EmpireListProperty([1, 2, 3]);
+        final result = numbers.indexWhere((element) => element == expected);
+
+        expect(result, equals(expected));
+      },
+    );
+
+    test('reversed - returns reversed list', () {
+      final expected = [3, 2, 1];
+      final numbers = EmpireListProperty([1, 2, 3]);
+      final reversed = numbers.reversed;
+      expect(reversed, equals(expected));
+    });
+
+    test('first - list is not empty - returns first item', () {
+      const expected = 1;
+      final numbers = EmpireListProperty([1, 2, 3]);
+      final first = numbers.first;
+      expect(first, equals(expected));
+    });
+
+    test('last - list is not empty - returns last item', () {
+      const expected = 3;
+      final numbers = EmpireListProperty([1, 2, 3]);
+      final last = numbers.last;
+      expect(last, equals(expected));
+    });
+
+    test('single - list contains one item - returns item', () {
+      const expected = 1;
+      final numbers = EmpireListProperty([expected]);
+      final single = numbers.single;
+      expect(single, equals(expected));
+    });
   });
 }

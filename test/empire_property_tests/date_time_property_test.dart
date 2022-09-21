@@ -150,4 +150,17 @@ void main() {
       expect(property.compareTo(dt1), equals(expected));
     });
   });
+
+  group('EmpireNullableDateTimeProperty Tests', () {
+    test('Create New - No Constructor Arguments - Value is NULL', () {
+      final property = EmpireNullableDateTimeProperty();
+      expect(property.value, isNull);
+    });
+
+    test('Create New - value set - value equals constructure argument', () {
+      final expected = DateTime(2022, 1, 1);
+      final property = EmpireNullableDateTimeProperty(value: expected);
+      expect(property.value, equals(expected));
+    });
+  });
 }

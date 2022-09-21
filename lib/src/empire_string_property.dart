@@ -33,14 +33,14 @@ class EmpireStringProperty extends EmpireProperty<String> {
   ///
   /// Example:
   /// ```dart
-  /// const string = 'Doug';
+  /// const string = EmpireStringProperty('Doug');
   /// final containsD = string.contains('D'); // true
   /// final containsUpperCase = string.contains(RegExp(r'[A-Z]')); // true
   /// ```
   /// If [startIndex] is provided, this method matches only at or after that
   /// index:
   /// ```dart
-  /// const string = 'Doug smith';
+  /// const string = EmpireStringProperty('Doug smith');
   /// final containsD = string.contains(RegExp('D'), 0); // true
   /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
   /// ```
@@ -52,7 +52,7 @@ class EmpireStringProperty extends EmpireProperty<String> {
   ///
   /// Example:
   /// ```dart
-  /// const string = 'dougsmith';
+  /// const string = EmpireStringProperty('dougsmith');
   /// var result = string.substring(1); // 'ougsmith'
   /// result = string.substring(1, 3); // 'oug'
   /// ```
@@ -95,14 +95,14 @@ class EmpireNullableStringProperty extends EmpireProperty<String?> {
   ///
   /// Example:
   /// ```dart
-  /// const string = 'Doug';
+  /// const string = EmpireStringProperty('Doug');
   /// final containsD = string.contains('D'); // true
   /// final containsUpperCase = string.contains(RegExp(r'[A-Z]')); // true
   /// ```
   /// If [startIndex] is provided, this method matches only at or after that
   /// index:
   /// ```dart
-  /// const string = 'Doug smith';
+  /// const string = EmpireStringProperty('Doug smith');
   /// final containsD = string.contains(RegExp('D'), 0); // true
   /// final caseSensitive = string.contains(RegExp(r'[A-Z]'), 1); // false
   /// ```
@@ -116,7 +116,7 @@ class EmpireNullableStringProperty extends EmpireProperty<String?> {
   ///
   /// Example:
   /// ```dart
-  /// const string = 'dougsmith';
+  /// const string = EmpireStringProperty('dougsmith');
   /// var result = string.substring(1); // 'ougsmith'
   /// result = string.substring(1, 3); // 'oug'
   /// ```

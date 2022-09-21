@@ -15,9 +15,7 @@ part of 'empire_property.dart';
 ///Example
 ///```dart
 ///
-///late final EmpireIntProperty age;
-///
-///age = createIntProperty(10);
+//final age = EmpireIntProperty(10);
 ///
 ///print('${age + 5}'); //prints 15
 ///```
@@ -147,9 +145,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///
 ///Example
 ///```dart
-///late final EmpireNullableIntProperty age;
-///
-///age = createNullableIntProperty();
+///final age = EmpireNullableIntProperty();
 ///
 ///if (age.isNull)
 ///{
@@ -160,9 +156,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///Other Usages Examples
 ///```dart
 ///
-///late final EmpireNullableIntProperty age;
-///
-///age = createNullableIntProperty();
+///final age = EmpireNullableIntProperty();
 ///
 ///print('${age + 5}'); //throws EmpireNullValueException because no value has been set yet.
 ///
@@ -173,7 +167,7 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///```
 ///
 class EmpireNullableIntProperty extends EmpireProperty<int?> {
-  EmpireNullableIntProperty(super.value, {super.propertyName});
+  EmpireNullableIntProperty({int? value, super.propertyName}) : super(value);
 
   ///Factory constructor for initializing an [EmpireNullableIntProperty] to zero.
   ///
@@ -185,7 +179,7 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   ///final numberOfFriends = EmpireNullableIntProperty.zero();
   ///```
   factory EmpireNullableIntProperty.zero({String? propertyName}) {
-    return EmpireNullableIntProperty(0, propertyName: propertyName);
+    return EmpireNullableIntProperty(value: 0, propertyName: propertyName);
   }
 
   /// Returns true if the int value is odd
