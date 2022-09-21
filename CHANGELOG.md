@@ -1,3 +1,28 @@
+## 0.11.0
+
+- Fixed the a bug where the `busy` property on an EmpireViewModel returned an incorrect value if there are multiple different busyTaskKeys assigned.
+- Added additional functionality to `EmpireListProperty` to bring them closer in line with a plain Dart List object. The following has been added:
+  - `first` (read-only property)
+  - `last` (read-only property)
+  - `reversed` (read-only property)
+  - `single` (read-only property)
+  - `where` (function)
+  - `firstWhere` (function)
+  - `firstWhereOrNull` (function)
+
+
+**BREAKING CHANGES**
+
+We found some issues with the arithmetic operator overrides in the `EmpireIntProperty` and `EmpireDoubleProperty` classes. For details on the issue, please see [GitHub Issue #83](https://github.com/strivesolutions/flutter_empire/issues/83). Ultimately, we had to scrap the operator overrides and implement the arithmetic operations as functions.
+
+- Implemented arithmetic functions for EmpireIntProperty and EmprieDoubleProperty, and their nullable variants
+- Removed the operator overrides
+
+We have also made changes to the constructor signature for `EmpireNullableDateTimeProperty` and `EmpireNullableIntProperty`. This was to bring them in line with the other Empire Nullable properties.
+
+- Updated EmpireNullableDateTimeProperty and EmpireNullableIntProperty constructors so the value argument is optional instead of a required positional argument.
+
+
 ## 0.10.0
 
 - Added `resetAll` function to `EmpireViewModel`. This will reset all tracked properties to their original value and trigger a UI update.
