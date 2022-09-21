@@ -50,13 +50,13 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// (NaN or an infinity).
   /// ```dart
   /// final number = EmpireDoubleProperty(3.25);
-  /// print(number.roundToDouble()); // 3
+  /// print(number.round()); // 3
   ///
   /// number(3.5);
-  /// print(number.roundToDouble()); // 4
+  /// print(number.round()); // 4
   ///
   /// number(3.75);
-  /// print(number.roundToDouble()); // 4
+  /// print(number.round()); // 4
   /// ```
   int round() => _value.round();
 
