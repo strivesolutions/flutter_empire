@@ -45,7 +45,7 @@ class _IntTestWidgetState extends EmpireState<IntTestWidget, IntViewModel> {
 }
 
 class NullableIntViewModel extends EmpireViewModel {
-  final age = EmpireNullableIntProperty(value: 10);
+  final age = EmpireNullableIntProperty(10);
 
   @override
   Iterable<EmpireProperty> get empireProps => [age];

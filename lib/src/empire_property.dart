@@ -48,7 +48,7 @@ abstract class EmpireValue<T> {
 /////update the property value to five.
 ///age(5);
 ///```
-class EmpireProperty<T> implements EmpireValue<T?> {
+class EmpireProperty<T> implements EmpireValue<T> {
   String? propertyName;
 
   late T _originalValue;
