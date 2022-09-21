@@ -211,6 +211,8 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   ///
   ///This does not set the value for this [EmpireNullableIntProperty].
   ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
+  ///
   /// The result is an [int], as described by [int.+],
   /// if both this number and [other] is an integer,
   /// otherwise the result is a [double].
@@ -224,6 +226,8 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   /// Subtracts [other] from this number.
   ///
   ///This does not set the value for this [EmpireNullableIntProperty].
+  ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   ///
   /// The result is an [int], as described by [int.-],
   /// if both this number and [other] is an integer,
@@ -265,6 +269,8 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   /// if both this number and [other] are integers,
   /// otherwise the result is a [double].
   ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
+  ///
   /// Example:
   /// ```dart
   /// final number = EmpireNullableIntProperty(5);
@@ -284,6 +290,8 @@ class EmpireNullableIntProperty extends EmpireProperty<int?> {
   /// The result is an [int], as described by [int.*],
   /// if both this number and [other] are integers,
   /// otherwise the result is a [double].
+  ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   E multiply<E extends num>(E other) {
     return isNotNull
         ? (_value! * other) as E

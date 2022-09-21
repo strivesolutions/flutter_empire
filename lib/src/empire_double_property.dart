@@ -88,9 +88,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   ///
   ///This does not set the value for this [EmpireDoubleProperty].
   ///
-  /// The result is an [int], as described by [int.+],
-  /// if both this number and [other] is an integer,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.+]
   double add<E extends num>(E other) {
     return _value + other;
   }
@@ -99,9 +97,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   ///
   ///This does not set the value for this [EmpireDoubleProperty].
   ///
-  /// The result is an [int], as described by [int.-],
-  /// if both this number and [other] is an integer,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.-]
   double subtract<E extends num>(E other) {
     return _value - other;
   }
@@ -109,6 +105,8 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// Divides this number by [other].
   ///
   ///This does not set the value for this [EmpireDoubleProperty].
+  ///
+  /// The result is an [double], as described by [double./]
   double divide<E extends num>(E other) {
     return _value / other;
   }
@@ -129,9 +127,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   /// The sign of the returned value `r` is always positive.
   ///
   ///
-  /// The result is an [int], as described by [int.%],
-  /// if both this number and [other] are integers,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.%]
   ///
   /// Example:
   /// ```dart
@@ -146,9 +142,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   ///
   ///This does not set the value for this [EmpireDoubleProperty].
   ///
-  /// The result is an [int], as described by [int.*],
-  /// if both this number and [other] are integers,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.*]
   double multiply<E extends num>(E other) {
     return _value * other;
   }
@@ -261,9 +255,8 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   ///
   ///This does not set the value for this [EmpireNullableDoubleProperty].
   ///
-  /// The result is an [int], as described by [int.+],
-  /// if both this number and [other] is an integer,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.+].
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   double add<E extends num>(E other) {
     return isNotNull
         ? _value! + other
@@ -275,9 +268,8 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   ///
   ///This does not set the value for this [EmpireNullableDoubleProperty].
   ///
-  /// The result is an [int], as described by [int.-],
-  /// if both this number and [other] is an integer,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.-],
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   double subtract<E extends num>(E other) {
     return isNotNull
         ? _value! - other
@@ -288,6 +280,10 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// Divides this number by [other].
   ///
   ///This does not set the value for this [EmpireNullableDoubleProperty].
+  ///
+  /// The result is an [double], as described by [double./],
+  ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   double divide<E extends num>(E other) {
     return isNotNull
         ? _value! / other
@@ -311,9 +307,9 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   /// The sign of the returned value `r` is always positive.
   ///
   ///
-  /// The result is an [int], as described by [int.%],
-  /// if both this number and [other] are integers,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.%]
+  ///
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   ///
   /// Example:
   /// ```dart
@@ -331,9 +327,8 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   ///
   ///This does not set the value for this [EmpireNullableDoubleProperty].
   ///
-  /// The result is an [int], as described by [int.*],
-  /// if both this number and [other] are integers,
-  /// otherwise the result is a [double].
+  /// The result is an [double], as described by [double.*],
+  /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
   double multiply<E extends num>(E other) {
     return isNotNull
         ? _value! * other
