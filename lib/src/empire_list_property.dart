@@ -365,6 +365,11 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     return value.indexWhere(test, start);
   }
 
+  /// The object at the given [index] in the list.
+  ///
+  /// The [index] must be a valid index of this list,
+  /// which means that `index` must be non-negative and
+  /// less than [length].
   T operator [](int index) {
     return _value[index];
   }
