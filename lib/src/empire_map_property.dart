@@ -94,7 +94,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// The operation is equivalent to doing `this[entry.key] = entry.value`
   /// for each [MapEntry] of the iterable.
   /// ```dart
-  /// final planets = <int, String>{1: 'Mercury', 2: 'Venus',
+  /// final planets = EmpireMapProperty<int, String>{1: 'Mercury', 2: 'Venus',
   ///   3: 'Earth', 4: 'Mars'};
   /// final gasGiants = <int, String>{5: 'Jupiter', 6: 'Saturn'};
   /// final iceGiants = <int, String>{7: 'Uranus', 8: 'Neptune'};
@@ -148,7 +148,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// planetsFromSun.update(2, (value) => 'Venus');
   /// print(planetsFromSun); // {1: Mercury, 2: Venus, 3: Earth}
   ///
-  /// final largestPlanets = <int, String>{1: 'Jupiter', 2: 'Saturn',
+  /// final largestPlanets = EmpireMapProperty<int, String>{1: 'Jupiter', 2: 'Saturn',
   ///   3: 'Neptune'};
   /// // Key value 8 is missing from list, add it using [ifAbsent].
   /// largestPlanets.update(8, (value) => 'New', ifAbsent: () => 'Mercury');
@@ -178,7 +178,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// Iterates over all entries in the map and updates them with the result
   /// of invoking [update].
   /// ```dart
-  /// final terrestrial = <int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
+  /// final terrestrial = EmpireMapProperty<int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
   /// terrestrial.updateAll((key, value) => value.toUpperCase());
   /// print(terrestrial); // {1: MERCURY, 2: VENUS, 3: EARTH}
   /// ```
@@ -211,7 +211,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// Note that some maps allow `null` as a value,
   /// so a returned `null` value doesn't always mean that the key was absent.
   /// ```dart
-  /// final terrestrial = <int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
+  /// final terrestrial = EmpireMapProperty<int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
   /// final removedValue = terrestrial.remove(2); // Venus
   /// print(terrestrial); // {1: Mercury, 3: Earth}
   /// ```
@@ -233,7 +233,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
 
   /// Removes all entries of this map that satisfy the given [test].
   /// ```dart
-  /// final terrestrial = <int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
+  /// final terrestrial = EmpireMapProperty<int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
   /// terrestrial.removeWhere((key, value) => value.startsWith('E'));
   /// print(terrestrial); // {1: Mercury, 2: Venus}
   /// ```
@@ -264,7 +264,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   ///
   /// After this, the map is empty.
   /// ```dart
-  /// final planets = <int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
+  /// final planets = EmpireMapProperty<int, String>{1: 'Mercury', 2: 'Venus', 3: 'Earth'};
   /// planets.clear(); // {}
   /// ```
   void clear({bool notifyChanges = true}) {
@@ -283,7 +283,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// Returns true if any of the keys in the map are equal to `key`
   /// according to the equality used by the map.
   /// ```dart
-  /// final moonCount = <String, int>{'Mercury': 0, 'Venus': 0, 'Earth': 1,
+  /// final moonCount = EmpireMapProperty<String, int>{'Mercury': 0, 'Venus': 0, 'Earth': 1,
   ///   'Mars': 2, 'Jupiter': 79, 'Saturn': 82, 'Uranus': 27, 'Neptune': 14 };
   /// final containsUranus = moonCount.containsKey('Uranus'); // true
   /// final containsPluto = moonCount.containsKey('Pluto'); // false
@@ -295,7 +295,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   /// Returns true if any of the values in the map are equal to `value`
   /// according to the `==` operator.
   /// ```dart
-  /// final moonCount = <String, int>{'Mercury': 0, 'Venus': 0, 'Earth': 1,
+  /// final moonCount = EmpireMapProperty<String, int>{'Mercury': 0, 'Venus': 0, 'Earth': 1,
   ///   'Mars': 2, 'Jupiter': 79, 'Saturn': 82, 'Uranus': 27, 'Neptune': 14 };
   /// final moons3 = moonCount.containsValue(3); // false
   /// final moons82 = moonCount.containsValue(82); // true
@@ -312,7 +312,7 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   ///
   /// Calling `action` must not add or remove keys from the map.
   /// ```dart
-  /// final planetsByMass = <num, String>{0.81: 'Venus', 1: 'Earth',
+  /// final planetsByMass = EmpireMapProperty<num, String>{0.81: 'Venus', 1: 'Earth',
   ///   0.11: 'Mars', 17.15: 'Neptune'};
   ///
   /// planetsByMass.forEach((key, value) {
