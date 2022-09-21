@@ -1,36 +1,36 @@
 part of 'empire_property.dart';
 
-///An [EmpireProperty] with similar characteristics of dart [double] objects
+/// An [EmpireProperty] with similar characteristics of dart [double] objects
 ///
-///The underlying value cannot be null. For a nullable double empire property,
-///use the [EmpireNullableDoubleProperty].
+/// The underlying value cannot be null. For a nullable double empire property,
+/// use the [EmpireNullableDoubleProperty].
 ///
-///You can perform most arithmetic operator on this (+, -, /, *).
+/// You can perform most arithmetic operator on this (+, -, /, *).
 ///
-///Unary operators are not supported (++, --, +=, -=, etc)
+/// Unary operators are not supported (++, --, +=, -=, etc)
 ///
-///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
-///automatically triggering a UI rebuild.
+/// When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
+/// automatically triggering a UI rebuild.
 ///
-///Example
-///```dart
+/// Example
+/// ```dart
 ///
-///final percentage = EmpireDoubleProperty(10.0);
+/// final percentage = EmpireDoubleProperty(10.0);
 ///
-///print('${percentage + 5.2}'); //prints 15.2
-///```
+/// print('${percentage + 5.2}'); //prints 15.2
+/// ```
 class EmpireDoubleProperty extends EmpireProperty<double> {
   EmpireDoubleProperty(super.value, {super.propertyName});
 
-  ///Factory constructor for initializing an [EmpireDoubleProperty] to zero.
+  /// Factory constructor for initializing an [EmpireDoubleProperty] to zero.
   ///
-  ///See [EmpireProperty] for [propertyName] usages.
+  /// See [EmpireProperty] for [propertyName] usages.
   ///
-  ///## Example
+  /// ## Example
   ///
-  ///```dart
-  ///final bankAccountBalance = EmpireDoubleProperty.zero();
-  ///```
+  /// ```dart
+  /// final bankAccountBalance = EmpireDoubleProperty.zero();
+  /// ```
   factory EmpireDoubleProperty.zero({String? propertyName}) {
     return EmpireDoubleProperty(0, propertyName: propertyName);
   }
@@ -86,7 +86,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 
   /// Adds [other] to this number.
   ///
-  ///This does not set the value for this [EmpireDoubleProperty].
+  /// This does not set the value for this [EmpireDoubleProperty].
   ///
   /// The result is an [double], as described by [double.+]
   double add<E extends num>(E other) {
@@ -95,7 +95,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 
   /// Subtracts [other] from this number.
   ///
-  ///This does not set the value for this [EmpireDoubleProperty].
+  /// This does not set the value for this [EmpireDoubleProperty].
   ///
   /// The result is an [double], as described by [double.-]
   double subtract<E extends num>(E other) {
@@ -104,7 +104,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 
   /// Divides this number by [other].
   ///
-  ///This does not set the value for this [EmpireDoubleProperty].
+  /// This does not set the value for this [EmpireDoubleProperty].
   ///
   /// The result is an [double], as described by [double./]
   double divide<E extends num>(E other) {
@@ -113,7 +113,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 
   /// Euclidean modulo of this number by [other].
   ///
-  ///This does not set the value for this [EmpireDoubleProperty].
+  /// This does not set the value for this [EmpireDoubleProperty].
   ///
   /// Returns the remainder of the Euclidean division.
   /// The Euclidean division of two integers `a` and `b`
@@ -140,7 +140,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 
   /// Multiplies this number by [other].
   ///
-  ///This does not set the value for this [EmpireDoubleProperty].
+  /// This does not set the value for this [EmpireDoubleProperty].
   ///
   /// The result is an [double], as described by [double.*]
   double multiply<E extends num>(E other) {
@@ -148,43 +148,43 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
   }
 }
 
-///An [EmpireProperty] with similar characteristics of dart [double] objects
+/// An [EmpireProperty] with similar characteristics of dart [double] objects
 ///
-///The underlying value *can* be null.
+/// The underlying value *can* be null.
 ///
-///You can perform most arithmetic operator on this (+, -, /, *).
-///If the underlying value of this is null and an arithmetic operator is called on this,
-///it will throw a [EmpirePropertyNullValueException].
+/// You can perform most arithmetic operator on this (+, -, /, *).
+/// If the underlying value of this is null and an arithmetic operator is called on this,
+/// it will throw a [EmpirePropertyNullValueException].
 ///
-///Unary operators are not supported (++, --, +=, -=, etc)
+/// Unary operators are not supported (++, --, +=, -=, etc)
 ///
-///You can easily check for null by accessing the [isNull] or [isNotNull] properties.
+/// You can easily check for null by accessing the [isNull] or [isNotNull] properties.
 ///
-///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
-///automatically triggering a UI rebuild.
+/// When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
+/// automatically triggering a UI rebuild.
 ///
-///Example
-///```dart
-///final percentage = EmpireNullableDoubleProperty(10.0);
+/// Example
+/// ```dart
+/// final percentage = EmpireNullableDoubleProperty(10.0);
 ///
-///if (percentage.isNull)
-///{
-///   print("I'm Null");
-///}
-///```
+/// if (percentage.isNull)
+/// {
+///    print("I'm Null");
+/// }
+/// ```
 ///
-///Other Usages Examples
-///```dart
+/// Other Usages Examples
+/// ```dart
 ///
-///final percentage = EmpireNullableDoubleProperty();
+/// final percentage = EmpireNullableDoubleProperty();
 ///
-///print('${percentage + 5.2}'); //throws EmpireNullValueException because no value has been set yet.
+/// print('${percentage + 5.2}'); //throws EmpireNullValueException because no value has been set yet.
 ///
-///percentage(10.0)
+/// percentage(10.0)
 ///
-///print('${percentage - 0.5}'); //prints 9.5
+/// print('${percentage - 0.5}'); //prints 9.5
 ///
-///```
+/// ```
 ///
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   EmpireNullableDoubleProperty({double? value, super.propertyName})
@@ -253,7 +253,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
 
   /// Adds [other] to this number.
   ///
-  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  /// This does not set the value for this [EmpireNullableDoubleProperty].
   ///
   /// The result is an [double], as described by [double.+].
   /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
@@ -266,7 +266,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
 
   /// Subtracts [other] from this number.
   ///
-  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  /// This does not set the value for this [EmpireNullableDoubleProperty].
   ///
   /// The result is an [double], as described by [double.-],
   /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
@@ -279,7 +279,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
 
   /// Divides this number by [other].
   ///
-  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  /// This does not set the value for this [EmpireNullableDoubleProperty].
   ///
   /// The result is an [double], as described by [double./],
   ///
@@ -293,7 +293,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
 
   /// Euclidean modulo of this number by [other].
   ///
-  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  /// This does not set the value for this [EmpireNullableDoubleProperty].
   ///
   /// Returns the remainder of the Euclidean division.
   /// The Euclidean division of two integers `a` and `b`
@@ -325,7 +325,7 @@ class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
 
   /// Multiplies this number by [other].
   ///
-  ///This does not set the value for this [EmpireNullableDoubleProperty].
+  /// This does not set the value for this [EmpireNullableDoubleProperty].
   ///
   /// The result is an [double], as described by [double.*],
   /// If the underlying value is [null] throws an [EmpirePropertyNullValueException].
