@@ -24,7 +24,7 @@ abstract class EmpireValue<T> {
 ///[EmpireViewModel.addOnStateChangedListener] function via the [propertyName] property on an [EmpireStateChanged] object.
 ///
 ///If [T] is of type [List] or [Map], use either [EmpireListProperty] or [EmpireMapProperty]. Not doing so
-///will prevet the [reset] function from performing as expected.
+///will prevent the [reset] function from performing as expected.
 ///
 ///An [EmpireProperty] is callable. Calling the property updates the value. However, there are two
 ///ways to update the value of an [EmpireProperty]:
