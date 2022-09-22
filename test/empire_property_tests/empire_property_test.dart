@@ -209,6 +209,28 @@ void main() {
 
       expect(name.value, equals(expectedValue));
     });
+    test(
+        'setAsOriginal - argument is false - original not set to current value',
+        () {
+      const String expected = 'Bob';
+      final name = EmpireProperty<String?>(expected);
+      name.setViewModel(viewModel);
+
+      name('Steve', setAsOriginal: false);
+
+      expect(name.originalValue, equals(expected));
+    });
+
+    test('setAsOriginal - argument is true - original is set to current value',
+        () {
+      const String expected = 'Steve';
+      final name = EmpireProperty<String?>('Bob');
+      name.setViewModel(viewModel);
+
+      name(expected, setAsOriginal: true);
+
+      expect(name.originalValue, equals(expected));
+    });
   });
   group('Property Reset Tests', () {
     testWidgets('reset - notifyChange is true - UI Updates', (tester) async {
