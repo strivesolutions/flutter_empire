@@ -59,11 +59,18 @@ class EmpireProperty<T> implements EmpireValue<T> {
   @override
   T get value => _value;
 
+  /// Returns true if the value of [this] is null.
+  ///
   bool get isNull => _value == null;
 
+  /// Returns true if the value of [this] is not null.
   bool get isNotNull => !isNull;
 
   EmpireViewModel? _viewModel;
+
+  /// Returns the instance of the [EmpireViewModel] this
+  /// property is associated with.
+  ///
   EmpireViewModel get viewModel {
     if (_viewModel == null) {
       throw PropertyNotAssignedToEmpireViewModelException(
