@@ -77,12 +77,22 @@ class EmpireProperty<T> implements EmpireValue<T> {
     _originalValue = _value;
   }
 
+  ///Links this EmpireProperty instance with an [EmpireViewModel].
+  ///
   void setViewModel(EmpireViewModel viewModel) {
     _viewModel = viewModel;
   }
 
-  void call(T value, {bool notifyChange = true}) {
-    set(value, notifyChange: notifyChange);
+  /// Updates the underlying [value] for this EmpireProperty.
+  ///
+  /// If [notifyChange] is true, a UI update will be triggered after the change occurs. Otherwise,
+  /// only the value will be set.
+  ///
+  /// If [setAsOriginal] is true, updating the value will also set the [originalValue] to the
+  /// current value. See also [setOriginalValueToCurrent] and [reset]
+  ///
+  void call(T value, {bool notifyChange = true, bool setAsOriginal = false}) {
+    set(value, notifyChange: notifyChange, setAsOriginal: setAsOriginal);
   }
 
   ///Updates the original value to what the current value of this property is.
@@ -114,7 +124,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
   ///Updates the property value. Notifies any listeners to the change
   ///
   ///Returns the updated value
-  T set(T value, {bool notifyChange = true}) {
+  T set(T value, {bool notifyChange = true, bool setAsOriginal = false}) {
     final previousValue = _value;
     _value = value;
     if (notifyChange && previousValue != value) {
@@ -122,10 +132,15 @@ class EmpireProperty<T> implements EmpireValue<T> {
         EmpireStateChanged(value, previousValue, propertyName: propertyName)
       ]);
     }
+
+    if (setAsOriginal) {
+      _originalValue = _value;
+    }
+
     return _value;
   }
 
-  ///Resets the value to what it was initialized with.
+  ///Resets the [value] to the [originalValue].
   ///
   ///If [T] is a  class with properties, changing the properties directly on the object
   ///instead of updating this EmpireProperty with a new instance of [T] with the updated values will
@@ -135,7 +150,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
   ///## Usage
   ///
   ///```dart
-  ///late final EmpireProperty<int> age = createProperty(10); //age.value is 10
+  ///final age = EmpireProperty<int>(10); //age.value is 10
   ///
   ///age(20); //age.value is 20
   ///age(25); //age.value is 25
@@ -167,12 +182,12 @@ class EmpireProperty<T> implements EmpireValue<T> {
   ///### Usage
   ///
   ///```dart
-  ///final EmpireProperty<int> age = createProperty(10);
+  ///final age = EmpireProperty<int>(10);
   ///
   ///age.equals(10); //returns true
   ///
   ///
-  ///final EmpireProperty<int> ageTwo = createProperty(10);
+  ///final ageTwo = EmpireProperty<int>(10);
   ///
   ///age.equals(ageTwo); //returns true
   ///```
