@@ -1,3 +1,8 @@
+## 0.12.0
+
+- Added new optional argument on EmpireProperty called `setAsOriginal`. Setting this to true will update the original value on change.
+- Updated some stale documentation
+
 ## 0.11.0
 
 - Fixed the a bug where the `busy` property on an EmpireViewModel returned an incorrect value if there are multiple different busyTaskKeys assigned.
