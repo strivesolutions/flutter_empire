@@ -5,9 +5,6 @@ part of 'empire_property.dart';
 /// The underlying value cannot be null. For a nullable int empire property,
 /// use the [EmpireNullableIntProperty].
 ///
-/// You can perform most arithmetic operator on this (+, -, /, *).
-///
-/// Unary operators are not supported (++, --, +=, -=, etc)
 ///
 /// When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 /// automatically triggering a UI rebuild.
@@ -17,7 +14,7 @@ part of 'empire_property.dart';
 ///
 /// final age = EmpireIntProperty(10);
 ///
-/// print('${age + 5}'); //prints 15
+/// print('${age.add(5)}'); //prints 15
 /// ```
 class EmpireIntProperty extends EmpireProperty<int> {
   EmpireIntProperty(super.value, {super.propertyName});
@@ -132,11 +129,8 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///
 /// The underlying value *can* be null.
 ///
-/// You can perform most arithmetic operator on this (+, -, /, *).
 /// If the underlying value of this is null and an arithmetic operator is called on this,
 /// it will throw a [EmpirePropertyNullValueException].
-///
-/// Unary operators are not supported (++, --, +=, -=, etc)
 ///
 /// You can easily check for null by accessing the [isNull] or [isNotNull] properties.
 ///
@@ -158,11 +152,11 @@ class EmpireIntProperty extends EmpireProperty<int> {
 ///
 /// final age = EmpireNullableIntProperty();
 ///
-/// print('${age + 5}'); //throws EmpireNullValueException because no value has been set yet.
+/// print('${age.add(5)}'); //throws EmpireNullValueException because no value has been set yet.
 ///
 /// age(10)
 ///
-/// print('${age - 5}'); //prints 5
+/// print('${age.subtract(5)}'); //prints 5
 ///
 /// ```
 ///

@@ -24,7 +24,7 @@ abstract class EmpireValue<T> {
 ///[EmpireViewModel.addOnStateChangedListener] function via the [propertyName] property on an [EmpireStateChanged] object.
 ///
 ///If [T] is of type [List] or [Map], use either [EmpireListProperty] or [EmpireMapProperty]. Not doing so
-///will prevet the [reset] function from performing as expected.
+///will prevent the [reset] function from performing as expected.
 ///
 ///An [EmpireProperty] is callable. Calling the property updates the value. However, there are two
 ///ways to update the value of an [EmpireProperty]:
@@ -59,11 +59,18 @@ class EmpireProperty<T> implements EmpireValue<T> {
   @override
   T get value => _value;
 
+  /// Returns true if the value of [this] is null.
+  ///
   bool get isNull => _value == null;
 
+  /// Returns true if the value of [this] is not null.
   bool get isNotNull => !isNull;
 
   EmpireViewModel? _viewModel;
+
+  /// Returns the instance of the [EmpireViewModel] this
+  /// property is associated with.
+  ///
   EmpireViewModel get viewModel {
     if (_viewModel == null) {
       throw PropertyNotAssignedToEmpireViewModelException(

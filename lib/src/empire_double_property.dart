@@ -5,9 +5,6 @@ part of 'empire_property.dart';
 /// The underlying value cannot be null. For a nullable double empire property,
 /// use the [EmpireNullableDoubleProperty].
 ///
-/// You can perform most arithmetic operator on this (+, -, /, *).
-///
-/// Unary operators are not supported (++, --, +=, -=, etc)
 ///
 /// When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 /// automatically triggering a UI rebuild.
@@ -17,7 +14,7 @@ part of 'empire_property.dart';
 ///
 /// final percentage = EmpireDoubleProperty(10.0);
 ///
-/// print('${percentage + 5.2}'); //prints 15.2
+/// print('${percentage.add(5.2)}'); //prints 15.2
 /// ```
 class EmpireDoubleProperty extends EmpireProperty<double> {
   EmpireDoubleProperty(super.value, {super.propertyName});
@@ -152,11 +149,8 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///
 /// The underlying value *can* be null.
 ///
-/// You can perform most arithmetic operator on this (+, -, /, *).
 /// If the underlying value of this is null and an arithmetic operator is called on this,
 /// it will throw a [EmpirePropertyNullValueException].
-///
-/// Unary operators are not supported (++, --, +=, -=, etc)
 ///
 /// You can easily check for null by accessing the [isNull] or [isNotNull] properties.
 ///
@@ -178,11 +172,11 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///
 /// final percentage = EmpireNullableDoubleProperty();
 ///
-/// print('${percentage + 5.2}'); //throws EmpireNullValueException because no value has been set yet.
+/// print('${percentage.add(5.2)}'); //throws EmpireNullValueException because no value has been set yet.
 ///
 /// percentage(10.0)
 ///
-/// print('${percentage - 0.5}'); //prints 9.5
+/// print('${percentage.subtract(0.5)}'); //prints 9.5
 ///
 /// ```
 ///
