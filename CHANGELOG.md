@@ -1,3 +1,7 @@
+## 1.0.0
+
+First official stable release! 🎉
+
 ## 0.12.0
 
 - Added new optional argument on EmpireProperty called `setAsOriginal`. Setting this to true will update the original value on change.
