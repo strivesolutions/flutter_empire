@@ -396,5 +396,11 @@ void main() {
 
       expect(numbers.sublist(initialListLength), expectedNumbers);
     });
+
+    test('toString - returns correct string', () {
+      final numbers = EmpireListProperty([1, 2, 3]);
+      const expected = 'EmpireListProperty([1, 2, 3])';
+      expect(numbers.toString(), expected);
+    });
   });
 }

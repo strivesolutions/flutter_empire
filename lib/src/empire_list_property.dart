@@ -461,5 +461,5 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   }
 
   @override
-  String toString() => 'EmpireListProperty([${_value.join(",")}])';
+  String toString() => 'EmpireListProperty([${_value.join(", ")}])';
 }
