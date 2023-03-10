@@ -193,6 +193,69 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     }
   }
 
+  /// Inserts all objects of [values] at position [index] in this list.
+  /// This increases the length of the list by the length of [values]
+  /// and shifts all later objects towards the end of the list.
+  /// The list must be growable.
+  /// The [index] must be a valid index in the list or [length].
+  /// ```dart
+  /// final numbers = EmpireListProperty<int>([1, 2, 3, 4]);
+  /// const index = 2;
+  /// numbers.insertAll(index, [10, 11, 12]);
+  /// print(numbers); // [1, 2, 10, 11, 12, 3, 4]
+  /// ```
+  void insertAll(int index, Iterable<T> values, {bool notifyChanges = true}) {
+    _value.insertAll(index, values);
+
+    if (notifyChanges) {
+      viewModel
+          .notifyChanges([EmpireStateChanged.insertAllIntoList(index, values)]);
+    }
+  }
+
+  /// Inserts [values] at the end of this list
+  /// This increases the length of the list by the length of [values]
+  ///
+  /// The list must be growable.
+  /// ```dart
+  /// final numbers = EmpireListProperty<int>([1, 2, 3, 4]);
+  /// numbers.insertAllAtEnd([10, 11, 12]);
+  /// print(numbers); // [1, 2, 3, 4, 10, 11, 12]
+  /// ```
+  void insertAllAtEnd(Iterable<T> values, {bool notifyChanges = true}) {
+    _value.insertAll(_value.length, values);
+
+    if (notifyChanges) {
+      viewModel.notifyChanges(
+          [EmpireStateChanged.insertAllIntoList(_value.length, values)]);
+    }
+  }
+
+  /// Returns a new list containing the elements between [start] and [end].
+  ///
+  /// The new list is a `List<T>` containing the elements of this list at
+  /// positions greater than or equal to [start] and less than [end] in the same
+  /// order as they occur in this list.
+  ///
+  /// ```dart
+  /// final colors = EmpireListProperty<String>(['red', 'green', 'blue', 'orange', 'pink']);
+  /// print(colors.sublist(1, 3)); // [green, blue]
+  /// ```
+  ///
+  /// If [end] is omitted, it defaults to the [length] of this list.
+  ///
+  /// ```dart
+  /// final colors = EmpireListProperty<String>(['red', 'green', 'blue', 'orange', 'pink']);
+  /// print(colors.sublist(3)); // [orange, pink]
+  /// ```
+  ///
+  /// The `start` and `end` positions must satisfy the relations
+  /// 0 ≤ `start` ≤ `end` ≤ [length].
+  /// If `end` is equal to `start`, then the returned list is empty.
+  List<T> sublist(int start, [int? end]) {
+    return _value.sublist(start, end);
+  }
+
   /// Removes the first occurrence of [value] from this list.
   ///
   /// Returns true if [value] was in the list, false otherwise.
@@ -396,4 +459,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   T operator [](int index) {
     return _value[index];
   }
+
+  @override
+  String toString() => 'EmpireListProperty[${_value.join(",")}]';
 }

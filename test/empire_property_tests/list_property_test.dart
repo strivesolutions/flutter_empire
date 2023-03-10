@@ -368,7 +368,33 @@ void main() {
 
       numbers.insert(expectedIndex, expectedNumber, notifyChanges: false);
 
-      expect(expectedNumber, numbers[expectedIndex]);
+      expect(numbers[expectedIndex], expectedNumber);
+    });
+
+    test('insertAll - returns correct items at new index', () {
+      const expectedNumbers = [10, 11, 12];
+      const expectedIndex = 1;
+      final numbers = EmpireListProperty([1, 2, 3]);
+
+      numbers.insertAll(expectedIndex, expectedNumbers, notifyChanges: false);
+
+      expect(
+        numbers.sublist(
+          expectedIndex,
+          expectedNumbers.length + expectedIndex,
+        ),
+        expectedNumbers,
+      );
+    });
+
+    test('insertAllAtEnd - returns correct items at end of list', () {
+      final expectedNumbers = [10, 11, 12];
+      final numbers = EmpireListProperty([1, 2, 3]);
+      final initialListLength = numbers.length;
+
+      numbers.insertAllAtEnd(expectedNumbers, notifyChanges: false);
+
+      expect(numbers.sublist(initialListLength), expectedNumbers);
     });
   });
 }
