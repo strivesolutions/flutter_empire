@@ -170,6 +170,29 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     }
   }
 
+  /// Inserts [element] at position [index] in this list.
+  ///
+  /// This increases the length of the list by one and shifts all objects
+  /// at or after the index towards the end of the list.
+  ///
+  /// The list must be growable.
+  /// The [index] value must be non-negative and no greater than [length].
+  ///
+  /// ```dart
+  /// final numbers = EmpireListProperty<int>([1, 2, 3, 4]);
+  /// const index = 2;
+  /// numbers.insert(index, 10);
+  /// print(numbers); // [1, 2, 10, 3, 4]
+  /// ```
+  void insert(int index, T element, {bool notifyChanges = true}) {
+    _value.insert(index, element);
+
+    if (notifyChanges) {
+      viewModel
+          .notifyChanges([EmpireStateChanged.insertIntoList(index, value)]);
+    }
+  }
+
   /// Removes the first occurrence of [value] from this list.
   ///
   /// Returns true if [value] was in the list, false otherwise.

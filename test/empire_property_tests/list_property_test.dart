@@ -360,5 +360,15 @@ void main() {
       final single = numbers.single;
       expect(single, equals(expected));
     });
+
+    test('insert - returns correct item at new index', () {
+      const expectedNumber = 10;
+      const expectedIndex = 1;
+      final numbers = EmpireListProperty([1, 2, 3]);
+
+      numbers.insert(expectedIndex, expectedNumber, notifyChanges: false);
+
+      expect(expectedNumber, numbers[expectedIndex]);
+    });
   });
 }

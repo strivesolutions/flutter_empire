@@ -255,6 +255,15 @@ class EmpireStateChanged<T> {
           propertyName: propertyName,
           description: 'Added All To List: $newValues');
 
+  static EmpireStateChanged insertIntoList<V>(int index, V value,
+          {String? propertyName}) =>
+      EmpireStateChanged(
+        value,
+        null,
+        propertyName: propertyName,
+        description: 'Inserted $value into List as index $index',
+      );
+
   ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what value was removed from the list
   static EmpireStateChanged removedFromList<V>(V removedValue,
