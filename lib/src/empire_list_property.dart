@@ -43,7 +43,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
 
   /// A [List] of the objects in this list in reverse order.
   /// ```dart
-  /// final numbers = EmpireListProperty['two', 'three', 'four'];
+  /// final numbers = EmpireListProperty(['two', 'three', 'four']);
   /// final reverseOrder = numbers.reversed;
   /// print(reverseOrder.toList()); // [four, three, two]
   /// ```
@@ -53,7 +53,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// The valid indices for a list are `0` through `length - 1`.
   /// ```dart
-  /// final numbers = EmpireListProperty<int>[1, 2, 3];
+  /// final numbers = EmpireListProperty<int>([1, 2, 3]);
   /// print(numbers.length); // 3
   /// ```
   int get length => _value.length;
@@ -81,7 +81,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// Example:
   /// ```dart
-  /// final numbers = EmpireListProperty[1, 2, 3, 5, 6, 7];
+  /// final numbers = EmpireListProperty([1, 2, 3, 5, 6, 7]);
   /// var result = numbers.where((x) => x < 5); // (1, 2, 3)
   /// result = numbers.where((x) => x > 5); // (6, 7)
   /// result = numbers.where((x) => x.isEven); // (2, 6)
@@ -96,7 +96,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// Example:
   /// ```dart
-  /// final numbers = EmpireListProperty[1, 2, 3, 5, 6, 7];
+  /// final numbers = EmpireListProperty([1, 2, 3, 5, 6, 7]);
   /// var result = numbers.firstWhere((element) => element < 5); // 1
   /// result = numbers.firstWhere((element) => element > 5); // 6
   /// result =
@@ -116,7 +116,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// Example:
   /// ```dart
-  /// final numbers = EmpireListProperty[1, 2, 3, 5, 6, 7];
+  /// final numbers = EmpireListProperty([1, 2, 3, 5, 6, 7]);
   /// var result = numbers.firstWhere((element) => element < 5); // 1
   /// result = numbers.firstWhere((element) => element > 5); // 6
   /// result =
@@ -140,7 +140,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// The list must be growable.
   ///
   /// ```dart
-  /// final numbers = EmpireListProperty<int>[1, 2, 3];
+  /// final numbers = EmpireListProperty<int>([1, 2, 3]);
   /// numbers.add(4);
   /// print(numbers); // [1, 2, 3, 4]
   /// ```
@@ -158,7 +158,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// The list must be growable.
   ///
   /// ```dart
-  /// final numbers = EmpireListProperty<int>[1, 2, 3];
+  /// final numbers = EmpireListProperty<int>([1, 2, 3]);
   /// numbers.addAll([4, 5, 6]);
   /// print(numbers); // [1, 2, 3, 4, 5, 6]
   /// ```
@@ -313,7 +313,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// The list must be growable.
   ///
   /// ```dart
-  /// final numbers = EmpireListProperty<int>[1, 2, 3];
+  /// final numbers = EmpireListProperty<int>([1, 2, 3]);
   /// numbers.clear();
   /// print(numbers.length); // 0
   /// print(numbers); // []
@@ -390,7 +390,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// Example:
   /// ```dart
-  /// final numbers = EmpireListProperty<int>[1, 2, 3, 5, 6, 7];
+  /// final numbers = EmpireListProperty<int>([1, 2, 3, 5, 6, 7];
   /// final elementAt = numbers.elementAt(4); // 6
   /// ```
   T elementAt(int index) {
@@ -401,7 +401,7 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   ///
   /// Example:
   /// ```dart
-  /// final numbers = EmpireListProperty<int>[1, 2, 6, 7];
+  /// final numbers = EmpireListProperty<int>([1, 2, 6, 7];
   /// numbers.forEach(print);
   /// // 1
   /// // 2
@@ -461,5 +461,5 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   }
 
   @override
-  String toString() => 'EmpireListProperty[${_value.join(",")}]';
+  String toString() => 'EmpireListProperty([${_value.join(",")}])';
 }
