@@ -460,6 +460,8 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
     return _value[index];
   }
 
+  /// Returns the current contents of the list as a
+  /// formatted String
   @override
   String toString() => 'EmpireListProperty([${_value.join(", ")}])';
 }
