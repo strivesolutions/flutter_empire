@@ -256,6 +256,25 @@ class EmpireStateChanged<T> {
           description: 'Added All To List: $newValues');
 
   ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing the value inserted into to the list at the specified index
+  static EmpireStateChanged insertIntoList<V>(int index, V value,
+          {String? propertyName}) =>
+      EmpireStateChanged(
+        value,
+        null,
+        propertyName: propertyName,
+        description: 'Inserted $value into List as index $index',
+      );
+
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
+  ///describing all the values that were inserted into the list at the specified index
+  static EmpireStateChanged insertAllIntoList<V>(int index, Iterable<V> values,
+          {String? propertyName}) =>
+      EmpireStateChanged(values, null,
+          propertyName: propertyName,
+          description: 'Inserted All $values into List as index $index');
+
+  ///A factory method which creates a single [EmpireStateChanged] object with a description
   ///describing what value was removed from the list
   static EmpireStateChanged removedFromList<V>(V removedValue,
           {String? propertyName}) =>
