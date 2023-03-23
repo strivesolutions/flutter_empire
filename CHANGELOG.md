@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Added new insert methods to EmpireListProperty: `insert, insertAll, sublist, insertAtEnd`
+- Added toString override to EmpireListProperty to better show what an EmpireListProperty is when logging
+
 ## 1.0.0
 
 First official stable release! 🎉
