@@ -95,6 +95,10 @@ abstract class EmpireState<T extends EmpireWidget, E extends EmpireViewModel>
   bool get isBusy => viewModel.busy;
 
   EmpireState(this.viewModel) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => viewModel.assignTo(widget.hashCode),
+    );
+
     viewModel.addOnStateChangedListener((events) {
       if (widget.debugPrintStateChanges && kDebugMode) {
         // ignore: avoid_print

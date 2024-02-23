@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:empire/src/empire_exceptions.dart';
 import 'package:flutter/foundation.dart';
 
 import 'empire_property.dart';
@@ -27,6 +28,16 @@ abstract class EmpireViewModel {
   final List<dynamic> _busyTaskKeys = [];
   List<dynamic> get activeTasks => _busyTaskKeys;
 
+  int? _assignedTo;
+
+  /// The [EmpireWidget] that the view model is currently assigned to
+  int? get assignedTo => _assignedTo;
+
+  /// Whether the view model has already been assigned to a widget
+  ///
+  /// This is used to prevent the view model from being assigned to multiple widgets
+  bool get assignedToWidget => _assignedTo != null;
+
   EmpireViewModel() {
     for (var element in empireProps) {
       element.setViewModel(this);
@@ -37,6 +48,21 @@ abstract class EmpireViewModel {
   ///
   ///Properties on the implementation must be added to this list in order to be reactive and update the UI on change.
   Iterable<EmpireProperty> get empireProps;
+
+  ///Creates associates the view model with a specific [EmpireWidget] via the widgets hash code.
+  ///
+  ///This method is called automatically by the [EmpireState] when the view model is assigned to a widget.
+  ///
+  ///**This method should not be called manually.**
+  void assignTo(int widgetHash) {
+    if (assignedToWidget) {
+      throw EmpireViewModelAlreadyAssignedException(
+        StackTrace.current,
+        runtimeType,
+      );
+    }
+    _assignedTo = widgetHash;
+  }
 
   ///Adds an event handler which gets executed each time an [EmpireProperty] value is changed.
   ///

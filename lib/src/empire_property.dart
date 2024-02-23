@@ -207,6 +207,7 @@ class EmpireProperty<T> implements EmpireValue<T> {
   }
 
   @override
+  // ignore: non_nullable_equals_parameter
   bool operator ==(dynamic other) => equals(other);
 
   @override
