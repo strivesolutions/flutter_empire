@@ -55,7 +55,7 @@ abstract class EmpireViewModel {
   ///
   ///**This method should not be called manually.**
   void assignTo(int widgetHash) {
-    if (_assignedTo != null) {
+    if (assignedToWidget) {
       throw EmpireViewModelAlreadyAssignedException(
         StackTrace.current,
         runtimeType,
