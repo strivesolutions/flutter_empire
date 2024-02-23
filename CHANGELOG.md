@@ -1,3 +1,7 @@
+## 1.2.0
+ - Verify during EmpireWidget initialization that the EmpireViewModel being used has not been associated with another EmpireWidget.
+    - This is a BREAKING CHANGE. Decided to do this to prevent users from introducing very difficult bugs to diagnose. See [Issue #95](https://github.com/strivesolutions/flutter_empire/issues/95)
+
 ## 1.1.0
 
 - Added new insert methods to EmpireListProperty: `insert, insertAll, sublist, insertAtEnd`
