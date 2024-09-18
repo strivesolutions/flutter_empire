@@ -412,5 +412,19 @@ void main() {
       expect(data.containsKey(key), isTrue);
       expect(data.containsValue(value), isTrue);
     });
+
+    test('resetting retains original value', () {
+      final data = EmpireMapProperty<String, String>.empty();
+      data.setViewModel(viewModel);
+      data.add('name', 'Bob');
+
+      data.reset();
+
+      expect(data.isEmpty, isTrue);
+
+      data.add('name', 'Bob');
+
+      expect(data.originalValue.isEmpty, isTrue);
+    });
   });
 }

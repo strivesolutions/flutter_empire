@@ -154,6 +154,17 @@ void main() {
 
       expect(result, equals(expectedValue));
     });
+
+    test('resetting retains original value', () {
+      const String expectedValue = 'John';
+      viewModel.name(expectedValue);
+
+      viewModel.name.reset();
+
+      viewModel.name(expectedValue);
+
+      expect(viewModel.name.originalValue, equals('Bob'));
+    });
   });
 
   group('NullableStringProperty Tests', () {

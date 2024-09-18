@@ -402,5 +402,21 @@ void main() {
       const expected = 'EmpireListProperty([1, 2, 3])';
       expect(numbers.toString(), expected);
     });
+
+    test('resetting retains original value', () {
+      final numbers = EmpireListProperty<int>.empty();
+      final items = [1, 2, 3];
+
+      numbers.addAll(items, notifyChanges: false);
+
+      expect(numbers.originalValue.isEmpty, isTrue);
+
+      numbers.reset(notifyChange: false);
+
+      expect(numbers.originalValue.isEmpty, isTrue);
+
+      numbers.addAll(items, notifyChanges: false);
+      expect(numbers.originalValue.isEmpty, isTrue);
+    });
   });
 }

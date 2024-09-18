@@ -17,7 +17,8 @@ part of 'empire_property.dart';
 /// print('${age.add(5)}'); //prints 15
 /// ```
 class EmpireIntProperty extends EmpireProperty<int> {
-  EmpireIntProperty(super.value, {super.propertyName});
+  EmpireIntProperty(super.value, {super.propertyName})
+      : super(isPrimitiveType: true);
 
   /// Factory constructor for initializing an [EmpireIntProperty] to zero.
   ///
@@ -161,7 +162,8 @@ class EmpireIntProperty extends EmpireProperty<int> {
 /// ```
 ///
 class EmpireNullableIntProperty extends EmpireProperty<int?> {
-  EmpireNullableIntProperty({int? value, super.propertyName}) : super(value);
+  EmpireNullableIntProperty({int? value, super.propertyName})
+      : super(value, isPrimitiveType: true);
 
   /// Factory constructor for initializing an [EmpireNullableIntProperty] to zero.
   ///

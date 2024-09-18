@@ -17,7 +17,8 @@ part of 'empire_property.dart';
 /// print('${percentage.add(5.2)}'); //prints 15.2
 /// ```
 class EmpireDoubleProperty extends EmpireProperty<double> {
-  EmpireDoubleProperty(super.value, {super.propertyName});
+  EmpireDoubleProperty(super.value, {super.propertyName})
+      : super(isPrimitiveType: true);
 
   /// Factory constructor for initializing an [EmpireDoubleProperty] to zero.
   ///
@@ -182,7 +183,7 @@ class EmpireDoubleProperty extends EmpireProperty<double> {
 ///
 class EmpireNullableDoubleProperty extends EmpireProperty<double?> {
   EmpireNullableDoubleProperty({double? value, super.propertyName})
-      : super(value);
+      : super(value, isPrimitiveType: true);
 
   factory EmpireNullableDoubleProperty.zero({String? propertyName}) {
     return EmpireNullableDoubleProperty(value: 0, propertyName: propertyName);
