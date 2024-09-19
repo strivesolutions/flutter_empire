@@ -464,4 +464,20 @@ class EmpireListProperty<T> extends EmpireProperty<List<T>> {
   /// formatted String
   @override
   String toString() => 'EmpireListProperty([${_value.join(", ")}])';
+
+  @override
+  void reset({bool notifyChange = true}) {
+    final currentValue = _value;
+    _value = List<T>.from(_originalValue);
+
+    if (notifyChange) {
+      viewModel.notifyChanges([
+        EmpireStateChanged(
+          _originalValue,
+          currentValue,
+          propertyName: propertyName,
+        )
+      ]);
+    }
+  }
 }

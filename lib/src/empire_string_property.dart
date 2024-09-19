@@ -5,7 +5,8 @@ part of 'empire_property.dart';
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireStringProperty extends EmpireProperty<String> {
-  EmpireStringProperty(super.value, {super.propertyName});
+  EmpireStringProperty(super.value, {super.propertyName})
+      : super(isPrimitiveType: true);
 
   ///Factory constructor for initializing an [EmpireStringProperty] to an empty [String].
   ///
@@ -72,7 +73,7 @@ class EmpireStringProperty extends EmpireProperty<String> {
 ///automatically triggering a UI rebuild.
 class EmpireNullableStringProperty extends EmpireProperty<String?> {
   EmpireNullableStringProperty({String? value, super.propertyName})
-      : super(value);
+      : super(value, isPrimitiveType: true);
 
   ///Whether the string value is empty
   ///

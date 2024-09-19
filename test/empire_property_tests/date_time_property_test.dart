@@ -162,5 +162,17 @@ void main() {
       final property = EmpireNullableDateTimeProperty(value: expected);
       expect(property.value, equals(expected));
     });
+
+    test('resetting retains original value', () {
+      final property = EmpireNullableDateTimeProperty();
+
+      property.set(DateTime.now(), notifyChange: false);
+
+      property.reset(notifyChange: false);
+
+      property.set(DateTime.now(), notifyChange: false);
+
+      expect(property.originalValue, equals(null));
+    });
   });
 }

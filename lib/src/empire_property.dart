@@ -1,4 +1,5 @@
 import 'package:empire/src/empire_exceptions.dart';
+import 'package:empire/src/empire_cloneable.dart';
 
 import 'empire_view_model.dart';
 
@@ -51,6 +52,8 @@ abstract class EmpireValue<T> {
 class EmpireProperty<T> implements EmpireValue<T> {
   String? propertyName;
 
+  final bool isPrimitiveType;
+
   late T _originalValue;
   T get originalValue => _originalValue;
 
@@ -80,7 +83,11 @@ class EmpireProperty<T> implements EmpireValue<T> {
     }
   }
 
-  EmpireProperty(this._value, {this.propertyName}) {
+  EmpireProperty(
+    this._value, {
+    this.propertyName,
+    this.isPrimitiveType = false,
+  }) {
     _originalValue = _value;
   }
 
@@ -149,10 +156,18 @@ class EmpireProperty<T> implements EmpireValue<T> {
 
   ///Resets the [value] to the [originalValue].
   ///
-  ///If [T] is a  class with properties, changing the properties directly on the object
+  ///If [T] is a class with properties, changing the properties directly on the object
   ///instead of updating this EmpireProperty with a new instance of [T] with the updated values will
   ///prevent [reset] from performing as expected. Tracking the original value is done by reference
   ///internally.
+  ///
+  ///If [T] is a reference type, calling [reset] will update the [value] to the [originalValue] by
+  ///reference, causing unexpected behavior. To avoid this, T should implement [EmpireCloneable]
+  ///so the [value] will be reset to a deep copy of the [originalValue].
+  ///
+  ///If [T] is a primitiveType, setting [isPrimitiveType] to true will cause the supress the warning.
+  ///Consider using the typed EmpireProperty classes (eg: [EmpireIntProperty], [EmpireStringProperty])
+  ///in place of the generic [EmpireProperty] class for primitives.
   ///
   ///## Usage
   ///
@@ -168,7 +183,17 @@ class EmpireProperty<T> implements EmpireValue<T> {
   ///```
   void reset({bool notifyChange = true}) {
     final currentValue = _value;
-    _value = _originalValue;
+
+    if (_originalValue is EmpireCloneable) {
+      _value = (_originalValue as EmpireCloneable).clone();
+    } else if (isPrimitiveType) {
+      _value = _originalValue;
+    } else {
+      // ignore: avoid_print
+      print(
+          '[Empire] WARNING: $T is not EmpireCloneable and not marked as a primitive type. Reset may result in unexpected behavior. See EmpireProperty.reset documentation for more information.');
+      _value = _originalValue;
+    }
 
     if (notifyChange) {
       viewModel.notifyChanges([

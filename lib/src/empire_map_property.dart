@@ -329,4 +329,20 @@ class EmpireMapProperty<K, V> extends EmpireProperty<Map<K, V>> {
   V? operator [](K key) {
     return _value[key];
   }
+
+  @override
+  void reset({bool notifyChange = true}) {
+    final currentValue = _value;
+    _value = Map<K, V>.from(_originalValue);
+
+    if (notifyChange) {
+      viewModel.notifyChanges([
+        EmpireStateChanged(
+          _originalValue,
+          currentValue,
+          propertyName: propertyName,
+        )
+      ]);
+    }
+  }
 }

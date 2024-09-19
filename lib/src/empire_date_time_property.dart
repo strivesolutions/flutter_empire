@@ -8,7 +8,8 @@ part of 'empire_property.dart';
 ///When the value of this changes, it will send a [EmpireStateChanged] event by default. This includes
 ///automatically triggering a UI rebuild.
 class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
-  EmpireDateTimeProperty(super.value, {super.propertyName});
+  EmpireDateTimeProperty(super.value, {super.propertyName})
+      : super(isPrimitiveType: true);
 
   ///Factory constructor for initializing an [EmpireDateTimeProperty] to the current Date/Time.
   ///
@@ -363,7 +364,7 @@ class EmpireDateTimeProperty extends EmpireProperty<DateTime> {
 ///automatically triggering a UI rebuild.
 class EmpireNullableDateTimeProperty extends EmpireProperty<DateTime?> {
   EmpireNullableDateTimeProperty({DateTime? value, super.propertyName})
-      : super(value);
+      : super(value, isPrimitiveType: true);
 
   ///Factory constructor for initializing an [EmpireNullableDateTimeProperty] to the current Date/Time.
   ///
