@@ -1,22 +1,22 @@
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class ApplicationViewModel extends EmpireViewModel {
-  final backgroundColor = EmpireProperty(Colors.white);
+class ApplicationViewModel extends CurrentViewModel {
+  final backgroundColor = CurrentProperty(Colors.white);
 
-  final EmpireStringProperty title;
+  final CurrentStringProperty title;
 
   ApplicationViewModel(this.title);
 
   @override
-  Iterable<EmpireProperty> get empireProps => [backgroundColor, title];
+  Iterable<CurrentProperty> get currentProps => [backgroundColor, title];
 
   void changeBackgroundColor(Color color) => backgroundColor(color);
 
   void randomizeBackgroundColor() {
-    final color =
-        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    final color = Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+        .withValues(alpha: 1);
     backgroundColor(color);
   }
 

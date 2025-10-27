@@ -1,19 +1,19 @@
 import 'dart:async';
 
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 import 'package:flutter/material.dart';
 import 'application_view_model.dart';
 import 'counter_view_model.dart';
 
-class CounterPage extends EmpireWidget<CounterViewModel> {
+class CounterPage extends CurrentWidget<CounterViewModel> {
   const CounterPage({super.key, required super.viewModel});
 
   @override
-  EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() =>
-      _CounterPageState(viewModel);
+  CurrentState<CurrentWidget<CurrentViewModel>, CounterViewModel>
+      createCurrent() => _CounterPageState(viewModel);
 }
 
-class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
+class _CounterPageState extends CurrentState<CounterPage, CounterViewModel> {
   _CounterPageState(super.viewModel);
 
   late ApplicationViewModel appViewModel;
@@ -44,7 +44,7 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
 
   @override
   void didChangeDependencies() {
-    appViewModel = Empire.of<ApplicationViewModel>(context).viewModel();
+    appViewModel = Current.of<ApplicationViewModel>(context).viewModel();
     super.didChangeDependencies();
   }
 
@@ -70,13 +70,13 @@ class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
               ),
               TextButton(
                 onPressed: () =>
-                    Empire.viewModelOf<ApplicationViewModel>(context)
+                    Current.viewModelOf<ApplicationViewModel>(context)
                         .changeBackgroundColor(Colors.red),
                 child: const Text('Red'),
               ),
               TextButton(
                 onPressed: () =>
-                    Empire.viewModelOf<ApplicationViewModel>(context)
+                    Current.viewModelOf<ApplicationViewModel>(context)
                         .changeBackgroundColor(Colors.white),
                 child: const Text('White'),
               ),

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pubspecVersion="$(cat pubspec.yaml | grep "version:" | cut -d" " -f 2)"
-readmeVersion="$(cat README.md | grep "empire:" | cut -d"^" -f 2)"
+readmeVersion="$(cat README.md | grep "current:" | cut -d"^" -f 2)"
 changeLogHeader="$(head -n 1 CHANGELOG.md)"
 
 if [ "$pubspecVersion" != "$readmeVersion" ]; then

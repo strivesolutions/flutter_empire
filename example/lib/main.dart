@@ -1,4 +1,4 @@
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -16,12 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Empire State Example',
+      title: 'Current State Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Empire(
-        ApplicationViewModel(EmpireStringProperty('Empire Counter Example')),
+      home: Current(
+        ApplicationViewModel(CurrentStringProperty('Current Counter Example')),
         onAppStateChanged: () => const Uuid().v1(),
         child: CounterPage(
           viewModel: CounterViewModel(),

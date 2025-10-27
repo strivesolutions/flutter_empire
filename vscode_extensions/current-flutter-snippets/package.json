@@ -1,0 +1,23 @@
+{
+  "name": "current-flutter-snippets",
+  "displayName": "Current Flutter Snippets",
+  "description": "Helpful code snippets for the Flutter Current State Management package to quickly create Current Widgets and CurrentViewModels.",
+  "publisher": "ThirdVersionTechnology",
+  "version": "0.1.2",
+  "repository": "https://github.com/thirdversion/flutter_current/tree/main/vscode_extensions/current-flutter-snippets",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "dart",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  },
+  "icon": "assets/icon.png"
+}

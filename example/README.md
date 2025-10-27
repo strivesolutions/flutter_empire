@@ -1,6 +1,6 @@
-# Empire Counter Example
+# Current Counter Example
 
-This is a version of the classic Flutter Counter App example, implemented using Empire.
+This is a version of the classic Flutter Counter App example, implemented using Current.
 
 ## Running The Example
 

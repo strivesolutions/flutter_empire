@@ -1,0 +1,42 @@
+{
+  "Current Widget": {
+    "scope": "dart",
+    "prefix": "currentwidget",
+    "body": [
+      "import 'package:current/current.dart';",
+      "",
+      "class $1 extends CurrentWidget<$2> {",
+      "\tconst $1({super.key, required super.viewModel});",
+      "",
+      "\t@override",
+      "\tCurrentState<CurrentWidget<CurrentViewModel>, $2> createCurrent() => _$1State(viewModel);",
+      "",
+      "}",
+      "",
+      "class _$1State extends CurrentState<$1, $2> {",
+      "\t_$1State(super.viewModel);",
+      "",
+      "\t@override",
+      "\tWidget build(BuildContext context) {",
+      "\t\tthrow UnimplementedError();",
+      "\t}",
+      "}"
+    ],
+    "description": "Create a new Current Widget"
+  },
+  "Current View Model": {
+    "scope": "dart",
+    "prefix": "currentvm",
+    "body": [
+      "import 'package:current/current.dart';",
+      "",
+      "class $1 extends CurrentViewModel {",
+      "\t//TODO: add Current Properties",
+      "",
+      "\t@override",
+      "\tIterable<CurrentProperty> get currentProps => throw UnimplementedError('TODO: implement currentProps for $1');",
+      "}"
+    ],
+    "description": "Create a new Current ViewModel"
+  }
+}

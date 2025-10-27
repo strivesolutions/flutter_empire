@@ -1,7 +1,7 @@
-name: empire_counter_example
-description: Flutter Counter App Using Empire.
+name: current_counter_example
+description: Flutter Counter App Using Current.
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  empire:
+  current:
     path: ../
   uuid: 3.0.6
 

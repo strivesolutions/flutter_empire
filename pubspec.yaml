@@ -1,8 +1,8 @@
-name: empire
+name: current
 description: A simple yet powerful state management library for Flutter. Keeps your widget build methods clean, with ZERO dependencies on other packages. 
 version: 1.2.0
-homepage: https://github.com/strivesolutions/flutter_empire
-issue_tracker: https://github.com/strivesolutions/flutter_empire/issues
+homepage: https://github.com/thirdversion/flutter_current
+issue_tracker: https://github.com/thirdversion/flutter_current/issues
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -16,5 +16,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
-flutter:

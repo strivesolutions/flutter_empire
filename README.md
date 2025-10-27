@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
+    <img src="https://github.com/thirdversion/flutter_current/raw/main/images/current_logo.png"/>
 </p>
 
-<h1 align="center">EMPIRE</h1>
+<h1 align="center">Current</h1>
 <h3 align="center">A simple, lightweight state management library for Flutter</h3>
 
 ## Features
@@ -14,11 +14,11 @@ Less boiler plate and significantly reduced clutter in your Widget build functio
 In your flutter project, add the dependency to your `pubspec.yaml`
 
 ```yaml
-  dependencies:
-    empire: ^1.2.0
+dependencies:
+  current: ^1.2.0
 ```
 
-**Tip:** Consider installing the [Empire Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=StriveBusinessSolutions.empire-flutter-snippets) extension in Visual Studio Code to make creating Empire classes easier.
+**Tip:** Consider installing the [Current Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=ThirdVersionTechnology.current-flutter-snippets) extension in Visual Studio Code to make creating Current classes easier.
 
 ## Usage
 
@@ -28,33 +28,33 @@ A simple example using the classic Flutter Counter App.
 
 ```dart
 
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 
-class CounterViewModel extends EmpireViewModel {
-  final count = EmpireIntProperty.zero(propertyName: 'count');
+class CounterViewModel extends CurrentViewModel {
+  final count = CurrentIntProperty.zero(propertyName: 'count');
 
   void incrementCounter()  {
     count.increment();
   }
 
   @override
-  List<EmpireProperty> get empireProps => [count];
+  List<CurrentProperty> get currentProps => [count];
 }
 ```
 
 ### counter_page.dart
 
 ```dart
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 
-class CounterPage extends EmpireWidget<CounterViewModel> {
+class CounterPage extends CurrentWidget<CounterViewModel> {
   const CounterPage({super.key, required super.viewModel});
 
   @override
-  EmpireState<EmpireWidget<EmpireViewModel>, CounterViewModel> createEmpire() => _CounterPageState(viewModel);
+  CurrentState<CurrentWidget<CurrentViewModel>, CounterViewModel> createCurrent() => _CounterPageState(viewModel);
 }
 
-class _CounterPageState extends EmpireState<CounterPage, CounterViewModel> {
+class _CounterPageState extends CurrentState<CounterPage, CounterViewModel> {
   _CounterPageState(super.viewModel);
 
   @override
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Empire State Example',
+      title: 'Current State Example',
       home: CounterPage(
         viewModel: CounterViewModel(),
       ),
@@ -95,37 +95,37 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-Our business logic is clearly separated from the UI in a clean and simple way. Even in more complicated situations where, with other state management solutions, it's common to create separate classes to represent your state, with Empire this is as complicated as it gets while supporting even the most complex scenarios.
+Our business logic is clearly separated from the UI in a clean and simple way. Even in more complicated situations where, with other state management solutions, it's common to create separate classes to represent your state, with Current this is as complicated as it gets while supporting even the most complex scenarios.
 
-By extending `EmpireWidget` and `EmpireState` and supplying an `EmpireViewModel`, your UI will automatically update whenever an `EmpireProperty` in your view model changes.
+By extending `CurrentWidget` and `CurrentState` and supplying an `CurrentViewModel`, your UI will automatically update whenever an `CurrentProperty` in your view model changes.
 
 ## Application Wide State Management
 
-What if you have application wide data that you want all your widgets to have access to at any time. Enter the `Empire` widget.
+What if you have application wide data that you want all your widgets to have access to at any time. Enter the `Current` widget.
 
 Create a ViewModel for your application:
 
 ### application_view_model.dart
 
 ```dart
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 
-class ApplicationViewModel extends EmpireViewModel {
-  final loggedInUser = EmpireProperty<User?>(null);
+class ApplicationViewModel extends CurrentViewModel {
+  final loggedInUser = CurrentProperty<User?>(null);
 
   void updateUser(User user) => loggedInUser(user);
 
   @override
-  List<EmpireProperty> get empireProps => [loggedInUser];
+  List<CurrentProperty> get currentProps => [loggedInUser];
 }
 ```
 
-Make the child of your `CupertinoApp` or `MaterialApp` an `Empire` widget. Supply a function to generate a unique application state id. This tells your app it needs to refresh the widget tree below your your `Empire` widget. In this example, we are using the [Uuid](https://pub.dev/packages/uuid) package to handle creating a unique ID, but we leave it up to you to decide what dependencies you want to include in your application. This function will get called anytime the `loggedInUser` property is changed in the `ApplicationViewModel` and trigger the UI for your app to update.
+Make the child of your `CupertinoApp` or `MaterialApp` an `Current` widget. Supply a function to generate a unique application state id. This tells your app it needs to refresh the widget tree below your your `Current` widget. In this example, we are using the [Uuid](https://pub.dev/packages/uuid) package to handle creating a unique ID, but we leave it up to you to decide what dependencies you want to include in your application. This function will get called anytime the `loggedInUser` property is changed in the `ApplicationViewModel` and trigger the UI for your app to update.
 
 ### main.dart
 
 ```dart
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 
 void main() => runApp(const MyApp());
 
@@ -135,12 +135,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Empire(
+      home: Current(
         ApplicationViewModel(),
         onAppStateChanged: () => const Uuid().v1(),
         child: Builder(
           builder: (context) {
-            final appViewModel = Empire.viewModelOf<ApplicationViewModel>(context);
+            final appViewModel = Current.viewModelOf<ApplicationViewModel>(context);
             final loggedInUser = appViewModel.loggedInUser;
 
             return Column(
@@ -162,26 +162,26 @@ class MyApp extends StatelessWidget {
 
 ## Contributing
 
-This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/strivesolutions/flutter_empire/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/strivesolutions/flutter_empire/pulls). For community contribution guidelines, please reveiw the [Code of Conduct](CODE_OF_CONDUCT.md).
+This is an open source project, and thus contributions to this project are welcome - please feel free to [create a new issue](https://github.com/thirdversion/flutter_current/issues/new/choose) if you encounter any problems, or [submit a pull request](https://github.com/thirdversion/flutter_current/pulls). For community contribution guidelines, please reveiw the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 If submitting a pull request, please ensure the following standards are met:
 
-1) Code files must be well formatted (run `flutter format .`). 
+1. Code files must be well formatted (run `flutter format .`).
 
-2) Tests must pass (run `flutter test`).  New test cases to validate your changes are highly recommended.
+2. Tests must pass (run `flutter test`). New test cases to validate your changes are highly recommended.
 
-3) Implementations must not add any project dependencies. 
+3. Implementations must not add any project dependencies.
 
-4) Project must contain zero warnings. Running `flutter analyze` must return zero issues.
+4. Project must contain zero warnings. Running `flutter analyze` must return zero issues.
 
-5) Ensure docstrings are kept up-to-date. New feature additions must include docstrings.
+5. Ensure docstrings are kept up-to-date. New feature additions must include docstrings.
 
 ## Additional information
 
 This package has **ZERO** dependencies on any other packages.
 
-You can find the full API documentation [here](https://pub.dev/documentation/empire/latest/)
+You can find the full API documentation [here](https://pub.dev/documentation/current/latest/)
 
 Developed by:
 
-© 2022 [Strive Business Solutions](https://www.strivebusiness.ca/)
+© 2025 [Third Version Technology Ltd](https://thirdversion.ca/)

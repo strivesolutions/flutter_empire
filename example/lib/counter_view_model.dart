@@ -1,11 +1,11 @@
-import 'package:empire/empire.dart';
+import 'package:current/current.dart';
 
-class CounterViewModel extends EmpireViewModel {
-  final count = EmpireIntProperty.zero(propertyName: 'count');
-  final changeBackgroundOnCountChange = EmpireBoolProperty(false);
+class CounterViewModel extends CurrentViewModel {
+  final count = CurrentIntProperty.zero(propertyName: 'count');
+  final changeBackgroundOnCountChange = CurrentBoolProperty(false);
 
   @override
-  List<EmpireProperty> get empireProps {
+  List<CurrentProperty> get currentProps {
     return [count, changeBackgroundOnCountChange];
   }
 
