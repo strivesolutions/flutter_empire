@@ -11,11 +11,11 @@ This extension contains Flutter code snippets for the [Current State Management 
 
 ## Requirements
 
-Dart version 2.17 or greater.
+Dart version 3.0.0 or greater.
 
 Flutter version 3.0.0 or greater.
 
-A reference to Current version 0.9.0 or greater in your pubspec.yaml.
+A reference to Current version 2.0.0 or greater in your pubspec.yaml.
 
 ## Reporting issues
 
@@ -23,6 +23,6 @@ If you discover any issues with this extension please file an issue on the [Curr
 
 ## Release Notes
 
-### 0.1.2
+### 1.0.0
 
 Initial release of Current Flutter Snippets.
