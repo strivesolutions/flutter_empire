@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class _TestViewModel extends CurrentViewModel {
-  final CurrentProperty<String?> name = CurrentProperty(null);
-  final CurrentProperty<int> age = CurrentProperty(1);
+  final CurrentProperty<String?> name =
+      CurrentProperty(null, isPrimitiveType: true);
+  final CurrentProperty<int> age = CurrentProperty(1, isPrimitiveType: true);
 
   @override
   Iterable<CurrentProperty> get currentProps => [name, age];
@@ -194,7 +195,7 @@ void main() {
         'setOriginalToCurrent - update original value - reset sets value to updated original ',
         () {
       const String expectedValue = 'Bob';
-      final name = CurrentProperty<String?>(null);
+      final name = CurrentProperty<String?>(null, isPrimitiveType: true);
       name.setViewModel(viewModel);
       name(expectedValue);
 
@@ -214,7 +215,7 @@ void main() {
         'setAsOriginal - argument is false - original not set to current value',
         () {
       const String expected = 'Bob';
-      final name = CurrentProperty<String?>(expected);
+      final name = CurrentProperty<String?>(expected, isPrimitiveType: true);
       name.setViewModel(viewModel);
 
       name('Steve', setAsOriginal: false);
@@ -225,7 +226,7 @@ void main() {
     test('setAsOriginal - argument is true - original is set to current value',
         () {
       const String expected = 'Steve';
-      final name = CurrentProperty<String?>('Bob');
+      final name = CurrentProperty<String?>('Bob', isPrimitiveType: true);
       name.setViewModel(viewModel);
 
       name(expected, setAsOriginal: true);

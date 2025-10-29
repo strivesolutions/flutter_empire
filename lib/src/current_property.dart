@@ -165,7 +165,7 @@ class CurrentProperty<T> implements CurrentValue<T> {
   ///reference, causing unexpected behavior. To avoid this, T should implement [CurrentCloneable]
   ///so the [value] will be reset to a deep copy of the [originalValue].
   ///
-  ///If [T] is a primitiveType, setting [isPrimitiveType] to true will cause the supress the warning.
+  ///If [T] is a primitiveType, setting [isPrimitiveType] to true will suppress the warning.
   ///Consider using the typed CurrentProperty classes (eg: [CurrentIntProperty], [CurrentStringProperty])
   ///in place of the generic [CurrentProperty] class for primitives.
   ///
