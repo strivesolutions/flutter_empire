@@ -104,7 +104,7 @@ class CurrentDoubleProperty extends CurrentProperty<double> {
   ///
   /// This does not set the value for this [CurrentDoubleProperty].
   ///
-  /// The result is an [double], as described by [double./]
+  /// The result is an [double], as described by [double]
   double divide<E extends num>(E other) {
     return _value / other;
   }
@@ -276,7 +276,7 @@ class CurrentNullableDoubleProperty extends CurrentProperty<double?> {
   ///
   /// This does not set the value for this [CurrentNullableDoubleProperty].
   ///
-  /// The result is an [double], as described by [double./],
+  /// The result is an [double], as described by [double].
   ///
   /// If the underlying value is `null` throws an [CurrentPropertyNullValueException].
   double divide<E extends num>(E other) {
