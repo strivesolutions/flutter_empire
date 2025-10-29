@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="https://github.com/thirdversion/flutter_current/raw/main/images/current_logo.png"/>
+    <img src="https://github.com/thirdversion/flutter_current/raw/main/images/images/CurrentLogo.png" alt="Current Logo" style="max-width: 100%; height: 125px;"/>
 </p>
 
-<h1 align="center">Current</h1>
+<h1 align="center">Flutter Current</h1>
 <h3 align="center">A simple, lightweight state management library for Flutter</h3>
 
 ## Features

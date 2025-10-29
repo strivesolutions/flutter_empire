@@ -1,7 +1,13 @@
-## 1.2.0
+## 2.0.0
 
-- Verify during EmpireWidget initialization that the EmpireViewModel being used has not been associated with another EmpireWidget.
-  - This is a BREAKING CHANGE. Decided to do this to prevent users from introducing very difficult bugs to diagnose. See [Issue #95](https://github.com/strivesolutions/flutter_empire/issues/95)
+- Rebrand and re-release of Flutter Empire to Flutter Current.
+
+### Why?
+
+- The Founders at Third Version Technology Ltd are the original creators of [Flutter Empire](https://pub.dev/packages/empire) and are no longer affiliated with Strive Business Solutions. Flutter Empire is not being actively maintained and thus we have decided to fork, rebrand and re-release the package under a new name; Flutter Current.
+- The name 'Current' and the logo represents the idea of state flowing through your application as you see fit. It also represents the idea of being 'up to date' with the latest state in your application. 🤯
+- We decided to carry on the versioning from Flutter Empire to represent the maturity of the package and to show that this is a continuation of the same great package. This also allows us to include the lineage in the change log for transparency.
+- Please see the [announcement blog post](https://thirdversion.ca/blog/announcing-flutter-current-fork-and-rebrand-of-flutter-empire) for more details.
 
 ## 1.2.0
 
