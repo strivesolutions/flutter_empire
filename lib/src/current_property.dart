@@ -44,7 +44,7 @@ abstract class CurrentValue<T> {
 ///*Calling the property*:
 ///```dart
 /////initialize the property value to zero.
-///final age = createProperty<int>(0);
+///final age = CurrentProperty<int>(0);
 ///
 /////update the property value to five.
 ///age(5);
@@ -62,11 +62,11 @@ class CurrentProperty<T> implements CurrentValue<T> {
   @override
   T get value => _value;
 
-  /// Returns true if the value of [this] is null.
+  /// Returns true if the value of this [CurrentProperty] is null.
   ///
   bool get isNull => _value == null;
 
-  /// Returns true if the value of [this] is not null.
+  /// Returns true if the value of this [CurrentProperty] is not null.
   bool get isNotNull => !isNull;
 
   CurrentViewModel? _viewModel;

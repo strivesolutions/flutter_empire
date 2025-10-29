@@ -210,7 +210,7 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
   /// UTC.
   Duration get timeZoneOffset => _value.timeZoneOffset;
 
-  /// Returns true if [this] occurs before [other].
+  /// Returns true if this [CurrentDateTimeProperty] occurs before [other].
   ///
   /// The comparison is independent
   /// of whether the time is in UTC or in the local time zone.
@@ -230,7 +230,7 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
   /// ```
   bool isBefore(DateTime other) => _value.isBefore(other);
 
-  /// Returns true if [this] occurs after [other].
+  /// Returns true if this [CurrentDateTimeProperty] occurs after [other].
   ///
   /// The comparison is independent
   /// of whether the time is in UTC or in the local time zone.
@@ -250,7 +250,7 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
   /// ```
   bool isAfter(DateTime other) => _value.isAfter(other);
 
-  /// Returns true if [this] occurs at the same moment as [other].
+  /// Returns true if this [CurrentDateTimeProperty] occurs at the same moment as [other].
   ///
   /// The comparison is independent of whether the time is in UTC or in the local
   /// time zone.
@@ -292,7 +292,7 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
 
   /// Returns this DateTime value in the local time zone.
   ///
-  /// Returns [this] if it is already in the local time zone.
+  /// Returns this [CurrentDateTimeProperty] if it is already in the local time zone.
   DateTime toLocal() => _value.toLocal();
 
   /// Returns this DateTime value in the UTC time zone.
@@ -324,7 +324,7 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
   /// ```
   String toIso8601String() => _value.toIso8601String();
 
-  /// Returns a new [DateTime] instance with [duration] added to [this].
+  /// Returns a new [DateTime] instance with [duration] added to this [CurrentDateTimeProperty].
   ///
   /// ```dart
   /// final today = DateTime.now();
@@ -332,7 +332,7 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
   /// ```
   DateTime add(Duration duration) => _value.add(duration);
 
-  /// Returns a new [DateTime] instance with [duration] subtracted from [this].
+  /// Returns a new [DateTime] instance with [duration] subtracted from this [CurrentDateTimeProperty].
   ///
   /// ```dart
   /// final today = DateTime.now();
@@ -341,9 +341,9 @@ class CurrentDateTimeProperty extends CurrentProperty<DateTime> {
   DateTime subtract(Duration duration) => _value.subtract(duration);
 
   // Returns a [Duration] with the difference when subtracting [other] from
-  /// [this].
+  /// this [CurrentDateTimeProperty].
   ///
-  /// The returned [Duration] will be negative if [other] occurs after [this].
+  /// The returned [Duration] will be negative if [other] occurs after this [CurrentDateTimeProperty].
   ///
   /// ```dart
   /// final berlinWallFell = DateTime.utc(1989, DateTime.november, 9);
@@ -474,7 +474,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The year.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final moonLanding = DateTime.parse('1969-07-20 20:18:04Z');
@@ -484,7 +484,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The month `[1..12]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final moonLanding = DateTime.parse('1969-07-20 20:18:04Z');
@@ -495,7 +495,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The day of the month `[1..31]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final moonLanding = DateTime.parse('1969-07-20 20:18:04Z');
@@ -505,7 +505,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The hour of the day, expressed as in a 24-hour clock `[0..23]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final moonLanding = DateTime.parse('1969-07-20 20:18:04Z');
@@ -515,7 +515,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The minute `[0...59]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final moonLanding = DateTime.parse('1969-07-20 20:18:04Z');
@@ -525,7 +525,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The second `[0...59]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final moonLanding = DateTime.parse('1969-07-20 20:18:04Z');
@@ -536,7 +536,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// The number of milliseconds since
   /// the "Unix epoch" 1970-01-01T00:00:00Z (UTC).
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// This value is independent of the time zone.
   int? get millisecondsSinceEpoch => _value?.millisecondsSinceEpoch;
@@ -544,14 +544,14 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// The number of microseconds since
   /// the "Unix epoch" 1970-01-01T00:00:00Z (UTC).
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// This value is independent of the time zone.
   int? get microsecondsSinceEpoch => _value?.microsecondsSinceEpoch;
 
   /// The microsecond `[0...999]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final date = DateTime.parse('1970-01-01 05:01:01.234567Z');
@@ -561,7 +561,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The millisecond `[0...999]`.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final date = DateTime.parse('1970-01-01 05:01:01.234567Z');
@@ -571,7 +571,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The day of the week monday..sunday.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// In accordance with ISO 8601
   /// a week starts with Monday, which has the value 1.
@@ -585,7 +585,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// True if this [DateTime] is set to UTC time.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final dDay = DateTime.utc(1944, 6, 6);
@@ -598,7 +598,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// The time zone name.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// This value is provided by the operating system and may be an
   /// abbreviation or a full name.
@@ -607,7 +607,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// The time zone offset, which
   /// is the difference between local time and UTC.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// The offset is positive for time zones east of UTC.
   ///
@@ -616,9 +616,9 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// UTC.
   Duration? get timeZoneOffset => _value?.timeZoneOffset;
 
-  /// Returns true if [this] occurs before [other].
+  /// Returns true if this [CurrentNullableDateTimeProperty] occurs before [other].
   ///
-  /// Returns false if [this] is null
+  /// Returns false if this [CurrentNullableDateTimeProperty] is null
   ///
   /// The comparison is independent
   /// of whether the time is in UTC or in the local time zone.
@@ -638,9 +638,9 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// ```
   bool isBefore(DateTime other) => _value?.isBefore(other) ?? false;
 
-  /// Returns true if [this] occurs after [other].
+  /// Returns true if this [CurrentNullableDateTimeProperty] occurs after [other].
   ///
-  /// Returns false if [this] is null
+  /// Returns false if this [CurrentNullableDateTimeProperty] is null
   ///
   /// The comparison is independent
   /// of whether the time is in UTC or in the local time zone.
@@ -660,9 +660,9 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// ```
   bool isAfter(DateTime other) => _value?.isAfter(other) ?? false;
 
-  /// Returns true if [this] occurs at the same moment as [other].
+  /// Returns true if this [CurrentNullableDateTimeProperty] occurs at the same moment as [other].
   ///
-  /// Returns false if [this] is null
+  /// Returns false if this [CurrentNullableDateTimeProperty] is null
   ///
   /// The comparison is independent of whether the time is in UTC or in the local
   /// time zone.
@@ -686,7 +686,7 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// Compares this DateTime object to [other],
   /// returning zero if the values are equal.
   ///
-  /// Returns -1 if [this] is null
+  /// Returns -1 if this [CurrentNullableDateTimeProperty] is null
   ///
   /// A [compareTo] function returns:
   ///  * a negative value if this DateTime [isBefore] [other].
@@ -707,19 +707,19 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
 
   /// Returns this DateTime value in the local time zone.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
-  /// Returns [this] if it is already in the local time zone.
+  /// Returns this [CurrentNullableDateTimeProperty] if it is already in the local time zone.
   DateTime? toLocal() => _value?.toLocal();
 
   /// Returns this DateTime value in the UTC time zone.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   DateTime? toUtc() => _value?.toUtc();
 
   /// Returns an ISO-8601 full-precision extended format representation.
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// The format is `yyyy-MM-ddTHH:mm:ss.mmmuuuZ` for UTC time, and
   /// `yyyy-MM-ddTHH:mm:ss.mmmuuu` (no trailing "Z") for local/non-UTC time,
@@ -745,9 +745,9 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// ```
   String? toIso8601String() => _value?.toIso8601String();
 
-  /// Returns a new [DateTime] instance with [duration] added to [this].
+  /// Returns a new [DateTime] instance with [duration] added to this [CurrentNullableDateTimeProperty].
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final today = DateTime.now();
@@ -755,9 +755,9 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   /// ```
   DateTime? add(Duration duration) => _value?.add(duration);
 
-  /// Returns a new [DateTime] instance with [duration] subtracted from [this].
+  /// Returns a new [DateTime] instance with [duration] subtracted from this [CurrentNullableDateTimeProperty].
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
   /// ```dart
   /// final today = DateTime.now();
@@ -766,11 +766,11 @@ class CurrentNullableDateTimeProperty extends CurrentProperty<DateTime?> {
   DateTime? subtract(Duration duration) => _value?.subtract(duration);
 
   // Returns a [Duration] with the difference when subtracting [other] from
-  /// [this].
+  /// this [CurrentNullableDateTimeProperty].
   ///
-  /// Returns null if [this] is null
+  /// Returns null if this [CurrentNullableDateTimeProperty] is null
   ///
-  /// The returned [Duration] will be negative if [other] occurs after [this].
+  /// The returned [Duration] will be negative if [other] occurs after this [CurrentNullableDateTimeProperty].
   ///
   /// ```dart
   /// final berlinWallFell = DateTime.utc(1989, DateTime.november, 9);

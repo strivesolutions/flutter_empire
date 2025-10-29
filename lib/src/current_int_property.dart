@@ -207,7 +207,7 @@ class CurrentNullableIntProperty extends CurrentProperty<int?> {
   ///
   /// This does not set the value for this [CurrentNullableIntProperty].
   ///
-  /// If the underlying value is [null] throws an [CurrentPropertyNullValueException].
+  /// If the underlying value is `null` throws an [CurrentPropertyNullValueException].
   ///
   /// The result is an [int], as described by [int.+],
   /// if both this number and [other] is an integer,
@@ -223,7 +223,7 @@ class CurrentNullableIntProperty extends CurrentProperty<int?> {
   ///
   /// This does not set the value for this [CurrentNullableIntProperty].
   ///
-  /// If the underlying value is [null] throws an [CurrentPropertyNullValueException].
+  /// If the underlying value is `null` throws an [CurrentPropertyNullValueException].
   ///
   /// The result is an [int], as described by [int.-],
   /// if both this number and [other] is an integer,
@@ -239,7 +239,7 @@ class CurrentNullableIntProperty extends CurrentProperty<int?> {
   ///
   /// This does not set the value for this [CurrentNullableIntProperty].
   ///
-  /// If the underlying value is [null] throws an [CurrentPropertyNullValueException].
+  /// If the underlying value is `null` throws an [CurrentPropertyNullValueException].
   double divide<E extends num>(E other) {
     return isNotNull
         ? _value! / other
@@ -267,7 +267,7 @@ class CurrentNullableIntProperty extends CurrentProperty<int?> {
   /// if both this number and [other] are integers,
   /// otherwise the result is a [double].
   ///
-  /// If the underlying value is [null] throws an [CurrentPropertyNullValueException].
+  /// If the underlying value is `null` throws an [CurrentPropertyNullValueException].
   ///
   /// Example:
   /// ```dart
@@ -289,7 +289,7 @@ class CurrentNullableIntProperty extends CurrentProperty<int?> {
   /// if both this number and [other] are integers,
   /// otherwise the result is a [double].
   ///
-  /// If the underlying value is [null] throws an [CurrentPropertyNullValueException].
+  /// If the underlying value is `null` throws an [CurrentPropertyNullValueException].
   E multiply<E extends num>(E other) {
     return isNotNull
         ? (_value! * other) as E
