@@ -1,3 +1,7 @@
+Please note that this library is no longer actively maintained. For an updated fork of this library, please see <a href="https://github.com/thirdversion/flutter_current"><b>Flutter Current</b></a>.
+
+---
+
 <p align="center">
     <img src="https://github.com/strivesolutions/flutter_empire/raw/main/images/EmpireLogoMD.png"/>
 </p>
